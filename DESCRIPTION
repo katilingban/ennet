@@ -13,6 +13,13 @@ Description: en-net is the go to online forum for field practitioners
     package provides utility functions for the extraction, processing and
     analysis of text data from the online forum.
 License: GPL-3
+Imports: 
+    magrittr,
+    rvest,
+    xml2,
+    tibble
 Encoding: UTF-8
 Language: en-gb
 LazyData: true
+RoxygenNote: 7.1.1
+
