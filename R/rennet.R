@@ -14,6 +14,10 @@
 #' @docType package
 #' @keywords internal
 #' @name rennet
+#' @importFrom magrittr %>%
+#' @importFrom rvest html_nodes html_attr
+#' @importFrom xml2 read_html url_absolute
+#' @importFrom tibble tibble
 #'
 #'
 #
