@@ -115,7 +115,7 @@ get_topic_discussion <- function(link) {
 #'
 #' @examples
 #' links <- get_theme_topics(link = get_themes()$links[4])
-#' get_topics_discussion(link = links)
+#' get_topics_discussion(link = links[1:3])
 #'
 #' @export
 #'

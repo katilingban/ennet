@@ -89,7 +89,8 @@ get_theme_topics <- function(link) {
 #'   respective URLs
 #'
 #' @examples
-#' get_themes_topics()
+#' themes <- get_themes()
+#' get_themes_topics(themes = themes[1:3, ])
 #'
 #' @export
 #'
