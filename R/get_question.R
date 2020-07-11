@@ -17,11 +17,15 @@
 ################################################################################
 
 get_topic_question <- function(link) {
-  page <- xml2::read_html(x = link[1])
+  page <- xml2::read_html(x = link)
+
+
 
   topic <- page %>%
     rvest::html_nodes(css = "#pagebody h1") %>%
     rvest::html_text()
+
+
 
   ##
   question <- page %>%
@@ -31,3 +35,12 @@ get_topic_question <- function(link) {
     unlist()
 
 }
+
+
+page %>% rvest::html_nodes(css = "#pagebody .post")
+
+page %>% rvest::html_nodes(css = "#pagebody .post .data h3")
+
+page %>% rvest::html_nodes(css = "#pagebody .post .data .datadetail")
+
+page %>% rvest::html_nodes(css = "#pagebody .post .body")
