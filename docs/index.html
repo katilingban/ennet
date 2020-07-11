@@ -58,7 +58,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/como-ph/oxcovid19/">
+  <a href="https://github.com/katilingban/ennet/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -75,9 +75,10 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="ennet-utilities-to-extract-text-data-from-en-net" class="section level1">
+<div id="ennet-utilities-to-extract-text-data-from-en-net-" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#ennet-utilities-to-extract-text-data-from-en-net" class="anchor"></a>ennet: Utilities to Extract Text Data From en-net</h1></div>
+<a href="#ennet-utilities-to-extract-text-data-from-en-net-" class="anchor"></a>ennet: Utilities to Extract Text Data From en-net <img src="reference/figures/ennet.png" width="200px" align="right">
+</h1></div>
 <!-- badges: start -->
 
 <p><a href="https://www.en-net.org">en-net</a> is the go to online forum for field practitioners requiring prompt technical advice for operational challenges for which answers are not readily accessible in current guidelines. The questions and the corresponding answers raised within en-net can provide insight into what the key topics of discussion are within the nutrition sector. This package provides utility functions for the extraction, processing and analysis of text data from the online forum.</p>
@@ -149,16 +150,16 @@ remotes::install_github("katilingban/ennet")</pre></div>
 <span class="co">#&gt; # A tibble: 93 x 7</span>
 <span class="co">#&gt;    Theme     Topic                  Views Replies Author   Posted  Link         </span>
 <span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;                  &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;        </span>
-<span class="co">#&gt;  1 Coverage… Resources for coverag… 7,340      11 Tamsin … 6 Dec … https://www.…</span>
-<span class="co">#&gt;  2 Coverage… Use of single coverag… 1,083       7 Hugh Lo… 10 Nov… https://www.…</span>
-<span class="co">#&gt;  3 Coverage… Real and theoretical … 832         3 Abdul    10 Oct… https://www.…</span>
-<span class="co">#&gt;  4 Coverage… Single Coverage for M… 1,057       4 Ben All… 5 Jul … https://www.…</span>
-<span class="co">#&gt;  5 Coverage… Cox's Bazar Refugee S… 1,295       4 Hugh Lo… 28 Mar… https://www.…</span>
-<span class="co">#&gt;  6 Coverage… Wide Area Survey (Sta… 1,027       2 Anonymo… 9 Mar … https://www.…</span>
-<span class="co">#&gt;  7 Coverage… Disconnection between… 1,029       2 Tammam … 3 Mar … https://www.…</span>
-<span class="co">#&gt;  8 Coverage… Can we classify the p… 1,201       2 Anonymo… 18 Nov… https://www.…</span>
-<span class="co">#&gt;  9 Coverage… Routine monitoring da… 1,122       0 Anonymo… 14 Nov… https://www.…</span>
-<span class="co">#&gt; 10 Coverage… SQUEAC/coverage surve… 1,464       1 Anonymo… 5 Oct … https://www.…</span>
+<span class="co">#&gt;  1 Coverage… Resources for coverag… 7,379      11 Tamsin … 6 Dec … https://www.…</span>
+<span class="co">#&gt;  2 Coverage… Use of single coverag… 1,100       7 Hugh Lo… 10 Nov… https://www.…</span>
+<span class="co">#&gt;  3 Coverage… Real and theoretical … 849         3 Abdul    10 Oct… https://www.…</span>
+<span class="co">#&gt;  4 Coverage… Single Coverage for M… 1,069       4 Ben All… 5 Jul … https://www.…</span>
+<span class="co">#&gt;  5 Coverage… Cox's Bazar Refugee S… 1,307       4 Hugh Lo… 28 Mar… https://www.…</span>
+<span class="co">#&gt;  6 Coverage… Wide Area Survey (Sta… 1,039       2 Anonymo… 9 Mar … https://www.…</span>
+<span class="co">#&gt;  7 Coverage… Disconnection between… 1,041       2 Tammam … 3 Mar … https://www.…</span>
+<span class="co">#&gt;  8 Coverage… Can we classify the p… 1,213       2 Anonymo… 18 Nov… https://www.…</span>
+<span class="co">#&gt;  9 Coverage… Routine monitoring da… 1,134       0 Anonymo… 14 Nov… https://www.…</span>
+<span class="co">#&gt; 10 Coverage… SQUEAC/coverage surve… 1,476       1 Anonymo… 5 Oct … https://www.…</span>
 <span class="co">#&gt; # … with 83 more rows</span></pre></div>
 <p>To get a list of topics for multiple themes, we use the <code><a href="reference/get_themes_topics.html">get_themes_topics()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb4"><pre class="r"><span class="co">## Extract data from "Coverage assessment" theme and "Food assistance" theme</span>
@@ -168,16 +169,16 @@ remotes::install_github("katilingban/ennet")</pre></div>
 <span class="co">#&gt; # A tibble: 123 x 7</span>
 <span class="co">#&gt;    Theme     Topic                  Views Replies Author   Posted  Link         </span>
 <span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;                  &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;        </span>
-<span class="co">#&gt;  1 Coverage… Resources for coverag… 7,340      11 Tamsin … 6 Dec … https://www.…</span>
-<span class="co">#&gt;  2 Coverage… Use of single coverag… 1,083       7 Hugh Lo… 10 Nov… https://www.…</span>
-<span class="co">#&gt;  3 Coverage… Real and theoretical … 832         3 Abdul    10 Oct… https://www.…</span>
-<span class="co">#&gt;  4 Coverage… Single Coverage for M… 1,057       4 Ben All… 5 Jul … https://www.…</span>
-<span class="co">#&gt;  5 Coverage… Cox's Bazar Refugee S… 1,295       4 Hugh Lo… 28 Mar… https://www.…</span>
-<span class="co">#&gt;  6 Coverage… Wide Area Survey (Sta… 1,027       2 Anonymo… 9 Mar … https://www.…</span>
-<span class="co">#&gt;  7 Coverage… Disconnection between… 1,029       2 Tammam … 3 Mar … https://www.…</span>
-<span class="co">#&gt;  8 Coverage… Can we classify the p… 1,201       2 Anonymo… 18 Nov… https://www.…</span>
-<span class="co">#&gt;  9 Coverage… Routine monitoring da… 1,122       0 Anonymo… 14 Nov… https://www.…</span>
-<span class="co">#&gt; 10 Coverage… SQUEAC/coverage surve… 1,464       1 Anonymo… 5 Oct … https://www.…</span>
+<span class="co">#&gt;  1 Coverage… Resources for coverag… 7,379      11 Tamsin … 6 Dec … https://www.…</span>
+<span class="co">#&gt;  2 Coverage… Use of single coverag… 1,100       7 Hugh Lo… 10 Nov… https://www.…</span>
+<span class="co">#&gt;  3 Coverage… Real and theoretical … 849         3 Abdul    10 Oct… https://www.…</span>
+<span class="co">#&gt;  4 Coverage… Single Coverage for M… 1,069       4 Ben All… 5 Jul … https://www.…</span>
+<span class="co">#&gt;  5 Coverage… Cox's Bazar Refugee S… 1,307       4 Hugh Lo… 28 Mar… https://www.…</span>
+<span class="co">#&gt;  6 Coverage… Wide Area Survey (Sta… 1,039       2 Anonymo… 9 Mar … https://www.…</span>
+<span class="co">#&gt;  7 Coverage… Disconnection between… 1,041       2 Tammam … 3 Mar … https://www.…</span>
+<span class="co">#&gt;  8 Coverage… Can we classify the p… 1,213       2 Anonymo… 18 Nov… https://www.…</span>
+<span class="co">#&gt;  9 Coverage… Routine monitoring da… 1,134       0 Anonymo… 14 Nov… https://www.…</span>
+<span class="co">#&gt; 10 Coverage… SQUEAC/coverage surve… 1,476       1 Anonymo… 5 Oct … https://www.…</span>
 <span class="co">#&gt; # … with 113 more rows</span></pre></div>
 </div>
 <div id="getting-discussions-from-topics" class="section level3">
@@ -234,9 +235,9 @@ remotes::install_github("katilingban/ennet")</pre></div>
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/como-ph/oxcovid19/">https://​github.com/​como-ph/​oxcovid19/​</a>
+<li>Browse source code at <br><a href="https://github.com/katilingban/ennet/">https://​github.com/​katilingban/​ennet/​</a>
 </li>
-<li>Report a bug at <br><a href="https://github.com/como-ph/oxcovid19/issues">https://​github.com/​como-ph/​oxcovid19/​issues</a>
+<li>Report a bug at <br><a href="https://github.com/katilingban/ennet/issues">https://​github.com/​katilingban/​ennet/​issues</a>
 </li>
 <li>See the en-net Online Forum at <br><a href="https://www.en-net.org">https://​www.en-net.org</a>
 </li>

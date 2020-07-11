@@ -52,7 +52,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/como-ph/oxcovid19/">
+  <a href="https://github.com/katilingban/ennet/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -74,7 +74,7 @@
       <h1 data-toc-skip>Utilities to Extract Text Data from en-net</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/como-ph/oxcovid19/blob/master/vignettes/ennet.Rmd"><code>vignettes/ennet.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/katilingban/ennet/blob/master/vignettes/ennet.Rmd"><code>vignettes/ennet.Rmd</code></a></small>
       <div class="hidden name"><code>ennet.Rmd</code></div>
 
     </div>
@@ -87,8 +87,8 @@
 <a href="#en-net-website-structure" class="anchor"></a>en-net website structure</h3>
 <p>The <strong>en-net</strong> online forum website has a very clear and clean structure. The opening page is a list of <strong>thematic areas</strong> which are linked to each of their respective webpages. In each of these <strong>thematic area</strong> webpages is another list, this time a list of <strong>topics</strong> raised within the <strong>thematic area</strong>. These <strong>topics</strong> are the text that an online user provides as the title for the question she/he is going to ask. Each of the <strong>topics</strong> are then again linked to their respective webpages that show the actual full question raised and the ensuing responses and <strong>discussion</strong> stemming from that question.</p>
 <p>The <strong>en-net</strong> online forum structure can be summarised graphically as follows:</p>
-<div id="htmlwidget-e6eed15fb1a2f89c19a0" style="width:100%;height:432.632880098888px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e6eed15fb1a2f89c19a0">{"x":{"diagram":"\n  digraph ennet {\n\n    graph [layout = dot, fontname = Helvetica]\n\n    node [shape = ellipse, style = filled, color = grey, \n          fontcolor = white, fontsize = 20]\n\n      node [fillcolor = royalblue]\n        a [label = \"en-net\"]\n\n      node [fillcolor = darkgreen]\n        b [label = \"Thematic area\"] \n        c [label = \"Thematic area\"]\n        d [label = \"Thematic area\"]\n\n      node [fillcolor = purple]\n        e [label = \"Topic\"]\n        f [label = \"Topic\"]\n        g [label = \"Topic\"]\n        h [label = \"Topic\"]\n        i [label = \"Topic\"]\n        j [label = \"Topic\"]\n        \n        \n      node [fillcolor = orange]\n        k [label = \"Discussion\"]\n        l [label = \"Discussion\"]\n        m [label = \"Discussion\"]\n        n [label = \"Discussion\"]\n        o [label = \"Discussion\"]\n        p [label = \"Discussion\"]\n        q [label = \"Discussion\"]\n        r [label = \"Discussion\"]\n        s [label = \"Discussion\"]\n        t [label = \"Discussion\"]\n        u [label = \"Discussion\"]\n        v [label = \"Discussion\"]\n\n    edge [color = grey]\n      a -> {b c d}\n      b -> {e f}\n      c -> {g h}\n      d -> {i j}\n      e -> {k l}\n      f -> {m n}\n      g -> {o p}\n      h -> {q r}\n      i -> {s t}\n      j -> {u v}\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-5b49e95e4395e62e3477" style="width:100%;height:432.632880098888px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5b49e95e4395e62e3477">{"x":{"diagram":"\n  digraph ennet {\n\n    graph [layout = dot, fontname = Helvetica]\n\n    node [shape = ellipse, style = filled, color = grey, \n          fontcolor = white, fontsize = 20]\n\n      node [fillcolor = royalblue]\n        a [label = \"en-net\"]\n\n      node [fillcolor = darkgreen]\n        b [label = \"Thematic area\"] \n        c [label = \"Thematic area\"]\n        d [label = \"Thematic area\"]\n\n      node [fillcolor = purple]\n        e [label = \"Topic\"]\n        f [label = \"Topic\"]\n        g [label = \"Topic\"]\n        h [label = \"Topic\"]\n        i [label = \"Topic\"]\n        j [label = \"Topic\"]\n        \n        \n      node [fillcolor = orange]\n        k [label = \"Discussion\"]\n        l [label = \"Discussion\"]\n        m [label = \"Discussion\"]\n        n [label = \"Discussion\"]\n        o [label = \"Discussion\"]\n        p [label = \"Discussion\"]\n        q [label = \"Discussion\"]\n        r [label = \"Discussion\"]\n        s [label = \"Discussion\"]\n        t [label = \"Discussion\"]\n        u [label = \"Discussion\"]\n        v [label = \"Discussion\"]\n\n    edge [color = grey]\n      a -> {b c d}\n      b -> {e f}\n      c -> {g h}\n      d -> {i j}\n      e -> {k l}\n      f -> {m n}\n      g -> {o p}\n      h -> {q r}\n      i -> {s t}\n      j -> {u v}\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="getting-list-of-thematic-areas" class="section level3">
 <h3 class="hasAnchor">
@@ -134,16 +134,16 @@
 <span class="co">#&gt; # A tibble: 93 x 7</span>
 <span class="co">#&gt;    Theme     Topic                  Views Replies Author   Posted  Link         </span>
 <span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;                  &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;        </span>
-<span class="co">#&gt;  1 Coverage… Resources for coverag… 7,347      11 Tamsin … 6 Dec … https://www.…</span>
-<span class="co">#&gt;  2 Coverage… Use of single coverag… 1,086       7 Hugh Lo… 10 Nov… https://www.…</span>
-<span class="co">#&gt;  3 Coverage… Real and theoretical … 835         3 Abdul    10 Oct… https://www.…</span>
-<span class="co">#&gt;  4 Coverage… Single Coverage for M… 1,060       4 Ben All… 5 Jul … https://www.…</span>
-<span class="co">#&gt;  5 Coverage… Cox's Bazar Refugee S… 1,298       4 Hugh Lo… 28 Mar… https://www.…</span>
-<span class="co">#&gt;  6 Coverage… Wide Area Survey (Sta… 1,030       2 Anonymo… 9 Mar … https://www.…</span>
-<span class="co">#&gt;  7 Coverage… Disconnection between… 1,032       2 Tammam … 3 Mar … https://www.…</span>
-<span class="co">#&gt;  8 Coverage… Can we classify the p… 1,204       2 Anonymo… 18 Nov… https://www.…</span>
-<span class="co">#&gt;  9 Coverage… Routine monitoring da… 1,125       0 Anonymo… 14 Nov… https://www.…</span>
-<span class="co">#&gt; 10 Coverage… SQUEAC/coverage surve… 1,467       1 Anonymo… 5 Oct … https://www.…</span>
+<span class="co">#&gt;  1 Coverage… Resources for coverag… 7,405      11 Tamsin … 6 Dec … https://www.…</span>
+<span class="co">#&gt;  2 Coverage… Use of single coverag… 1,112       7 Hugh Lo… 10 Nov… https://www.…</span>
+<span class="co">#&gt;  3 Coverage… Real and theoretical … 861         3 Abdul    10 Oct… https://www.…</span>
+<span class="co">#&gt;  4 Coverage… Single Coverage for M… 1,076       4 Ben All… 5 Jul … https://www.…</span>
+<span class="co">#&gt;  5 Coverage… Cox's Bazar Refugee S… 1,314       4 Hugh Lo… 28 Mar… https://www.…</span>
+<span class="co">#&gt;  6 Coverage… Wide Area Survey (Sta… 1,046       2 Anonymo… 9 Mar … https://www.…</span>
+<span class="co">#&gt;  7 Coverage… Disconnection between… 1,048       2 Tammam … 3 Mar … https://www.…</span>
+<span class="co">#&gt;  8 Coverage… Can we classify the p… 1,220       2 Anonymo… 18 Nov… https://www.…</span>
+<span class="co">#&gt;  9 Coverage… Routine monitoring da… 1,141       0 Anonymo… 14 Nov… https://www.…</span>
+<span class="co">#&gt; 10 Coverage… SQUEAC/coverage surve… 1,483       1 Anonymo… 5 Oct … https://www.…</span>
 <span class="co">#&gt; # … with 83 more rows</span></pre></body></html></div>
 <p>To get a list of topics for multiple themes, we use the <code><a href="../reference/get_themes_topics.html">get_themes_topics()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="co">## Extract data from "Coverage assessment" theme and "Food assistance" theme</span>
@@ -153,16 +153,16 @@
 <span class="co">#&gt; # A tibble: 123 x 7</span>
 <span class="co">#&gt;    Theme     Topic                  Views Replies Author   Posted  Link         </span>
 <span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;                  &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;        </span>
-<span class="co">#&gt;  1 Coverage… Resources for coverag… 7,347      11 Tamsin … 6 Dec … https://www.…</span>
-<span class="co">#&gt;  2 Coverage… Use of single coverag… 1,086       7 Hugh Lo… 10 Nov… https://www.…</span>
-<span class="co">#&gt;  3 Coverage… Real and theoretical … 835         3 Abdul    10 Oct… https://www.…</span>
-<span class="co">#&gt;  4 Coverage… Single Coverage for M… 1,060       4 Ben All… 5 Jul … https://www.…</span>
-<span class="co">#&gt;  5 Coverage… Cox's Bazar Refugee S… 1,298       4 Hugh Lo… 28 Mar… https://www.…</span>
-<span class="co">#&gt;  6 Coverage… Wide Area Survey (Sta… 1,030       2 Anonymo… 9 Mar … https://www.…</span>
-<span class="co">#&gt;  7 Coverage… Disconnection between… 1,032       2 Tammam … 3 Mar … https://www.…</span>
-<span class="co">#&gt;  8 Coverage… Can we classify the p… 1,204       2 Anonymo… 18 Nov… https://www.…</span>
-<span class="co">#&gt;  9 Coverage… Routine monitoring da… 1,125       0 Anonymo… 14 Nov… https://www.…</span>
-<span class="co">#&gt; 10 Coverage… SQUEAC/coverage surve… 1,467       1 Anonymo… 5 Oct … https://www.…</span>
+<span class="co">#&gt;  1 Coverage… Resources for coverag… 7,405      11 Tamsin … 6 Dec … https://www.…</span>
+<span class="co">#&gt;  2 Coverage… Use of single coverag… 1,112       7 Hugh Lo… 10 Nov… https://www.…</span>
+<span class="co">#&gt;  3 Coverage… Real and theoretical … 861         3 Abdul    10 Oct… https://www.…</span>
+<span class="co">#&gt;  4 Coverage… Single Coverage for M… 1,076       4 Ben All… 5 Jul … https://www.…</span>
+<span class="co">#&gt;  5 Coverage… Cox's Bazar Refugee S… 1,314       4 Hugh Lo… 28 Mar… https://www.…</span>
+<span class="co">#&gt;  6 Coverage… Wide Area Survey (Sta… 1,046       2 Anonymo… 9 Mar … https://www.…</span>
+<span class="co">#&gt;  7 Coverage… Disconnection between… 1,048       2 Tammam … 3 Mar … https://www.…</span>
+<span class="co">#&gt;  8 Coverage… Can we classify the p… 1,220       2 Anonymo… 18 Nov… https://www.…</span>
+<span class="co">#&gt;  9 Coverage… Routine monitoring da… 1,141       0 Anonymo… 14 Nov… https://www.…</span>
+<span class="co">#&gt; 10 Coverage… SQUEAC/coverage surve… 1,483       1 Anonymo… 5 Oct … https://www.…</span>
 <span class="co">#&gt; # … with 113 more rows</span></pre></body></html></div>
 </div>
 <div id="getting-discussions-from-topics" class="section level3">
