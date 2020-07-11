@@ -24,7 +24,8 @@ Imports:
 Suggests: 
     knitr,
     rmarkdown,
-    DiagrammeR
+    DiagrammeR,
+    testthat
 Encoding: UTF-8
 Language: en-gb
 LazyData: true
