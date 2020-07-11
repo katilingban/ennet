@@ -9,14 +9,14 @@
 #'
 #' @examples
 #' links <- get_theme_topics(link = get_themes()$links[4])
-#' get_topic_discussion(link = links$Link[1])
+#' get_topic_discussions(link = links$Link[1])
 #'
 #' @export
 #'
 #
 ################################################################################
 
-get_topic_discussion <- function(link) {
+get_topic_discussions <- function(link) {
   ## Read the link
   page <- xml2::read_html(x = link)
 
@@ -115,7 +115,7 @@ get_topic_discussion <- function(link) {
 #'
 #' @examples
 #' links <- get_theme_topics(link = get_themes()$links[4])
-#' get_topics_discussion(link = links[1:3])
+#' get_topics_discussions(link = links[1:3])
 #'
 #' @export
 #'
@@ -124,13 +124,13 @@ get_topic_discussion <- function(link) {
 #
 ################################################################################
 
-get_topics_discussion <- function(links) {
+get_topics_discussions <- function(links) {
   ## Get vector of links
   topicLinks <- links$Link
 
   ##
   discussions <- lapply(X = topicLinks,
-                        FUN = get_topic_discussion) %>%
+                        FUN = get_topic_discussions) %>%
     dplyr::bind_rows()
 
   ## Return discussions
