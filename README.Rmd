@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# ennet: Utilities to Extract Text Data From en-net
+# ennet: Utilities to Extract Text Data From en-net <img src="man/figures/ennet.png" width="200px" align="right" />
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
