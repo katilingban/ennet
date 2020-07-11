@@ -17,9 +17,11 @@ Imports:
     magrittr,
     rvest,
     xml2,
-    tibble
+    tibble,
+    dplyr,
+    stringr,
+    tidyselect
 Encoding: UTF-8
 Language: en-gb
 LazyData: true
 RoxygenNote: 7.1.1
-
