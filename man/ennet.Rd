@@ -17,8 +17,8 @@ online forum.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/como-ph/oxcovid19}
-  \item Report bugs at \url{https://github.com/como-ph/oxcovid19/issues}
+  \item \url{https://github.com/katilingban/ennet}
+  \item Report bugs at \url{https://github.com/katilingban/ennet/issues}
 }
 
 }

@@ -18,7 +18,7 @@ A tibble containing the topic discussions for selected topic/s
 Get the discussion and details of discussion for a set of topics
 }
 \examples{
-links <- get_theme_topics(link = get_themes()$links[4])
-get_topics_discussions(link = links[1:3])
+links <- get_theme_topics(link = (get_themes()$links)[4])
+get_topics_discussions(link = links[1:3, ])
 
 }
