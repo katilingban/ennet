@@ -21,7 +21,14 @@ Imports:
     dplyr,
     stringr,
     tidyselect
+Suggests: 
+    knitr,
+    rmarkdown,
+    DiagrammeR
 Encoding: UTF-8
 Language: en-gb
 LazyData: true
+URL: https://github.com/como-ph/oxcovid19
+BugReports: https://github.com/como-ph/oxcovid19/issues
 RoxygenNote: 7.1.1
+VignetteBuilder: knitr
