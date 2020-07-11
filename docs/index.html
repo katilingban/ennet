@@ -108,7 +108,7 @@ remotes::install_github("katilingban/ennet")</pre></div>
 <div id="getting-list-of-thematic-areas" class="section level3">
 <h3 class="hasAnchor">
 <a href="#getting-list-of-thematic-areas" class="anchor"></a>Getting list of thematic areas</h3>
-<p>To get a list of thematic areas along with the link to the webpage of each thematic area, we use the <code>get_themes()</code> function as follows:</p>
+<p>To get a list of thematic areas along with the link to the webpage of each thematic area, we use the <code><a href="reference/get_themes.html">get_themes()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">#&gt; # A tibble: 19 x 2</span></span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co">#&gt;    themes                                           links                       </span></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="co">#&gt;    &lt;chr&gt;                                            &lt;chr&gt;                       </span></span>
@@ -131,66 +131,66 @@ remotes::install_github("katilingban/ennet")</pre></div>
 <span id="cb2-20"><a href="#cb2-20"></a><span class="co">#&gt; 17 Multi-sector nutrition programming               https://www.en-net.org/foru…</span></span>
 <span id="cb2-21"><a href="#cb2-21"></a><span class="co">#&gt; 18 Adolescent nutrition                             https://www.en-net.org/foru…</span></span>
 <span id="cb2-22"><a href="#cb2-22"></a><span class="co">#&gt; 19 Simplified Approaches for the Management of Acu… https://www.en-net.org/foru…</span></span></code></pre></div>
-<p>This will be useful when choosing which themes to focus on when extracting information. This function outputs an object of the appropriate class and structure as the required input for the <code>get_themes_topics()</code> function which would lend to piped operations between the two functions (see below).</p>
+<p>This will be useful when choosing which themes to focus on when extracting information. This function outputs an object of the appropriate class and structure as the required input for the <code><a href="reference/get_themes_topics.html">get_themes_topics()</a></code> function which would lend to piped operations between the two functions (see below).</p>
 </div>
 <div id="getting-list-of-topics-from-thematic-areas" class="section level3">
 <h3 class="hasAnchor">
 <a href="#getting-list-of-topics-from-thematic-areas" class="anchor"></a>Getting list of topics from thematic area/s</h3>
-<p>To get a list of topics for a particular theme, we use the <code>get_theme_topics()</code> function as follows:</p>
+<p>To get a list of topics for a particular theme, we use the <code><a href="reference/get_theme_topics.html">get_theme_topics()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb3"><pre class="r"><span class="co">## Load dplyr to facilitate data manipulation</span>
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)
 
 <span class="co">## Extract data from "Coverage assessment" theme</span>
-<span class="fu">get_themes</span>() <span class="kw">%&gt;%</span>
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">themes</span> <span class="kw">==</span> <span class="st">"Coverage assessment"</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="no">links</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu">get_theme_topics</span>()
+  <span class="fu"><a href="reference/get_theme_topics.html">get_theme_topics</a></span>()
 <span class="co">#&gt; # A tibble: 93 x 7</span>
 <span class="co">#&gt;    Theme     Topic                  Views Replies Author   Posted  Link         </span>
 <span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;                  &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;        </span>
-<span class="co">#&gt;  1 Coverage… Resources for coverag… 7,288      11 Tamsin … 6 Dec … https://www.…</span>
-<span class="co">#&gt;  2 Coverage… Use of single coverag… 1,071       7 Hugh Lo… 10 Nov… https://www.…</span>
-<span class="co">#&gt;  3 Coverage… Real and theoretical … 821         3 Abdul    10 Oct… https://www.…</span>
-<span class="co">#&gt;  4 Coverage… Single Coverage for M… 1,053       4 Ben All… 5 Jul … https://www.…</span>
-<span class="co">#&gt;  5 Coverage… Cox's Bazar Refugee S… 1,291       4 Hugh Lo… 28 Mar… https://www.…</span>
-<span class="co">#&gt;  6 Coverage… Wide Area Survey (Sta… 1,023       2 Anonymo… 9 Mar … https://www.…</span>
-<span class="co">#&gt;  7 Coverage… Disconnection between… 1,025       2 Tammam … 3 Mar … https://www.…</span>
-<span class="co">#&gt;  8 Coverage… Can we classify the p… 1,197       2 Anonymo… 18 Nov… https://www.…</span>
-<span class="co">#&gt;  9 Coverage… Routine monitoring da… 1,118       0 Anonymo… 14 Nov… https://www.…</span>
-<span class="co">#&gt; 10 Coverage… SQUEAC/coverage surve… 1,460       1 Anonymo… 5 Oct … https://www.…</span>
+<span class="co">#&gt;  1 Coverage… Resources for coverag… 7,302      11 Tamsin … 6 Dec … https://www.…</span>
+<span class="co">#&gt;  2 Coverage… Use of single coverag… 1,072       7 Hugh Lo… 10 Nov… https://www.…</span>
+<span class="co">#&gt;  3 Coverage… Real and theoretical … 822         3 Abdul    10 Oct… https://www.…</span>
+<span class="co">#&gt;  4 Coverage… Single Coverage for M… 1,054       4 Ben All… 5 Jul … https://www.…</span>
+<span class="co">#&gt;  5 Coverage… Cox's Bazar Refugee S… 1,292       4 Hugh Lo… 28 Mar… https://www.…</span>
+<span class="co">#&gt;  6 Coverage… Wide Area Survey (Sta… 1,024       2 Anonymo… 9 Mar … https://www.…</span>
+<span class="co">#&gt;  7 Coverage… Disconnection between… 1,026       2 Tammam … 3 Mar … https://www.…</span>
+<span class="co">#&gt;  8 Coverage… Can we classify the p… 1,198       2 Anonymo… 18 Nov… https://www.…</span>
+<span class="co">#&gt;  9 Coverage… Routine monitoring da… 1,119       0 Anonymo… 14 Nov… https://www.…</span>
+<span class="co">#&gt; 10 Coverage… SQUEAC/coverage surve… 1,461       1 Anonymo… 5 Oct … https://www.…</span>
 <span class="co">#&gt; # … with 83 more rows</span></pre></div>
-<p>To get a list of topics for multiple themes, we use the <code>get_themes_topics()</code> function as follows:</p>
+<p>To get a list of topics for multiple themes, we use the <code><a href="reference/get_themes_topics.html">get_themes_topics()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb4"><pre class="r"><span class="co">## Extract data from "Coverage assessment" theme and "Food assistance" theme</span>
-<span class="fu">get_themes</span>() <span class="kw">%&gt;%</span>
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">themes</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu">get_themes_topics</span>()
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>()
 <span class="co">#&gt; # A tibble: 123 x 7</span>
 <span class="co">#&gt;    Theme     Topic                  Views Replies Author   Posted  Link         </span>
 <span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;                  &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;        </span>
-<span class="co">#&gt;  1 Coverage… Resources for coverag… 7,288      11 Tamsin … 6 Dec … https://www.…</span>
-<span class="co">#&gt;  2 Coverage… Use of single coverag… 1,071       7 Hugh Lo… 10 Nov… https://www.…</span>
-<span class="co">#&gt;  3 Coverage… Real and theoretical … 821         3 Abdul    10 Oct… https://www.…</span>
-<span class="co">#&gt;  4 Coverage… Single Coverage for M… 1,053       4 Ben All… 5 Jul … https://www.…</span>
-<span class="co">#&gt;  5 Coverage… Cox's Bazar Refugee S… 1,291       4 Hugh Lo… 28 Mar… https://www.…</span>
-<span class="co">#&gt;  6 Coverage… Wide Area Survey (Sta… 1,023       2 Anonymo… 9 Mar … https://www.…</span>
-<span class="co">#&gt;  7 Coverage… Disconnection between… 1,025       2 Tammam … 3 Mar … https://www.…</span>
-<span class="co">#&gt;  8 Coverage… Can we classify the p… 1,197       2 Anonymo… 18 Nov… https://www.…</span>
-<span class="co">#&gt;  9 Coverage… Routine monitoring da… 1,118       0 Anonymo… 14 Nov… https://www.…</span>
-<span class="co">#&gt; 10 Coverage… SQUEAC/coverage surve… 1,460       1 Anonymo… 5 Oct … https://www.…</span>
+<span class="co">#&gt;  1 Coverage… Resources for coverag… 7,302      11 Tamsin … 6 Dec … https://www.…</span>
+<span class="co">#&gt;  2 Coverage… Use of single coverag… 1,072       7 Hugh Lo… 10 Nov… https://www.…</span>
+<span class="co">#&gt;  3 Coverage… Real and theoretical … 822         3 Abdul    10 Oct… https://www.…</span>
+<span class="co">#&gt;  4 Coverage… Single Coverage for M… 1,054       4 Ben All… 5 Jul … https://www.…</span>
+<span class="co">#&gt;  5 Coverage… Cox's Bazar Refugee S… 1,292       4 Hugh Lo… 28 Mar… https://www.…</span>
+<span class="co">#&gt;  6 Coverage… Wide Area Survey (Sta… 1,024       2 Anonymo… 9 Mar … https://www.…</span>
+<span class="co">#&gt;  7 Coverage… Disconnection between… 1,026       2 Tammam … 3 Mar … https://www.…</span>
+<span class="co">#&gt;  8 Coverage… Can we classify the p… 1,198       2 Anonymo… 18 Nov… https://www.…</span>
+<span class="co">#&gt;  9 Coverage… Routine monitoring da… 1,119       0 Anonymo… 14 Nov… https://www.…</span>
+<span class="co">#&gt; 10 Coverage… SQUEAC/coverage surve… 1,461       1 Anonymo… 5 Oct … https://www.…</span>
 <span class="co">#&gt; # … with 113 more rows</span></pre></div>
 </div>
 <div id="getting-discussions-from-topics" class="section level3">
 <h3 class="hasAnchor">
 <a href="#getting-discussions-from-topics" class="anchor"></a>Getting discussions from topic/s</h3>
 <p>To get a list of discussions for a particular topic, we use the <code>get_topic_discussion()</code> function as follows:</p>
-<div class="sourceCode" id="cb5"><pre class="r"><span class="fu">get_themes</span>() <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb5"><pre class="r"><span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">themes</span> <span class="kw">==</span> <span class="st">"Coverage assessment"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">get_themes_topics</span>() <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">Topic</span> <span class="kw">==</span> <span class="st">"Resources for coverage assessment"</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="no">Link</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu">get_topic_discussions</span>()
+  <span class="fu"><a href="reference/get_topic_discussions.html">get_topic_discussions</a></span>()
 <span class="co">#&gt; # A tibble: 12 x 10</span>
 <span class="co">#&gt;    theme  topic   user    userCode job     role  date_time type  code  post     </span>
 <span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    </span>
@@ -207,10 +207,10 @@ remotes::install_github("katilingban/ennet")</pre></div>
 <span class="co">#&gt; 11 Cover… Resour… Mark M… user31   "Consu… Freq… 5 Sep 20… answ… 3445  "Here is…</span>
 <span class="co">#&gt; 12 Cover… Resour… Alexan… user107… "Head … Norm… 11 Jun 2… answ… 7723  "The Sta…</span></pre></div>
 <p>To get a list of discussions for a set of topics, we use the <code>get_topics_discussion()</code> function as follows:</p>
-<div class="sourceCode" id="cb6"><pre class="r"><span class="fu">get_themes</span>() <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb6"><pre class="r"><span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">themes</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu">get_themes_topics</span>() <span class="kw">%&gt;%</span>
-  <span class="fu">get_topics_discussions</span>()
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="reference/get_topics_discussions.html">get_topics_discussions</a></span>()
 <span class="co">#&gt; # A tibble: 502 x 10</span>
 <span class="co">#&gt;    theme  topic   user   userCode job     role   date_time type  code  post     </span>
 <span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    </span>
@@ -263,6 +263,7 @@ remotes::install_github("katilingban/ennet")</pre></div>
 <ul class="list-unstyled">
 <li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
 <li><a href="https://github.com/katilingban/ennet/actions"><img src="https://github.com/katilingban/ennet/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://github.com/katilingban/ennet/actions"><img src="https://github.com/katilingban/ennet/workflows/test-coverage/badge.svg" alt="R build status"></a></li>
 </ul>
 </div>
 </div>
