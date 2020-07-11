@@ -93,7 +93,7 @@ get_themes() %>%
 
 ### Getting discussions from topic/s
 
-To get a list of discussions for a particular topic, we use the `get_topic_discussion()` function as follows:
+To get a list of discussions for a particular topic, we use the `get_topic_discussions()` function as follows:
 
 ```{r usage4, echo = TRUE, eval = TRUE}
 get_themes() %>%
@@ -105,7 +105,7 @@ get_themes() %>%
   get_topic_discussions()
 ```
 
-To get a list of discussions for a set of topics, we use the `get_topics_discussion()` function as follows:
+To get a list of discussions for a set of topics, we use the `get_topics_discussions()` function as follows:
 
 ```{r usage5, echo = TRUE, eval = TRUE}
 get_themes() %>%
