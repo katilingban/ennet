@@ -8,7 +8,7 @@
 #' @return A tibble containing the topic question
 #'
 #' @examples
-#' links <- get_theme_topics(link = get_themes()$links[4])
+#' links <- get_theme_topics(link = (get_themes()$links)[4])
 #' get_topic_discussions(link = links$Link[1])
 #'
 #' @export
