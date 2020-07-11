@@ -14,6 +14,14 @@ discussion are within the nutrition sector. This package provides utility
 functions for the extraction, processing and analysis of text data from the
 online forum.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/como-ph/oxcovid19}
+  \item Report bugs at \url{https://github.com/como-ph/oxcovid19/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Ernest Guevarra \email{ernest@guevarra.io} (\href{https://orcid.org/0000-0002-4887-4415}{ORCID})
 
