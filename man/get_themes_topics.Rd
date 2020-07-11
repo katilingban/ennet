@@ -18,6 +18,7 @@ A tibble of all topics across all thematic areas with their
 Get theme topics
 }
 \examples{
-get_themes_topics()
+themes <- get_themes()
+get_themes_topics(themes = themes[1:3, ])
 
 }
