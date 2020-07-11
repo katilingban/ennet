@@ -68,7 +68,7 @@ get_theme_topics <- function(link) {
                     rvest::html_nodes(css = "#pagebody h1") %>%
                     rvest::html_text(),
                   Link = page %>%
-                    rvest::html_nodes(css = "#pagebody table .title") %>%
+                    rvest::html_nodes(css = "#pagebody table .title a") %>%
                     rvest::html_attr(name = "href") %>%
                     xml2::url_absolute(base = "https://www.en-net.org/")) %>%
     tibble::tibble()
