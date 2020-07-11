@@ -18,6 +18,9 @@
 #' @importFrom rvest html_nodes html_attr
 #' @importFrom xml2 read_html url_absolute
 #' @importFrom tibble tibble
+#' @importFrom dplyr bind_rows mutate rename
+#' @importFrom stringr str_replace
+#' @importFrom tidyselect contains
 #'
 #'
 #
