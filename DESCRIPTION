@@ -1,4 +1,4 @@
-Package: rennet
+Package: ennet
 Type: Package
 Title: Utilities to Extract Text Data From EN-NET
 Version: 0.1.0

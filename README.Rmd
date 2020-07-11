@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# rennet: Utilities to Extract Text Data From en-net
+# ennet: Utilities to Extract Text Data From en-net
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
@@ -23,15 +23,19 @@ knitr::opts_chunk$set(
 
 ## Installation
 
+`ennet` is in active development and is not yet available from [CRAN](https://CRAN.R-project.org).
+
+<!---
 You can install the released version of rennet from [CRAN](https://CRAN.R-project.org) with:
 
-``` r
+```r
 install.packages("rennet")
 ```
+--->
 
-And the development version from [GitHub](https://github.com/) with:
+You can install the development version from [GitHub](https://github.com/) with:
 
-``` r
-# install.packages("devtools")
-devtools::install_github("katilingban/rennet")
+```r
+if(!require(remotes) install.packages("remotes"))
+remotes::install_github("katilingban/ennet")
 ```

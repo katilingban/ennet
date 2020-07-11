@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# rennet: Utilities to Extract Text Data From en-net
+# ennet: Utilities to Extract Text Data From en-net
 
 <!-- badges: start -->
 
@@ -20,16 +20,21 @@ forum.
 
 ## Installation
 
-You can install the released version of rennet from
-[CRAN](https://CRAN.R-project.org) with:
+`ennet` is in active development and is not yet available from
+[CRAN](https://CRAN.R-project.org).
 
-``` r
+<!---
+You can install the released version of rennet from [CRAN](https://CRAN.R-project.org) with:
+
+```r
 install.packages("rennet")
 ```
+--->
 
-And the development version from [GitHub](https://github.com/) with:
+You can install the development version from
+[GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("katilingban/rennet")
+if(!require(remotes) install.packages("remotes"))
+remotes::install_github("katilingban/ennet")
 ```

@@ -13,7 +13,7 @@
 #'
 #' @docType package
 #' @keywords internal
-#' @name rennet
+#' @name ennet
 #' @importFrom magrittr %>%
 #' @importFrom rvest html_nodes html_attr
 #' @importFrom xml2 read_html url_absolute
