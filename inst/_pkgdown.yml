@@ -1,0 +1,35 @@
+title: ennet
+
+url: https://katilingban.io/ennet
+
+template:
+  params:
+    bootswatch: cosmo
+    ganalytics:
+
+home:
+  links:
+  - text: See the en-net Online Forum
+    href: https://www.en-net.org
+
+  - text: See Katilingban
+    href: https://katilingban.io
+
+reference:
+  - title: Description
+    contents:
+    - ennet
+
+  - title: Get themes
+    contents:
+    - get_themes
+
+  - title: Get topics
+    contents:
+    - get_theme_topics
+    - get_themes_topics
+
+  - title: Get discussions
+    contents:
+    - get_topic_discussions
+    - get_topics_discussions
