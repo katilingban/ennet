@@ -3,6 +3,8 @@
 export(get_theme_topics)
 export(get_themes)
 export(get_themes_topics)
+export(get_topic_discussion)
+export(get_topics_discussion)
 importFrom(dplyr,bind_rows)
 importFrom(dplyr,mutate)
 importFrom(dplyr,rename)
