@@ -4,8 +4,11 @@ url: https://katilingban.io/ennet
 
 template:
   params:
-    bootswatch: cosmo
+    bootswatch: cerulean
     ganalytics:
+
+navbar:
+  type: inverse
 
 home:
   links:
