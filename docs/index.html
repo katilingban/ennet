@@ -94,8 +94,8 @@ install.packages("rennet")
 ```
 --->
 <p>You can install the development version from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="r">if(!require(remotes) install.packages("remotes"))
-remotes::install_github("katilingban/ennet")</pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(remotes) <span class="kw">install.packages</span>(<span class="st">"remotes"</span>))</span>
+<span id="cb1-2"><a href="#cb1-2"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"katilingban/ennet"</span>)</span></code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
@@ -110,11 +110,13 @@ remotes::install_github("katilingban/ennet")</pre></div>
 <h3 class="hasAnchor">
 <a href="#getting-list-of-thematic-areas" class="anchor"></a>Getting list of thematic areas</h3>
 <p>To get a list of <strong>thematic areas</strong> along with the link to the webpage of each <strong>thematic area</strong>, we use the <code><a href="reference/get_themes.html">get_themes()</a></code> function as follows:</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="co">## Load ennet package</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ennet</span>)
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="co">## Load ennet package</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/katilingban/ennet">ennet</a></span>)
 
 <span class="co">## Get all thematic areas from en-net</span>
-<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>()</pre></div>
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>()
+</pre></div>
 <p>which results in</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#&gt; # A tibble: 19 x 2</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="co">#&gt;    themes                                           links                       </span></span>
@@ -145,15 +147,17 @@ remotes::install_github("katilingban/ennet")</pre></div>
 <h3 class="hasAnchor">
 <a href="#getting-list-of-topics-from-thematic-areas" class="anchor"></a>Getting list of topics from thematic area/s</h3>
 <p>To get a list of <strong>topics</strong> for a particular theme, we use the <code><a href="reference/get_theme_topics.html">get_theme_topics()</a></code> function as follows:</p>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="co">## Load dplyr to facilitate data manipulation</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="co">## Load dplyr to facilitate data manipulation</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org">dplyr</a></span>)
 
 <span class="co">## Extract data from "Coverage assessment" theme</span>
-<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">themes</span> <span class="kw">==</span> <span class="st">"Coverage assessment"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="no">links</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="reference/get_theme_topics.html">get_theme_topics</a></span>()</pre></div>
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">themes</span> <span class="op">==</span> <span class="st">"Coverage assessment"</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="kw">links</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_theme_topics.html">get_theme_topics</a></span>()
+</pre></div>
 <p>which results in</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#&gt; # A tibble: 93 x 7</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="co">#&gt;    Theme     Topic                  Views Replies Author   Posted  Link         </span></span>
@@ -171,10 +175,12 @@ remotes::install_github("katilingban/ennet")</pre></div>
 <span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt; # … with 83 more rows</span></span></code></pre></div>
 <p>The resulting table contains information on all the <strong>topics</strong> within the <em>Coverage assessment</em> <strong>thematic area</strong> including URL links to the corresponding webpages for each <strong>topic</strong></p>
 <p>To get a list of <strong>topics</strong> for multiple themes, we use the <code><a href="reference/get_themes_topics.html">get_themes_topics()</a></code> function as follows:</p>
-<div class="sourceCode" id="cb6"><pre class="r"><span class="co">## Extract data from "Coverage assessment" theme and "Food assistance" theme</span>
-<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">themes</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>()</pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="co">## Extract data from "Coverage assessment" theme and "Food assistance" theme</span>
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">themes</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span>)) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>()
+</pre></div>
 <p>which results in</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">#&gt; # A tibble: 123 x 7</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt;    Theme     Topic                  Views Replies Author   Posted  Link         </span></span>
@@ -196,13 +202,15 @@ remotes::install_github("katilingban/ennet")</pre></div>
 <h3 class="hasAnchor">
 <a href="#getting-discussions-from-topics" class="anchor"></a>Getting discussions from topic/s</h3>
 <p>To get a list of <strong>discussions</strong> for a particular <strong>topic</strong>, we use the <code><a href="reference/get_topic_discussions.html">get_topic_discussions()</a></code> function as follows:</p>
-<div class="sourceCode" id="cb8"><pre class="r"><span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">themes</span> <span class="kw">==</span> <span class="st">"Coverage assessment"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">Topic</span> <span class="kw">==</span> <span class="st">"Resources for coverage assessment"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="no">Link</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="reference/get_topic_discussions.html">get_topic_discussions</a></span>()</pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit">
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">themes</span> <span class="op">==</span> <span class="st">"Coverage assessment"</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">Topic</span> <span class="op">==</span> <span class="st">"Resources for coverage assessment"</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="kw">Link</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_topic_discussions.html">get_topic_discussions</a></span>()
+</pre></div>
 <p>which results in</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">#&gt; # A tibble: 12 x 10</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="co">#&gt;    theme  topic   user    userCode job     role  date_time type  code  post     </span></span>
@@ -221,10 +229,12 @@ remotes::install_github("katilingban/ennet")</pre></div>
 <span id="cb9-15"><a href="#cb9-15"></a><span class="co">#&gt; 12 Cover… Resour… Alexan… user107… "Head … Norm… 11 Jun 2… answ… 7723  "The Sta…</span></span></code></pre></div>
 <p>The resulting table contains information on all the <strong>discussions</strong> within the <strong>topic</strong> on <em>Resources for coverage assessment</em> within the <strong>thematic area</strong> of <em>Coverage assessment</em> including the text data on the question and the ensuing reply/replies to the question.</p>
 <p>To get a list of <strong>discussions</strong> for a set of <strong>topics</strong>, we use the <code><a href="reference/get_topics_discussions.html">get_topics_discussions()</a></code> function as follows:</p>
-<div class="sourceCode" id="cb10"><pre class="r"><span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">themes</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="reference/get_topics_discussions.html">get_topics_discussions</a></span>()</pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit">
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">themes</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span>)) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_topics_discussions.html">get_topics_discussions</a></span>()
+</pre></div>
 <p>which results in</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">#&gt; # A tibble: 502 x 10</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="co">#&gt;    theme  topic   user   userCode job     role   date_time type  code  post     </span></span>
@@ -272,7 +282,7 @@ remotes::install_github("katilingban/ennet")</pre></div>
 </li>
 <li>See the en-net Online Forum at <br><a href="https://www.en-net.org">https://​www.en-net.org</a>
 </li>
-<li>See Katilingban at <br><a href="https://katilingban.io">https://​katilingban.io</a>
+<li>Learn more about Katilingban at <br><a href="https://katilingban.io">https://​katilingban.io</a>
 </li>
 </ul>
 </div>
@@ -309,7 +319,7 @@ remotes::install_github("katilingban/ennet")</pre></div>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
