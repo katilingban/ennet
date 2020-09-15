@@ -162,16 +162,16 @@ install.packages("rennet")
 <div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#&gt; # A tibble: 93 x 7</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="co">#&gt;    Theme     Topic                  Views Replies Author   Posted  Link         </span></span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;                  &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;        </span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#&gt;  1 Coverage… Resources for coverag… 7,455      11 Tamsin … 6 Dec … https://www.…</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#&gt;  2 Coverage… Use of single coverag… 1,139       7 Hugh Lo… 10 Nov… https://www.…</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#&gt;  3 Coverage… Real and theoretical … 886         3 Abdul    10 Oct… https://www.…</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#&gt;  4 Coverage… Single Coverage for M… 1,090       4 Ben All… 5 Jul … https://www.…</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#&gt;  5 Coverage… Cox's Bazar Refugee S… 1,329       4 Hugh Lo… 28 Mar… https://www.…</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#&gt;  6 Coverage… Wide Area Survey (Sta… 1,061       2 Anonymo… 9 Mar … https://www.…</span></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#&gt;  7 Coverage… Disconnection between… 1,062       2 Tammam … 3 Mar … https://www.…</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt;  8 Coverage… Can we classify the p… 1,234       2 Anonymo… 18 Nov… https://www.…</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt;  9 Coverage… Routine monitoring da… 1,155       0 Anonymo… 14 Nov… https://www.…</span></span>
-<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt; 10 Coverage… SQUEAC/coverage surve… 1,498       1 Anonymo… 5 Oct … https://www.…</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#&gt;  1 Coverage… Resources for coverag… 7,849      11 Tamsin … 6 Dec … https://www.…</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#&gt;  2 Coverage… Use of single coverag… 1,351       7 Hugh Lo… 10 Nov… https://www.…</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#&gt;  3 Coverage… Real and theoretical … 1,121       3 Abdul    10 Oct… https://www.…</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#&gt;  4 Coverage… Single Coverage for M… 1,297       4 Ben All… 5 Jul … https://www.…</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#&gt;  5 Coverage… Cox's Bazar Refugee S… 1,506       4 Hugh Lo… 28 Mar… https://www.…</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#&gt;  6 Coverage… Wide Area Survey (Sta… 1,219       2 Anonymo… 9 Mar … https://www.…</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#&gt;  7 Coverage… Disconnection between… 1,210       2 Tammam … 3 Mar … https://www.…</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt;  8 Coverage… Can we classify the p… 1,384       2 Anonymo… 18 Nov… https://www.…</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt;  9 Coverage… Routine monitoring da… 1,293       0 Anonymo… 14 Nov… https://www.…</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt; 10 Coverage… SQUEAC/coverage surve… 1,654       1 Anonymo… 5 Oct … https://www.…</span></span>
 <span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt; # … with 83 more rows</span></span></code></pre></div>
 <p>The resulting table contains information on all the <strong>topics</strong> within the <em>Coverage assessment</em> <strong>thematic area</strong> including URL links to the corresponding webpages for each <strong>topic</strong></p>
 <p>To get a list of <strong>topics</strong> for multiple themes, we use the <code><a href="reference/get_themes_topics.html">get_themes_topics()</a></code> function as follows:</p>
@@ -185,16 +185,16 @@ install.packages("rennet")
 <div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">#&gt; # A tibble: 123 x 7</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt;    Theme     Topic                  Views Replies Author   Posted  Link         </span></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;                  &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;        </span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#&gt;  1 Coverage… Resources for coverag… 7,455      11 Tamsin … 6 Dec … https://www.…</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#&gt;  2 Coverage… Use of single coverag… 1,139       7 Hugh Lo… 10 Nov… https://www.…</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="co">#&gt;  3 Coverage… Real and theoretical … 886         3 Abdul    10 Oct… https://www.…</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="co">#&gt;  4 Coverage… Single Coverage for M… 1,090       4 Ben All… 5 Jul … https://www.…</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a><span class="co">#&gt;  5 Coverage… Cox's Bazar Refugee S… 1,329       4 Hugh Lo… 28 Mar… https://www.…</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a><span class="co">#&gt;  6 Coverage… Wide Area Survey (Sta… 1,061       2 Anonymo… 9 Mar … https://www.…</span></span>
-<span id="cb7-10"><a href="#cb7-10"></a><span class="co">#&gt;  7 Coverage… Disconnection between… 1,062       2 Tammam … 3 Mar … https://www.…</span></span>
-<span id="cb7-11"><a href="#cb7-11"></a><span class="co">#&gt;  8 Coverage… Can we classify the p… 1,234       2 Anonymo… 18 Nov… https://www.…</span></span>
-<span id="cb7-12"><a href="#cb7-12"></a><span class="co">#&gt;  9 Coverage… Routine monitoring da… 1,155       0 Anonymo… 14 Nov… https://www.…</span></span>
-<span id="cb7-13"><a href="#cb7-13"></a><span class="co">#&gt; 10 Coverage… SQUEAC/coverage surve… 1,498       1 Anonymo… 5 Oct … https://www.…</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#&gt;  1 Coverage… Resources for coverag… 7,849      11 Tamsin … 6 Dec … https://www.…</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#&gt;  2 Coverage… Use of single coverag… 1,351       7 Hugh Lo… 10 Nov… https://www.…</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co">#&gt;  3 Coverage… Real and theoretical … 1,121       3 Abdul    10 Oct… https://www.…</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="co">#&gt;  4 Coverage… Single Coverage for M… 1,297       4 Ben All… 5 Jul … https://www.…</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="co">#&gt;  5 Coverage… Cox's Bazar Refugee S… 1,506       4 Hugh Lo… 28 Mar… https://www.…</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="co">#&gt;  6 Coverage… Wide Area Survey (Sta… 1,219       2 Anonymo… 9 Mar … https://www.…</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="co">#&gt;  7 Coverage… Disconnection between… 1,210       2 Tammam … 3 Mar … https://www.…</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="co">#&gt;  8 Coverage… Can we classify the p… 1,384       2 Anonymo… 18 Nov… https://www.…</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="co">#&gt;  9 Coverage… Routine monitoring da… 1,293       0 Anonymo… 14 Nov… https://www.…</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="co">#&gt; 10 Coverage… SQUEAC/coverage surve… 1,654       1 Anonymo… 5 Oct … https://www.…</span></span>
 <span id="cb7-14"><a href="#cb7-14"></a><span class="co">#&gt; # … with 113 more rows</span></span></code></pre></div>
 <p>The resulting table contains information on all the <strong>topics</strong> within the <em>Coverage assessment</em> and <em>Food assistance</em> <strong>thematic area</strong> including URL links to the corresponding webpages for each <strong>topic</strong>.</p>
 </div>
@@ -215,18 +215,18 @@ install.packages("rennet")
 <div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">#&gt; # A tibble: 12 x 10</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="co">#&gt;    theme  topic   user    userCode job     role  date_time type  code  post     </span></span>
 <span id="cb9-3"><a href="#cb9-3"></a><span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    </span></span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="co">#&gt;  1 Cover… Resour… Tamsin… user24   "en-ne… Foru… 6 Dec 20… ques… 574   "Dear al…</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="co">#&gt;  2 Cover… Resour… Mark M… user31   "Consu… Freq… 6 Dec 20… answ… 1536  "And her…</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="co">#&gt;  3 Cover… Resour… Ernest… user999  ""      Tech… 22 Dec 2… answ… 1603  "Worksho…</span></span>
-<span id="cb9-7"><a href="#cb9-7"></a><span class="co">#&gt;  4 Cover… Resour… Saul G… user1000 "Direc… Tech… 11 Jan 2… answ… 1664  "And her…</span></span>
-<span id="cb9-8"><a href="#cb9-8"></a><span class="co">#&gt;  5 Cover… Resour… Mark M… user31   "Consu… Freq… 1 May 20… answ… 2076  "Just a …</span></span>
-<span id="cb9-9"><a href="#cb9-9"></a><span class="co">#&gt;  6 Cover… Resour… Ernest… user999  ""      Tech… 26 May 2… answ… 2180  "We are …</span></span>
-<span id="cb9-10"><a href="#cb9-10"></a><span class="co">#&gt;  7 Cover… Resour… Ernest… user999  ""      Tech… 5 Jul 20… answ… 2278  "Dear Co…</span></span>
-<span id="cb9-11"><a href="#cb9-11"></a><span class="co">#&gt;  8 Cover… Resour… Mark M… user31   "Consu… Freq… 17 Sep 2… answ… 2442  "Updated…</span></span>
-<span id="cb9-12"><a href="#cb9-12"></a><span class="co">#&gt;  9 Cover… Resour… Mark M… user31   "Consu… Freq… 1 Nov 20… answ… 2615  "And her…</span></span>
-<span id="cb9-13"><a href="#cb9-13"></a><span class="co">#&gt; 10 Cover… Resour… Mark M… user31   "Consu… Freq… 30 Apr 2… answ… 3288  "The Cov…</span></span>
-<span id="cb9-14"><a href="#cb9-14"></a><span class="co">#&gt; 11 Cover… Resour… Mark M… user31   "Consu… Freq… 5 Sep 20… answ… 3445  "Here is…</span></span>
-<span id="cb9-15"><a href="#cb9-15"></a><span class="co">#&gt; 12 Cover… Resour… Alexan… user107… "Head … Norm… 11 Jun 2… answ… 7723  "The Sta…</span></span></code></pre></div>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co">#&gt;  1 Cover… Resour… Tamsin… user24   en-net… Foru… 6 Dec 20… ques… 574   "Dear al…</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co">#&gt;  2 Cover… Resour… Mark M… user31   Consul… Freq… 6 Dec 20… answ… 1536  "And her…</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="co">#&gt;  3 Cover… Resour… Ernest… user999  Katili… Tech… 22 Dec 2… answ… 1603  "Worksho…</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="co">#&gt;  4 Cover… Resour… Saul G… user1000 Direct… Tech… 11 Jan 2… answ… 1664  "And her…</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="co">#&gt;  5 Cover… Resour… Mark M… user31   Consul… Freq… 1 May 20… answ… 2076  "Just a …</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a><span class="co">#&gt;  6 Cover… Resour… Ernest… user999  Katili… Tech… 26 May 2… answ… 2180  "We are …</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a><span class="co">#&gt;  7 Cover… Resour… Ernest… user999  Katili… Tech… 5 Jul 20… answ… 2278  "Dear Co…</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a><span class="co">#&gt;  8 Cover… Resour… Mark M… user31   Consul… Freq… 17 Sep 2… answ… 2442  "Updated…</span></span>
+<span id="cb9-12"><a href="#cb9-12"></a><span class="co">#&gt;  9 Cover… Resour… Mark M… user31   Consul… Freq… 1 Nov 20… answ… 2615  "And her…</span></span>
+<span id="cb9-13"><a href="#cb9-13"></a><span class="co">#&gt; 10 Cover… Resour… Mark M… user31   Consul… Freq… 30 Apr 2… answ… 3288  "The Cov…</span></span>
+<span id="cb9-14"><a href="#cb9-14"></a><span class="co">#&gt; 11 Cover… Resour… Mark M… user31   Consul… Freq… 5 Sep 20… answ… 3445  "Here is…</span></span>
+<span id="cb9-15"><a href="#cb9-15"></a><span class="co">#&gt; 12 Cover… Resour… Alexan… user107… Head o… Norm… 11 Jun 2… answ… 7723  "The Sta…</span></span></code></pre></div>
 <p>The resulting table contains information on all the <strong>discussions</strong> within the <strong>topic</strong> on <em>Resources for coverage assessment</em> within the <strong>thematic area</strong> of <em>Coverage assessment</em> including the text data on the question and the ensuing reply/replies to the question.</p>
 <p>To get a list of <strong>discussions</strong> for a set of <strong>topics</strong>, we use the <code><a href="reference/get_topics_discussions.html">get_topics_discussions()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit">
@@ -236,20 +236,20 @@ install.packages("rennet")
   <span class="fu"><a href="reference/get_topics_discussions.html">get_topics_discussions</a></span>()
 </pre></div>
 <p>which results in</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">#&gt; # A tibble: 502 x 10</span></span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">#&gt; # A tibble: 503 x 10</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="co">#&gt;    theme  topic   user   userCode job     role   date_time type  code  post     </span></span>
 <span id="cb11-3"><a href="#cb11-3"></a><span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    </span></span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="co">#&gt;  1 Cover… Resour… Tamsi… user24   "en-ne… Forum… 6 Dec 20… ques… 574   "Dear al…</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="co">#&gt;  2 Cover… Resour… Mark … user31   "Consu… Frequ… 6 Dec 20… answ… 1536  "And her…</span></span>
-<span id="cb11-6"><a href="#cb11-6"></a><span class="co">#&gt;  3 Cover… Resour… Ernes… user999  ""      Techn… 22 Dec 2… answ… 1603  "Worksho…</span></span>
-<span id="cb11-7"><a href="#cb11-7"></a><span class="co">#&gt;  4 Cover… Resour… Saul … user1000 "Direc… Techn… 11 Jan 2… answ… 1664  "And her…</span></span>
-<span id="cb11-8"><a href="#cb11-8"></a><span class="co">#&gt;  5 Cover… Resour… Mark … user31   "Consu… Frequ… 1 May 20… answ… 2076  "Just a …</span></span>
-<span id="cb11-9"><a href="#cb11-9"></a><span class="co">#&gt;  6 Cover… Resour… Ernes… user999  ""      Techn… 26 May 2… answ… 2180  "We are …</span></span>
-<span id="cb11-10"><a href="#cb11-10"></a><span class="co">#&gt;  7 Cover… Resour… Ernes… user999  ""      Techn… 5 Jul 20… answ… 2278  "Dear Co…</span></span>
-<span id="cb11-11"><a href="#cb11-11"></a><span class="co">#&gt;  8 Cover… Resour… Mark … user31   "Consu… Frequ… 17 Sep 2… answ… 2442  "Updated…</span></span>
-<span id="cb11-12"><a href="#cb11-12"></a><span class="co">#&gt;  9 Cover… Resour… Mark … user31   "Consu… Frequ… 1 Nov 20… answ… 2615  "And her…</span></span>
-<span id="cb11-13"><a href="#cb11-13"></a><span class="co">#&gt; 10 Cover… Resour… Mark … user31   "Consu… Frequ… 30 Apr 2… answ… 3288  "The Cov…</span></span>
-<span id="cb11-14"><a href="#cb11-14"></a><span class="co">#&gt; # … with 492 more rows</span></span></code></pre></div>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="co">#&gt;  1 Cover… Resour… Tamsi… user24   en-net… Forum… 6 Dec 20… ques… 574   "Dear al…</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="co">#&gt;  2 Cover… Resour… Mark … user31   Consul… Frequ… 6 Dec 20… answ… 1536  "And her…</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="co">#&gt;  3 Cover… Resour… Ernes… user999  Katili… Techn… 22 Dec 2… answ… 1603  "Worksho…</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a><span class="co">#&gt;  4 Cover… Resour… Saul … user1000 Direct… Techn… 11 Jan 2… answ… 1664  "And her…</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="co">#&gt;  5 Cover… Resour… Mark … user31   Consul… Frequ… 1 May 20… answ… 2076  "Just a …</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="co">#&gt;  6 Cover… Resour… Ernes… user999  Katili… Techn… 26 May 2… answ… 2180  "We are …</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a><span class="co">#&gt;  7 Cover… Resour… Ernes… user999  Katili… Techn… 5 Jul 20… answ… 2278  "Dear Co…</span></span>
+<span id="cb11-11"><a href="#cb11-11"></a><span class="co">#&gt;  8 Cover… Resour… Mark … user31   Consul… Frequ… 17 Sep 2… answ… 2442  "Updated…</span></span>
+<span id="cb11-12"><a href="#cb11-12"></a><span class="co">#&gt;  9 Cover… Resour… Mark … user31   Consul… Frequ… 1 Nov 20… answ… 2615  "And her…</span></span>
+<span id="cb11-13"><a href="#cb11-13"></a><span class="co">#&gt; 10 Cover… Resour… Mark … user31   Consul… Frequ… 30 Apr 2… answ… 3288  "The Cov…</span></span>
+<span id="cb11-14"><a href="#cb11-14"></a><span class="co">#&gt; # … with 493 more rows</span></span></code></pre></div>
 <p>The resulting table contains information on all the <strong>discussions</strong> within all the <strong>topics</strong> within the <strong>thematic areas</strong> of <em>Coverage assessment</em> and <em>Food assistance</em> including the text data on the question and the ensuing reply/replies to the question.</p>
 </div>
 </div>
@@ -303,7 +303,7 @@ install.packages("rennet")
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
 <li><a href="https://github.com/katilingban/ennet/actions"><img src="https://github.com/katilingban/ennet/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 <li><a href="https://github.com/katilingban/ennet/actions"><img src="https://github.com/katilingban/ennet/workflows/test-coverage/badge.svg" alt="R build status"></a></li>
 <li><a href="https://codecov.io/gh/katilingban/ennet?branch=master"><img src="https://codecov.io/gh/katilingban/ennet/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
