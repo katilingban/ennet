@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Utilities to Extract Text Data From EN-NET — ennet • ennet</title>
+<title>Update full en-net dataset — update_ennet • ennet</title>
 
 
 <!-- jquery -->
@@ -39,14 +39,8 @@
 
 
 
-<meta property="og:title" content="Utilities to Extract Text Data From EN-NET — ennet" />
-<meta property="og:description" content="en-net is the go to online forum for field practitioners requiring prompt
-technical advice for operational challenges for which answers are not readily
-accessible in current guidelines. The questions and the corresponding answers
-raised within en-net can provide insight into what the key topics of
-discussion are within the nutrition sector. This package provides utility
-functions for the extraction, processing and analysis of text data from the
-online forum." />
+<meta property="og:title" content="Update full en-net dataset — update_ennet" />
+<meta property="og:description" content="Update full en-net dataset" />
 
 
 
@@ -117,35 +111,37 @@ online forum." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Utilities to Extract Text Data From EN-NET</h1>
-    <small class="dont-index">Source: <a href='https://github.com/katilingban/ennet/blob/master/R/ennet.R'><code>R/ennet.R</code></a></small>
-    <div class="hidden name"><code>ennet.Rd</code></div>
+    <h1>Update full en-net dataset</h1>
+    <small class="dont-index">Source: <a href='https://github.com/katilingban/ennet/blob/master/R/update_ennet.R'><code>R/update_ennet.R</code></a></small>
+    <div class="hidden name"><code>update_ennet.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>en-net is the go to online forum for field practitioners requiring prompt
-technical advice for operational challenges for which answers are not readily
-accessible in current guidelines. The questions and the corresponding answers
-raised within en-net can provide insight into what the key topics of
-discussion are within the nutrition sector. This package provides utility
-functions for the extraction, processing and analysis of text data from the
-online forum.</p>
+    <p>Update full en-net dataset</p>
     </div>
 
+    <pre class="usage"><span class='fu'>update_ennet</span><span class='op'>(</span>freq <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>freq</th>
+      <td><p>A numeric value for time in seconds for frequency of retrieval
+of updated en-net dataset. Defaults to 0 for a single retrieval
+(no repeats)</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <div class='dont-index'><p>Useful links:</p><ul>
-<li><p><a href='https://github.com/katilingban/ennet'>https://github.com/katilingban/ennet</a></p></li>
-<li><p>Report bugs at <a href='https://github.com/katilingban/ennet/issues'>https://github.com/katilingban/ennet/issues</a></p></li>
-</ul>
+    <p>A tibble containing the topic discussions for all topics across all
+thematic areas in en-net forum</p>
 
-</div>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='fu'>update_ennet</span><span class='op'>(</span><span class='op'>)</span>
 
-    <p><strong>Maintainer</strong>: Ernest Guevarra <a href='mailto:ernest@guevarra.io'>ernest@guevarra.io</a> (<a href='https://orcid.org/0000-0002-4887-4415'>ORCID</a>)</p>
-
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

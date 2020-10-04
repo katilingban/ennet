@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get the discussion and details of discussion for a set of topics — get_topics_discussions • ennet</title>
+<title>ennet dataset — ennet_dataset • ennet</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Get the discussion and details of discussion for a set of topics — get_topics_discussions" />
-<meta property="og:description" content="Get the discussion and details of discussion for a set of topics" />
+<meta property="og:title" content="ennet dataset — ennet_dataset" />
+<meta property="og:description" content="ennet dataset retrieved as of 4 October 2020" />
 
 
 
@@ -111,49 +111,55 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get the discussion and details of discussion for a set of topics</h1>
-    <small class="dont-index">Source: <a href='https://github.com/katilingban/ennet/blob/master/R/get_discussions.R'><code>R/get_discussions.R</code></a></small>
-    <div class="hidden name"><code>get_topics_discussions.Rd</code></div>
+    <h1>ennet dataset</h1>
+    <small class="dont-index">Source: <a href='https://github.com/katilingban/ennet/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <div class="hidden name"><code>ennet_dataset.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get the discussion and details of discussion for a set of topics</p>
+    <p>ennet dataset retrieved as of 4 October 2020</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_topics_discussions</span><span class='op'>(</span><span class='va'>links</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='va'>ennet_dataset</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>links</th>
-      <td><p>A tibble of topics containing URL of topic discussion. This
-is provided using a call to <code>get_theme_topics</code> or
-<code>get_themes_topics</code></p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A tibble containing the topic discussions for selected topic/s</p>
+    <p>A tibble with 8650 rows and 10 columns</p><table class='table'>
+<tr><td><strong>Variable</strong></td><td><strong>Description</strong></td></tr>
+<tr><td><code>theme</code></td><td>Thematic area</td></tr>
+<tr><td><code>topic</code></td><td>Title of the question/topic</td></tr>
+<tr><td><code>user</code></td><td>Name of ennet user either asking the question/topic or providing responses</td></tr>
+<tr><td><code>userCode</code></td><td>Code for ennet user asking the question/topic or providing responses</td></tr>
+<tr><td><code>job</code></td><td>Job title of ennet user asking the question/topic or providing responses</td></tr>
+<tr><td><code>role</code></td><td>Assigned role of ennet user</td></tr>
+<tr><td><code>date_time</code></td><td>Date and time a question/topic is raised or answer is provided</td></tr>
+<tr><td><code>type</code></td><td>Whether a <em>question</em> or an <em>answer</em></td></tr>
+<tr><td><code>code</code></td><td>Code for the question/topic or answer</td></tr>
+<tr><td><code>post</code></td><td>The question/topic raised or the answer provided</td></tr>
+</table>
+
+
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p>https://www.en-net.org</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>links</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_theme_topics.html'>get_theme_topics</a></span><span class='op'>(</span>link <span class='op'>=</span> <span class='op'>(</span><span class='fu'><a href='get_themes.html'>get_themes</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>$</span><span class='va'>links</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>4</span><span class='op'>]</span><span class='op'>)</span>
-<span class='fu'>get_topics_discussions</span><span class='op'>(</span>link <span class='op'>=</span> <span class='va'>links</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='op'>]</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 24 x 10</span><span>
+    <pre class="examples"><div class='input'><span class='va'>ennet_dataset</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 8,650 x 10</span><span>
 #&gt;    theme  topic user  userCode job   role  date_time           type  code  post 
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Cover… Reso… Tams… user24   en-n… Foru… 2011-12-06 </span><span style='color: #949494;'>11:59:00</span><span> ques… 574   </span><span style='color: #949494;'>"</span><span>Dea…
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Cover… Reso… Mark… user31   Cons… Freq… 2011-12-06 </span><span style='color: #949494;'>13:24:00</span><span> answ… 1536  </span><span style='color: #949494;'>"</span><span>And…
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Cover… Reso… Erne… user999  Kati… Tech… 2011-12-22 </span><span style='color: #949494;'>18:02:00</span><span> answ… 1603  </span><span style='color: #949494;'>"</span><span>Wor…
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Cover… Reso… Saul… user1000 Dire… Tech… 2012-01-11 </span><span style='color: #949494;'>08:59:00</span><span> answ… 1664  </span><span style='color: #949494;'>"</span><span>And…
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Cover… Reso… Mark… user31   Cons… Freq… 2012-05-01 </span><span style='color: #949494;'>12:29:00</span><span> answ… 2076  </span><span style='color: #949494;'>"</span><span>Jus…
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Cover… Reso… Erne… user999  Kati… Tech… 2012-05-26 </span><span style='color: #949494;'>09:48:00</span><span> answ… 2180  </span><span style='color: #949494;'>"</span><span>We …
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Cover… Reso… Erne… user999  Kati… Tech… 2012-07-05 </span><span style='color: #949494;'>11:19:00</span><span> answ… 2278  </span><span style='color: #949494;'>"</span><span>Dea…
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Cover… Reso… Mark… user31   Cons… Freq… 2012-09-17 </span><span style='color: #949494;'>16:40:00</span><span> answ… 2442  </span><span style='color: #949494;'>"</span><span>Upd…
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Cover… Reso… Mark… user31   Cons… Freq… 2012-11-01 </span><span style='color: #949494;'>16:19:00</span><span> answ… 2615  </span><span style='color: #949494;'>"</span><span>And…
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Cover… Reso… Mark… user31   Cons… Freq… 2013-04-30 </span><span style='color: #949494;'>17:19:00</span><span> answ… 3288  </span><span style='color: #949494;'>"</span><span>The…
-#&gt; </span><span style='color: #949494;'># … with 14 more rows</span><span></div><div class='input'>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Annou… </span><span style='color: #949494;'>"</span><span>Job… Abel… user363… </span><span style='color: #949494;'>""</span><span>    Norm… 2020-09-29 </span><span style='color: #949494;'>10:08:00</span><span> ques… 4095  </span><span style='color: #949494;'>"</span><span>The…
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Annou… </span><span style='color: #949494;'>"</span><span>Web… Alex… user107… </span><span style='color: #949494;'>"</span><span>Hea… Norm… 2020-09-21 </span><span style='color: #949494;'>22:25:00</span><span> ques… 4089  </span><span style='color: #949494;'>"</span><span>Kwa…
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Annou… </span><span style='color: #949494;'>"</span><span>Sav… Paul… user404… </span><span style='color: #949494;'>"</span><span>Dep… Norm… 2020-09-18 </span><span style='color: #949494;'>11:42:00</span><span> ques… 4087  </span><span style='color: #949494;'>"</span><span>Sav…
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Annou… </span><span style='color: #949494;'>"</span><span>Con… Nutr… user217… </span><span style='color: #949494;'>""</span><span>    Norm… 2020-09-16 </span><span style='color: #949494;'>04:39:00</span><span> ques… 4083  </span><span style='color: #949494;'>"</span><span>Rea…
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Annou… </span><span style='color: #949494;'>"</span><span>Nut… HR C… user404… </span><span style='color: #949494;'>""</span><span>    Norm… 2020-09-15 </span><span style='color: #949494;'>17:37:00</span><span> ques… 4082  </span><span style='color: #949494;'>"</span><span>Rep…
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Annou… </span><span style='color: #949494;'>"</span><span>WHO… Tams… user24   </span><span style='color: #949494;'>"</span><span>en-… Foru… 2020-09-15 </span><span style='color: #949494;'>12:12:00</span><span> ques… 4081  </span><span style='color: #949494;'>"</span><span>Ple…
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Annou… </span><span style='color: #949494;'>"</span><span>Cal… Tams… user24   </span><span style='color: #949494;'>"</span><span>en-… Foru… 2020-09-15 </span><span style='color: #949494;'>09:22:00</span><span> ques… 4080  </span><span style='color: #949494;'>"</span><span>htt…
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Annou… </span><span style='color: #949494;'>"</span><span>Cal… Tams… user24   </span><span style='color: #949494;'>"</span><span>en-… Foru… 2020-09-18 </span><span style='color: #949494;'>17:19:00</span><span> answ… 7851  </span><span style='color: #949494;'>"</span><span>The…
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Annou… </span><span style='color: #949494;'>"</span><span>Rec… Nutr… user217… </span><span style='color: #949494;'>""</span><span>    Norm… 2020-09-01 </span><span style='color: #949494;'>14:44:00</span><span> ques… 4074  </span><span style='color: #949494;'>"</span><span>SEN…
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Annou… </span><span style='color: #949494;'>"</span><span>Rec… Nutr… user217… </span><span style='color: #949494;'>""</span><span>    Norm… 2020-09-01 </span><span style='color: #949494;'>14:31:00</span><span> ques… 4073  </span><span style='color: #949494;'>"</span><span>Ass…
+#&gt; </span><span style='color: #949494;'># … with 8,640 more rows</span><span></div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

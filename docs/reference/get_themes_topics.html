@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get theme topics — get_themes_topics • ennet</title>
+<title>Get topics from multiple themes — get_themes_topics • ennet</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Get theme topics — get_themes_topics" />
-<meta property="og:description" content="Get theme topics" />
+<meta property="og:title" content="Get topics from multiple themes — get_themes_topics" />
+<meta property="og:description" content="Get topics from multiple themes" />
 
 
 
@@ -111,16 +111,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get theme topics</h1>
+    <h1>Get topics from multiple themes</h1>
     <small class="dont-index">Source: <a href='https://github.com/katilingban/ennet/blob/master/R/get_themes.R'><code>R/get_themes.R</code></a></small>
     <div class="hidden name"><code>get_themes_topics.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get theme topics</p>
+    <p>Get topics from multiple themes</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_themes_topics</span>(<span class='kw'>themes</span> <span class='kw'>=</span> <span class='fu'><a href='get_themes.html'>get_themes</a></span>())</pre>
+    <pre class="usage"><span class='fu'>get_themes_topics</span><span class='op'>(</span>themes <span class='op'>=</span> <span class='fu'><a href='get_themes.html'>get_themes</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -135,27 +135,25 @@ pages</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A tibble of all topics across all thematic areas with their
-  respective URLs</p>
+respective URLs</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>themes</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='get_themes.html'>get_themes</a></span>()
-<span class='fu'>get_themes_topics</span>(<span class='kw'>themes</span> <span class='kw'>=</span> <span class='no'>themes</span>[<span class='fl'>1</span>:<span class='fl'>3</span>, ])</div><div class='output co'>#&gt; <span class='message'>New names:</span>
-#&gt; <span class='message'>* `` -&gt; ...1</span></div><div class='output co'>#&gt; <span class='message'>New names:</span>
-#&gt; <span class='message'>* `` -&gt; ...1</span></div><div class='output co'>#&gt; <span class='message'>New names:</span>
-#&gt; <span class='message'>* `` -&gt; ...1</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1,712 x 7</span><span>
-#&gt;    Theme      Topic            Views Author            Posted Link       Replies
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>            </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> Announcem… ENN Senior Nutr… 447   Office ENN        18 Ju… https://w…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #555555;'> 2</span><span> Announcem… experienced H&amp;N… 33    Yvonne McNulty    14 Ju… https://w…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #555555;'> 3</span><span> Announcem… Nutrition Advis… 75    Sajia Mehjabeen   9 Jul… https://w…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #555555;'> 4</span><span> Announcem… Consultancy opp… 476   Nutrition Intern… 9 Jul… https://w…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #555555;'> 5</span><span> Announcem… Consulting oppo… 40    Nutrition Intern… 9 Jul… https://w…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #555555;'> 6</span><span> Announcem… 30th June ENN W… 119   Tamsin Walters    26 Ju… https://w…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #555555;'> 7</span><span> Announcem… Survey Team Lea… 221   Philip McKinney   12 Ju… https://w…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #555555;'> 8</span><span> Announcem… GTAM website     195   Natalie Sessions  9 Jun… https://w…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #555555;'> 9</span><span> Announcem… ENN: MAMI Globa… 623   Office ENN        3 Jun… https://w…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #555555;'>10</span><span> Announcem… Webinar: Power … 1,005 Abel Endashaw     29 Ma… https://w…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #555555;'># … with 1,702 more rows</span><span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='va'>themes</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_themes.html'>get_themes</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='fu'>get_themes_topics</span><span class='op'>(</span>themes <span class='op'>=</span> <span class='va'>themes</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='op'>]</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1,752 x 7</span><span>
+#&gt;    Theme       Topic             Views Author     Posted     Link        Replies
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Announceme… Job Opportunity:… 142   Abel Enda… 2020-09-29 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Announceme… Webinar Series o… 145   Alexandra… 2020-09-21 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Announceme… Save the Childre… 934   Paul Rees… 2020-09-18 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Announceme… Consulting oppor… 264   Nutrition… 2020-09-16 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Announceme… Nutrition Advisor 262   HR Concern 2020-09-15 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Announceme… WHO seeks a cons… 173   Tamsin Wa… 2020-09-15 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Announceme… Call for authors… 303   Tamsin Wa… 2020-09-15 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Announceme… Recruiting consu… 239   Nutrition… 2020-09-01 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Announceme… Recruiting five … 807   Nutrition… 2020-09-01 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Announceme… ENN seeking two … 252   Office ENN 2020-08-28 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #949494;'># … with 1,742 more rows</span><span></div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -172,7 +170,7 @@ pages</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -5,13 +5,15 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Utilities to Extract Text Data From EN-NET • ennet</title>
+<title>Utilities to Extract Text Data From the Emergency Nutrition Network 
+    (en-net) Forum • ennet</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Utilities to Extract Text Data From EN-NET">
+<script src="pkgdown.js"></script><meta property="og:title" content="Utilities to Extract Text Data From the Emergency Nutrition Network 
+    (en-net) Forum">
 <meta property="og:description" content="en-net is the go to online forum for field practitioners
     requiring prompt technical advice for operational challenges for which
     answers are not readily accessible in current guidelines. The questions
@@ -75,9 +77,9 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="ennet-utilities-to-extract-text-data-from-en-net-" class="section level1">
+<div id="ennet-utilities-to-extract-text-data-from-the-emergency-nutrition-network-en-net-forum-" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#ennet-utilities-to-extract-text-data-from-en-net-" class="anchor"></a>ennet: Utilities to Extract Text Data From en-net <img src="reference/figures/ennet.png" width="200px" align="right">
+<a href="#ennet-utilities-to-extract-text-data-from-the-emergency-nutrition-network-en-net-forum-" class="anchor"></a>ennet: Utilities to Extract Text Data From the Emergency Nutrition Network (en-net) Forum <img src="reference/figures/ennet.png" width="200px" align="right">
 </h1></div>
 <!-- badges: start -->
 
@@ -94,29 +96,30 @@ install.packages("rennet")
 ```
 --->
 <p>You can install the development version from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="r">if(!require(remotes) install.packages("remotes"))
-remotes::install_github("katilingban/ennet")</pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(remotes) <span class="kw">install.packages</span>(<span class="st">"remotes"</span>))</span>
+<span id="cb1-2"><a href="#cb1-2"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"katilingban/ennet"</span>)</span></code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<p><code>ennet</code> package provides a set of functions that extracts information from the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a>. This set of functions was built on top of the <a href="https://rvest.tidyverse.org"><code>rvest</code></a> package which provides robust and performant web scraping functions and the <a href="https://dplyr.tidyverse.org"><code>dplyr</code></a> package which provides a full suite of data manipulation functions. The <code>ennet</code> package was designed to be able to interact with how the <strong>en-net</strong> online forum has been structured.</p>
+<p><code>ennet</code> package provides a set of functions that extracts information from the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a>. This set of functions was built on top of the <a href="https://rvest.tidyverse.org"><code>rvest</code></a> package which provides robust and performant web scraping functions and the <a href="https://dplyr.tidyverse.org"><code>dplyr</code></a> package which provides a full suite of data manipulation functions. The <code>ennet</code> package was designed to be able to interact with how the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> has been structured.</p>
 <div id="en-net-website-structure" class="section level3">
 <h3 class="hasAnchor">
 <a href="#en-net-website-structure" class="anchor"></a>en-net website structure</h3>
-<p>The <strong>en-net</strong> online forum website has a very clear and clean structure. The opening page is a list of <strong>thematic areas</strong> which are linked to each of their respective webpages. In each of these <strong>thematic area</strong> webpages is another list, this time a list of <strong>topics</strong> raised within the <strong>thematic area</strong>. These <strong>topics</strong> are the text that an online user provides as the title for the question she/he is going to ask. Each of the <strong>topics</strong> are then again linked to their respective webpages that show the actual full question raised and the ensuing responses and <strong>discussion</strong> stemming from that question.</p>
+<p>The <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> website has a very clear and clean structure. The opening page is a list of <strong>thematic areas</strong> which are linked to each of their respective webpages. In each of these <strong>thematic area</strong> webpages is another list, this time a list of <strong>topics</strong> raised within the <strong>thematic area</strong>. These <strong>topics</strong> are the text that an online user provides as the title for the question she/he is going to ask. Each of the <strong>topics</strong> are then again linked to their respective webpages that show the actual full question raised and the ensuing responses and <strong>discussion</strong> stemming from that question.</p>
 </div>
 <div id="getting-list-of-thematic-areas" class="section level3">
 <h3 class="hasAnchor">
 <a href="#getting-list-of-thematic-areas" class="anchor"></a>Getting list of thematic areas</h3>
 <p>To get a list of <strong>thematic areas</strong> along with the link to the webpage of each <strong>thematic area</strong>, we use the <code><a href="reference/get_themes.html">get_themes()</a></code> function as follows:</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="co">## Load ennet package</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ennet</span>)
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="co">## Load ennet package</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/katilingban/ennet">ennet</a></span><span class="op">)</span>
 
 <span class="co">## Get all thematic areas from en-net</span>
-<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>()</pre></div>
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>which results in</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#&gt; # A tibble: 19 x 2</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#&gt; # A tibble: 18 x 2</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="co">#&gt;    themes                                           links                       </span></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt;    &lt;chr&gt;                                            &lt;chr&gt;                       </span></span>
 <span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt;  1 Announcements &amp; Nutritionists needed             https://www.en-net.org/foru…</span></span>
@@ -129,15 +132,14 @@ remotes::install_github("katilingban/ennet")</pre></div>
 <span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt;  8 Management of At Risk Mothers and Infants        https://www.en-net.org/foru…</span></span>
 <span id="cb3-12"><a href="#cb3-12"></a><span class="co">#&gt;  9 Micronutrients                                   https://www.en-net.org/foru…</span></span>
 <span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt; 10 Partnerships for research                        https://www.en-net.org/foru…</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt; 11 Prevention and treatment of moderate acute maln… https://www.en-net.org/foru…</span></span>
-<span id="cb3-15"><a href="#cb3-15"></a><span class="co">#&gt; 12 Prevention and treatment of severe acute malnut… https://www.en-net.org/foru…</span></span>
-<span id="cb3-16"><a href="#cb3-16"></a><span class="co">#&gt; 13 Prevention and management of stunting            https://www.en-net.org/foru…</span></span>
-<span id="cb3-17"><a href="#cb3-17"></a><span class="co">#&gt; 14 Scaling Up Nutrition (SUN)                       https://www.en-net.org/foru…</span></span>
-<span id="cb3-18"><a href="#cb3-18"></a><span class="co">#&gt; 15 Upcoming trainings                               https://www.en-net.org/foru…</span></span>
-<span id="cb3-19"><a href="#cb3-19"></a><span class="co">#&gt; 16 Other thematic area                              https://www.en-net.org/foru…</span></span>
-<span id="cb3-20"><a href="#cb3-20"></a><span class="co">#&gt; 17 Multi-sector nutrition programming               https://www.en-net.org/foru…</span></span>
-<span id="cb3-21"><a href="#cb3-21"></a><span class="co">#&gt; 18 Adolescent nutrition                             https://www.en-net.org/foru…</span></span>
-<span id="cb3-22"><a href="#cb3-22"></a><span class="co">#&gt; 19 Simplified Approaches for the Management of Acu… https://www.en-net.org/foru…</span></span></code></pre></div>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt; 11 Management of wasting/acute malnutrition         https://www.en-net.org/foru…</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="co">#&gt; 12 Prevention and management of stunting            https://www.en-net.org/foru…</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="co">#&gt; 13 Scaling Up Nutrition (SUN)                       https://www.en-net.org/foru…</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="co">#&gt; 14 Upcoming trainings                               https://www.en-net.org/foru…</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a><span class="co">#&gt; 15 Other thematic area                              https://www.en-net.org/foru…</span></span>
+<span id="cb3-19"><a href="#cb3-19"></a><span class="co">#&gt; 16 Multi-sector nutrition programming               https://www.en-net.org/foru…</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a><span class="co">#&gt; 17 Adolescent nutrition                             https://www.en-net.org/foru…</span></span>
+<span id="cb3-21"><a href="#cb3-21"></a><span class="co">#&gt; 18 Simplified Approaches for the Management of Acu… https://www.en-net.org/foru…</span></span></code></pre></div>
 <p>The resulting table has two columns - the first is named <code>themes</code> which contains the various <strong>thematic areas</strong> on the <a href="https://www.en-net.org/"><strong>en-net</strong> online forum</a>, and the second is named <code>links</code> which contains the corresponding URL for the webpages for each of the <strong>thematic areas</strong>.</p>
 <p>This will be useful when choosing which themes to focus on when extracting information. This function outputs an object of the appropriate class and structure as the required input for the <code><a href="reference/get_themes_topics.html">get_themes_topics()</a></code> function which would lend to piped operations between the two functions (see below).</p>
 </div>
@@ -145,101 +147,105 @@ remotes::install_github("katilingban/ennet")</pre></div>
 <h3 class="hasAnchor">
 <a href="#getting-list-of-topics-from-thematic-areas" class="anchor"></a>Getting list of topics from thematic area/s</h3>
 <p>To get a list of <strong>topics</strong> for a particular theme, we use the <code><a href="reference/get_theme_topics.html">get_theme_topics()</a></code> function as follows:</p>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="co">## Load dplyr to facilitate data manipulation</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="co">## Load dplyr to facilitate data manipulation</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 
 <span class="co">## Extract data from "Coverage assessment" theme</span>
-<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">themes</span> <span class="kw">==</span> <span class="st">"Coverage assessment"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="no">links</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="reference/get_theme_topics.html">get_theme_topics</a></span>()</pre></div>
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">themes</span> <span class="op">==</span> <span class="st">"Coverage assessment"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">links</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_theme_topics.html">get_theme_topics</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>which results in</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#&gt; # A tibble: 93 x 7</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="co">#&gt;    Theme     Topic                  Views Replies Author   Posted  Link         </span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;                  &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;        </span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#&gt;  1 Coverage… Resources for coverag… 7,455      11 Tamsin … 6 Dec … https://www.…</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#&gt;  2 Coverage… Use of single coverag… 1,139       7 Hugh Lo… 10 Nov… https://www.…</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#&gt;  3 Coverage… Real and theoretical … 886         3 Abdul    10 Oct… https://www.…</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#&gt;  4 Coverage… Single Coverage for M… 1,090       4 Ben All… 5 Jul … https://www.…</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#&gt;  5 Coverage… Cox's Bazar Refugee S… 1,329       4 Hugh Lo… 28 Mar… https://www.…</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#&gt;  6 Coverage… Wide Area Survey (Sta… 1,061       2 Anonymo… 9 Mar … https://www.…</span></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#&gt;  7 Coverage… Disconnection between… 1,062       2 Tammam … 3 Mar … https://www.…</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt;  8 Coverage… Can we classify the p… 1,234       2 Anonymo… 18 Nov… https://www.…</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt;  9 Coverage… Routine monitoring da… 1,155       0 Anonymo… 14 Nov… https://www.…</span></span>
-<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt; 10 Coverage… SQUEAC/coverage surve… 1,498       1 Anonymo… 5 Oct … https://www.…</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="co">#&gt;    Theme    Topic                 Views Replies Author   Posted     Link        </span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;                 &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;    &lt;date&gt;     &lt;chr&gt;       </span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#&gt;  1 Coverag… Resources for covera… 7,988      11 Tamsin … 2011-12-06 https://www…</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#&gt;  2 Coverag… Use of single covera… 1,442       7 Hugh Lo… 2019-11-10 https://www…</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#&gt;  3 Coverag… Real and theoretical… 1,211       3 Abdul    2019-10-10 https://www…</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#&gt;  4 Coverag… Single Coverage for … 1,364       4 Ben All… 2019-07-05 https://www…</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#&gt;  5 Coverag… Cox's Bazar Refugee … 1,579       4 Hugh Lo… 2019-03-28 https://www…</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#&gt;  6 Coverag… Wide Area Survey (St… 1,285       2 Anonymo… 2019-03-09 https://www…</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#&gt;  7 Coverag… Disconnection betwee… 1,274       2 Tammam … 2019-03-03 https://www…</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt;  8 Coverag… Can we classify the … 1,446       2 Anonymo… 2018-11-18 https://www…</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt;  9 Coverag… Routine monitoring d… 1,356       0 Anonymo… 2018-11-14 https://www…</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt; 10 Coverag… SQUEAC/coverage surv… 1,730       1 Anonymo… 2018-10-05 https://www…</span></span>
 <span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt; # … with 83 more rows</span></span></code></pre></div>
 <p>The resulting table contains information on all the <strong>topics</strong> within the <em>Coverage assessment</em> <strong>thematic area</strong> including URL links to the corresponding webpages for each <strong>topic</strong></p>
 <p>To get a list of <strong>topics</strong> for multiple themes, we use the <code><a href="reference/get_themes_topics.html">get_themes_topics()</a></code> function as follows:</p>
-<div class="sourceCode" id="cb6"><pre class="r"><span class="co">## Extract data from "Coverage assessment" theme and "Food assistance" theme</span>
-<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">themes</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>()</pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="co">## Extract data from "Coverage assessment" theme and "Food assistance" theme</span>
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">themes</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>which results in</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">#&gt; # A tibble: 123 x 7</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt;    Theme     Topic                  Views Replies Author   Posted  Link         </span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;                  &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;        </span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#&gt;  1 Coverage… Resources for coverag… 7,455      11 Tamsin … 6 Dec … https://www.…</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#&gt;  2 Coverage… Use of single coverag… 1,139       7 Hugh Lo… 10 Nov… https://www.…</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="co">#&gt;  3 Coverage… Real and theoretical … 886         3 Abdul    10 Oct… https://www.…</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="co">#&gt;  4 Coverage… Single Coverage for M… 1,090       4 Ben All… 5 Jul … https://www.…</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a><span class="co">#&gt;  5 Coverage… Cox's Bazar Refugee S… 1,329       4 Hugh Lo… 28 Mar… https://www.…</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a><span class="co">#&gt;  6 Coverage… Wide Area Survey (Sta… 1,061       2 Anonymo… 9 Mar … https://www.…</span></span>
-<span id="cb7-10"><a href="#cb7-10"></a><span class="co">#&gt;  7 Coverage… Disconnection between… 1,062       2 Tammam … 3 Mar … https://www.…</span></span>
-<span id="cb7-11"><a href="#cb7-11"></a><span class="co">#&gt;  8 Coverage… Can we classify the p… 1,234       2 Anonymo… 18 Nov… https://www.…</span></span>
-<span id="cb7-12"><a href="#cb7-12"></a><span class="co">#&gt;  9 Coverage… Routine monitoring da… 1,155       0 Anonymo… 14 Nov… https://www.…</span></span>
-<span id="cb7-13"><a href="#cb7-13"></a><span class="co">#&gt; 10 Coverage… SQUEAC/coverage surve… 1,498       1 Anonymo… 5 Oct … https://www.…</span></span>
-<span id="cb7-14"><a href="#cb7-14"></a><span class="co">#&gt; # … with 113 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">#&gt; # A tibble: 124 x 7</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt;    Theme    Topic                 Views Replies Author   Posted     Link        </span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;                 &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;    &lt;date&gt;     &lt;chr&gt;       </span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#&gt;  1 Coverag… Resources for covera… 7,988      11 Tamsin … 2011-12-06 https://www…</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#&gt;  2 Coverag… Use of single covera… 1,442       7 Hugh Lo… 2019-11-10 https://www…</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co">#&gt;  3 Coverag… Real and theoretical… 1,211       3 Abdul    2019-10-10 https://www…</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="co">#&gt;  4 Coverag… Single Coverage for … 1,364       4 Ben All… 2019-07-05 https://www…</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="co">#&gt;  5 Coverag… Cox's Bazar Refugee … 1,579       4 Hugh Lo… 2019-03-28 https://www…</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="co">#&gt;  6 Coverag… Wide Area Survey (St… 1,285       2 Anonymo… 2019-03-09 https://www…</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="co">#&gt;  7 Coverag… Disconnection betwee… 1,274       2 Tammam … 2019-03-03 https://www…</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="co">#&gt;  8 Coverag… Can we classify the … 1,446       2 Anonymo… 2018-11-18 https://www…</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="co">#&gt;  9 Coverag… Routine monitoring d… 1,356       0 Anonymo… 2018-11-14 https://www…</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="co">#&gt; 10 Coverag… SQUEAC/coverage surv… 1,730       1 Anonymo… 2018-10-05 https://www…</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a><span class="co">#&gt; # … with 114 more rows</span></span></code></pre></div>
 <p>The resulting table contains information on all the <strong>topics</strong> within the <em>Coverage assessment</em> and <em>Food assistance</em> <strong>thematic area</strong> including URL links to the corresponding webpages for each <strong>topic</strong>.</p>
 </div>
 <div id="getting-discussions-from-topics" class="section level3">
 <h3 class="hasAnchor">
 <a href="#getting-discussions-from-topics" class="anchor"></a>Getting discussions from topic/s</h3>
 <p>To get a list of <strong>discussions</strong> for a particular <strong>topic</strong>, we use the <code><a href="reference/get_topic_discussions.html">get_topic_discussions()</a></code> function as follows:</p>
-<div class="sourceCode" id="cb8"><pre class="r"><span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">themes</span> <span class="kw">==</span> <span class="st">"Coverage assessment"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">Topic</span> <span class="kw">==</span> <span class="st">"Resources for coverage assessment"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="no">Link</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="reference/get_topic_discussions.html">get_topic_discussions</a></span>()</pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit">
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">themes</span> <span class="op">==</span> <span class="st">"Coverage assessment"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Topic</span> <span class="op">==</span> <span class="st">"Resources for coverage assessment"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Link</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_topic_discussions.html">get_topic_discussions</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>which results in</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">#&gt; # A tibble: 12 x 10</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="co">#&gt;    theme  topic   user    userCode job     role  date_time type  code  post     </span></span>
-<span id="cb9-3"><a href="#cb9-3"></a><span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    </span></span>
-<span id="cb9-4"><a href="#cb9-4"></a><span class="co">#&gt;  1 Cover… Resour… Tamsin… user24   "en-ne… Foru… 6 Dec 20… ques… 574   "Dear al…</span></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="co">#&gt;  2 Cover… Resour… Mark M… user31   "Consu… Freq… 6 Dec 20… answ… 1536  "And her…</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="co">#&gt;  3 Cover… Resour… Ernest… user999  ""      Tech… 22 Dec 2… answ… 1603  "Worksho…</span></span>
-<span id="cb9-7"><a href="#cb9-7"></a><span class="co">#&gt;  4 Cover… Resour… Saul G… user1000 "Direc… Tech… 11 Jan 2… answ… 1664  "And her…</span></span>
-<span id="cb9-8"><a href="#cb9-8"></a><span class="co">#&gt;  5 Cover… Resour… Mark M… user31   "Consu… Freq… 1 May 20… answ… 2076  "Just a …</span></span>
-<span id="cb9-9"><a href="#cb9-9"></a><span class="co">#&gt;  6 Cover… Resour… Ernest… user999  ""      Tech… 26 May 2… answ… 2180  "We are …</span></span>
-<span id="cb9-10"><a href="#cb9-10"></a><span class="co">#&gt;  7 Cover… Resour… Ernest… user999  ""      Tech… 5 Jul 20… answ… 2278  "Dear Co…</span></span>
-<span id="cb9-11"><a href="#cb9-11"></a><span class="co">#&gt;  8 Cover… Resour… Mark M… user31   "Consu… Freq… 17 Sep 2… answ… 2442  "Updated…</span></span>
-<span id="cb9-12"><a href="#cb9-12"></a><span class="co">#&gt;  9 Cover… Resour… Mark M… user31   "Consu… Freq… 1 Nov 20… answ… 2615  "And her…</span></span>
-<span id="cb9-13"><a href="#cb9-13"></a><span class="co">#&gt; 10 Cover… Resour… Mark M… user31   "Consu… Freq… 30 Apr 2… answ… 3288  "The Cov…</span></span>
-<span id="cb9-14"><a href="#cb9-14"></a><span class="co">#&gt; 11 Cover… Resour… Mark M… user31   "Consu… Freq… 5 Sep 20… answ… 3445  "Here is…</span></span>
-<span id="cb9-15"><a href="#cb9-15"></a><span class="co">#&gt; 12 Cover… Resour… Alexan… user107… "Head … Norm… 11 Jun 2… answ… 7723  "The Sta…</span></span></code></pre></div>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="co">#&gt;    theme  topic user  userCode job   role  date_time           type  code  post </span></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co">#&gt;  1 Cover… Reso… Tams… user24   en-n… Foru… 2011-12-06 11:59:00 ques… 574   "Dea…</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co">#&gt;  2 Cover… Reso… Mark… user31   Cons… Freq… 2011-12-06 13:24:00 answ… 1536  "And…</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="co">#&gt;  3 Cover… Reso… Erne… user999  Kati… Tech… 2011-12-22 18:02:00 answ… 1603  "Wor…</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="co">#&gt;  4 Cover… Reso… Saul… user1000 Dire… Tech… 2012-01-11 08:59:00 answ… 1664  "And…</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="co">#&gt;  5 Cover… Reso… Mark… user31   Cons… Freq… 2012-05-01 12:29:00 answ… 2076  "Jus…</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a><span class="co">#&gt;  6 Cover… Reso… Erne… user999  Kati… Tech… 2012-05-26 09:48:00 answ… 2180  "We …</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a><span class="co">#&gt;  7 Cover… Reso… Erne… user999  Kati… Tech… 2012-07-05 11:19:00 answ… 2278  "Dea…</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a><span class="co">#&gt;  8 Cover… Reso… Mark… user31   Cons… Freq… 2012-09-17 16:40:00 answ… 2442  "Upd…</span></span>
+<span id="cb9-12"><a href="#cb9-12"></a><span class="co">#&gt;  9 Cover… Reso… Mark… user31   Cons… Freq… 2012-11-01 16:19:00 answ… 2615  "And…</span></span>
+<span id="cb9-13"><a href="#cb9-13"></a><span class="co">#&gt; 10 Cover… Reso… Mark… user31   Cons… Freq… 2013-04-30 17:19:00 answ… 3288  "The…</span></span>
+<span id="cb9-14"><a href="#cb9-14"></a><span class="co">#&gt; 11 Cover… Reso… Mark… user31   Cons… Freq… 2013-09-05 09:56:00 answ… 3445  "Her…</span></span>
+<span id="cb9-15"><a href="#cb9-15"></a><span class="co">#&gt; 12 Cover… Reso… Alex… user107… Head… Norm… 2020-06-11 17:27:00 answ… 7723  "The…</span></span></code></pre></div>
 <p>The resulting table contains information on all the <strong>discussions</strong> within the <strong>topic</strong> on <em>Resources for coverage assessment</em> within the <strong>thematic area</strong> of <em>Coverage assessment</em> including the text data on the question and the ensuing reply/replies to the question.</p>
 <p>To get a list of <strong>discussions</strong> for a set of <strong>topics</strong>, we use the <code><a href="reference/get_topics_discussions.html">get_topics_discussions()</a></code> function as follows:</p>
-<div class="sourceCode" id="cb10"><pre class="r"><span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">themes</span> <span class="kw">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="reference/get_topics_discussions.html">get_topics_discussions</a></span>()</pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit">
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">themes</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_topics_discussions.html">get_topics_discussions</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>which results in</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">#&gt; # A tibble: 502 x 10</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="co">#&gt;    theme  topic   user   userCode job     role   date_time type  code  post     </span></span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    </span></span>
-<span id="cb11-4"><a href="#cb11-4"></a><span class="co">#&gt;  1 Cover… Resour… Tamsi… user24   "en-ne… Forum… 6 Dec 20… ques… 574   "Dear al…</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="co">#&gt;  2 Cover… Resour… Mark … user31   "Consu… Frequ… 6 Dec 20… answ… 1536  "And her…</span></span>
-<span id="cb11-6"><a href="#cb11-6"></a><span class="co">#&gt;  3 Cover… Resour… Ernes… user999  ""      Techn… 22 Dec 2… answ… 1603  "Worksho…</span></span>
-<span id="cb11-7"><a href="#cb11-7"></a><span class="co">#&gt;  4 Cover… Resour… Saul … user1000 "Direc… Techn… 11 Jan 2… answ… 1664  "And her…</span></span>
-<span id="cb11-8"><a href="#cb11-8"></a><span class="co">#&gt;  5 Cover… Resour… Mark … user31   "Consu… Frequ… 1 May 20… answ… 2076  "Just a …</span></span>
-<span id="cb11-9"><a href="#cb11-9"></a><span class="co">#&gt;  6 Cover… Resour… Ernes… user999  ""      Techn… 26 May 2… answ… 2180  "We are …</span></span>
-<span id="cb11-10"><a href="#cb11-10"></a><span class="co">#&gt;  7 Cover… Resour… Ernes… user999  ""      Techn… 5 Jul 20… answ… 2278  "Dear Co…</span></span>
-<span id="cb11-11"><a href="#cb11-11"></a><span class="co">#&gt;  8 Cover… Resour… Mark … user31   "Consu… Frequ… 17 Sep 2… answ… 2442  "Updated…</span></span>
-<span id="cb11-12"><a href="#cb11-12"></a><span class="co">#&gt;  9 Cover… Resour… Mark … user31   "Consu… Frequ… 1 Nov 20… answ… 2615  "And her…</span></span>
-<span id="cb11-13"><a href="#cb11-13"></a><span class="co">#&gt; 10 Cover… Resour… Mark … user31   "Consu… Frequ… 30 Apr 2… answ… 3288  "The Cov…</span></span>
-<span id="cb11-14"><a href="#cb11-14"></a><span class="co">#&gt; # … with 492 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">#&gt; # A tibble: 504 x 10</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="co">#&gt;    theme  topic user  userCode job   role  date_time           type  code  post </span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="co">#&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="co">#&gt;  1 Cover… Reso… Tams… user24   en-n… Foru… 2011-12-06 11:59:00 ques… 574   "Dea…</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="co">#&gt;  2 Cover… Reso… Mark… user31   Cons… Freq… 2011-12-06 13:24:00 answ… 1536  "And…</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="co">#&gt;  3 Cover… Reso… Erne… user999  Kati… Tech… 2011-12-22 18:02:00 answ… 1603  "Wor…</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a><span class="co">#&gt;  4 Cover… Reso… Saul… user1000 Dire… Tech… 2012-01-11 08:59:00 answ… 1664  "And…</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="co">#&gt;  5 Cover… Reso… Mark… user31   Cons… Freq… 2012-05-01 12:29:00 answ… 2076  "Jus…</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="co">#&gt;  6 Cover… Reso… Erne… user999  Kati… Tech… 2012-05-26 09:48:00 answ… 2180  "We …</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a><span class="co">#&gt;  7 Cover… Reso… Erne… user999  Kati… Tech… 2012-07-05 11:19:00 answ… 2278  "Dea…</span></span>
+<span id="cb11-11"><a href="#cb11-11"></a><span class="co">#&gt;  8 Cover… Reso… Mark… user31   Cons… Freq… 2012-09-17 16:40:00 answ… 2442  "Upd…</span></span>
+<span id="cb11-12"><a href="#cb11-12"></a><span class="co">#&gt;  9 Cover… Reso… Mark… user31   Cons… Freq… 2012-11-01 16:19:00 answ… 2615  "And…</span></span>
+<span id="cb11-13"><a href="#cb11-13"></a><span class="co">#&gt; 10 Cover… Reso… Mark… user31   Cons… Freq… 2013-04-30 17:19:00 answ… 3288  "The…</span></span>
+<span id="cb11-14"><a href="#cb11-14"></a><span class="co">#&gt; # … with 494 more rows</span></span></code></pre></div>
 <p>The resulting table contains information on all the <strong>discussions</strong> within all the <strong>topics</strong> within the <strong>thematic areas</strong> of <em>Coverage assessment</em> and <em>Food assistance</em> including the text data on the question and the ensuing reply/replies to the question.</p>
 </div>
 </div>
@@ -247,16 +253,16 @@ remotes::install_github("katilingban/ennet")</pre></div>
 <h2 class="hasAnchor">
 <a href="#practical-applications" class="anchor"></a>Practical applications</h2>
 <p>The <a href="https://www.en-net.org/"><strong>en-net</strong></a> online forum is a rich resource for understanding the community of users that participate in it. And given how an online forum is designed, that resource can be tapped relatively easily given that the documentation of the interaction and discussion between its users happens in real-time. The <code>ennet</code> package facilitates the access to that information through the statistical analysis tool <a href="https://www.r-rpoject.org">R</a> with which further levels of analysis can be applied to generate meaningful and valuable understanding of this specific community and to some extent the greater nutrition sector at large.</p>
-<p>Following are a few practical and meaningful applications of the information generated by the <a href="https://www.en-net.org/"><strong>en-net</strong></a> online forum.</p>
+<p>Following are a few practical and meaningful applications of the information generated by the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a>.</p>
 <div id="assess-effectiveness-of-the-en-net-online-forum" class="section level3">
 <h3 class="hasAnchor">
 <a href="#assess-effectiveness-of-the-en-net-online-forum" class="anchor"></a>Assess effectiveness of the en-net online forum</h3>
-<p>The data from <a href="https://www.en-net.org/"><strong>en-net</strong></a> can be used to assess effectiveness of the forum. Effectiveness can be defined as whether the forum has been able to achieve its stated aims/objectives when it was started. Effectiveness can also be expressed in terms of indicators or metrics that reflect overarching principles, ideals or values that those who started the forum adhere to or that the community of users and the wider sector or society believe in. These may include values of inclusion, participation, scientific rigour among others. Given that the forum has been in existence for many years now, information is available over the same period allowing for assessing temporal variation in effectiveness (as defined). This application is a more <strong>normative approach</strong> and will involve creating or developing metrics or taking relevant metrics from other sectors and applying those to this case.</p>
+<p>The data from the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> can be used to assess effectiveness of the forum. Effectiveness can be defined as whether the forum has been able to achieve its stated aims/objectives when it was started. Effectiveness can also be expressed in terms of indicators or metrics that reflect overarching principles, ideals or values that those who started the forum adhere to or that the community of users and the wider sector or society believe in. These may include values of inclusion, participation, scientific rigour among others. Given that the forum has been in existence for many years now, information is available over the same period allowing for assessing temporal variation in effectiveness (as defined). This application is a more <strong>normative approach</strong> and will involve creating or developing metrics or taking relevant metrics from other sectors and applying those to this case.</p>
 </div>
 <div id="identify-gaps-in-information-knowledge-andor-skills" class="section level3">
 <h3 class="hasAnchor">
 <a href="#identify-gaps-in-information-knowledge-andor-skills" class="anchor"></a>Identify gaps in information, knowledge and/or skills</h3>
-<p>Given the nature of the <strong>en-net</strong> forum as a quick point of recourse for field practitioners to seek answers to practical questions and challenges faced, it can be expected that the data from the forum contains information on what these topics are. These information can then be used to identify most common or most important information, knowledge and skills that have been asked about. By identifying these gaps in information, knowledge and/or skills and by understanding the evolution of these needs over time, we can potentially predict training needs in the near term and over time. This application is a more <strong>formative approach</strong> in that we let the data tell us what information it holds.</p>
+<p>Given the nature of the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> as a quick point of recourse for field practitioners to seek answers to practical questions and challenges faced, it can be expected that the data from the forum contains information on what these topics are. These information can then be used to identify most common or most important information, knowledge and skills that have been asked about. By identifying these gaps in information, knowledge and/or skills and by understanding the evolution of these needs over time, we can potentially predict training needs in the near term and over time. This application is a more <strong>formative approach</strong> in that we let the data tell us what information it holds.</p>
 </div>
 </div>
 </div>
@@ -309,7 +315,7 @@ remotes::install_github("katilingban/ennet")</pre></div>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

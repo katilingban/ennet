@@ -7,6 +7,9 @@
     <loc>https://katilingban.io/ennet/reference/ennet.html</loc>
   </url>
   <url>
+    <loc>https://katilingban.io/ennet/reference/ennet_dataset.html</loc>
+  </url>
+  <url>
     <loc>https://katilingban.io/ennet/reference/get_theme_topics.html</loc>
   </url>
   <url>
@@ -20,6 +23,12 @@
   </url>
   <url>
     <loc>https://katilingban.io/ennet/reference/get_topics_discussions.html</loc>
+  </url>
+  <url>
+    <loc>https://katilingban.io/ennet/reference/retrieve_ennet.html</loc>
+  </url>
+  <url>
+    <loc>https://katilingban.io/ennet/reference/update_ennet.html</loc>
   </url>
   <url>
     <loc>https://katilingban.io/ennet/articles/ennet.html</loc>
