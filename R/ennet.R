@@ -18,12 +18,14 @@
 #' @importFrom rvest html_nodes html_attr html_text
 #' @importFrom xml2 read_html url_absolute
 #' @importFrom tibble tibble
-#' @importFrom dplyr bind_rows mutate rename first
+#' @importFrom dplyr bind_rows mutate first
 #' @importFrom stringr str_replace str_detect str_extract_all str_to_lower
 #'   str_replace_na str_remove_all
-#' @importFrom tidyselect contains
+#' @importFrom lubridate dmy_hm
 #'
 #
 ################################################################################
 "_PACKAGE"
 
+## quiets concerns of R CMD check re: Posted
+if(getRversion() >= "2.15.1")  utils::globalVariables("Posted")

@@ -61,12 +61,14 @@ get_theme_topics <- function(link) {
   ##
   topics <- page %>%
     rvest::html_nodes(css = "#pagebody table") %>%
-    rvest::html_table() %>%
-    dplyr::bind_rows() %>%
-    dplyr::rename(Theme = tidyselect::contains("...")) %>%
+    rvest::html_table()
+
+  topics <- topics[[1]] %>%
+    dplyr::rename(Theme = "") %>%
     dplyr::mutate(Theme = page %>%
                     rvest::html_nodes(css = "#pagebody h1") %>%
                     rvest::html_text(),
+                  Posted = as.Date(Posted, format = "%d %b %Y"),
                   Link = page %>%
                     rvest::html_nodes(css = "#pagebody table .title a") %>%
                     rvest::html_attr(name = "href") %>%
@@ -80,7 +82,7 @@ get_theme_topics <- function(link) {
 ################################################################################
 #
 #'
-#' Get theme topics
+#' Get topics from multiple themes
 #'
 #' @param themes A tibble containing thematic areas and URLs for thematic area
 #'   pages
@@ -90,7 +92,7 @@ get_theme_topics <- function(link) {
 #'
 #' @examples
 #' themes <- get_themes()
-#' get_themes_topics(themes = themes[1:3, ])
+#' get_themes_topics(themes = themes[2, ])
 #'
 #' @export
 #'

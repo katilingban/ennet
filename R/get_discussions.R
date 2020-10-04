@@ -45,12 +45,23 @@ get_topic_discussions <- function(link) {
   ##
   details <- page %>%
     rvest::html_nodes(css = "#pagebody .post .data p") %>%
-    rvest::html_text() %>%
-    matrix(ncol = 3, byrow = TRUE) %>%
-    data.frame()
+    rvest::html_text()
 
-  ##
+  if(length(details) %% 3 == 1) {
+    details <- details[details != "This post has been automatically translated."] %>%
+      matrix(ncol = 3, byrow = TRUE) %>%
+      data.frame()
+  } else {
+    details <- details %>%
+      matrix(ncol = 3, byrow = TRUE) %>%
+      data.frame()
+  }
+
+  ## Rename details
   names(details) <- c("job", "role", "date_time")
+
+  ## Convert date_time to POSIXct/POSIXt
+  details$date_time <- lubridate::dmy_hm(details$date_time)
 
   ## Is is a question or an answer
   type <- page %>%
