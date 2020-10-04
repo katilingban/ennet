@@ -120,7 +120,7 @@
     <p>Get topics from multiple themes</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_themes_topics</span><span class='op'>(</span>themes <span class='op'>=</span> <span class='fu'><a href='get_themes.html'>get_themes</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_themes_topics</span>(themes = <span class='fu'><a href='get_themes.html'>get_themes</a></span>())</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -138,13 +138,13 @@ pages</p></td>
 respective URLs</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>themes</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_themes.html'>get_themes</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='fu'>get_themes_topics</span><span class='op'>(</span>themes <span class='op'>=</span> <span class='va'>themes</span><span class='op'>[</span><span class='fl'>2</span>, <span class='op'>]</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='kw'>themes</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_themes.html'>get_themes</a></span>()
+<span class='fu'>get_themes_topics</span>(themes = <span class='kw'>themes</span>[<span class='fl'>2</span>, ])
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 450 x 7</span><span>
 #&gt;    Theme      Topic               Views Replies Author    Posted     Link       
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>               </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Assessmen… Excess negative mo… 22          0 Kelvin    2020-10-04 https://ww…
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Assessmen… New review on the … 97          0 Anonymou… 2020-09-28 https://ww…
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Assessmen… Excess negative mo… 24          0 Kelvin    2020-10-04 https://ww…
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Assessmen… New review on the … 98          0 Anonymou… 2020-09-28 https://ww…
 #&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Assessmen… Call for Participa… 140         0 Muzna     2020-09-16 https://ww…
 #&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Assessmen… cm cutoffs for out… 295         7 Emily De… 2020-09-10 https://ww…
 #&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Assessmen… Effect of higher p… 172         1 Lenka Bl… 2020-09-02 https://ww…
