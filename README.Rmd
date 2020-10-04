@@ -178,20 +178,6 @@ get_themes() %>%
 
 The resulting table contains information on all the **discussions** within all the **topics** within the **thematic areas** of *Coverage assessment* and *Food assistance* including the text data on the question and the ensuing reply/replies to the question.
 
-The full [**en-net** online forum](https://www.en-net.org) can be retrieved using a combination of the various functions described above:
-
-```{r usage6, echo = TRUE, eval = FALSE}
-get_themes() %>%
-  get_themes_topics() %>%
-  get_topics_discussions()
-```
-
-which results in
-
-```{r usage6a, echo = FALSE, eval = TRUE}
-ennet_dataset
-```
-
 ## Practical applications
 
 The [**en-net**](https://www.en-net.org/) online forum is a rich resource for understanding the community of users that participate in it. And given how an online forum is designed, that resource can be tapped relatively easily given that the documentation of the interaction and discussion between its users happens in real-time. The `ennet` package facilitates the access to that information through the statistical analysis tool [R](https://www.r-rpoject.org) with which further levels of analysis can be applied to generate meaningful and valuable understanding of this specific community and to some extent the greater nutrition sector at large.
