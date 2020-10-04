@@ -37,11 +37,7 @@ reference:
     - get_topic_discussions
     - get_topics_discussions
 
-  - title: Get full en-net dataset
+  - title: Updates
     contents:
-    - retrieve_ennet
-    - update_ennet
+    - update_topics
 
-  - title: Datasets
-    contents:
-    - ennet_dataset
