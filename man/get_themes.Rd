@@ -11,7 +11,7 @@ get_themes(base = "https://www.en-net.org")
 }
 \value{
 A tibble containing the thematic areas from en-net.org and the
-  corresponding URLs for each thematic area
+corresponding URLs for each thematic area
 }
 \description{
 Get list of thematic areas from en-net.org

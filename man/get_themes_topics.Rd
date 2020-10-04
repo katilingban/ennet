@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_themes.R
 \name{get_themes_topics}
 \alias{get_themes_topics}
-\title{Get theme topics}
+\title{Get topics from multiple themes}
 \usage{
 get_themes_topics(themes = get_themes())
 }
@@ -12,10 +12,10 @@ pages}
 }
 \value{
 A tibble of all topics across all thematic areas with their
-  respective URLs
+respective URLs
 }
 \description{
-Get theme topics
+Get topics from multiple themes
 }
 \examples{
 themes <- get_themes()
