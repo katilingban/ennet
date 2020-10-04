@@ -139,21 +139,21 @@ respective URLs</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>themes</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_themes.html'>get_themes</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='fu'>get_themes_topics</span><span class='op'>(</span>themes <span class='op'>=</span> <span class='va'>themes</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='op'>]</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1,752 x 7</span><span>
-#&gt;    Theme       Topic             Views Author     Posted     Link        Replies
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Announceme… Job Opportunity:… 142   Abel Enda… 2020-09-29 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Announceme… Webinar Series o… 145   Alexandra… 2020-09-21 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Announceme… Save the Childre… 934   Paul Rees… 2020-09-18 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Announceme… Consulting oppor… 264   Nutrition… 2020-09-16 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Announceme… Nutrition Advisor 262   HR Concern 2020-09-15 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Announceme… WHO seeks a cons… 173   Tamsin Wa… 2020-09-15 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Announceme… Call for authors… 303   Tamsin Wa… 2020-09-15 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Announceme… Recruiting consu… 239   Nutrition… 2020-09-01 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Announceme… Recruiting five … 807   Nutrition… 2020-09-01 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Announceme… ENN seeking two … 252   Office ENN 2020-08-28 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #949494;'># … with 1,742 more rows</span><span></div><div class='input'>
+<span class='fu'>get_themes_topics</span><span class='op'>(</span>themes <span class='op'>=</span> <span class='va'>themes</span><span class='op'>[</span><span class='fl'>2</span>, <span class='op'>]</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 450 x 7</span><span>
+#&gt;    Theme      Topic               Views Replies Author    Posted     Link       
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>               </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Assessmen… Excess negative mo… 22          0 Kelvin    2020-10-04 https://ww…
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Assessmen… New review on the … 97          0 Anonymou… 2020-09-28 https://ww…
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Assessmen… Call for Participa… 140         0 Muzna     2020-09-16 https://ww…
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Assessmen… cm cutoffs for out… 295         7 Emily De… 2020-09-10 https://ww…
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Assessmen… Effect of higher p… 172         1 Lenka Bl… 2020-09-02 https://ww…
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Assessmen… Nutrition survey g… 299         2 Carlos G… 2020-08-31 https://ww…
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Assessmen… Confusion over CDR… 410         8 Anonymou… 2020-08-19 https://ww…
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Assessmen… Denominator for U5… 184         0 Anonymou… 2020-07-31 https://ww…
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Assessmen… Invitation to the … 415         2 alessand… 2020-07-03 https://ww…
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Assessmen… WHO Anthro Survey … 550         5 BLESSING… 2020-06-05 https://ww…
+#&gt; </span><span style='color: #949494;'># … with 440 more rows</span><span></div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

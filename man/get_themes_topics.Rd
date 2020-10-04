@@ -19,6 +19,6 @@ Get topics from multiple themes
 }
 \examples{
 themes <- get_themes()
-get_themes_topics(themes = themes[1:3, ])
+get_themes_topics(themes = themes[2, ])
 
 }
