@@ -1,17 +1,15 @@
 ################################################################################
 #
-#'
-#' Retrieve full en-net dataset
-#'
-#' @return A tibble containing the topic discussions for all topics across all
-#'   thematic areas in en-net forum up to current point in time
-#'
-#' @examples
-#' if(interactive()) retrieve_ennet()
-#'
-#' @export
-#'
-#'
+#
+# Retrieve full en-net dataset
+#
+# @return A tibble containing the topic discussions for all topics across all
+#   thematic areas in en-net forum up to current point in time
+#
+# @examples
+# if(interactive()) retrieve_ennet()
+#
+#
 #
 ################################################################################
 
@@ -28,22 +26,20 @@ retrieve_ennet <- function() {
 
 ################################################################################
 #
-#'
-#' Update full en-net dataset
-#'
-#' @param freq A numeric value for time in seconds for frequency of retrieval
-#'   of updated en-net dataset. Defaults to 0 for a single retrieval
-#'   (no repeats)
-#'
-#' @return A tibble containing the topic discussions for all topics across all
-#'   thematic areas in en-net forum
-#'
-#' @examples
-#' if(interactive()) update_ennet()
-#'
-#' @export
-#'
-#'
+#
+# Update full en-net dataset
+#
+# @param freq A numeric value for time in seconds for frequency of retrieval
+#   of updated en-net dataset. Defaults to 0 for a single retrieval
+#   (no repeats)
+#
+# @return A tibble containing the topic discussions for all topics across all
+#   thematic areas in en-net forum
+#
+# @examples
+# if(interactive()) update_ennet()
+#
+#
 #
 ################################################################################
 
