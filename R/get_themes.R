@@ -68,6 +68,7 @@ get_theme_topics <- function(link) {
     dplyr::mutate(Theme = page %>%
                     rvest::html_nodes(css = "#pagebody h1") %>%
                     rvest::html_text(),
+                  Views = as.integer(stringr::str_remove_all(Views, pattern = ",")),
                   Posted = as.Date(Posted, format = "%d %b %Y"),
                   Link = page %>%
                     rvest::html_nodes(css = "#pagebody table .title a") %>%

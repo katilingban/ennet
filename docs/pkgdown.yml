@@ -3,7 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   ennet: ennet.html
-last_built: 2020-10-04T20:54Z
+last_built: 2020-10-08T22:29Z
 urls:
   reference: https://katilingban.io/ennet/reference
   article: https://katilingban.io/ennet/articles
