@@ -37,6 +37,10 @@ reference:
     - get_topic_discussions
     - get_topics_discussions
 
+  - title: Analytics
+    contents:
+    - count_topics
+
   - title: Updates
     contents:
     - update_topics

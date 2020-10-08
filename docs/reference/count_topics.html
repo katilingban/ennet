@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get topics from multiple themes — get_themes_topics • ennet</title>
+<title>Count the number of topics by theme and by date — count_topics • ennet</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Get topics from multiple themes — get_themes_topics" />
-<meta property="og:description" content="Get topics from multiple themes" />
+<meta property="og:title" content="Count the number of topics by theme and by date — count_topics" />
+<meta property="og:description" content="Count the number of topics by theme and by date" />
 
 
 
@@ -111,49 +111,54 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get topics from multiple themes</h1>
-    <small class="dont-index">Source: <a href='https://github.com/katilingban/ennet/blob/master/R/get_themes.R'><code>R/get_themes.R</code></a></small>
-    <div class="hidden name"><code>get_themes_topics.Rd</code></div>
+    <h1>Count the number of topics by theme and by date</h1>
+    <small class="dont-index">Source: <a href='https://github.com/katilingban/ennet/blob/master/R/analytics.R'><code>R/analytics.R</code></a></small>
+    <div class="hidden name"><code>count_topics.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get topics from multiple themes</p>
+    <p>Count the number of topics by theme and by date</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_themes_topics</span>(themes = <span class='fu'><a href='get_themes.html'>get_themes</a></span>())</pre>
+    <pre class="usage"><span class='fu'>count_topics</span>(<span class='kw'>topics</span>, by_date = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"month_year"</span>, <span class='st'>"year"</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>themes</th>
-      <td><p>A tibble containing thematic areas and URLs for thematic area
-pages</p></td>
+      <th>topics</th>
+      <td><p>A tibble of topics by theme from en-net forum produced through
+a call to <code>get_themes_topics</code>.</p></td>
+    </tr>
+    <tr>
+      <th>by_date</th>
+      <td><p>Should topics be counted by month of the year or just by
+year?</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble of all topics across all thematic areas with their
-respective URLs</p>
+    <p>A tibble of topic counts by theme and by specified date format</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>themes</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_themes.html'>get_themes</a></span>()
-<span class='fu'>get_themes_topics</span>(themes = <span class='kw'>themes</span>[<span class='fl'>2</span>, ])
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 451 x 7</span><span>
-#&gt;    Theme      Topic               Views Replies Author    Posted     Link       
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>               </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Assessmen… Anthropometry (BMI…   267       7 Mija Ver… 2020-10-05 https://ww…
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Assessmen… Excess negative mo…   128       2 Kelvin    2020-10-04 https://ww…
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Assessmen… New review on the …   112       0 Anonymou… 2020-09-28 https://ww…
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Assessmen… Call for Participa…   147       0 Muzna     2020-09-16 https://ww…
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Assessmen… cm cutoffs for out…   304       7 Emily De… 2020-09-10 https://ww…
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Assessmen… Effect of higher p…   175       1 Lenka Bl… 2020-09-02 https://ww…
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Assessmen… Nutrition survey g…   309       2 Carlos G… 2020-08-31 https://ww…
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Assessmen… Confusion over CDR…   422       8 Anonymou… 2020-08-19 https://ww…
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Assessmen… Denominator for U5…   186       0 Anonymou… 2020-07-31 https://ww…
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Assessmen… Invitation to the …   423       2 alessand… 2020-07-03 https://ww…
-#&gt; </span><span style='color: #949494;'># … with 441 more rows</span><span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'>magrittr</span>)
+<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_themes.html'>get_themes</a></span>()[<span class='fl'>4</span>, ] <span class='op'>%&gt;%</span> <span class='fu'><a href='get_themes_topics.html'>get_themes_topics</a></span>()
+<span class='kw'>x</span> <span class='op'>%&gt;%</span> <span class='fu'>count_topics</span>(by_date = <span class='st'>"month_year"</span>)
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 54 x 4</span><span>
+#&gt;    Theme               Month  Year     n
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>               </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Coverage assessment Jan    </span><span style='text-decoration: underline;'>2</span><span>013     2
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Coverage assessment Jan    </span><span style='text-decoration: underline;'>2</span><span>014     2
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Coverage assessment Jan    </span><span style='text-decoration: underline;'>2</span><span>016     1
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Coverage assessment Jan    </span><span style='text-decoration: underline;'>2</span><span>018     1
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Coverage assessment Feb    </span><span style='text-decoration: underline;'>2</span><span>012     5
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Coverage assessment Feb    </span><span style='text-decoration: underline;'>2</span><span>013     2
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Coverage assessment Feb    </span><span style='text-decoration: underline;'>2</span><span>014     2
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Coverage assessment Feb    </span><span style='text-decoration: underline;'>2</span><span>015     1
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Coverage assessment Feb    </span><span style='text-decoration: underline;'>2</span><span>017     1
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Coverage assessment Feb    </span><span style='text-decoration: underline;'>2</span><span>018     1
+#&gt; </span><span style='color: #949494;'># … with 44 more rows</span><span></div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
