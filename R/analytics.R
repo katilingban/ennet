@@ -48,6 +48,29 @@ count_topics <- function(topics, by_date = c("month_year", "year")) {
 }
 
 
+################################################################################
+#
+#'
+#' Arrange topics based on number of views
+#'
+#' @param topics A tibble of topics by theme from en-net forum produced through
+#'   a call to `get_themes_topics`.
+#' @param by_date Should topics be counted by month of the year or just by
+#'   year?
+#'
+#' @return A tibble of topic views by theme and by specified date format
+#'   arranged in descending order
+#'
+#' @examples
+#' library(magrittr)
+#' x <- get_themes()[4, ] %>% get_themes_topics()
+#' x %>% arrange_topics(by_date = "month_year")
+#'
+#' @export
+#'
+#'
+#
+################################################################################
 
 #x %>%
 #  group_by(Theme) %>%
