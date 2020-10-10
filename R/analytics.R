@@ -48,8 +48,65 @@ count_topics <- function(topics, by_date = c("month_year", "year")) {
 }
 
 
+################################################################################
+#
+#'
+#' Arrange topics based on number of views
+#'
+#' @param topics A tibble of topics by theme from en-net forum produced through
+#'   a call to `get_themes_topics`.
+#' @param by_theme Logical. Should topics be grouped by theme? Default is TRUE.
+#' @param by_date Should topics be grouped by month of the year or just by
+#'   year? Default is to group by month of the year.
+#'
+#' @return A tibble of topic views by theme and by specified date format
+#'   arranged in descending order
+#'
+#' @examples
+#' library(magrittr)
+#' x <- get_themes()[4, ] %>% get_themes_topics()
+#' x %>% arrange_topics()
+#'
+#' @export
+#'
+#'
+#
+################################################################################
 
-#x %>%
-#  group_by(Theme) %>%
-#  arrange(desc(Views), .by_group = TRUE) %>%
-#  ungroup()
+arrange_topics <- function(topics,
+                           by_theme = TRUE,
+                           by_date = c("month_year", "year")) {
+  by_date <- match.arg(by_date)
+  x <- topics %>%
+    dplyr::mutate(Month = factor(x = month.abb[lubridate::month(Posted)],
+                                 levels = month.abb),
+                  Year = lubridate::year(Posted))
+
+  ## by_theme?
+  if(by_theme) {
+    x <- x %>%
+      dplyr::group_by(Theme)
+  }
+
+  ## by_date == "month_year"
+  if(by_date == "month_year") {
+    x <- x %>%
+      dplyr::group_by(Month, Year)
+  }
+
+  ## by_date == "year"
+  if(by_date == "year") {
+    x <- x %>%
+      dplyr::group_by(Year)
+  }
+
+  ## Arrange by descening number of views
+  x <- x %>%
+    dplyr::arrange(dplyr::desc(Views), .by_group = TRUE) %>%
+    dplyr::ungroup()
+
+  ## Return
+  return(x)
+}
+
+
