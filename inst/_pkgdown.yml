@@ -40,6 +40,7 @@ reference:
   - title: Analytics
     contents:
     - count_topics
+    - arrange_topics
 
   - title: Updates
     contents:
