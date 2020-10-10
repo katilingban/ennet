@@ -18,7 +18,8 @@
 #' @importFrom rvest html_nodes html_attr html_text
 #' @importFrom xml2 read_html url_absolute
 #' @importFrom tibble tibble
-#' @importFrom dplyr bind_rows mutate first group_by count ungroup
+#' @importFrom dplyr bind_rows mutate first group_by count ungroup arrange
+#'   desc
 #' @importFrom stringr str_replace str_detect str_extract_all str_to_lower
 #'   str_replace_na str_remove_all
 #' @importFrom lubridate dmy_hm month year
