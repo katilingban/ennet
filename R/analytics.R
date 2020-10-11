@@ -84,26 +84,35 @@ arrange_views <- function(topics,
 
   ## by_theme?
   if(by_theme) {
-    x <- x %>%
-      dplyr::group_by(Theme)
-  }
+    ## by_date == "month_year"
+    if(by_date == "month_year") {
+      x <- x %>%
+        dplyr::group_by(Theme, Month, Year)
+    }
 
-  ## by_date == "month_year"
-  if(by_date == "month_year") {
-    x <- x %>%
-      dplyr::group_by(Month, Year)
-  }
+    ## by_date == "year"
+    if(by_date == "year") {
+      x <- x %>%
+        dplyr::group_by(Theme, Year)
+    }
+  } else {
+    ## by_date == "month_year"
+    if(by_date == "month_year") {
+      x <- x %>%
+        dplyr::group_by(Month, Year)
+    }
 
-  ## by_date == "year"
-  if(by_date == "year") {
-    x <- x %>%
-      dplyr::group_by(Year)
+    ## by_date == "year"
+    if(by_date == "year") {
+      x <- x %>%
+        dplyr::group_by(Year)
+    }
   }
 
   ## Arrange by descening number of views
   x <- x %>%
-    dplyr::arrange(dplyr::desc(Views), .by_group = TRUE) %>%
-    dplyr::ungroup()
+    dplyr::arrange(dplyr::desc(Views), .by_group = TRUE) #%>%
+    #dplyr::ungroup()
 
   ## Return
   return(x)
@@ -146,26 +155,24 @@ arrange_replies <- function(topics,
 
   ## by_theme?
   if(by_theme) {
-    x <- x %>%
-      dplyr::group_by(Theme)
-  }
+    ## by_date == "month_year"
+    if(by_date == "month_year") {
+      x <- x %>%
+        dplyr::group_by(Month, Year)
+    }
 
-  ## by_date == "month_year"
-  if(by_date == "month_year") {
-    x <- x %>%
-      dplyr::group_by(Month, Year)
-  }
-
-  ## by_date == "year"
-  if(by_date == "year") {
-    x <- x %>%
-      dplyr::group_by(Year)
+    ## by_date == "year"
+    if(by_date == "year") {
+      x <- x %>%
+        dplyr::group_by(Year)
+    }
   }
 
   ## Arrange by descening number of views
   x <- x %>%
     dplyr::arrange(dplyr::desc(Replies), .by_group = TRUE) %>%
-    dplyr::ungroup()
+    dplyr::filter(!is.na(Replies)) #%>%
+    #dplyr::ungroup()
 
   ## Return
   return(x)
@@ -207,30 +214,42 @@ count_authors <- function(topics,
                   Year = lubridate::year(Posted))
 
   if(by_theme) {
-    x <- x %>%
-      dplyr::group_by(Theme)
-  }
+    ## by_date == "all"
+    if(by_date == "all") {
+      x <- x %>%
+        dplyr::count(Theme, Author)
+    }
 
-  ## by_date == "all"
-  if(by_date == "all") {
-    x <- x %>%
-      dplyr::count(Author)
-  }
+    ## by_date == "month_year"
+    if(by_date == "month_year") {
+      x <- x %>%
+        dplyr::count(Theme, Author, Month, Year)
+    }
 
-  ## by_date == "month_year"
-  if(by_date == "month_year") {
-    x <- x %>%
-      dplyr::count(Author, Month, Year)
-  }
+    ## by_date == "year"
+    if(by_date == "year") {
+      x <- x %>%
+        dplyr::count(Theme, Author, Year)
+    }
+  } else {
+    ## by_date == "all"
+    if(by_date == "all") {
+      x <- x %>%
+        dplyr::count(Author)
+    }
 
-  ## by_date == "year"
-  if(by_date == "year") {
-    x <- x %>%
-      dplyr::count(Author, Year)
-  }
+    ## by_date == "month_year"
+    if(by_date == "month_year") {
+      x <- x %>%
+        dplyr::count(Author, Month, Year)
+    }
 
-  ## ungroup
-  x <- dplyr::ungroup(x)
+    ## by_date == "year"
+    if(by_date == "year") {
+      x <- x %>%
+        dplyr::count(Author, Year)
+    }
+  }
 
   ## Return
   return(x)

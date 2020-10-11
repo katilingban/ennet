@@ -1,7 +1,33 @@
 ################################################################################
 #
 #'
+#' en-net themes
+#'
+#' Themes from en-net forum retrieved on 11 October 2020
+#'
+#' @format A tibble with 18 rows and 2 columns:
+#'
+#' | **Variable** | **Description** |
+#' | :--- | :--- |
+#' | `themes` | Thematic areas in the en-net forum |
+#' | `links` | URL of the thematic area |
+#'
+#' @examples
+#' ennet_themes
+#'
+#' @source https://www.en-net.org
+#'
+#
+################################################################################
+"ennet_themes"
+
+
+################################################################################
+#
+#'
 #' en-net topics
+#'
+#' Topics from en-net forum retrieved on 11 October 2020
 #'
 #' @format A tibble with 2980 rows and 7 columns:
 #'
@@ -18,8 +44,7 @@
 #' @examples
 #' ennet_topics
 #'
-#' @source
-#' https://www.en-net.org
+#' @source https://www.en-net.org
 #'
 #'
 #

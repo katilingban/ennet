@@ -16,7 +16,7 @@ A tibble of all topics for the specified thematic area.
 Get theme topics
 }
 \examples{
-themes <- get_themes()
-get_theme_topics(link = themes$links[1])
+themes <- ennet_themes
+get_theme_topics(link = themes$links[4])
 
 }

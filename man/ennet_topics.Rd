@@ -23,7 +23,7 @@ https://www.en-net.org
 ennet_topics
 }
 \description{
-en-net topics
+Topics from en-net forum retrieved on 11 October 2020
 }
 \examples{
 ennet_topics

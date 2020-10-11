@@ -87,8 +87,8 @@
 <a href="#en-net-website-structure" class="anchor"></a>en-net website structure</h3>
 <p>The <strong>en-net</strong> online forum website has a very clear and clean structure. The opening page is a list of <strong>thematic areas</strong> which are linked to each of their respective webpages. In each of these <strong>thematic area</strong> webpages is another list, this time a list of <strong>topics</strong> raised within the <strong>thematic area</strong>. These <strong>topics</strong> are the text that an online user provides as the title for the question she/he is going to ask. Each of the <strong>topics</strong> are then again linked to their respective webpages that show the actual full question raised and the ensuing responses and <strong>discussion</strong> stemming from that question.</p>
 <p>The <strong>en-net</strong> online forum structure can be summarised graphically as follows:</p>
-<div id="htmlwidget-d133db4097ffbb3a1a51" style="width:100%;height:432.632880098888px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d133db4097ffbb3a1a51">{"x":{"diagram":"\n  digraph ennet {\n\n    graph [layout = dot, fontname = Helvetica]\n\n    node [shape = ellipse, style = filled, color = grey, \n          fontcolor = white, fontsize = 20]\n\n      node [fillcolor = royalblue]\n        a [label = \"en-net\"]\n\n      node [fillcolor = darkgreen]\n        b [label = \"Thematic area\"] \n        c [label = \"Thematic area\"]\n        d [label = \"Thematic area\"]\n\n      node [fillcolor = purple]\n        e [label = \"Topic\"]\n        f [label = \"Topic\"]\n        g [label = \"Topic\"]\n        h [label = \"Topic\"]\n        i [label = \"Topic\"]\n        j [label = \"Topic\"]\n        \n        \n      node [fillcolor = orange]\n        k [label = \"Discussion\"]\n        l [label = \"Discussion\"]\n        m [label = \"Discussion\"]\n        n [label = \"Discussion\"]\n        o [label = \"Discussion\"]\n        p [label = \"Discussion\"]\n        q [label = \"Discussion\"]\n        r [label = \"Discussion\"]\n        s [label = \"Discussion\"]\n        t [label = \"Discussion\"]\n        u [label = \"Discussion\"]\n        v [label = \"Discussion\"]\n\n    edge [color = grey]\n      a -> {b c d}\n      b -> {e f}\n      c -> {g h}\n      d -> {i j}\n      e -> {k l}\n      f -> {m n}\n      g -> {o p}\n      h -> {q r}\n      i -> {s t}\n      j -> {u v}\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-8625aa81fd6ab9d54de7" style="width:100%;height:432.632880098888px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8625aa81fd6ab9d54de7">{"x":{"diagram":"\n  digraph ennet {\n\n    graph [layout = dot, fontname = Helvetica]\n\n    node [shape = ellipse, style = filled, color = grey, \n          fontcolor = white, fontsize = 20]\n\n      node [fillcolor = royalblue]\n        a [label = \"en-net\"]\n\n      node [fillcolor = darkgreen]\n        b [label = \"Thematic area\"] \n        c [label = \"Thematic area\"]\n        d [label = \"Thematic area\"]\n\n      node [fillcolor = purple]\n        e [label = \"Topic\"]\n        f [label = \"Topic\"]\n        g [label = \"Topic\"]\n        h [label = \"Topic\"]\n        i [label = \"Topic\"]\n        j [label = \"Topic\"]\n        \n        \n      node [fillcolor = orange]\n        k [label = \"Discussion\"]\n        l [label = \"Discussion\"]\n        m [label = \"Discussion\"]\n        n [label = \"Discussion\"]\n        o [label = \"Discussion\"]\n        p [label = \"Discussion\"]\n        q [label = \"Discussion\"]\n        r [label = \"Discussion\"]\n        s [label = \"Discussion\"]\n        t [label = \"Discussion\"]\n        u [label = \"Discussion\"]\n        v [label = \"Discussion\"]\n\n    edge [color = grey]\n      a -> {b c d}\n      b -> {e f}\n      c -> {g h}\n      d -> {i j}\n      e -> {k l}\n      f -> {m n}\n      g -> {o p}\n      h -> {q r}\n      i -> {s t}\n      j -> {u v}\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="getting-list-of-thematic-areas" class="section level3">
 <h3 class="hasAnchor">
@@ -96,11 +96,10 @@
 <p>To get a list of <strong>thematic areas</strong> along with the link to the webpage of each <strong>thematic area</strong>, we use the <code><a href="../reference/get_themes.html">get_themes()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit">
 <span class="co">## Load ennet package</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/katilingban/ennet">ennet</a></span>)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/katilingban/ennet">ennet</a></span><span class="op">)</span>
 
 <span class="co">## Get all thematic areas from en-net</span>
-<span class="fu"><a href="../reference/get_themes.html">get_themes</a></span>()
-</pre></div>
+<span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>which results in</p>
 <pre><code>#&gt; # A tibble: 18 x 2
 #&gt;    themes                                           links                       
@@ -132,52 +131,50 @@
 <p>To get a list of <strong>topics</strong> for a particular theme, we use the <code><a href="../reference/get_theme_topics.html">get_theme_topics()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit">
 <span class="co">## Load dplyr to facilitate data manipulation</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org">dplyr</a></span>)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 
 <span class="co">## Extract data from "Coverage assessment" theme</span>
-<span class="fu"><a href="../reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">themes</span> <span class="op">==</span> <span class="st">"Coverage assessment"</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="kw">links</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_theme_topics.html">get_theme_topics</a></span>()
-</pre></div>
+<span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">themes</span> <span class="op">==</span> <span class="st">"Coverage assessment"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">links</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/get_theme_topics.html">get_theme_topics</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>which results in</p>
 <pre><code>#&gt; # A tibble: 93 x 7
 #&gt;    Theme    Topic                 Views Replies Author   Posted     Link        
 #&gt;    &lt;chr&gt;    &lt;chr&gt;                 &lt;int&gt;   &lt;int&gt; &lt;chr&gt;    &lt;date&gt;     &lt;chr&gt;       
-#&gt;  1 Coverag… Resources for covera…  8437      11 Tamsin … 2011-12-06 https://www…
-#&gt;  2 Coverag… Use of single covera…  1672       7 Hugh Lo… 2019-11-10 https://www…
-#&gt;  3 Coverag… Real and theoretical…  1442       3 Abdul    2019-10-10 https://www…
-#&gt;  4 Coverag… Single Coverage for …  1479       4 Ben All… 2019-07-05 https://www…
-#&gt;  5 Coverag… Cox's Bazar Refugee …  1695       4 Hugh Lo… 2019-03-28 https://www…
-#&gt;  6 Coverag… Wide Area Survey (St…  1400       2 Anonymo… 2019-03-09 https://www…
-#&gt;  7 Coverag… Disconnection betwee…  1392       2 Tammam … 2019-03-03 https://www…
-#&gt;  8 Coverag… Can we classify the …  1565       2 Anonymo… 2018-11-18 https://www…
-#&gt;  9 Coverag… Routine monitoring d…  1475       0 Anonymo… 2018-11-14 https://www…
-#&gt; 10 Coverag… SQUEAC/coverage surv…  1849       1 Anonymo… 2018-10-05 https://www…
+#&gt;  1 Coverag… Resources for covera…  8585      11 Tamsin … 2011-12-06 https://www…
+#&gt;  2 Coverag… Use of single covera…  1746       7 Hugh Lo… 2019-11-10 https://www…
+#&gt;  3 Coverag… Real and theoretical…  1516       3 Abdul    2019-10-10 https://www…
+#&gt;  4 Coverag… Single Coverage for …  1515       4 Ben All… 2019-07-05 https://www…
+#&gt;  5 Coverag… Cox's Bazar Refugee …  1731       4 Hugh Lo… 2019-03-28 https://www…
+#&gt;  6 Coverag… Wide Area Survey (St…  1436       2 Anonymo… 2019-03-09 https://www…
+#&gt;  7 Coverag… Disconnection betwee…  1428       2 Tammam … 2019-03-03 https://www…
+#&gt;  8 Coverag… Can we classify the …  1601       2 Anonymo… 2018-11-18 https://www…
+#&gt;  9 Coverag… Routine monitoring d…  1511       0 Anonymo… 2018-11-14 https://www…
+#&gt; 10 Coverag… SQUEAC/coverage surv…  1885       1 Anonymo… 2018-10-05 https://www…
 #&gt; # … with 83 more rows</code></pre>
 <p>The resulting table contains information on all the <strong>topics</strong> within the <em>Coverage assessment</em> <strong>thematic area</strong> including URL links to the corresponding webpages for each <strong>topic</strong></p>
 <p>To get a list of <strong>topics</strong> for multiple themes, we use the <code><a href="../reference/get_themes_topics.html">get_themes_topics()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit">
 <span class="co">## Extract data from "Coverage assessment" theme and "Food assistance" theme</span>
-<span class="fu"><a href="../reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">themes</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span>)) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span>()
-</pre></div>
+<span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">themes</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>which results in</p>
 <pre><code>#&gt; # A tibble: 124 x 7
 #&gt;    Theme    Topic                 Views Replies Author   Posted     Link        
 #&gt;    &lt;chr&gt;    &lt;chr&gt;                 &lt;int&gt;   &lt;int&gt; &lt;chr&gt;    &lt;date&gt;     &lt;chr&gt;       
-#&gt;  1 Coverag… Resources for covera…  8437      11 Tamsin … 2011-12-06 https://www…
-#&gt;  2 Coverag… Use of single covera…  1672       7 Hugh Lo… 2019-11-10 https://www…
-#&gt;  3 Coverag… Real and theoretical…  1442       3 Abdul    2019-10-10 https://www…
-#&gt;  4 Coverag… Single Coverage for …  1479       4 Ben All… 2019-07-05 https://www…
-#&gt;  5 Coverag… Cox's Bazar Refugee …  1695       4 Hugh Lo… 2019-03-28 https://www…
-#&gt;  6 Coverag… Wide Area Survey (St…  1400       2 Anonymo… 2019-03-09 https://www…
-#&gt;  7 Coverag… Disconnection betwee…  1392       2 Tammam … 2019-03-03 https://www…
-#&gt;  8 Coverag… Can we classify the …  1565       2 Anonymo… 2018-11-18 https://www…
-#&gt;  9 Coverag… Routine monitoring d…  1475       0 Anonymo… 2018-11-14 https://www…
-#&gt; 10 Coverag… SQUEAC/coverage surv…  1849       1 Anonymo… 2018-10-05 https://www…
+#&gt;  1 Coverag… Resources for covera…  8585      11 Tamsin … 2011-12-06 https://www…
+#&gt;  2 Coverag… Use of single covera…  1746       7 Hugh Lo… 2019-11-10 https://www…
+#&gt;  3 Coverag… Real and theoretical…  1516       3 Abdul    2019-10-10 https://www…
+#&gt;  4 Coverag… Single Coverage for …  1515       4 Ben All… 2019-07-05 https://www…
+#&gt;  5 Coverag… Cox's Bazar Refugee …  1731       4 Hugh Lo… 2019-03-28 https://www…
+#&gt;  6 Coverag… Wide Area Survey (St…  1436       2 Anonymo… 2019-03-09 https://www…
+#&gt;  7 Coverag… Disconnection betwee…  1428       2 Tammam … 2019-03-03 https://www…
+#&gt;  8 Coverag… Can we classify the …  1601       2 Anonymo… 2018-11-18 https://www…
+#&gt;  9 Coverag… Routine monitoring d…  1511       0 Anonymo… 2018-11-14 https://www…
+#&gt; 10 Coverag… SQUEAC/coverage surv…  1885       1 Anonymo… 2018-10-05 https://www…
 #&gt; # … with 114 more rows</code></pre>
 <p>The resulting table contains information on all the <strong>topics</strong> within the <em>Coverage assessment</em> and <em>Food assistance</em> <strong>thematic area</strong> including URL links to the corresponding webpages for each <strong>topic</strong>.</p>
 </div>
@@ -186,14 +183,13 @@
 <a href="#getting-discussions-from-topics" class="anchor"></a>Getting discussions from topic/s</h3>
 <p>To get a list of <strong>discussions</strong> for a particular <strong>topic</strong>, we use the <code><a href="../reference/get_topic_discussions.html">get_topic_discussions()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="fu"><a href="../reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">themes</span> <span class="op">==</span> <span class="st">"Coverage assessment"</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">Topic</span> <span class="op">==</span> <span class="st">"Resources for coverage assessment"</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="kw">Link</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_topic_discussions.html">get_topic_discussions</a></span>()
-</pre></div>
+<span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">themes</span> <span class="op">==</span> <span class="st">"Coverage assessment"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Topic</span> <span class="op">==</span> <span class="st">"Resources for coverage assessment"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Link</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/get_topic_discussions.html">get_topic_discussions</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>which results in</p>
 <pre><code>#&gt; # A tibble: 12 x 10
 #&gt;    theme  topic user  userCode job   role  date_time           type  code  post 
@@ -213,11 +209,10 @@
 <p>The resulting table contains information on all the <strong>discussions</strong> within the <strong>topic</strong> on <em>Resources for coverage assessment</em> within the <strong>thematic area</strong> of <em>Coverage assessment</em> including the text data on the question and the ensuing reply/replies to the question.</p>
 <p>To get a list of <strong>discussions</strong> for a set of <strong>topics</strong>, we use the <code><a href="../reference/get_topics_discussions.html">get_topics_discussions()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="fu"><a href="../reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">themes</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span>)) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_topics_discussions.html">get_topics_discussions</a></span>()
-</pre></div>
+<span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">themes</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/get_topics_discussions.html">get_topics_discussions</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>which results in</p>
 <pre><code>#&gt; # A tibble: 505 x 10
 #&gt;    theme  topic user  userCode job   role  date_time           type  code  post 

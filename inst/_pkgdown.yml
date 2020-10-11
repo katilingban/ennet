@@ -50,4 +50,5 @@ reference:
 
   - title: Datasets
     contents:
+    - ennet_themes
     - ennet_topics

@@ -46,8 +46,8 @@ get_themes <- function(base = "https://www.en-net.org") {
 #' @return A tibble of all topics for the specified thematic area.
 #'
 #' @examples
-#' themes <- get_themes()
-#' get_theme_topics(link = themes$links[1])
+#' themes <- ennet_themes
+#' get_theme_topics(link = themes$links[4])
 #'
 #' @export
 #'
@@ -92,8 +92,8 @@ get_theme_topics <- function(link) {
 #'   respective URLs
 #'
 #' @examples
-#' themes <- get_themes()
-#' get_themes_topics(themes = themes[2, ])
+#' themes <- ennet_themes
+#' get_themes_topics(themes = themes[4, ])
 #'
 #' @export
 #'

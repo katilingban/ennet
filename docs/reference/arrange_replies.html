@@ -120,11 +120,11 @@
     <p>Arrange topics based on number of replies</p>
     </div>
 
-    <pre class="usage"><span class='fu'>arrange_replies</span>(
-  <span class='kw'>topics</span>,
-  by_theme = <span class='fl'>TRUE</span>,
-  by_date = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"month_year"</span>, <span class='st'>"year"</span>, <span class='st'>"all"</span>)
-)</pre>
+    <pre class="usage"><span class='fu'>arrange_replies</span><span class='op'>(</span>
+  <span class='va'>topics</span>,
+  by_theme <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  by_date <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"month_year"</span>, <span class='st'>"year"</span>, <span class='st'>"all"</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -151,23 +151,24 @@ year? Default is to group by month of the year.</p></td>
 arranged in descending order</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'>magrittr</span>)
-<span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='kw'>ennet_topics</span>
-<span class='kw'>x</span> <span class='op'>%&gt;%</span> <span class='fu'>arrange_replies</span>()
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,980 x 9</span><span>
-#&gt;    Theme      Topic         Views Author Posted     Link     Replies Month  Year
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Infant an… Breastfeedin…  </span><span style='text-decoration: underline;'>9</span><span>082 Anony… 2010-01-07 https:/…       3 Jan    </span><span style='text-decoration: underline;'>2</span><span>010
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Assessmen… How to Maint…  </span><span style='text-decoration: underline;'>5</span><span>484 Anony… 2010-01-15 https:/…       2 Jan    </span><span style='text-decoration: underline;'>2</span><span>010
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Announcem… Nutrition in…  </span><span style='text-decoration: underline;'>8</span><span>291 Marie… 2010-01-05 https:/…      </span><span style='color: #BB0000;'>NA</span><span> Jan    </span><span style='text-decoration: underline;'>2</span><span>010
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Assessmen… Interpretati…  </span><span style='text-decoration: underline;'>8</span><span>361 Tamsi… 2011-01-05 https:/…      10 Jan    </span><span style='text-decoration: underline;'>2</span><span>011
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Assessmen… Prospective …  </span><span style='text-decoration: underline;'>5</span><span>825 Jeff … 2011-01-27 https:/…       7 Jan    </span><span style='text-decoration: underline;'>2</span><span>011
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Assessmen… Calculating …  </span><span style='text-decoration: underline;'>7</span><span>377 Ali M… 2011-01-19 https:/…       3 Jan    </span><span style='text-decoration: underline;'>2</span><span>011
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Assessmen… Result with …  </span><span style='text-decoration: underline;'>5</span><span>011 Anony… 2011-01-25 https:/…       2 Jan    </span><span style='text-decoration: underline;'>2</span><span>011
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Cross-cut… Transitionin…  </span><span style='text-decoration: underline;'>5</span><span>096 Anony… 2011-01-25 https:/…       1 Jan    </span><span style='text-decoration: underline;'>2</span><span>011
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Announcem… WFP Programm…  </span><span style='text-decoration: underline;'>4</span><span>006 Edith… 2011-01-20 https:/…      </span><span style='color: #BB0000;'>NA</span><span> Jan    </span><span style='text-decoration: underline;'>2</span><span>011
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Announcem… Technical Su…  </span><span style='text-decoration: underline;'>5</span><span>220 Tamsi… 2011-01-18 https:/…      </span><span style='color: #BB0000;'>NA</span><span> Jan    </span><span style='text-decoration: underline;'>2</span><span>011
-#&gt; </span><span style='color: #949494;'># … with 2,970 more rows</span><span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>magrittr</span><span class='op'>)</span>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='va'>ennet_topics</span>
+<span class='va'>x</span> <span class='op'>%&gt;%</span> <span class='fu'>arrange_replies</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1,758 x 9</span><span>
+#&gt; </span><span style='color: #949494;'># Groups:   Month, Year [141]</span><span>
+#&gt;    Theme     Topic         Views Author  Posted     Link     Replies Month  Year
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Infant a… Breastfeedin…  </span><span style='text-decoration: underline;'>9</span><span>082 Anonym… 2010-01-07 https:/…       3 Jan    </span><span style='text-decoration: underline;'>2</span><span>010
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Assessme… How to Maint…  </span><span style='text-decoration: underline;'>5</span><span>484 Anonym… 2010-01-15 https:/…       2 Jan    </span><span style='text-decoration: underline;'>2</span><span>010
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Assessme… Interpretati…  </span><span style='text-decoration: underline;'>8</span><span>361 Tamsin… 2011-01-05 https:/…      10 Jan    </span><span style='text-decoration: underline;'>2</span><span>011
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Assessme… Prospective …  </span><span style='text-decoration: underline;'>5</span><span>825 Jeff M… 2011-01-27 https:/…       7 Jan    </span><span style='text-decoration: underline;'>2</span><span>011
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Assessme… Calculating …  </span><span style='text-decoration: underline;'>7</span><span>377 Ali Ma… 2011-01-19 https:/…       3 Jan    </span><span style='text-decoration: underline;'>2</span><span>011
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Assessme… Result with …  </span><span style='text-decoration: underline;'>5</span><span>011 Anonym… 2011-01-25 https:/…       2 Jan    </span><span style='text-decoration: underline;'>2</span><span>011
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Cross-cu… Transitionin…  </span><span style='text-decoration: underline;'>5</span><span>096 Anonym… 2011-01-25 https:/…       1 Jan    </span><span style='text-decoration: underline;'>2</span><span>011
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Assessme… Nutritional …  </span><span style='text-decoration: underline;'>7</span><span>431 Mary M… 2012-01-01 https:/…      10 Jan    </span><span style='text-decoration: underline;'>2</span><span>012
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Upcoming… Regional SMA…  </span><span style='text-decoration: underline;'>5</span><span>613 Yara S… 2012-01-10 https:/…       8 Jan    </span><span style='text-decoration: underline;'>2</span><span>012
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Micronut… multi-micron…  </span><span style='text-decoration: underline;'>5</span><span>942 REBECC… 2012-01-18 https:/…       6 Jan    </span><span style='text-decoration: underline;'>2</span><span>012
+#&gt; </span><span style='color: #949494;'># … with 1,748 more rows</span><span></div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
