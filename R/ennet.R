@@ -31,4 +31,5 @@
 ## quiets concerns of R CMD check on global variables
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("Posted", "Month",
                                                         "Theme", "Views",
+                                                        "Replies", "Author",
                                                         "Year"))
