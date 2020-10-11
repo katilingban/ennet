@@ -11,7 +11,7 @@ count_topics(topics, by_date = c("month_year", "year"))
 a call to \code{get_themes_topics}.}
 
 \item{by_date}{Should topics be counted by month of the year or just by
-year?}
+year? Default is by month of the year.}
 }
 \value{
 A tibble of topic counts by theme and by specified date format
@@ -21,7 +21,7 @@ Count the number of topics by theme and by date
 }
 \examples{
 library(magrittr)
-x <- get_themes()[4, ] \%>\% get_themes_topics()
+x <- ennet_topics
 x \%>\% count_topics(by_date = "month_year")
 
 }
