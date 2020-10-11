@@ -4,7 +4,8 @@
 \name{ennet}
 \alias{ennet}
 \alias{ennet-package}
-\title{Utilities to Extract Text Data From EN-NET}
+\title{Utilities to Extract and Analyse Text Data From the Emergency Nutrition
+Network (en-net) Forum}
 \description{
 en-net is the go to online forum for field practitioners requiring prompt
 technical advice for operational challenges for which answers are not readily
