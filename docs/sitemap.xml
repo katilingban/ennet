@@ -4,10 +4,22 @@
     <loc>https://katilingban.io/ennet/index.html</loc>
   </url>
   <url>
+    <loc>https://katilingban.io/ennet/reference/arrange_replies.html</loc>
+  </url>
+  <url>
+    <loc>https://katilingban.io/ennet/reference/arrange_views.html</loc>
+  </url>
+  <url>
+    <loc>https://katilingban.io/ennet/reference/count_authors.html</loc>
+  </url>
+  <url>
     <loc>https://katilingban.io/ennet/reference/count_topics.html</loc>
   </url>
   <url>
     <loc>https://katilingban.io/ennet/reference/ennet.html</loc>
+  </url>
+  <url>
+    <loc>https://katilingban.io/ennet/reference/ennet_topics.html</loc>
   </url>
   <url>
     <loc>https://katilingban.io/ennet/reference/get_theme_topics.html</loc>
