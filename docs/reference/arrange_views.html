@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Count the number of topics by theme and by date — count_topics • ennet</title>
+<title>Arrange topics based on number of views — arrange_views • ennet</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Count the number of topics by theme and by date — count_topics" />
-<meta property="og:description" content="Count the number of topics by theme and by date" />
+<meta property="og:title" content="Arrange topics based on number of views — arrange_views" />
+<meta property="og:description" content="Arrange topics based on number of views" />
 
 
 
@@ -111,16 +111,20 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Count the number of topics by theme and by date</h1>
+    <h1>Arrange topics based on number of views</h1>
     <small class="dont-index">Source: <a href='https://github.com/katilingban/ennet/blob/master/R/analytics.R'><code>R/analytics.R</code></a></small>
-    <div class="hidden name"><code>count_topics.Rd</code></div>
+    <div class="hidden name"><code>arrange_views.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Count the number of topics by theme and by date</p>
+    <p>Arrange topics based on number of views</p>
     </div>
 
-    <pre class="usage"><span class='fu'>count_topics</span>(<span class='kw'>topics</span>, by_date = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"month_year"</span>, <span class='st'>"year"</span>))</pre>
+    <pre class="usage"><span class='fu'>arrange_views</span>(
+  <span class='kw'>topics</span>,
+  by_theme = <span class='fl'>TRUE</span>,
+  by_date = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"month_year"</span>, <span class='st'>"year"</span>, <span class='st'>"all"</span>)
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -131,34 +135,39 @@
 a call to <code>get_themes_topics</code>.</p></td>
     </tr>
     <tr>
+      <th>by_theme</th>
+      <td><p>Logical. Should topics be grouped by theme? Default is TRUE.</p></td>
+    </tr>
+    <tr>
       <th>by_date</th>
-      <td><p>Should topics be counted by month of the year or just by
-year? Default is by month of the year.</p></td>
+      <td><p>Should topics be grouped by month of the year or just by
+year or overall? Default is to group by month of the year.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble of topic counts by theme and by specified date format</p>
+    <p>A tibble of topic views by theme and by specified date format
+arranged in descending order</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'>magrittr</span>)
 <span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='kw'>ennet_topics</span>
-<span class='kw'>x</span> <span class='op'>%&gt;%</span> <span class='fu'>count_topics</span>(by_date = <span class='st'>"month_year"</span>)
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 843 x 4</span><span>
-#&gt;    Theme                                Month  Year     n
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Adolescent nutrition                 Feb    </span><span style='text-decoration: underline;'>2</span><span>020     1
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Adolescent nutrition                 May    </span><span style='text-decoration: underline;'>2</span><span>018     1
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Adolescent nutrition                 Jun    </span><span style='text-decoration: underline;'>2</span><span>018     6
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Adolescent nutrition                 Jun    </span><span style='text-decoration: underline;'>2</span><span>020     1
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Adolescent nutrition                 Jul    </span><span style='text-decoration: underline;'>2</span><span>018     2
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Adolescent nutrition                 Aug    </span><span style='text-decoration: underline;'>2</span><span>018     1
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Adolescent nutrition                 Sep    </span><span style='text-decoration: underline;'>2</span><span>018     1
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Announcements &amp; Nutritionists needed Jan    </span><span style='text-decoration: underline;'>2</span><span>010     1
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Announcements &amp; Nutritionists needed Jan    </span><span style='text-decoration: underline;'>2</span><span>011     4
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Announcements &amp; Nutritionists needed Jan    </span><span style='text-decoration: underline;'>2</span><span>012     3
-#&gt; </span><span style='color: #949494;'># … with 833 more rows</span><span></div><div class='input'>
+<span class='kw'>x</span> <span class='op'>%&gt;%</span> <span class='fu'>arrange_views</span>()
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,980 x 9</span><span>
+#&gt;    Theme      Topic         Views Author Posted     Link     Replies Month  Year
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Infant an… Breastfeedin…  </span><span style='text-decoration: underline;'>9</span><span>082 Anony… 2010-01-07 https:/…       3 Jan    </span><span style='text-decoration: underline;'>2</span><span>010
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Announcem… Nutrition in…  </span><span style='text-decoration: underline;'>8</span><span>291 Marie… 2010-01-05 https:/…      </span><span style='color: #BB0000;'>NA</span><span> Jan    </span><span style='text-decoration: underline;'>2</span><span>010
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Assessmen… How to Maint…  </span><span style='text-decoration: underline;'>5</span><span>484 Anony… 2010-01-15 https:/…       2 Jan    </span><span style='text-decoration: underline;'>2</span><span>010
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Assessmen… Interpretati…  </span><span style='text-decoration: underline;'>8</span><span>361 Tamsi… 2011-01-05 https:/…      10 Jan    </span><span style='text-decoration: underline;'>2</span><span>011
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Assessmen… Calculating …  </span><span style='text-decoration: underline;'>7</span><span>377 Ali M… 2011-01-19 https:/…       3 Jan    </span><span style='text-decoration: underline;'>2</span><span>011
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Assessmen… Prospective …  </span><span style='text-decoration: underline;'>5</span><span>825 Jeff … 2011-01-27 https:/…       7 Jan    </span><span style='text-decoration: underline;'>2</span><span>011
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Announcem… IYCF Consult…  </span><span style='text-decoration: underline;'>5</span><span>274 Aliso… 2011-01-04 https:/…      </span><span style='color: #BB0000;'>NA</span><span> Jan    </span><span style='text-decoration: underline;'>2</span><span>011
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Announcem… Technical Su…  </span><span style='text-decoration: underline;'>5</span><span>220 Tamsi… 2011-01-18 https:/…      </span><span style='color: #BB0000;'>NA</span><span> Jan    </span><span style='text-decoration: underline;'>2</span><span>011
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Cross-cut… Transitionin…  </span><span style='text-decoration: underline;'>5</span><span>096 Anony… 2011-01-25 https:/…       1 Jan    </span><span style='text-decoration: underline;'>2</span><span>011
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Assessmen… Result with …  </span><span style='text-decoration: underline;'>5</span><span>011 Anony… 2011-01-25 https:/…       2 Jan    </span><span style='text-decoration: underline;'>2</span><span>011
+#&gt; </span><span style='color: #949494;'># … with 2,970 more rows</span><span></div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

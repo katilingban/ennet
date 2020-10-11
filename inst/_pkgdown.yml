@@ -40,8 +40,14 @@ reference:
   - title: Analytics
     contents:
     - count_topics
-    - arrange_topics
+    - count_authors
+    - arrange_views
+    - arrange_replies
 
   - title: Updates
     contents:
     - update_topics
+
+  - title: Datasets
+    contents:
+    - ennet_topics
