@@ -114,11 +114,10 @@ install.packages("rennet")
 <p>To get a list of <strong>thematic areas</strong> along with the link to the webpage of each <strong>thematic area</strong>, we use the <code><a href="reference/get_themes.html">get_themes()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
 <span class="co">## Load ennet package</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/katilingban/ennet">ennet</a></span>)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/katilingban/ennet">ennet</a></span><span class="op">)</span>
 
 <span class="co">## Get all thematic areas from en-net</span>
-<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>()
-</pre></div>
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>which results in</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#&gt; # A tibble: 18 x 2</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="co">#&gt;    themes                                           links                       </span></span>
@@ -150,15 +149,14 @@ install.packages("rennet")
 <p>To get a list of <strong>topics</strong> for a particular theme, we use the <code><a href="reference/get_theme_topics.html">get_theme_topics()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit">
 <span class="co">## Load dplyr to facilitate data manipulation</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org">dplyr</a></span>)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 
 <span class="co">## Extract data from "Coverage assessment" theme</span>
-<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">themes</span> <span class="op">==</span> <span class="st">"Coverage assessment"</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="kw">links</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/get_theme_topics.html">get_theme_topics</a></span>()
-</pre></div>
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">themes</span> <span class="op">==</span> <span class="st">"Coverage assessment"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">links</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_theme_topics.html">get_theme_topics</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>which results in</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#&gt; # A tibble: 93 x 7</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="co">#&gt;    Theme    Topic                 Views Replies Author   Posted     Link        </span></span>
@@ -178,10 +176,9 @@ install.packages("rennet")
 <p>To get a list of <strong>topics</strong> for multiple themes, we use the <code><a href="reference/get_themes_topics.html">get_themes_topics()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit">
 <span class="co">## Extract data from "Coverage assessment" theme and "Food assistance" theme</span>
-<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">themes</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span>)) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>()
-</pre></div>
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">themes</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>which results in</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">#&gt; # A tibble: 124 x 7</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt;    Theme    Topic                 Views Replies Author   Posted     Link        </span></span>
@@ -204,14 +201,13 @@ install.packages("rennet")
 <a href="#getting-discussions-from-topics" class="anchor"></a>Getting discussions from topic/s</h3>
 <p>To get a list of <strong>discussions</strong> for a particular <strong>topic</strong>, we use the <code><a href="reference/get_topic_discussions.html">get_topic_discussions()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">themes</span> <span class="op">==</span> <span class="st">"Coverage assessment"</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">Topic</span> <span class="op">==</span> <span class="st">"Resources for coverage assessment"</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="kw">Link</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/get_topic_discussions.html">get_topic_discussions</a></span>()
-</pre></div>
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">themes</span> <span class="op">==</span> <span class="st">"Coverage assessment"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Topic</span> <span class="op">==</span> <span class="st">"Resources for coverage assessment"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Link</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_topic_discussions.html">get_topic_discussions</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>which results in</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">#&gt; # A tibble: 12 x 10</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="co">#&gt;    theme  topic user  userCode job   role  date_time           type  code  post </span></span>
@@ -231,11 +227,10 @@ install.packages("rennet")
 <p>The resulting table contains information on all the <strong>discussions</strong> within the <strong>topic</strong> on <em>Resources for coverage assessment</em> within the <strong>thematic area</strong> of <em>Coverage assessment</em> including the text data on the question and the ensuing reply/replies to the question.</p>
 <p>To get a list of <strong>discussions</strong> for a set of <strong>topics</strong>, we use the <code><a href="reference/get_topics_discussions.html">get_topics_discussions()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">themes</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span>)) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/get_topics_discussions.html">get_topics_discussions</a></span>()
-</pre></div>
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">themes</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_topics_discussions.html">get_topics_discussions</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p>which results in</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">#&gt; # A tibble: 504 x 10</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="co">#&gt;    theme  topic user  userCode job   role  date_time           type  code  post </span></span>
