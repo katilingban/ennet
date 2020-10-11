@@ -18,7 +18,7 @@ respective URLs
 Get topics from multiple themes
 }
 \examples{
-themes <- get_themes()
-get_themes_topics(themes = themes[2, ])
+themes <- ennet_themes
+get_themes_topics(themes = themes[4, ])
 
 }
