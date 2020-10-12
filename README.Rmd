@@ -184,7 +184,15 @@ The resulting table contains information on all the **discussions** within all t
 
 ### Analytics functions
 
-The `ennet` package also includes analtyic functions that summarises 
+The `ennet` package also includes analytic functions that summarises the text data avaiable from the [**en-net** online forum](https://www.en-net.org). Currently, there are four analytic functions available from `ennet`:
+
+* `count_topics` - function to count the number of topics or questions by theme and date
+
+* `count_authors` - 
+
+* `arrange_views` - 
+
+* `arrange_replies`
 
 ## Practical applications
 
