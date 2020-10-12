@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# ennet: Utilities to Extract Text Data From the Emergency Nutrition Network (en-net) Forum <img src="man/figures/ennet.png" width="200px" align="right" />
+# ennet: Utilities to Extract and Analyse Text Data From the Emergency Nutrition Network (en-net) Forum <img src="man/figures/ennet.png" width="200px" align="right" />
 
 <!-- badges: start -->
 [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
@@ -49,13 +49,17 @@ remotes::install_github("katilingban/ennet")
 
 ## Usage
 
+The `ennet` package has two key sets of functions. The first set of functions facilitates the extraction of text data from the [**en-net** online forum](https://www.en-net.org). The second set of functions supports the analysis of the extracted datasets to produce summary measures and statistics of the [**en-net** online forum](https://www.en-net.org).
+
+### Extract functions
+
 `ennet` package provides a set of functions that extracts information from the [**en-net** online forum](https://www.en-net.org). This set of functions was built on top of the [`rvest`](https://rvest.tidyverse.org) package which provides robust and performant web scraping functions and the [`dplyr`](https://dplyr.tidyverse.org) package which provides a full suite of data manipulation functions. The `ennet` package was designed to be able to interact with how the [**en-net** online forum](https://www.en-net.org) has been structured.
 
-### en-net website structure
+#### en-net website structure
 
 The [**en-net** online forum](https://www.en-net.org) website has a very clear and clean structure. The opening page is a list of **thematic areas** which are linked to each of their respective webpages. In each of these **thematic area** webpages is another list, this time a list of **topics** raised within the **thematic area**. These **topics** are the text that an online user provides as the title for the question she/he is going to ask. Each of the **topics** are then again linked to their respective webpages that show the actual full question raised and the ensuing responses and **discussion** stemming from that question.
 
-### Getting list of thematic areas
+#### Getting list of thematic areas
 
 To get a list of **thematic areas** along with the link to the webpage of each **thematic area**, we use the `get_themes()` function as follows:
 
@@ -78,7 +82,7 @@ The resulting table has two columns - the first is named `themes` which contains
 
 This will be useful when choosing which themes to focus on when extracting information. This function outputs an object of the appropriate class and structure as the required input for the `get_themes_topics()` function which would lend to piped operations between the two functions (see below).
 
-### Getting list of topics from thematic area/s
+#### Getting list of topics from thematic area/s
 
 To get a list of **topics** for a particular theme, we use the `get_theme_topics()` function as follows:
 
@@ -130,7 +134,7 @@ get_themes() %>%
 
 The resulting table contains information on all the **topics** within the *Coverage assessment* and *Food assistance* **thematic area** including URL links to the corresponding webpages for each **topic**.
 
-### Getting discussions from topic/s
+#### Getting discussions from topic/s
 
 To get a list of **discussions** for a particular **topic**, we use the `get_topic_discussions()` function as follows:
 
@@ -177,6 +181,18 @@ get_themes() %>%
 ```
 
 The resulting table contains information on all the **discussions** within all the **topics** within the **thematic areas** of *Coverage assessment* and *Food assistance* including the text data on the question and the ensuing reply/replies to the question.
+
+### Analytics functions
+
+The `ennet` package also includes analytic functions that summarises the text data avaiable from the [**en-net** online forum](https://www.en-net.org). Currently, there are four analytic functions available from `ennet`:
+
+* `count_topics` - function to count the number of topics or questions by theme and date
+
+* `count_authors` - 
+
+* `arrange_views` - 
+
+* `arrange_replies`
 
 ## Practical applications
 

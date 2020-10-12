@@ -1,7 +1,8 @@
 ################################################################################
 #
 #'
-#' Utilities to Extract Text Data From EN-NET
+#' Utilities to Extract and Analyse Text Data From the Emergency Nutrition
+#' Network (en-net) Forum
 #'
 #' en-net is the go to online forum for field practitioners requiring prompt
 #' technical advice for operational challenges for which answers are not readily
