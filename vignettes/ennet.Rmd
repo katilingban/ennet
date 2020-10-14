@@ -30,7 +30,7 @@ The **en-net** online forum website has a very clear and clean structure. The op
 
 The **en-net** online forum structure can be summarised graphically as follows:
 
-```{r ennet-structure, echo = FALSE, eval = TRUE, out.width = "100%"}
+```{r ennet-structure, echo = FALSE, eval = FALSE, out.width = "100%"}
 DiagrammeR::grViz("
   digraph ennet {
 
@@ -88,6 +88,10 @@ DiagrammeR::grViz("
   [3]: 'Topic'
   [4]: 'Discussion'
 ")
+```
+
+```{r ennet-structure-1, echo = FALSE, eval = TRUE, out.width = "90%"}
+knitr::include_graphics("../man/figures/ennet_structure.png")
 ```
 
 ### Getting list of thematic areas
