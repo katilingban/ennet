@@ -81,7 +81,7 @@ The `ennet` package also includes analytic functions that summarises the text da
 
 ### Utilities and datasets
 
-In addition to these two sets of key functions, `en-net` package also includes a function that extracts the [**en-net** online forum](https://www.en-net.org) dataset and updates it at a given time interval. This is a convenience wrapper function to `get_themes_topics` that is potentially useful for those who wants to build dashboards or applications that uses data from the [**en-net** online forum](https://www.en-net.org).
+In addition to these two sets of key functions, `en-net` package also includes a function - `update_topics` - that extracts the [**en-net** online forum](https://www.en-net.org) dataset and updates it at a given time interval. This is a convenience wrapper function to `get_themes_topics` that is potentially useful for those who wants to build dashboards or applications that uses data from the [**en-net** online forum](https://www.en-net.org).
 
 Two datasets are also included in the `en-net` package. The first dataset is a data.frame of [**en-net** online forum](https://www.en-net.org) themes and the second dataset is a data.frame of [**en-net** online forum](https://www.en-net.org) topics.
 
