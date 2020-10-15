@@ -113,7 +113,7 @@ install.packages("rennet")
 <p>The <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> website has a very clear and clean structure. The opening page is a list of <strong>thematic areas</strong> which are linked to each of their respective webpages. In each of these <strong>thematic area</strong> webpages is another list, this time a list of <strong>topics</strong> raised within the <strong>thematic area</strong>. These <strong>topics</strong> are the text that an online user provides as the title for the question she/he is going to ask. Each of the <strong>topics</strong> are then again linked to their respective webpages that show the actual full question raised and the ensuing responses and <strong>discussion</strong> stemming from that question.</p>
 <p>Based on this structure, the following functions are available with <code>ennet</code> package for extracting text data:</p>
 <ul>
-<li><p><code>get_themes</code> - function to get a list of <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> thematic areas;</p></li>
+<li><p><code>get_themes</code> - function to get a list of thematic areas in the forum;</p></li>
 <li><p><code>get_theme_topics</code> and <code>get_themes_topics</code> - functions to get list of topics for a specific thematic area or thematic areas; and,</p></li>
 <li><p><code>get_topic_discussions</code> and <code>get_topics_discussions</code> - functions to get list of discussions for a specific topic or topics,</p></li>
 </ul>
@@ -124,11 +124,17 @@ install.packages("rennet")
 <a href="#analytics-functions" class="anchor"></a>Analytics functions</h3>
 <p>The <code>ennet</code> package also includes analytic functions that summarises the text data avaiable from the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a>. Currently, there are four analytic functions available from <code>ennet</code>:</p>
 <ul>
-<li><p><code>count_topics</code> - function to count the number of topics or questions by theme and date</p></li>
-<li><p><code>count_authors</code> - function to count the number of topics attributed to a specific author</p></li>
-<li><p><code>arrange_views</code> - function to arrange topics by number of views</p></li>
-<li><p><code>arrange_replies</code> - function to arrange topics by number of replies</p></li>
+<li><p><code>count_topics</code> - function to count the number of topics or questions by theme and date;</p></li>
+<li><p><code>count_authors</code> - function to count the number of topics attributed to a specific author;</p></li>
+<li><p><code>arrange_views</code> - function to arrange topics by number of views; and,</p></li>
+<li><p><code>arrange_replies</code> - function to arrange topics by number of replies.</p></li>
 </ul>
+</div>
+<div id="utilities-and-datasets" class="section level3">
+<h3 class="hasAnchor">
+<a href="#utilities-and-datasets" class="anchor"></a>Utilities and datasets</h3>
+<p>In addition to these two sets of key functions, <code>en-net</code> package also includes a function - <code>update_topics</code> - that extracts the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> dataset and updates it at a given time interval. This is a convenience wrapper function to <code>get_themes_topics</code> that is potentially useful for those who wants to build dashboards or applications that uses data from the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a>.</p>
+<p>Two datasets are also included in the <code>en-net</code> package. The first dataset is a data.frame of <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> themes and the second dataset is a data.frame of <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> topics.</p>
 </div>
 </div>
 <div id="practical-applications" class="section level2">
