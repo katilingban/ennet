@@ -59,6 +59,16 @@ The `ennet` package has two key sets of functions. The first set of functions fa
 
 The [**en-net** online forum](https://www.en-net.org) website has a very clear and clean structure. The opening page is a list of **thematic areas** which are linked to each of their respective webpages. In each of these **thematic area** webpages is another list, this time a list of **topics** raised within the **thematic area**. These **topics** are the text that an online user provides as the title for the question she/he is going to ask. Each of the **topics** are then again linked to their respective webpages that show the actual full question raised and the ensuing responses and **discussion** stemming from that question.
 
+<br/>
+
+<p align="center">
+```{r ennet_structure, echo = FALSE, eval = TRUE, fig.align = "center"}
+knitr::include_graphics("man/figures/ennet_structure.png")
+```
+</p>
+
+<br/>
+
 Based on this structure, the following functions are available with `ennet` package for extracting text data:
 
 * `get_themes` - function to get a list of thematic areas in the forum;
