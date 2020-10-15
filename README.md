@@ -78,6 +78,16 @@ is going to ask. Each of the **topics** are then again linked to their
 respective webpages that show the actual full question raised and the
 ensuing responses and **discussion** stemming from that question.
 
+<br/>
+
+<p align="center">
+
+<img src="man/figures/ennet_structure.png" width="100%" style="display: block; margin: auto;" />
+
+</p>
+
+<br/>
+
 Based on this structure, the following functions are available with
 `ennet` package for extracting text data:
 
