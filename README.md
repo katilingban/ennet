@@ -81,8 +81,8 @@ ensuing responses and **discussion** stemming from that question.
 Based on this structure, the following functions are available with
 `ennet` package for extracting text data:
 
-  - `get_themes` - function to get a list of [**en-net** online
-    forum](https://www.en-net.org) thematic areas;
+  - `get_themes` - function to get a list of thematic areas in the
+    forum;
 
   - `get_theme_topics` and `get_themes_topics` - functions to get list
     of topics for a specific thematic area or thematic areas; and,
@@ -98,14 +98,30 @@ forum](https://www.en-net.org). Currently, there are four analytic
 functions available from `ennet`:
 
   - `count_topics` - function to count the number of topics or questions
-    by theme and date
+    by theme and date;
 
   - `count_authors` - function to count the number of topics attributed
-    to a specific author
+    to a specific author;
 
-  - `arrange_views` - function to arrange topics by number of views
+  - `arrange_views` - function to arrange topics by number of views;
+    and,
 
-  - `arrange_replies` - function to arrange topics by number of replies
+  - `arrange_replies` - function to arrange topics by number of replies.
+
+### Utilities and datasets
+
+In addition to these two sets of key functions, `en-net` package also
+includes a function that extracts the [**en-net** online
+forum](https://www.en-net.org) dataset and updates it at a given time
+interval. This is a convenience wrapper function to `get_themes_topics`
+that is potentially useful for those who wants to build dashboards or
+applications that uses data from the [**en-net** online
+forum](https://www.en-net.org).
+
+Two datasets are also included in the `en-net` package. The first
+dataset is a data.frame of [**en-net** online
+forum](https://www.en-net.org) themes and the second dataset is a
+data.frame of [**en-net** online forum](https://www.en-net.org) topics.
 
 ## Practical applications
 
