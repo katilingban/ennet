@@ -1,0 +1,20 @@
+---
+title: "Summarising en-net online forum statistics"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Summarising en-net online forum statistics}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(ennet)
+```
+
