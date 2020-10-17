@@ -214,7 +214,7 @@ The `ennet` package also includes analytic functions that summarises the text da
 
 #### Counting number of topics/questions
 
-Summarising the number of topics or questions raised within the [**en-net** online forum](https://www.en-net.org) is basic and useful analytics that can proxy relative importance of a thematic area within the forum. This is faciliated using the `count_topics` function. Counting of topics is done per thematic area and by a specific time period. Counting of topics by month and year is peformed by default:
+Summarising the number of topics or questions raised within the [**en-net** online forum](https://www.en-net.org) is basic and useful analytics that can proxy relative importance of a thematic area within the forum. This is facilitated using the `count_topics` function. Counting of topics is done per thematic area and by a specific time period. Counting of topics by month and year is performed by default:
 
 ```{r usage6, echo = TRUE, eval = FALSE}
 get_themes() %>%
