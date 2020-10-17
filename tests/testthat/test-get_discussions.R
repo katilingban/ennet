@@ -1,8 +1,11 @@
+library(ennet)
 
-links <- get_theme_topics(link = get_themes()$links[4])
+#links <- get_theme_topics(link = ennet_themes$links[4])
+links <- subset(ennet_topics, Theme == "Coverage assessment")
 x <- get_topic_discussions(link = links$Link[1])
 
-links <- get_theme_topics(link = get_themes()$links[1])
+#links <- get_theme_topics(link = get_themes()$links[1])
+links <- subset(ennet_topics, Theme == "Announcements & Nutritionists needed")
 y <- get_topic_discussions(link = links$Link[1])
 
 test_that("output is a tibble", {
@@ -11,7 +14,8 @@ test_that("output is a tibble", {
 })
 
 
-links <- get_theme_topics(link = (get_themes()$links)[4])
+#links <- get_theme_topics(link = (get_themes()$links)[4])
+links <- subset(ennet_topics, Theme == "Coverage assessment")
 x <- get_topics_discussions(link = links[1:3, ])
 
 test_that("output is a tibble", {

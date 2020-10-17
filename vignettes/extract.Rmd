@@ -1,0 +1,222 @@
+---
+title: "Utilities to Extract Text Data from en-net"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Utilities to Extract Text Data from en-net}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  error = FALSE,
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, echo = FALSE}
+library(ennet)
+library(DiagrammeR)
+```
+
+`ennet` package provides a set of functions that extracts information from the [**en-net** online forum](https://www.en-net.org). This set of functions was built on top of the [`rvest`](https://rvest.tidyverse.org) package which provides robust and performant web scraping functions and the [`dplyr`](https://dplyr.tidyverse.org) package which provides a full suite of data manipulation functions. The `ennet` package was designed to be able to interact with how the **en-net** online forum has been structured.
+
+### en-net website structure
+
+The **en-net** online forum website has a very clear and clean structure. The opening page is a list of **thematic areas** which are linked to each of their respective webpages. In each of these **thematic area** webpages is another list, this time a list of **topics** raised within the **thematic area**. These **topics** are the text that an online user provides as the title for the question she/he is going to ask. Each of the **topics** are then again linked to their respective webpages that show the actual full question raised and the ensuing responses and **discussion** stemming from that question.
+
+The **en-net** online forum structure can be summarised graphically as follows:
+
+```{r ennet-structure, echo = FALSE, eval = FALSE, out.width = "100%"}
+DiagrammeR::grViz("
+  digraph ennet {
+
+    graph [layout = dot, fontname = Helvetica]
+
+    node [shape = ellipse, style = filled, color = grey, 
+          fontcolor = white, fontsize = 20]
+
+      node [fillcolor = royalblue]
+        a [label = '@@1']
+
+      node [fillcolor = darkgreen]
+        b [label = '@@2-1'] 
+        c [label = '@@2-2']
+        d [label = '@@2-3']
+
+      node [fillcolor = purple]
+        e [label = '@@3-1']
+        f [label = '@@3-2']
+        g [label = '@@3-3']
+        h [label = '@@3-4']
+        i [label = '@@3-5']
+        j [label = '@@3-6']
+        
+        
+      node [fillcolor = orange]
+        k [label = '@@4-7']
+        l [label = '@@4-8']
+        m [label = '@@4-9']
+        n [label = '@@4-10']
+        o [label = '@@4-11']
+        p [label = '@@4-12']
+        q [label = '@@4-13']
+        r [label = '@@4-14']
+        s [label = '@@4-15']
+        t [label = '@@4-16']
+        u [label = '@@4-17']
+        v [label = '@@4-18']
+
+    edge [color = grey]
+      a -> {b c d}
+      b -> {e f}
+      c -> {g h}
+      d -> {i j}
+      e -> {k l}
+      f -> {m n}
+      g -> {o p}
+      h -> {q r}
+      i -> {s t}
+      j -> {u v}
+  }
+  
+  [1]: 'en-net'  
+  [2]: 'Thematic area'
+  [3]: 'Topic'
+  [4]: 'Discussion'
+")
+```
+
+<br/>
+
+```{r ennet-structure-1, echo = FALSE, eval = TRUE, out.width = "90%", fig.align = "center"}
+knitr::include_graphics("../man/figures/ennet_structure.png")
+```
+<br/>
+
+### Getting list of thematic areas
+
+To get a list of **thematic areas** along with the link to the webpage of each **thematic area**, we use the `get_themes()` function as follows:
+
+```{r usage1, echo = TRUE, eval = FALSE}
+## Load ennet package
+library(ennet)
+
+## Get all thematic areas from en-net
+get_themes()
+```
+
+which results in
+
+```{r usage1a, echo = FALSE, eval = TRUE}
+library(ennet)
+get_themes()
+```
+
+The resulting table has two columns - the first is named `themes` which contains the various **thematic areas** on the [**en-net** online forum](https://www.en-net.org/), and the second is named `links` which contains the corresponding URL for the webpages for each of the **thematic areas**.
+
+This will be useful when choosing which themes to focus on when extracting information. This function outputs an object of the appropriate class and structure as the required input for the `get_themes_topics()` function which would lend to piped operations between the two functions (see below).
+
+### Getting list of topics from thematic area/s
+
+To get a list of **topics** for a particular theme, we use the `get_theme_topics()` function as follows:
+
+```{r usage2, echo = TRUE, eval = FALSE}
+## Load dplyr to facilitate data manipulation
+library(dplyr)
+
+## Extract data from "Coverage assessment" theme
+get_themes() %>%
+  filter(themes == "Coverage assessment") %>%
+  select(links) %>%
+  as.character() %>%
+  get_theme_topics()
+```
+
+which results in
+
+```{r usage2a, echo = FALSE, eval = TRUE}
+## Load dplyr to facilitate data manipulation
+library(dplyr)
+
+## Extract data from "Coverage assessment" theme
+get_themes() %>%
+  filter(themes == "Coverage assessment") %>%
+  select(links) %>%
+  as.character() %>%
+  get_theme_topics()
+```
+
+The resulting table contains information on all the **topics** within the *Coverage assessment* **thematic area** including URL links to the corresponding webpages for each **topic**
+
+To get a list of **topics** for multiple themes, we use the `get_themes_topics()` function as follows:
+
+```{r usage3, echo = TRUE, eval = FALSE}
+## Extract data from "Coverage assessment" theme and "Food assistance" theme
+get_themes() %>%
+  filter(themes %in% c("Coverage assessment", "Food assistance")) %>%
+  get_themes_topics()
+```
+
+which results in
+
+```{r usage3a, echo = FALSE, eval = TRUE}
+## Extract data from "Coverage assessment" theme and "Food assistance" theme
+get_themes() %>%
+  filter(themes %in% c("Coverage assessment", "Food assistance")) %>%
+  get_themes_topics()
+```
+
+The resulting table contains information on all the **topics** within the *Coverage assessment* and *Food assistance* **thematic area** including URL links to the corresponding webpages for each **topic**.
+
+### Getting discussions from topic/s
+
+To get a list of **discussions** for a particular **topic**, we use the `get_topic_discussions()` function as follows:
+
+```{r usage4, echo = TRUE, eval = FALSE}
+get_themes() %>%
+  filter(themes == "Coverage assessment") %>%
+  get_themes_topics() %>%
+  filter(Topic == "Resources for coverage assessment") %>%
+  select(Link) %>%
+  as.character() %>%
+  get_topic_discussions()
+```
+
+which results in
+
+```{r usage4a, echo = FALSE, eval = TRUE}
+get_themes() %>%
+  filter(themes == "Coverage assessment") %>%
+  get_themes_topics() %>%
+  filter(Topic == "Resources for coverage assessment") %>%
+  select(Link) %>%
+  as.character() %>%
+  get_topic_discussions()
+```
+
+The resulting table contains information on all the **discussions** within the **topic** on *Resources for coverage assessment* within the **thematic area** of *Coverage assessment* including the text data on the question and the ensuing reply/replies to the question.
+
+To get a list of **discussions** for a set of **topics**, we use the `get_topics_discussions()` function as follows:
+
+```{r usage5, echo = TRUE, eval = FALSE}
+get_themes() %>%
+  filter(themes %in% c("Coverage assessment", "Food assistance")) %>%
+  get_themes_topics() %>%
+  get_topics_discussions()
+```
+
+which results in
+
+```{r usage5a, echo = FALSE, eval = TRUE}
+get_themes() %>%
+  filter(themes %in% c("Coverage assessment", "Food assistance")) %>%
+  get_themes_topics() %>%
+  get_topics_discussions()
+```
+
+The resulting table contains information on all the **discussions** within all the **topics** within the **thematic areas** of *Coverage assessment* and *Food assistance* including the text data on the question and the ensuing reply/replies to the question.
+
