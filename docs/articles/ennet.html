@@ -5,13 +5,13 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Utilities to Extract Text Data from en-net • ennet</title>
+<title>ennet Package • ennet</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Utilities to Extract Text Data from en-net">
+<script src="../pkgdown.js"></script><meta property="og:title" content="ennet Package">
 <meta property="og:description" content="ennet">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -49,6 +49,18 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="../articles/extract.html">Utilities to Extract Text Data from en-net</a>
+    </li>
+  </ul>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -70,7 +82,7 @@
       </header><script src="ennet_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Utilities to Extract Text Data from en-net</h1>
+      <h1 data-toc-skip>ennet Package</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/katilingban/ennet/blob/master/vignettes/ennet.Rmd"><code>vignettes/ennet.Rmd</code></a></small>
@@ -88,157 +100,53 @@
 <p>The <strong>en-net</strong> online forum structure can be summarised graphically as follows:</p>
 <p><br></p>
 <p><img src="../man/figures/ennet_structure.png" width="90%" style="display: block; margin: auto;"><br></p>
+<p>Based on this structure, the following functions are available with <code>ennet</code> package for extracting text data:</p>
+<ul>
+<li><p><code>get_themes</code> - function to get a list of thematic areas in the forum;</p></li>
+<li><p><code>get_theme_topics</code> and <code>get_themes_topics</code> - functions to get list of topics for a specific thematic area or thematic areas; and,</p></li>
+<li><p><code>get_topic_discussions</code> and <code>get_topics_discussions</code> - functions to get list of discussions for a specific topic or topics,</p></li>
+</ul>
 </div>
-<div id="getting-list-of-thematic-areas" class="section level3">
+<div id="analytics-functions" class="section level3">
 <h3 class="hasAnchor">
-<a href="#getting-list-of-thematic-areas" class="anchor"></a>Getting list of thematic areas</h3>
-<p>To get a list of <strong>thematic areas</strong> along with the link to the webpage of each <strong>thematic area</strong>, we use the <code><a href="../reference/get_themes.html">get_themes()</a></code> function as follows:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="co">## Load ennet package</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/katilingban/ennet">ennet</a></span>)
-
-<span class="co">## Get all thematic areas from en-net</span>
-<span class="fu"><a href="../reference/get_themes.html">get_themes</a></span>()
-</pre></div>
-<p>which results in</p>
-<pre><code>#&gt; # A tibble: 18 x 2
-#&gt;    themes                                           links                       
-#&gt;    &lt;chr&gt;                                            &lt;chr&gt;                       
-#&gt;  1 Announcements &amp; Nutritionists needed             https://www.en-net.org/foru…
-#&gt;  2 Assessment and Surveillance                      https://www.en-net.org/foru…
-#&gt;  3 COVID-19 and nutrition programming               https://www.en-net.org/foru…
-#&gt;  4 Coverage assessment                              https://www.en-net.org/foru…
-#&gt;  5 Cross-cutting issues                             https://www.en-net.org/foru…
-#&gt;  6 Food assistance                                  https://www.en-net.org/foru…
-#&gt;  7 Infant and young child feeding interventions     https://www.en-net.org/foru…
-#&gt;  8 Management of At Risk Mothers and Infants        https://www.en-net.org/foru…
-#&gt;  9 Micronutrients                                   https://www.en-net.org/foru…
-#&gt; 10 Partnerships for research                        https://www.en-net.org/foru…
-#&gt; 11 Management of wasting/acute malnutrition         https://www.en-net.org/foru…
-#&gt; 12 Prevention and management of stunting            https://www.en-net.org/foru…
-#&gt; 13 Scaling Up Nutrition (SUN)                       https://www.en-net.org/foru…
-#&gt; 14 Upcoming trainings                               https://www.en-net.org/foru…
-#&gt; 15 Other thematic area                              https://www.en-net.org/foru…
-#&gt; 16 Multi-sector nutrition programming               https://www.en-net.org/foru…
-#&gt; 17 Adolescent nutrition                             https://www.en-net.org/foru…
-#&gt; 18 Simplified Approaches for the Management of Acu… https://www.en-net.org/foru…</code></pre>
-<p>The resulting table has two columns - the first is named <code>themes</code> which contains the various <strong>thematic areas</strong> on the <a href="https://www.en-net.org/"><strong>en-net</strong> online forum</a>, and the second is named <code>links</code> which contains the corresponding URL for the webpages for each of the <strong>thematic areas</strong>.</p>
-<p>This will be useful when choosing which themes to focus on when extracting information. This function outputs an object of the appropriate class and structure as the required input for the <code><a href="../reference/get_themes_topics.html">get_themes_topics()</a></code> function which would lend to piped operations between the two functions (see below).</p>
+<a href="#analytics-functions" class="anchor"></a>Analytics functions</h3>
+<p>The <code>ennet</code> package also includes analytic functions that summarises the text data available from the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a>. Currently, there are four analytic functions available from <code>ennet</code>:</p>
+<ul>
+<li><p><code>count_topics</code> - function to count the number of topics or questions by theme and date;</p></li>
+<li><p><code>count_authors</code> - function to count the number of topics attributed to a specific author;</p></li>
+<li><p><code>arrange_views</code> - function to arrange topics by number of views; and,</p></li>
+<li><p><code>arrange_replies</code> - function to arrange topics by number of replies.</p></li>
+</ul>
 </div>
-<div id="getting-list-of-topics-from-thematic-areas" class="section level3">
+<div id="utilities-and-datasets" class="section level3">
 <h3 class="hasAnchor">
-<a href="#getting-list-of-topics-from-thematic-areas" class="anchor"></a>Getting list of topics from thematic area/s</h3>
-<p>To get a list of <strong>topics</strong> for a particular theme, we use the <code><a href="../reference/get_theme_topics.html">get_theme_topics()</a></code> function as follows:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="co">## Load dplyr to facilitate data manipulation</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org">dplyr</a></span>)
-
-<span class="co">## Extract data from "Coverage assessment" theme</span>
-<span class="fu"><a href="../reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">themes</span> <span class="op">==</span> <span class="st">"Coverage assessment"</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="kw">links</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_theme_topics.html">get_theme_topics</a></span>()
-</pre></div>
-<p>which results in</p>
-<pre><code>#&gt; # A tibble: 93 x 7
-#&gt;    Theme    Topic                 Views Replies Author   Posted     Link        
-#&gt;    &lt;chr&gt;    &lt;chr&gt;                 &lt;int&gt;   &lt;int&gt; &lt;chr&gt;    &lt;date&gt;     &lt;chr&gt;       
-#&gt;  1 Coverag… Resources for covera…  8927      11 Tamsin … 2011-12-06 https://www…
-#&gt;  2 Coverag… Use of single covera…  1922       7 Hugh Lo… 2019-11-10 https://www…
-#&gt;  3 Coverag… Real and theoretical…  1691       3 Abdul    2019-10-10 https://www…
-#&gt;  4 Coverag… Single Coverage for …  1604       4 Ben All… 2019-07-05 https://www…
-#&gt;  5 Coverag… Cox's Bazar Refugee …  1838       4 Hugh Lo… 2019-03-28 https://www…
-#&gt;  6 Coverag… Wide Area Survey (St…  1525       2 Anonymo… 2019-03-09 https://www…
-#&gt;  7 Coverag… Disconnection betwee…  1514       2 Tammam … 2019-03-03 https://www…
-#&gt;  8 Coverag… Can we classify the …  1690       2 Anonymo… 2018-11-18 https://www…
-#&gt;  9 Coverag… Routine monitoring d…  1598       0 Anonymo… 2018-11-14 https://www…
-#&gt; 10 Coverag… SQUEAC/coverage surv…  1978       1 Anonymo… 2018-10-05 https://www…
-#&gt; # … with 83 more rows</code></pre>
-<p>The resulting table contains information on all the <strong>topics</strong> within the <em>Coverage assessment</em> <strong>thematic area</strong> including URL links to the corresponding webpages for each <strong>topic</strong></p>
-<p>To get a list of <strong>topics</strong> for multiple themes, we use the <code><a href="../reference/get_themes_topics.html">get_themes_topics()</a></code> function as follows:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="co">## Extract data from "Coverage assessment" theme and "Food assistance" theme</span>
-<span class="fu"><a href="../reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">themes</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span>)) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span>()
-</pre></div>
-<p>which results in</p>
-<pre><code>#&gt; # A tibble: 124 x 7
-#&gt;    Theme    Topic                 Views Replies Author   Posted     Link        
-#&gt;    &lt;chr&gt;    &lt;chr&gt;                 &lt;int&gt;   &lt;int&gt; &lt;chr&gt;    &lt;date&gt;     &lt;chr&gt;       
-#&gt;  1 Coverag… Resources for covera…  8927      11 Tamsin … 2011-12-06 https://www…
-#&gt;  2 Coverag… Use of single covera…  1922       7 Hugh Lo… 2019-11-10 https://www…
-#&gt;  3 Coverag… Real and theoretical…  1691       3 Abdul    2019-10-10 https://www…
-#&gt;  4 Coverag… Single Coverage for …  1604       4 Ben All… 2019-07-05 https://www…
-#&gt;  5 Coverag… Cox's Bazar Refugee …  1838       4 Hugh Lo… 2019-03-28 https://www…
-#&gt;  6 Coverag… Wide Area Survey (St…  1525       2 Anonymo… 2019-03-09 https://www…
-#&gt;  7 Coverag… Disconnection betwee…  1514       2 Tammam … 2019-03-03 https://www…
-#&gt;  8 Coverag… Can we classify the …  1690       2 Anonymo… 2018-11-18 https://www…
-#&gt;  9 Coverag… Routine monitoring d…  1598       0 Anonymo… 2018-11-14 https://www…
-#&gt; 10 Coverag… SQUEAC/coverage surv…  1978       1 Anonymo… 2018-10-05 https://www…
-#&gt; # … with 114 more rows</code></pre>
-<p>The resulting table contains information on all the <strong>topics</strong> within the <em>Coverage assessment</em> and <em>Food assistance</em> <strong>thematic area</strong> including URL links to the corresponding webpages for each <strong>topic</strong>.</p>
+<a href="#utilities-and-datasets" class="anchor"></a>Utilities and datasets</h3>
+<p>In addition to these two sets of key functions, <code>en-net</code> package also includes a function - <code>update_topics</code> - that extracts the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> dataset and updates it at a given time interval. This is a convenience wrapper function to <code>get_themes_topics</code> that is potentially useful for those who wants to build dashboards or applications that uses data from the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a>.</p>
+<p>Two datasets are also included in the <code>en-net</code> package. The first dataset is a data.frame of <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> themes and the second dataset is a data.frame of <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> topics.</p>
 </div>
-<div id="getting-discussions-from-topics" class="section level3">
+<div id="practical-applications" class="section level2">
+<h2 class="hasAnchor">
+<a href="#practical-applications" class="anchor"></a>Practical applications</h2>
+<p>The <a href="https://www.en-net.org/"><strong>en-net</strong></a> online forum is a rich resource for understanding the community of users that participate in it. And given how an online forum is designed, that resource can be tapped relatively easily given that the documentation of the interaction and discussion between its users happens in real-time. The <code>ennet</code> package facilitates the access to that information through the statistical analysis tool <a href="https://www.r-rpoject.org">R</a> with which further levels of analysis can be applied to generate meaningful and valuable understanding of this specific community and to some extent the greater nutrition sector at large.</p>
+<p>Following are a few practical and meaningful applications of the information generated by the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a>.</p>
+<div id="assess-effectiveness-of-the-en-net-online-forum" class="section level3">
 <h3 class="hasAnchor">
-<a href="#getting-discussions-from-topics" class="anchor"></a>Getting discussions from topic/s</h3>
-<p>To get a list of <strong>discussions</strong> for a particular <strong>topic</strong>, we use the <code><a href="../reference/get_topic_discussions.html">get_topic_discussions()</a></code> function as follows:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="fu"><a href="../reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">themes</span> <span class="op">==</span> <span class="st">"Coverage assessment"</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">Topic</span> <span class="op">==</span> <span class="st">"Resources for coverage assessment"</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="kw">Link</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_topic_discussions.html">get_topic_discussions</a></span>()
-</pre></div>
-<p>which results in</p>
-<pre><code>#&gt; # A tibble: 12 x 10
-#&gt;    theme  topic user  userCode job   role  date_time           type  code  post 
-#&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
-#&gt;  1 Cover… Reso… Tams… user24   en-n… Foru… 2011-12-06 11:59:00 ques… 574   "Dea…
-#&gt;  2 Cover… Reso… Mark… user31   Cons… Freq… 2011-12-06 13:24:00 answ… 1536  "And…
-#&gt;  3 Cover… Reso… Erne… user999  Kati… Tech… 2011-12-22 18:02:00 answ… 1603  "Wor…
-#&gt;  4 Cover… Reso… Saul… user1000 Dire… Tech… 2012-01-11 08:59:00 answ… 1664  "And…
-#&gt;  5 Cover… Reso… Mark… user31   Cons… Freq… 2012-05-01 12:29:00 answ… 2076  "Jus…
-#&gt;  6 Cover… Reso… Erne… user999  Kati… Tech… 2012-05-26 09:48:00 answ… 2180  "We …
-#&gt;  7 Cover… Reso… Erne… user999  Kati… Tech… 2012-07-05 11:19:00 answ… 2278  "Dea…
-#&gt;  8 Cover… Reso… Mark… user31   Cons… Freq… 2012-09-17 16:40:00 answ… 2442  "Upd…
-#&gt;  9 Cover… Reso… Mark… user31   Cons… Freq… 2012-11-01 16:19:00 answ… 2615  "And…
-#&gt; 10 Cover… Reso… Mark… user31   Cons… Freq… 2013-04-30 17:19:00 answ… 3288  "The…
-#&gt; 11 Cover… Reso… Mark… user31   Cons… Freq… 2013-09-05 09:56:00 answ… 3445  "Her…
-#&gt; 12 Cover… Reso… Alex… user107… Head… Norm… 2020-06-11 17:27:00 answ… 7723  "The…</code></pre>
-<p>The resulting table contains information on all the <strong>discussions</strong> within the <strong>topic</strong> on <em>Resources for coverage assessment</em> within the <strong>thematic area</strong> of <em>Coverage assessment</em> including the text data on the question and the ensuing reply/replies to the question.</p>
-<p>To get a list of <strong>discussions</strong> for a set of <strong>topics</strong>, we use the <code><a href="../reference/get_topics_discussions.html">get_topics_discussions()</a></code> function as follows:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="fu"><a href="../reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">themes</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span>)) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_topics_discussions.html">get_topics_discussions</a></span>()
-</pre></div>
-<p>which results in</p>
-<pre><code>#&gt; # A tibble: 505 x 10
-#&gt;    theme  topic user  userCode job   role  date_time           type  code  post 
-#&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
-#&gt;  1 Cover… Reso… Tams… user24   en-n… Foru… 2011-12-06 11:59:00 ques… 574   "Dea…
-#&gt;  2 Cover… Reso… Mark… user31   Cons… Freq… 2011-12-06 13:24:00 answ… 1536  "And…
-#&gt;  3 Cover… Reso… Erne… user999  Kati… Tech… 2011-12-22 18:02:00 answ… 1603  "Wor…
-#&gt;  4 Cover… Reso… Saul… user1000 Dire… Tech… 2012-01-11 08:59:00 answ… 1664  "And…
-#&gt;  5 Cover… Reso… Mark… user31   Cons… Freq… 2012-05-01 12:29:00 answ… 2076  "Jus…
-#&gt;  6 Cover… Reso… Erne… user999  Kati… Tech… 2012-05-26 09:48:00 answ… 2180  "We …
-#&gt;  7 Cover… Reso… Erne… user999  Kati… Tech… 2012-07-05 11:19:00 answ… 2278  "Dea…
-#&gt;  8 Cover… Reso… Mark… user31   Cons… Freq… 2012-09-17 16:40:00 answ… 2442  "Upd…
-#&gt;  9 Cover… Reso… Mark… user31   Cons… Freq… 2012-11-01 16:19:00 answ… 2615  "And…
-#&gt; 10 Cover… Reso… Mark… user31   Cons… Freq… 2013-04-30 17:19:00 answ… 3288  "The…
-#&gt; # … with 495 more rows</code></pre>
-<p>The resulting table contains information on all the <strong>discussions</strong> within all the <strong>topics</strong> within the <strong>thematic areas</strong> of <em>Coverage assessment</em> and <em>Food assistance</em> including the text data on the question and the ensuing reply/replies to the question.</p>
+<a href="#assess-effectiveness-of-the-en-net-online-forum" class="anchor"></a>Assess effectiveness of the en-net online forum</h3>
+<p>The data from the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> can be used to assess effectiveness of the forum. Effectiveness can be defined as whether the forum has been able to achieve its stated aims/objectives when it was started. Effectiveness can also be expressed in terms of indicators or metrics that reflect overarching principles, ideals or values that those who started the forum adhere to or that the community of users and the wider sector or society believe in. These may include values of inclusion, participation, scientific rigour among others. Given that the forum has been in existence for many years now, information is available over the same period allowing for assessing temporal variation in effectiveness (as defined). This application is a more <strong>normative approach</strong> and will involve creating or developing metrics or taking relevant metrics from other sectors and applying those to this case.</p>
+</div>
+<div id="identify-gaps-in-information-knowledge-andor-skills" class="section level3">
+<h3 class="hasAnchor">
+<a href="#identify-gaps-in-information-knowledge-andor-skills" class="anchor"></a>Identify gaps in information, knowledge and/or skills</h3>
+<p>Given the nature of the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> as a quick point of recourse for field practitioners to seek answers to practical questions and challenges faced, it can be expected that the data from the forum contains information on what these topics are. These information can then be used to identify most common or most important information, knowledge and skills that have been asked about. By identifying these gaps in information, knowledge and/or skills and by understanding the evolution of these needs over time, we can potentially predict training needs in the near term and over time. This application is a more <strong>formative approach</strong> in that we let the data tell us what information it holds.</p>
+</div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 
