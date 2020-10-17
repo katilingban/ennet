@@ -212,6 +212,38 @@ The `ennet` package also includes analytic functions that summarises the text da
 
 * `arrange_replies` - function to arrange topics by number of replies.
 
+#### Counting number of topics/questions
+
+Summarising the number of topics or questions raised within the [**en-net** online forum](https://www.en-net.org) is basic and useful analytics that can proxy relative importance of a thematic area within the forum. This is faciliated using the `count_topics` function. Counting of topics is done per thematic area and by a specific time period. Counting of topics by month and year is peformed by default:
+
+```{r usage6, echo = TRUE, eval = FALSE}
+get_themes() %>%
+  get_themes_topics() %>%
+  count_topics()
+```
+
+which results in:
+
+```{r usage6a, echo = FALSE, eval = TRUE}
+ennet_topics %>%
+  count_topics()
+```
+
+Counting of topics by year is specified as follows:
+
+```{r usage7, echo = TRUE, eval = FALSE}
+get_themes() %>%
+  get_themes_topics() %>%
+  count_topics(by_date = "year")
+```
+
+which results in:
+
+```{r usage7a, echo = FALSE, eval = TRUE}
+ennet_topics %>%
+  count_topics(by_date = "year")
+```
+
 ### Utilities and datasets
 
 In addition to these two sets of key functions, `en-net` package also includes a function - `update_topics` - that extracts the [**en-net** online forum](https://www.en-net.org) dataset and updates it at a given time interval. This is a convenience wrapper function to `get_themes_topics` that is potentially useful for those who wants to build dashboards or applications that uses data from the [**en-net** online forum](https://www.en-net.org).
