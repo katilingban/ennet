@@ -212,9 +212,107 @@ The `ennet` package also includes analytic functions that summarises the text da
 
 * `arrange_replies` - function to arrange topics by number of replies.
 
+#### Counting number of topics/questions
+
+Summarising the number of topics or questions raised within the [**en-net** online forum](https://www.en-net.org) is basic and useful analytics that can proxy relative importance of a thematic area within the forum. This is facilitated using the `count_topics` function. Counting of topics is done per thematic area and by a specific time period. Counting of topics by month and year is performed by default:
+
+```{r usage6, echo = TRUE, eval = FALSE}
+get_themes() %>%
+  get_themes_topics() %>%
+  count_topics()
+```
+
+which results in:
+
+```{r usage6a, echo = FALSE, eval = TRUE}
+ennet_topics %>%
+  count_topics()
+```
+
+Counting of topics by year is specified as follows:
+
+```{r usage7, echo = TRUE, eval = FALSE}
+get_themes() %>%
+  get_themes_topics() %>%
+  count_topics(by_date = "year")
+```
+
+which results in:
+
+```{r usage7a, echo = FALSE, eval = TRUE}
+ennet_topics %>%
+  count_topics(by_date = "year")
+```
+
+Counting of topics overall across the years is specified as follows:
+
+```{r usage8, echo = TRUE, eval = FALSE}
+get_themes() %>%
+  get_themes_topics() %>%
+  count_topics(by_date = "all")
+```
+
+which results in:
+
+```{r usage8a, echo = FALSE, eval = TRUE}
+ennet_topics %>%
+  count_topics(by_date = "all")
+```
+
+By default, the output of `count_topics` arranges the results by descending frequency of counts of each topic by the grouping variable. This default behaviour can be changed by setting the `.sorted` argument to `FALSE`.
+
+#### Counting number of topics/questions raised by an author
+
+Summarising the number of topics or questions raised within the [**en-net** online forum](https://www.en-net.org) for each author is another basic and useful analytics that can proxy level of engagement by those participating in the forum. This is facilitated using the `count_authors` function. Counting of topics for each author is done per thematic area and by a specific time period. Counting of topics for each author by month and year is performed by default:
+
+```{r usage9, echo = TRUE, eval = FALSE}
+get_themes() %>%
+  get_themes_topics() %>%
+  count_authors()
+```
+
+which results in:
+
+```{r usage9a, echo = FALSE, eval = TRUE}
+ennet_topics %>%
+  count_authors()
+```
+
+Counting of topics by year is specified as follows:
+
+```{r usage10, echo = TRUE, eval = FALSE}
+get_themes() %>%
+  get_themes_topics() %>%
+  count_authors(by_date = "year")
+```
+
+which results in:
+
+```{r usage10a, echo = FALSE, eval = TRUE}
+ennet_topics %>%
+  count_authors(by_date = "year")
+```
+
+Counting of topics overall across the years is specified as follows:
+
+```{r usage11, echo = TRUE, eval = FALSE}
+get_themes() %>%
+  get_themes_topics() %>%
+  count_authors(by_date = "all")
+```
+
+which results in:
+
+```{r usage11a, echo = FALSE, eval = TRUE}
+ennet_topics %>%
+  count_authors(by_date = "all")
+```
+
+By default, the output of `count_authors` arranges the results by descending frequency of counts of each topic raised by an author by the grouping variable. This default behaviour can be changed by setting the `.sorted` argument to `FALSE`.
+
 ### Utilities and datasets
 
-In addition to these two sets of key functions, `en-net` package also includes a function - `update_topics` - that extracts the [**en-net** online forum](https://www.en-net.org) dataset and updates it at a given time interval. This is a convenience wrapper function to `get_themes_topics` that is potentially useful for those who wants to build dashboards or applications that uses data from the [**en-net** online forum](https://www.en-net.org).
+In addition to these two sets of key functions, `ennet` package also includes a function - `update_topics` - that extracts the [**en-net** online forum](https://www.en-net.org) dataset and updates it at a given time interval. This is a convenience wrapper function to `get_themes_topics` that is potentially useful for those who wants to build dashboards or applications that uses data from the [**en-net** online forum](https://www.en-net.org).
 
 Two datasets are also included in the `en-net` package. The first dataset is a data.frame of [**en-net** online forum](https://www.en-net.org) themes and the second dataset is a data.frame of [**en-net** online forum](https://www.en-net.org) topics.
 

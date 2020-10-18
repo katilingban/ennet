@@ -4,14 +4,17 @@
 \alias{count_topics}
 \title{Count the number of topics by theme and by date}
 \usage{
-count_topics(topics, by_date = c("month_year", "year"))
+count_topics(topics, by_date = c("month_year", "year", "all"), .sort = TRUE)
 }
 \arguments{
 \item{topics}{A tibble of topics by theme from en-net forum produced through
 a call to \code{get_themes_topics}.}
 
-\item{by_date}{Should topics be counted by month of the year or just by
-year? Default is by month of the year.}
+\item{by_date}{Should topics be grouped by month of the year or just by
+year or overall? Default is to group by month of the year.}
+
+\item{.sort}{Logical. Should output be sorted by count frequencies? Default
+is TRUE.}
 }
 \value{
 A tibble of topic counts by theme and by specified date format

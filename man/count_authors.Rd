@@ -7,7 +7,8 @@
 count_authors(
   topics,
   by_theme = TRUE,
-  by_date = c("month_year", "year", "all")
+  by_date = c("month_year", "year", "all"),
+  .sort = TRUE
 )
 }
 \arguments{
@@ -18,6 +19,9 @@ a call to \code{get_themes_topics}.}
 
 \item{by_date}{Should topics be counted by month of the year or just by
 year or total? Default is to count by month of the year.}
+
+\item{.sort}{Logical. Should output be sorted by count frequencies? Default
+is TRUE.}
 }
 \value{
 A tibble of topic counts by author, by theme and by specified date
