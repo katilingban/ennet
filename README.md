@@ -172,16 +172,16 @@ which results in
     #> # A tibble: 93 x 7
     #>    Theme    Topic                 Views Replies Author   Posted     Link        
     #>    <chr>    <chr>                 <int>   <int> <chr>    <date>     <chr>       
-    #>  1 Coverag… Resources for covera…  9107      11 Tamsin … 2011-12-06 https://www…
-    #>  2 Coverag… Use of single covera…  2014       7 Hugh Lo… 2019-11-10 https://www…
-    #>  3 Coverag… Real and theoretical…  1779       3 Abdul    2019-10-10 https://www…
-    #>  4 Coverag… Single Coverage for …  1648       4 Ben All… 2019-07-05 https://www…
-    #>  5 Coverag… Cox's Bazar Refugee …  1890       4 Hugh Lo… 2019-03-28 https://www…
-    #>  6 Coverag… Wide Area Survey (St…  1569       2 Anonymo… 2019-03-09 https://www…
-    #>  7 Coverag… Disconnection betwee…  1559       2 Tammam … 2019-03-03 https://www…
-    #>  8 Coverag… Can we classify the …  1738       2 Anonymo… 2018-11-18 https://www…
-    #>  9 Coverag… Routine monitoring d…  1642       0 Anonymo… 2018-11-14 https://www…
-    #> 10 Coverag… SQUEAC/coverage surv…  2024       1 Anonymo… 2018-10-05 https://www…
+    #>  1 Coverag… Resources for covera…  9273      11 Tamsin … 2011-12-06 https://www…
+    #>  2 Coverag… Use of single covera…  2096       7 Hugh Lo… 2019-11-10 https://www…
+    #>  3 Coverag… Real and theoretical…  1860       3 Abdul    2019-10-10 https://www…
+    #>  4 Coverag… Single Coverage for …  1689       4 Ben All… 2019-07-05 https://www…
+    #>  5 Coverag… Cox's Bazar Refugee …  1933       4 Hugh Lo… 2019-03-28 https://www…
+    #>  6 Coverag… Wide Area Survey (St…  1612       2 Anonymo… 2019-03-09 https://www…
+    #>  7 Coverag… Disconnection betwee…  1603       2 Tammam … 2019-03-03 https://www…
+    #>  8 Coverag… Can we classify the …  1779       2 Anonymo… 2018-11-18 https://www…
+    #>  9 Coverag… Routine monitoring d…  1684       0 Anonymo… 2018-11-14 https://www…
+    #> 10 Coverag… SQUEAC/coverage surv…  2064       1 Anonymo… 2018-10-05 https://www…
     #> # … with 83 more rows
 
 The resulting table contains information on all the **topics** within
@@ -203,16 +203,16 @@ which results in
     #> # A tibble: 124 x 7
     #>    Theme    Topic                 Views Replies Author   Posted     Link        
     #>    <chr>    <chr>                 <int>   <int> <chr>    <date>     <chr>       
-    #>  1 Coverag… Resources for covera…  9107      11 Tamsin … 2011-12-06 https://www…
-    #>  2 Coverag… Use of single covera…  2014       7 Hugh Lo… 2019-11-10 https://www…
-    #>  3 Coverag… Real and theoretical…  1779       3 Abdul    2019-10-10 https://www…
-    #>  4 Coverag… Single Coverage for …  1648       4 Ben All… 2019-07-05 https://www…
-    #>  5 Coverag… Cox's Bazar Refugee …  1890       4 Hugh Lo… 2019-03-28 https://www…
-    #>  6 Coverag… Wide Area Survey (St…  1569       2 Anonymo… 2019-03-09 https://www…
-    #>  7 Coverag… Disconnection betwee…  1559       2 Tammam … 2019-03-03 https://www…
-    #>  8 Coverag… Can we classify the …  1738       2 Anonymo… 2018-11-18 https://www…
-    #>  9 Coverag… Routine monitoring d…  1642       0 Anonymo… 2018-11-14 https://www…
-    #> 10 Coverag… SQUEAC/coverage surv…  2024       1 Anonymo… 2018-10-05 https://www…
+    #>  1 Coverag… Resources for covera…  9273      11 Tamsin … 2011-12-06 https://www…
+    #>  2 Coverag… Use of single covera…  2096       7 Hugh Lo… 2019-11-10 https://www…
+    #>  3 Coverag… Real and theoretical…  1860       3 Abdul    2019-10-10 https://www…
+    #>  4 Coverag… Single Coverage for …  1689       4 Ben All… 2019-07-05 https://www…
+    #>  5 Coverag… Cox's Bazar Refugee …  1933       4 Hugh Lo… 2019-03-28 https://www…
+    #>  6 Coverag… Wide Area Survey (St…  1612       2 Anonymo… 2019-03-09 https://www…
+    #>  7 Coverag… Disconnection betwee…  1603       2 Tammam … 2019-03-03 https://www…
+    #>  8 Coverag… Can we classify the …  1779       2 Anonymo… 2018-11-18 https://www…
+    #>  9 Coverag… Routine monitoring d…  1684       0 Anonymo… 2018-11-14 https://www…
+    #> 10 Coverag… SQUEAC/coverage surv…  2064       1 Anonymo… 2018-10-05 https://www…
     #> # … with 114 more rows
 
 The resulting table contains information on all the **topics** within
@@ -364,9 +364,134 @@ which results in:
     #> 10 Announcements & Nutritionists needed  2012    82
     #> # … with 132 more rows
 
+Counting of topics overall across the years is specified as follows:
+
+``` r
+get_themes() %>%
+  get_themes_topics() %>%
+  count_topics(by_date = "all")
+```
+
+which results in:
+
+    #> # A tibble: 18 x 2
+    #>    Theme                                                              n
+    #>    <chr>                                                          <int>
+    #>  1 Announcements & Nutritionists needed                            1222
+    #>  2 Management of wasting/acute malnutrition                         528
+    #>  3 Assessment and Surveillance                                      451
+    #>  4 Infant and young child feeding interventions                     188
+    #>  5 Coverage assessment                                               93
+    #>  6 Upcoming trainings                                                92
+    #>  7 COVID-19 and nutrition programming                                83
+    #>  8 Micronutrients                                                    53
+    #>  9 Other thematic area                                               51
+    #> 10 Scaling Up Nutrition (SUN)                                        51
+    #> 11 Cross-cutting issues                                              47
+    #> 12 Food assistance                                                   31
+    #> 13 Management of At Risk Mothers and Infants                         26
+    #> 14 Prevention and management of stunting                             20
+    #> 15 Partnerships for research                                         18
+    #> 16 Adolescent nutrition                                              13
+    #> 17 Simplified Approaches for the Management of Acute Malnutrition    10
+    #> 18 Multi-sector nutrition programming                                 3
+
+By default, the output of `count_topics` arranges the results by
+descending frequency of counts of each topic by the grouping variable.
+This default behaviour can be changed by setting the `.sorted` argument
+to `FALSE`.
+
+#### Counting number of topics/questions raised by an author
+
+Summarising the number of topics or questions raised within the
+[**en-net** online forum](https://www.en-net.org) for each author is
+another basic and useful analytics that can proxy level of engagement by
+those participating in the forum. This is facilitated using the
+`count_authors` function. Counting of topics for each author is done per
+thematic area and by a specific time period. Counting of topics for each
+author by month and year is performed by default:
+
+``` r
+get_themes() %>%
+  get_themes_topics() %>%
+  count_authors()
+```
+
+which results in:
+
+    #> # A tibble: 2,491 x 5
+    #>    Theme                                Author           Month  Year     n
+    #>    <chr>                                <chr>            <fct> <dbl> <int>
+    #>  1 Announcements & Nutritionists needed Anonymous 1494   Jun    2015    13
+    #>  2 Announcements & Nutritionists needed Mark Hawkes      May    2019    13
+    #>  3 Announcements & Nutritionists needed Marie Lecuyer    May    2014    11
+    #>  4 Announcements & Nutritionists needed Anonymous 1271   May    2012     9
+    #>  5 Announcements & Nutritionists needed Anonymous 1494   Aug    2015     9
+    #>  6 COVID-19 and nutrition programming   GTAM Wasting TWG Jun    2020     9
+    #>  7 Announcements & Nutritionists needed Marie Lecuyer    Mar    2014     8
+    #>  8 Announcements & Nutritionists needed Marie Lecuyer    Jul    2014     8
+    #>  9 Announcements & Nutritionists needed Michael ALVES    Sep    2015     7
+    #> 10 Announcements & Nutritionists needed Ciara Passmore   Aug    2015     6
+    #> # … with 2,481 more rows
+
+Counting of topics by year is specified as follows:
+
+``` r
+get_themes() %>%
+  get_themes_topics() %>%
+  count_authors(by_date = "year")
+```
+
+which results in:
+
+    #> # A tibble: 1,977 x 4
+    #>    Theme                               Author                         Year     n
+    #>    <chr>                               <chr>                         <dbl> <int>
+    #>  1 Announcements & Nutritionists need… Marie Lecuyer                  2014    47
+    #>  2 Announcements & Nutritionists need… Anonymous 1494                 2015    28
+    #>  3 Announcements & Nutritionists need… Tamsin Walters                 2015    26
+    #>  4 COVID-19 and nutrition programming  GTAM Wasting TWG               2020    22
+    #>  5 Announcements & Nutritionists need… Michael ALVES                  2015    18
+    #>  6 Announcements & Nutritionists need… Nutrition International - NT…  2018    18
+    #>  7 Announcements & Nutritionists need… Tamsin Walters                 2018    17
+    #>  8 Announcements & Nutritionists need… Mark Hawkes                    2019    16
+    #>  9 Announcements & Nutritionists need… Anonymous 1271                 2012    15
+    #> 10 Announcements & Nutritionists need… Marie Lecuyer                  2015    14
+    #> # … with 1,967 more rows
+
+Counting of topics overall across the years is specified as follows:
+
+``` r
+get_themes() %>%
+  get_themes_topics() %>%
+  count_authors(by_date = "all")
+```
+
+which results in:
+
+    #> # A tibble: 1,535 x 3
+    #>    Theme                                Author                              n
+    #>    <chr>                                <chr>                           <int>
+    #>  1 Announcements & Nutritionists needed Tamsin Walters                    103
+    #>  2 Announcements & Nutritionists needed Marie Lecuyer                      61
+    #>  3 Announcements & Nutritionists needed Michael ALVES                      58
+    #>  4 Announcements & Nutritionists needed Anonymous 1494                     49
+    #>  5 Announcements & Nutritionists needed Nutrition International - NTEAM    32
+    #>  6 Announcements & Nutritionists needed Alan Mason                         29
+    #>  7 Announcements & Nutritionists needed Regine Kopplow                     26
+    #>  8 Announcements & Nutritionists needed Mark Hawkes                        23
+    #>  9 COVID-19 and nutrition programming   GTAM Wasting TWG                   22
+    #> 10 Assessment and Surveillance          Anonymous 81                       21
+    #> # … with 1,525 more rows
+
+By default, the output of `count_authors` arranges the results by
+descending frequency of counts of each topic raised by an author by the
+grouping variable. This default behaviour can be changed by setting the
+`.sorted` argument to `FALSE`.
+
 ### Utilities and datasets
 
-In addition to these two sets of key functions, `en-net` package also
+In addition to these two sets of key functions, `ennet` package also
 includes a function - `update_topics` - that extracts the [**en-net**
 online forum](https://www.en-net.org) dataset and updates it at a given
 time interval. This is a convenience wrapper function to
