@@ -58,6 +58,34 @@ test_that("output has correct names", {
 })
 
 ##
+y <- x %>%
+  count_topics(by_date = "all")
+
+test_that("count_topics output is tibble", {
+  expect_is(y, "tbl")
+})
+
+test_that("output has correct names", {
+  expect_true(all(names(y) %in% c("Theme", "Year", "n")))
+})
+
+test_that("output is in correct order", {
+  expect_true(all(diff(y[y$Theme == "Announcements & Nutritionists needed", ]$n) <= 0))
+})
+
+y <- x %>%
+  count_topics(by_date = "all", .sort = FALSE)
+
+test_that("count_topics output is tibble", {
+  expect_is(y, "tbl")
+})
+
+test_that("output has correct names", {
+  expect_true(all(names(y) %in% c("Theme", "Year", "n")))
+})
+
+
+##
 y <- x %>% arrange_views()
 
 test_that("arrange_views output is tibble", {
