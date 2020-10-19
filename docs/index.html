@@ -65,10 +65,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/analytics.html">Summarising en-net online forum statistics</a>
+      <a href="articles/extract.html">Utilities to Extract Text Data from en-net</a>
     </li>
     <li>
-      <a href="articles/extract.html">Utilities to Extract Text Data from en-net</a>
+      <a href="articles/analytics.html">Summarising en-net online forum statistics</a>
     </li>
   </ul>
 </li>
@@ -145,10 +145,11 @@ install.packages("rennet")
 <p>To get a list of <strong>thematic areas</strong> along with the link to the webpage of each <strong>thematic area</strong>, we use the <code><a href="reference/get_themes.html">get_themes()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
 <span class="co">## Load ennet package</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/katilingban/ennet">ennet</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/katilingban/ennet">ennet</a></span>)
 
 <span class="co">## Get all thematic areas from en-net</span>
-<span class="fu"><a href="reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>()
+</pre></div>
 <p>which results in</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#&gt; # A tibble: 18 x 2</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="co">#&gt;    themes                                           links                       </span></span>
@@ -180,50 +181,52 @@ install.packages("rennet")
 <p>To get a list of <strong>topics</strong> for a particular theme, we use the <code><a href="reference/get_theme_topics.html">get_theme_topics()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit">
 <span class="co">## Load dplyr to facilitate data manipulation</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org">dplyr</a></span>)
 
 <span class="co">## Extract data from "Coverage assessment" theme</span>
-<span class="fu"><a href="reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">themes</span> <span class="op">==</span> <span class="st">"Coverage assessment"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">links</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/get_theme_topics.html">get_theme_topics</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">themes</span> <span class="op">==</span> <span class="st">"Coverage assessment"</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="kw">links</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_theme_topics.html">get_theme_topics</a></span>()
+</pre></div>
 <p>which results in</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#&gt; # A tibble: 93 x 7</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="co">#&gt;    Theme    Topic                 Views Replies Author   Posted     Link        </span></span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;                 &lt;int&gt;   &lt;int&gt; &lt;chr&gt;    &lt;date&gt;     &lt;chr&gt;       </span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#&gt;  1 Coverag… Resources for covera…  9273      11 Tamsin … 2011-12-06 https://www…</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#&gt;  2 Coverag… Use of single covera…  2096       7 Hugh Lo… 2019-11-10 https://www…</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#&gt;  3 Coverag… Real and theoretical…  1860       3 Abdul    2019-10-10 https://www…</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#&gt;  4 Coverag… Single Coverage for …  1689       4 Ben All… 2019-07-05 https://www…</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#&gt;  5 Coverag… Cox's Bazar Refugee …  1933       4 Hugh Lo… 2019-03-28 https://www…</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#&gt;  6 Coverag… Wide Area Survey (St…  1612       2 Anonymo… 2019-03-09 https://www…</span></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#&gt;  7 Coverag… Disconnection betwee…  1603       2 Tammam … 2019-03-03 https://www…</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt;  8 Coverag… Can we classify the …  1779       2 Anonymo… 2018-11-18 https://www…</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt;  9 Coverag… Routine monitoring d…  1684       0 Anonymo… 2018-11-14 https://www…</span></span>
-<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt; 10 Coverag… SQUEAC/coverage surv…  2064       1 Anonymo… 2018-10-05 https://www…</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#&gt;  1 Coverag… Resources for covera…  9360      11 Tamsin … 2011-12-06 https://www…</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#&gt;  2 Coverag… Use of single covera…  2142       7 Hugh Lo… 2019-11-10 https://www…</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#&gt;  3 Coverag… Real and theoretical…  1908       3 Abdul    2019-10-10 https://www…</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#&gt;  4 Coverag… Single Coverage for …  1716       4 Ben All… 2019-07-05 https://www…</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#&gt;  5 Coverag… Cox's Bazar Refugee …  1958       4 Hugh Lo… 2019-03-28 https://www…</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#&gt;  6 Coverag… Wide Area Survey (St…  1636       2 Anonymo… 2019-03-09 https://www…</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#&gt;  7 Coverag… Disconnection betwee…  1626       2 Tammam … 2019-03-03 https://www…</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt;  8 Coverag… Can we classify the …  1805       2 Anonymo… 2018-11-18 https://www…</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt;  9 Coverag… Routine monitoring d…  1710       0 Anonymo… 2018-11-14 https://www…</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt; 10 Coverag… SQUEAC/coverage surv…  2090       1 Anonymo… 2018-10-05 https://www…</span></span>
 <span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt; # … with 83 more rows</span></span></code></pre></div>
 <p>The resulting table contains information on all the <strong>topics</strong> within the <em>Coverage assessment</em> <strong>thematic area</strong> including URL links to the corresponding webpages for each <strong>topic</strong></p>
 <p>To get a list of <strong>topics</strong> for multiple themes, we use the <code><a href="reference/get_themes_topics.html">get_themes_topics()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit">
 <span class="co">## Extract data from "Coverage assessment" theme and "Food assistance" theme</span>
-<span class="fu"><a href="reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">themes</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">themes</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span>)) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>()
+</pre></div>
 <p>which results in</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">#&gt; # A tibble: 124 x 7</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt;    Theme    Topic                 Views Replies Author   Posted     Link        </span></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;                 &lt;int&gt;   &lt;int&gt; &lt;chr&gt;    &lt;date&gt;     &lt;chr&gt;       </span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#&gt;  1 Coverag… Resources for covera…  9273      11 Tamsin … 2011-12-06 https://www…</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#&gt;  2 Coverag… Use of single covera…  2096       7 Hugh Lo… 2019-11-10 https://www…</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="co">#&gt;  3 Coverag… Real and theoretical…  1860       3 Abdul    2019-10-10 https://www…</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="co">#&gt;  4 Coverag… Single Coverage for …  1689       4 Ben All… 2019-07-05 https://www…</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a><span class="co">#&gt;  5 Coverag… Cox's Bazar Refugee …  1933       4 Hugh Lo… 2019-03-28 https://www…</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a><span class="co">#&gt;  6 Coverag… Wide Area Survey (St…  1612       2 Anonymo… 2019-03-09 https://www…</span></span>
-<span id="cb7-10"><a href="#cb7-10"></a><span class="co">#&gt;  7 Coverag… Disconnection betwee…  1603       2 Tammam … 2019-03-03 https://www…</span></span>
-<span id="cb7-11"><a href="#cb7-11"></a><span class="co">#&gt;  8 Coverag… Can we classify the …  1779       2 Anonymo… 2018-11-18 https://www…</span></span>
-<span id="cb7-12"><a href="#cb7-12"></a><span class="co">#&gt;  9 Coverag… Routine monitoring d…  1684       0 Anonymo… 2018-11-14 https://www…</span></span>
-<span id="cb7-13"><a href="#cb7-13"></a><span class="co">#&gt; 10 Coverag… SQUEAC/coverage surv…  2064       1 Anonymo… 2018-10-05 https://www…</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#&gt;  1 Coverag… Resources for covera…  9360      11 Tamsin … 2011-12-06 https://www…</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#&gt;  2 Coverag… Use of single covera…  2142       7 Hugh Lo… 2019-11-10 https://www…</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co">#&gt;  3 Coverag… Real and theoretical…  1908       3 Abdul    2019-10-10 https://www…</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="co">#&gt;  4 Coverag… Single Coverage for …  1716       4 Ben All… 2019-07-05 https://www…</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="co">#&gt;  5 Coverag… Cox's Bazar Refugee …  1958       4 Hugh Lo… 2019-03-28 https://www…</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="co">#&gt;  6 Coverag… Wide Area Survey (St…  1636       2 Anonymo… 2019-03-09 https://www…</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="co">#&gt;  7 Coverag… Disconnection betwee…  1626       2 Tammam … 2019-03-03 https://www…</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="co">#&gt;  8 Coverag… Can we classify the …  1805       2 Anonymo… 2018-11-18 https://www…</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="co">#&gt;  9 Coverag… Routine monitoring d…  1710       0 Anonymo… 2018-11-14 https://www…</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="co">#&gt; 10 Coverag… SQUEAC/coverage surv…  2090       1 Anonymo… 2018-10-05 https://www…</span></span>
 <span id="cb7-14"><a href="#cb7-14"></a><span class="co">#&gt; # … with 114 more rows</span></span></code></pre></div>
 <p>The resulting table contains information on all the <strong>topics</strong> within the <em>Coverage assessment</em> and <em>Food assistance</em> <strong>thematic area</strong> including URL links to the corresponding webpages for each <strong>topic</strong>.</p>
 </div>
@@ -232,13 +235,14 @@ install.packages("rennet")
 <a href="#getting-discussions-from-topics" class="anchor"></a>Getting discussions from topic/s</h4>
 <p>To get a list of <strong>discussions</strong> for a particular <strong>topic</strong>, we use the <code><a href="reference/get_topic_discussions.html">get_topic_discussions()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="fu"><a href="reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">themes</span> <span class="op">==</span> <span class="st">"Coverage assessment"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Topic</span> <span class="op">==</span> <span class="st">"Resources for coverage assessment"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Link</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/get_topic_discussions.html">get_topic_discussions</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">themes</span> <span class="op">==</span> <span class="st">"Coverage assessment"</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">Topic</span> <span class="op">==</span> <span class="st">"Resources for coverage assessment"</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="kw">Link</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_topic_discussions.html">get_topic_discussions</a></span>()
+</pre></div>
 <p>which results in</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">#&gt; # A tibble: 12 x 10</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="co">#&gt;    theme  topic user  userCode job   role  date_time           type  code  post </span></span>
@@ -258,10 +262,11 @@ install.packages("rennet")
 <p>The resulting table contains information on all the <strong>discussions</strong> within the <strong>topic</strong> on <em>Resources for coverage assessment</em> within the <strong>thematic area</strong> of <em>Coverage assessment</em> including the text data on the question and the ensuing reply/replies to the question.</p>
 <p>To get a list of <strong>discussions</strong> for a set of <strong>topics</strong>, we use the <code><a href="reference/get_topics_discussions.html">get_topics_discussions()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="fu"><a href="reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">themes</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/get_topics_discussions.html">get_topics_discussions</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">themes</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span>)) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_topics_discussions.html">get_topics_discussions</a></span>()
+</pre></div>
 <p>which results in</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co">#&gt; # A tibble: 505 x 10</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="co">#&gt;    theme  topic user  userCode job   role  date_time           type  code  post </span></span>
@@ -295,9 +300,10 @@ install.packages("rennet")
 <a href="#counting-number-of-topicsquestions" class="anchor"></a>Counting number of topics/questions</h4>
 <p>Summarising the number of topics or questions raised within the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> is basic and useful analytics that can proxy relative importance of a thematic area within the forum. This is facilitated using the <code>count_topics</code> function. Counting of topics is done per thematic area and by a specific time period. Counting of topics by month and year is performed by default:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit">
-<span class="fu"><a href="reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/count_topics.html">count_topics</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/count_topics.html">count_topics</a></span>()
+</pre></div>
 <p>which results in:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">#&gt; # A tibble: 843 x 4</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="co">#&gt;    Theme                                Month  Year     n</span></span>
@@ -315,9 +321,10 @@ install.packages("rennet")
 <span id="cb13-14"><a href="#cb13-14"></a><span class="co">#&gt; # … with 833 more rows</span></span></code></pre></div>
 <p>Counting of topics by year is specified as follows:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit">
-<span class="fu"><a href="reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/count_topics.html">count_topics</a></span><span class="op">(</span>by_date <span class="op">=</span> <span class="st">"year"</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/count_topics.html">count_topics</a></span>(by_date = <span class="st">"year"</span>)
+</pre></div>
 <p>which results in:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co">#&gt; # A tibble: 142 x 3</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="co">#&gt;    Theme                                 Year     n</span></span>
@@ -335,9 +342,10 @@ install.packages("rennet")
 <span id="cb15-14"><a href="#cb15-14"></a><span class="co">#&gt; # … with 132 more rows</span></span></code></pre></div>
 <p>Counting of topics overall across the years is specified as follows:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit">
-<span class="fu"><a href="reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/count_topics.html">count_topics</a></span><span class="op">(</span>by_date <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/count_topics.html">count_topics</a></span>(by_date = <span class="st">"all"</span>)
+</pre></div>
 <p>which results in:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co">#&gt; # A tibble: 18 x 2</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="co">#&gt;    Theme                                                              n</span></span>
@@ -367,9 +375,10 @@ install.packages("rennet")
 <a href="#counting-number-of-topicsquestions-raised-by-an-author" class="anchor"></a>Counting number of topics/questions raised by an author</h4>
 <p>Summarising the number of topics or questions raised within the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> for each author is another basic and useful analytics that can proxy level of engagement by those participating in the forum. This is facilitated using the <code>count_authors</code> function. Counting of topics for each author is done per thematic area and by a specific time period. Counting of topics for each author by month and year is performed by default:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit">
-<span class="fu"><a href="reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/count_authors.html">count_authors</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/count_authors.html">count_authors</a></span>()
+</pre></div>
 <p>which results in:</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co">#&gt; # A tibble: 2,491 x 5</span></span>
 <span id="cb19-2"><a href="#cb19-2"></a><span class="co">#&gt;    Theme                                Author           Month  Year     n</span></span>
@@ -387,9 +396,10 @@ install.packages("rennet")
 <span id="cb19-14"><a href="#cb19-14"></a><span class="co">#&gt; # … with 2,481 more rows</span></span></code></pre></div>
 <p>Counting of topics by year is specified as follows:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit">
-<span class="fu"><a href="reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/count_authors.html">count_authors</a></span><span class="op">(</span>by_date <span class="op">=</span> <span class="st">"year"</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/count_authors.html">count_authors</a></span>(by_date = <span class="st">"year"</span>)
+</pre></div>
 <p>which results in:</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co">#&gt; # A tibble: 1,977 x 4</span></span>
 <span id="cb21-2"><a href="#cb21-2"></a><span class="co">#&gt;    Theme                               Author                         Year     n</span></span>
@@ -407,9 +417,10 @@ install.packages("rennet")
 <span id="cb21-14"><a href="#cb21-14"></a><span class="co">#&gt; # … with 1,967 more rows</span></span></code></pre></div>
 <p>Counting of topics overall across the years is specified as follows:</p>
 <div class="sourceCode" id="cb22"><pre class="downlit">
-<span class="fu"><a href="reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/count_authors.html">count_authors</a></span><span class="op">(</span>by_date <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/count_authors.html">count_authors</a></span>(by_date = <span class="st">"all"</span>)
+</pre></div>
 <p>which results in:</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co">#&gt; # A tibble: 1,535 x 3</span></span>
 <span id="cb23-2"><a href="#cb23-2"></a><span class="co">#&gt;    Theme                                Author                              n</span></span>
@@ -426,6 +437,182 @@ install.packages("rennet")
 <span id="cb23-13"><a href="#cb23-13"></a><span class="co">#&gt; 10 Assessment and Surveillance          Anonymous 81                       21</span></span>
 <span id="cb23-14"><a href="#cb23-14"></a><span class="co">#&gt; # … with 1,525 more rows</span></span></code></pre></div>
 <p>By default, the output of <code>count_authors</code> arranges the results by descending frequency of counts of each topic raised by an author by the grouping variable. This default behaviour can be changed by setting the <code>.sorted</code> argument to <code>FALSE</code>.</p>
+</div>
+<div id="arranging-topics-by-number-of-views" class="section level4">
+<h4 class="hasAnchor">
+<a href="#arranging-topics-by-number-of-views" class="anchor"></a>Arranging topics by number of views</h4>
+<p>Summarising the number of topics or questions raised within the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> by arranging them based on number of views can proxy level of interest to a specific topic by those participating in the forum. This is facilitated using the <code>arrange_views</code> function. Ranking of topics by number of views is done per thematic area and by a specific time period. Ranking of topics by number of views by thematic area and by month and year is performed by default:</p>
+<div class="sourceCode" id="cb24"><pre class="downlit">
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/arrange_views.html">arrange_views</a></span>()
+</pre></div>
+<p>which results in:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co">#&gt; # A tibble: 2,980 x 9</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="co">#&gt;    Theme   Topic          Views Author  Posted     Link      Replies Month  Year</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;   &lt;date&gt;     &lt;chr&gt;       &lt;int&gt; &lt;fct&gt; &lt;dbl&gt;</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a><span class="co">#&gt;  1 Adoles… Age group of …   525 Anonym… 2020-02-15 https://…       1 Feb    2020</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a><span class="co">#&gt;  2 Adoles… Launch of res…  1894 Jo Lof… 2018-05-23 https://…       0 May    2018</span></span>
+<span id="cb25-6"><a href="#cb25-6"></a><span class="co">#&gt;  3 Adoles… Reaching out …  2063 Emily … 2018-06-18 https://…       3 Jun    2018</span></span>
+<span id="cb25-7"><a href="#cb25-7"></a><span class="co">#&gt;  4 Adoles… adolescent ma…  2049 Anonym… 2018-06-21 https://…       1 Jun    2018</span></span>
+<span id="cb25-8"><a href="#cb25-8"></a><span class="co">#&gt;  5 Adoles… adolescent ma…  1859 Anonym… 2018-06-21 https://…       1 Jun    2018</span></span>
+<span id="cb25-9"><a href="#cb25-9"></a><span class="co">#&gt;  6 Adoles… anthropometry…  1814 Emily … 2018-06-29 https://…       2 Jun    2018</span></span>
+<span id="cb25-10"><a href="#cb25-10"></a><span class="co">#&gt;  7 Adoles… Teen/adolesce…  1751 Anne H… 2018-06-19 https://…       1 Jun    2018</span></span>
+<span id="cb25-11"><a href="#cb25-11"></a><span class="co">#&gt;  8 Adoles… health educat…  1532 Anonym… 2018-06-19 https://…       1 Jun    2018</span></span>
+<span id="cb25-12"><a href="#cb25-12"></a><span class="co">#&gt;  9 Adoles… Is there any …   820 Aisha … 2020-06-12 https://…       1 Jun    2020</span></span>
+<span id="cb25-13"><a href="#cb25-13"></a><span class="co">#&gt; 10 Adoles… Assessing nut…  1848 Ursula… 2018-07-25 https://…       3 Jul    2018</span></span>
+<span id="cb25-14"><a href="#cb25-14"></a><span class="co">#&gt; # … with 2,970 more rows</span></span></code></pre></div>
+<p>Arranging topics by number of views by thematic area and by year is performed as follows:</p>
+<div class="sourceCode" id="cb26"><pre class="downlit">
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/arrange_views.html">arrange_views</a></span>(by_date = <span class="st">"year"</span>)
+</pre></div>
+<p>which results in:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co">#&gt; # A tibble: 2,980 x 9</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="co">#&gt;    Theme    Topic        Views Author  Posted     Link       Replies Month  Year</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;        &lt;int&gt; &lt;chr&gt;   &lt;date&gt;     &lt;chr&gt;        &lt;int&gt; &lt;fct&gt; &lt;dbl&gt;</span></span>
+<span id="cb27-4"><a href="#cb27-4"></a><span class="co">#&gt;  1 Adolesc… Reaching ou…  2063 Emily … 2018-06-18 https://w…       3 Jun    2018</span></span>
+<span id="cb27-5"><a href="#cb27-5"></a><span class="co">#&gt;  2 Adolesc… adolescent …  2049 Anonym… 2018-06-21 https://w…       1 Jun    2018</span></span>
+<span id="cb27-6"><a href="#cb27-6"></a><span class="co">#&gt;  3 Adolesc… Launch of r…  1894 Jo Lof… 2018-05-23 https://w…       0 May    2018</span></span>
+<span id="cb27-7"><a href="#cb27-7"></a><span class="co">#&gt;  4 Adolesc… adolescent …  1859 Anonym… 2018-06-21 https://w…       1 Jun    2018</span></span>
+<span id="cb27-8"><a href="#cb27-8"></a><span class="co">#&gt;  5 Adolesc… Assessing n…  1848 Ursula… 2018-07-25 https://w…       3 Jul    2018</span></span>
+<span id="cb27-9"><a href="#cb27-9"></a><span class="co">#&gt;  6 Adolesc… anthropomet…  1814 Emily … 2018-06-29 https://w…       2 Jun    2018</span></span>
+<span id="cb27-10"><a href="#cb27-10"></a><span class="co">#&gt;  7 Adolesc… Teen/adoles…  1751 Anne H… 2018-06-19 https://w…       1 Jun    2018</span></span>
+<span id="cb27-11"><a href="#cb27-11"></a><span class="co">#&gt;  8 Adolesc… Adolescent …  1728 Tamsin… 2018-08-01 https://w…       3 Aug    2018</span></span>
+<span id="cb27-12"><a href="#cb27-12"></a><span class="co">#&gt;  9 Adolesc… adolescent …  1682 Anonym… 2018-07-04 https://w…       1 Jul    2018</span></span>
+<span id="cb27-13"><a href="#cb27-13"></a><span class="co">#&gt; 10 Adolesc… MUAC tape f…  1593 Anonym… 2018-09-27 https://w…       1 Sep    2018</span></span>
+<span id="cb27-14"><a href="#cb27-14"></a><span class="co">#&gt; # … with 2,970 more rows</span></span></code></pre></div>
+<p>Arranging topics by number of views by thematic area overall across the years is performed as follows:</p>
+<div class="sourceCode" id="cb28"><pre class="downlit">
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/arrange_views.html">arrange_views</a></span>(by_date = <span class="st">"all"</span>)
+</pre></div>
+<p>which results in:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co">#&gt; # A tibble: 2,980 x 9</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="co">#&gt;    Theme    Topic        Views Author  Posted     Link       Replies Month  Year</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;        &lt;int&gt; &lt;chr&gt;   &lt;date&gt;     &lt;chr&gt;        &lt;int&gt; &lt;fct&gt; &lt;dbl&gt;</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="co">#&gt;  1 Adolesc… Reaching ou…  2063 Emily … 2018-06-18 https://w…       3 Jun    2018</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a><span class="co">#&gt;  2 Adolesc… adolescent …  2049 Anonym… 2018-06-21 https://w…       1 Jun    2018</span></span>
+<span id="cb29-6"><a href="#cb29-6"></a><span class="co">#&gt;  3 Adolesc… Launch of r…  1894 Jo Lof… 2018-05-23 https://w…       0 May    2018</span></span>
+<span id="cb29-7"><a href="#cb29-7"></a><span class="co">#&gt;  4 Adolesc… adolescent …  1859 Anonym… 2018-06-21 https://w…       1 Jun    2018</span></span>
+<span id="cb29-8"><a href="#cb29-8"></a><span class="co">#&gt;  5 Adolesc… Assessing n…  1848 Ursula… 2018-07-25 https://w…       3 Jul    2018</span></span>
+<span id="cb29-9"><a href="#cb29-9"></a><span class="co">#&gt;  6 Adolesc… anthropomet…  1814 Emily … 2018-06-29 https://w…       2 Jun    2018</span></span>
+<span id="cb29-10"><a href="#cb29-10"></a><span class="co">#&gt;  7 Adolesc… Teen/adoles…  1751 Anne H… 2018-06-19 https://w…       1 Jun    2018</span></span>
+<span id="cb29-11"><a href="#cb29-11"></a><span class="co">#&gt;  8 Adolesc… Adolescent …  1728 Tamsin… 2018-08-01 https://w…       3 Aug    2018</span></span>
+<span id="cb29-12"><a href="#cb29-12"></a><span class="co">#&gt;  9 Adolesc… adolescent …  1682 Anonym… 2018-07-04 https://w…       1 Jul    2018</span></span>
+<span id="cb29-13"><a href="#cb29-13"></a><span class="co">#&gt; 10 Adolesc… MUAC tape f…  1593 Anonym… 2018-09-27 https://w…       1 Sep    2018</span></span>
+<span id="cb29-14"><a href="#cb29-14"></a><span class="co">#&gt; # … with 2,970 more rows</span></span></code></pre></div>
+<p>By default, the output of <code>arrange_views</code> is grouped by thematic area. This default behaviour can be changed by setting the <code>by_theme</code> argument to <code>FALSE</code>. For example, to arrange the topics by number of views by month and year across all themes:</p>
+<div class="sourceCode" id="cb30"><pre class="downlit">
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/arrange_views.html">arrange_views</a></span>(by_theme = <span class="fl">FALSE</span>)
+</pre></div>
+<p>which results in:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co">#&gt; # A tibble: 2,980 x 9</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="co">#&gt;    Theme      Topic         Views Author Posted     Link     Replies Month  Year</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a><span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;         &lt;int&gt; &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt;      &lt;int&gt; &lt;fct&gt; &lt;dbl&gt;</span></span>
+<span id="cb31-4"><a href="#cb31-4"></a><span class="co">#&gt;  1 Infant an… Breastfeedin…  9082 Anony… 2010-01-07 https:/…       3 Jan    2010</span></span>
+<span id="cb31-5"><a href="#cb31-5"></a><span class="co">#&gt;  2 Announcem… Nutrition in…  8291 Marie… 2010-01-05 https:/…      NA Jan    2010</span></span>
+<span id="cb31-6"><a href="#cb31-6"></a><span class="co">#&gt;  3 Assessmen… How to Maint…  5484 Anony… 2010-01-15 https:/…       2 Jan    2010</span></span>
+<span id="cb31-7"><a href="#cb31-7"></a><span class="co">#&gt;  4 Assessmen… Interpretati…  8361 Tamsi… 2011-01-05 https:/…      10 Jan    2011</span></span>
+<span id="cb31-8"><a href="#cb31-8"></a><span class="co">#&gt;  5 Assessmen… Calculating …  7377 Ali M… 2011-01-19 https:/…       3 Jan    2011</span></span>
+<span id="cb31-9"><a href="#cb31-9"></a><span class="co">#&gt;  6 Assessmen… Prospective …  5825 Jeff … 2011-01-27 https:/…       7 Jan    2011</span></span>
+<span id="cb31-10"><a href="#cb31-10"></a><span class="co">#&gt;  7 Announcem… IYCF Consult…  5274 Aliso… 2011-01-04 https:/…      NA Jan    2011</span></span>
+<span id="cb31-11"><a href="#cb31-11"></a><span class="co">#&gt;  8 Announcem… Technical Su…  5220 Tamsi… 2011-01-18 https:/…      NA Jan    2011</span></span>
+<span id="cb31-12"><a href="#cb31-12"></a><span class="co">#&gt;  9 Cross-cut… Transitionin…  5096 Anony… 2011-01-25 https:/…       1 Jan    2011</span></span>
+<span id="cb31-13"><a href="#cb31-13"></a><span class="co">#&gt; 10 Assessmen… Result with …  5011 Anony… 2011-01-25 https:/…       2 Jan    2011</span></span>
+<span id="cb31-14"><a href="#cb31-14"></a><span class="co">#&gt; # … with 2,970 more rows</span></span></code></pre></div>
+</div>
+<div id="arranging-topics-by-number-of-replies" class="section level4">
+<h4 class="hasAnchor">
+<a href="#arranging-topics-by-number-of-replies" class="anchor"></a>Arranging topics by number of replies</h4>
+<p>Summarising the number of topics or questions raised within the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> by arranging them based on number of replies can proxy level of interest to a specific topic by those participating in the forum specifically those who provide responses and feedback to responses within the discussion. This is facilitated using the <code>arrange_replies</code> function. Ranking of topics by number of replies is done per thematic area and by a specific time period. Ranking of topics by number of replies by thematic area and by month and year is performed by default:</p>
+<div class="sourceCode" id="cb32"><pre class="downlit">
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/arrange_replies.html">arrange_replies</a></span>()
+</pre></div>
+<p>which results in:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co">#&gt; # A tibble: 1,758 x 9</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="co">#&gt;    Theme   Topic          Views Author  Posted     Link      Replies Month  Year</span></span>
+<span id="cb33-3"><a href="#cb33-3"></a><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;   &lt;date&gt;     &lt;chr&gt;       &lt;int&gt; &lt;fct&gt; &lt;dbl&gt;</span></span>
+<span id="cb33-4"><a href="#cb33-4"></a><span class="co">#&gt;  1 Adoles… Age group of …   525 Anonym… 2020-02-15 https://…       1 Feb    2020</span></span>
+<span id="cb33-5"><a href="#cb33-5"></a><span class="co">#&gt;  2 Adoles… Launch of res…  1894 Jo Lof… 2018-05-23 https://…       0 May    2018</span></span>
+<span id="cb33-6"><a href="#cb33-6"></a><span class="co">#&gt;  3 Adoles… Reaching out …  2063 Emily … 2018-06-18 https://…       3 Jun    2018</span></span>
+<span id="cb33-7"><a href="#cb33-7"></a><span class="co">#&gt;  4 Adoles… anthropometry…  1814 Emily … 2018-06-29 https://…       2 Jun    2018</span></span>
+<span id="cb33-8"><a href="#cb33-8"></a><span class="co">#&gt;  5 Adoles… adolescent ma…  2049 Anonym… 2018-06-21 https://…       1 Jun    2018</span></span>
+<span id="cb33-9"><a href="#cb33-9"></a><span class="co">#&gt;  6 Adoles… adolescent ma…  1859 Anonym… 2018-06-21 https://…       1 Jun    2018</span></span>
+<span id="cb33-10"><a href="#cb33-10"></a><span class="co">#&gt;  7 Adoles… Teen/adolesce…  1751 Anne H… 2018-06-19 https://…       1 Jun    2018</span></span>
+<span id="cb33-11"><a href="#cb33-11"></a><span class="co">#&gt;  8 Adoles… health educat…  1532 Anonym… 2018-06-19 https://…       1 Jun    2018</span></span>
+<span id="cb33-12"><a href="#cb33-12"></a><span class="co">#&gt;  9 Adoles… Is there any …   820 Aisha … 2020-06-12 https://…       1 Jun    2020</span></span>
+<span id="cb33-13"><a href="#cb33-13"></a><span class="co">#&gt; 10 Adoles… Assessing nut…  1848 Ursula… 2018-07-25 https://…       3 Jul    2018</span></span>
+<span id="cb33-14"><a href="#cb33-14"></a><span class="co">#&gt; # … with 1,748 more rows</span></span></code></pre></div>
+<p>Arranging topics by number of replies by thematic area and by year is performed as follows:</p>
+<div class="sourceCode" id="cb34"><pre class="downlit">
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/arrange_replies.html">arrange_replies</a></span>(by_date = <span class="st">"year"</span>)
+</pre></div>
+<p>which results in:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co">#&gt; # A tibble: 1,758 x 9</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a><span class="co">#&gt;    Theme    Topic        Views Author  Posted     Link       Replies Month  Year</span></span>
+<span id="cb35-3"><a href="#cb35-3"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;        &lt;int&gt; &lt;chr&gt;   &lt;date&gt;     &lt;chr&gt;        &lt;int&gt; &lt;fct&gt; &lt;dbl&gt;</span></span>
+<span id="cb35-4"><a href="#cb35-4"></a><span class="co">#&gt;  1 Adolesc… Adolescent …  1728 Tamsin… 2018-08-01 https://w…       3 Aug    2018</span></span>
+<span id="cb35-5"><a href="#cb35-5"></a><span class="co">#&gt;  2 Adolesc… Assessing n…  1848 Ursula… 2018-07-25 https://w…       3 Jul    2018</span></span>
+<span id="cb35-6"><a href="#cb35-6"></a><span class="co">#&gt;  3 Adolesc… Reaching ou…  2063 Emily … 2018-06-18 https://w…       3 Jun    2018</span></span>
+<span id="cb35-7"><a href="#cb35-7"></a><span class="co">#&gt;  4 Adolesc… anthropomet…  1814 Emily … 2018-06-29 https://w…       2 Jun    2018</span></span>
+<span id="cb35-8"><a href="#cb35-8"></a><span class="co">#&gt;  5 Adolesc… MUAC tape f…  1593 Anonym… 2018-09-27 https://w…       1 Sep    2018</span></span>
+<span id="cb35-9"><a href="#cb35-9"></a><span class="co">#&gt;  6 Adolesc… adolescent …  1682 Anonym… 2018-07-04 https://w…       1 Jul    2018</span></span>
+<span id="cb35-10"><a href="#cb35-10"></a><span class="co">#&gt;  7 Adolesc… adolescent …  2049 Anonym… 2018-06-21 https://w…       1 Jun    2018</span></span>
+<span id="cb35-11"><a href="#cb35-11"></a><span class="co">#&gt;  8 Adolesc… adolescent …  1859 Anonym… 2018-06-21 https://w…       1 Jun    2018</span></span>
+<span id="cb35-12"><a href="#cb35-12"></a><span class="co">#&gt;  9 Adolesc… Teen/adoles…  1751 Anne H… 2018-06-19 https://w…       1 Jun    2018</span></span>
+<span id="cb35-13"><a href="#cb35-13"></a><span class="co">#&gt; 10 Adolesc… health educ…  1532 Anonym… 2018-06-19 https://w…       1 Jun    2018</span></span>
+<span id="cb35-14"><a href="#cb35-14"></a><span class="co">#&gt; # … with 1,748 more rows</span></span></code></pre></div>
+<p>Arranging topics by number of replies by thematic area overall across the years is performed as follows:</p>
+<div class="sourceCode" id="cb36"><pre class="downlit">
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/arrange_replies.html">arrange_replies</a></span>(by_date = <span class="st">"all"</span>)
+</pre></div>
+<p>which results in:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co">#&gt; # A tibble: 1,758 x 9</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="co">#&gt;    Theme   Topic          Views Author  Posted     Link      Replies Month  Year</span></span>
+<span id="cb37-3"><a href="#cb37-3"></a><span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;   &lt;date&gt;     &lt;chr&gt;       &lt;int&gt; &lt;fct&gt; &lt;dbl&gt;</span></span>
+<span id="cb37-4"><a href="#cb37-4"></a><span class="co">#&gt;  1 Adoles… Adolescent sc…  1728 Tamsin… 2018-08-01 https://…       3 Aug    2018</span></span>
+<span id="cb37-5"><a href="#cb37-5"></a><span class="co">#&gt;  2 Adoles… Assessing nut…  1848 Ursula… 2018-07-25 https://…       3 Jul    2018</span></span>
+<span id="cb37-6"><a href="#cb37-6"></a><span class="co">#&gt;  3 Adoles… Reaching out …  2063 Emily … 2018-06-18 https://…       3 Jun    2018</span></span>
+<span id="cb37-7"><a href="#cb37-7"></a><span class="co">#&gt;  4 Adoles… anthropometry…  1814 Emily … 2018-06-29 https://…       2 Jun    2018</span></span>
+<span id="cb37-8"><a href="#cb37-8"></a><span class="co">#&gt;  5 Adoles… Is there any …   820 Aisha … 2020-06-12 https://…       1 Jun    2020</span></span>
+<span id="cb37-9"><a href="#cb37-9"></a><span class="co">#&gt;  6 Adoles… Age group of …   525 Anonym… 2020-02-15 https://…       1 Feb    2020</span></span>
+<span id="cb37-10"><a href="#cb37-10"></a><span class="co">#&gt;  7 Adoles… MUAC tape for…  1593 Anonym… 2018-09-27 https://…       1 Sep    2018</span></span>
+<span id="cb37-11"><a href="#cb37-11"></a><span class="co">#&gt;  8 Adoles… adolescent sc…  1682 Anonym… 2018-07-04 https://…       1 Jul    2018</span></span>
+<span id="cb37-12"><a href="#cb37-12"></a><span class="co">#&gt;  9 Adoles… adolescent ma…  2049 Anonym… 2018-06-21 https://…       1 Jun    2018</span></span>
+<span id="cb37-13"><a href="#cb37-13"></a><span class="co">#&gt; 10 Adoles… adolescent ma…  1859 Anonym… 2018-06-21 https://…       1 Jun    2018</span></span>
+<span id="cb37-14"><a href="#cb37-14"></a><span class="co">#&gt; # … with 1,748 more rows</span></span></code></pre></div>
+<p>By default, the output of <code>arrange_replies</code> is grouped by thematic area. This default behaviour can be changed by setting the <code>by_theme</code> argument to <code>FALSE</code>. For example, to arrange the topics by number of replies by month and year across all themes:</p>
+<div class="sourceCode" id="cb38"><pre class="downlit">
+<span class="fu"><a href="reference/get_themes.html">get_themes</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/arrange_replies.html">arrange_replies</a></span>(by_theme = <span class="fl">FALSE</span>)
+</pre></div>
+<p>which results in:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="co">#&gt; # A tibble: 1,758 x 9</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a><span class="co">#&gt;    Theme     Topic         Views Author  Posted     Link     Replies Month  Year</span></span>
+<span id="cb39-3"><a href="#cb39-3"></a><span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;         &lt;int&gt; &lt;chr&gt;   &lt;date&gt;     &lt;chr&gt;      &lt;int&gt; &lt;fct&gt; &lt;dbl&gt;</span></span>
+<span id="cb39-4"><a href="#cb39-4"></a><span class="co">#&gt;  1 Infant a… Breastfeedin…  9082 Anonym… 2010-01-07 https:/…       3 Jan    2010</span></span>
+<span id="cb39-5"><a href="#cb39-5"></a><span class="co">#&gt;  2 Assessme… How to Maint…  5484 Anonym… 2010-01-15 https:/…       2 Jan    2010</span></span>
+<span id="cb39-6"><a href="#cb39-6"></a><span class="co">#&gt;  3 Assessme… Interpretati…  8361 Tamsin… 2011-01-05 https:/…      10 Jan    2011</span></span>
+<span id="cb39-7"><a href="#cb39-7"></a><span class="co">#&gt;  4 Assessme… Prospective …  5825 Jeff M… 2011-01-27 https:/…       7 Jan    2011</span></span>
+<span id="cb39-8"><a href="#cb39-8"></a><span class="co">#&gt;  5 Assessme… Calculating …  7377 Ali Ma… 2011-01-19 https:/…       3 Jan    2011</span></span>
+<span id="cb39-9"><a href="#cb39-9"></a><span class="co">#&gt;  6 Assessme… Result with …  5011 Anonym… 2011-01-25 https:/…       2 Jan    2011</span></span>
+<span id="cb39-10"><a href="#cb39-10"></a><span class="co">#&gt;  7 Cross-cu… Transitionin…  5096 Anonym… 2011-01-25 https:/…       1 Jan    2011</span></span>
+<span id="cb39-11"><a href="#cb39-11"></a><span class="co">#&gt;  8 Assessme… Nutritional …  7431 Mary M… 2012-01-01 https:/…      10 Jan    2012</span></span>
+<span id="cb39-12"><a href="#cb39-12"></a><span class="co">#&gt;  9 Upcoming… Regional SMA…  5613 Yara S… 2012-01-10 https:/…       8 Jan    2012</span></span>
+<span id="cb39-13"><a href="#cb39-13"></a><span class="co">#&gt; 10 Micronut… multi-micron…  5942 REBECC… 2012-01-18 https:/…       6 Jan    2012</span></span>
+<span id="cb39-14"><a href="#cb39-14"></a><span class="co">#&gt; # … with 1,748 more rows</span></span></code></pre></div>
 </div>
 </div>
 <div id="utilities-and-datasets" class="section level3">
