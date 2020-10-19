@@ -10,6 +10,15 @@ template:
 navbar:
   type: inverse
 
+  components:
+    articles:
+      text: Articles
+      menu:
+      - text: "Utilities to Extract Text Data from en-net"
+        href: articles/extract.html
+      - text: "Summarising en-net online forum statistics"
+        href: articles/analytics.html
+
 home:
   links:
   - text: See the en-net Online Forum
