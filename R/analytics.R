@@ -129,6 +129,12 @@ arrange_views <- function(topics,
       x <- x %>%
         dplyr::group_by(Theme, Year)
     }
+
+    ## by_date == "all"
+    if(by_date == "all") {
+      x <- x %>%
+        dplyr::group_by(Theme)
+    }
   } else {
     ## by_date == "month_year"
     if(by_date == "month_year") {
@@ -192,6 +198,24 @@ arrange_replies <- function(topics,
     ## by_date == "month_year"
     if(by_date == "month_year") {
       x <- x %>%
+        dplyr::group_by(Theme, Month, Year)
+    }
+
+    ## by_date == "year"
+    if(by_date == "year") {
+      x <- x %>%
+        dplyr::group_by(Theme, Year)
+    }
+
+    ## by_date == "all"
+    if(by_date == "all") {
+      x <- x %>%
+        dplyr::group_by(Theme)
+    }
+  } else {
+    ## by_date == "month_year"
+    if(by_date == "month_year") {
+      x <- x %>%
         dplyr::group_by(Month, Year)
     }
 
@@ -202,7 +226,7 @@ arrange_replies <- function(topics,
     }
   }
 
-  ## Arrange by descening number of views
+  ## Arrange by descending number of views
   x <- x %>%
     dplyr::arrange(dplyr::desc(Replies), .by_group = TRUE) %>%
     dplyr::filter(!is.na(Replies)) %>%

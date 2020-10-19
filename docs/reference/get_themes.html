@@ -98,10 +98,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/analytics.html">Summarising en-net online forum statistics</a>
+      <a href="../articles/extract.html">Utilities to Extract Text Data from en-net</a>
     </li>
     <li>
-      <a href="../articles/extract.html">Utilities to Extract Text Data from en-net</a>
+      <a href="../articles/analytics.html">Summarising en-net online forum statistics</a>
     </li>
   </ul>
 </li>
@@ -135,7 +135,7 @@
     <p>Get list of thematic areas from en-net.org</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_themes</span><span class='op'>(</span>base <span class='op'>=</span> <span class='st'>"https://www.en-net.org"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_themes</span>(base = <span class='st'>"https://www.en-net.org"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -152,7 +152,7 @@
 corresponding URLs for each thematic area</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>get_themes</span><span class='op'>(</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='fu'>get_themes</span>()
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 18 x 2</span><span>
 #&gt;    themes                                           links                       
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                       
