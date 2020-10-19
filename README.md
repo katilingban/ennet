@@ -172,16 +172,16 @@ which results in
     #> # A tibble: 93 x 7
     #>    Theme    Topic                 Views Replies Author   Posted     Link        
     #>    <chr>    <chr>                 <int>   <int> <chr>    <date>     <chr>       
-    #>  1 Coverag… Resources for covera…  9273      11 Tamsin … 2011-12-06 https://www…
-    #>  2 Coverag… Use of single covera…  2096       7 Hugh Lo… 2019-11-10 https://www…
-    #>  3 Coverag… Real and theoretical…  1860       3 Abdul    2019-10-10 https://www…
-    #>  4 Coverag… Single Coverage for …  1689       4 Ben All… 2019-07-05 https://www…
-    #>  5 Coverag… Cox's Bazar Refugee …  1933       4 Hugh Lo… 2019-03-28 https://www…
-    #>  6 Coverag… Wide Area Survey (St…  1612       2 Anonymo… 2019-03-09 https://www…
-    #>  7 Coverag… Disconnection betwee…  1603       2 Tammam … 2019-03-03 https://www…
-    #>  8 Coverag… Can we classify the …  1779       2 Anonymo… 2018-11-18 https://www…
-    #>  9 Coverag… Routine monitoring d…  1684       0 Anonymo… 2018-11-14 https://www…
-    #> 10 Coverag… SQUEAC/coverage surv…  2064       1 Anonymo… 2018-10-05 https://www…
+    #>  1 Coverag… Resources for covera…  9360      11 Tamsin … 2011-12-06 https://www…
+    #>  2 Coverag… Use of single covera…  2142       7 Hugh Lo… 2019-11-10 https://www…
+    #>  3 Coverag… Real and theoretical…  1908       3 Abdul    2019-10-10 https://www…
+    #>  4 Coverag… Single Coverage for …  1716       4 Ben All… 2019-07-05 https://www…
+    #>  5 Coverag… Cox's Bazar Refugee …  1958       4 Hugh Lo… 2019-03-28 https://www…
+    #>  6 Coverag… Wide Area Survey (St…  1636       2 Anonymo… 2019-03-09 https://www…
+    #>  7 Coverag… Disconnection betwee…  1626       2 Tammam … 2019-03-03 https://www…
+    #>  8 Coverag… Can we classify the …  1805       2 Anonymo… 2018-11-18 https://www…
+    #>  9 Coverag… Routine monitoring d…  1710       0 Anonymo… 2018-11-14 https://www…
+    #> 10 Coverag… SQUEAC/coverage surv…  2090       1 Anonymo… 2018-10-05 https://www…
     #> # … with 83 more rows
 
 The resulting table contains information on all the **topics** within
@@ -203,16 +203,16 @@ which results in
     #> # A tibble: 124 x 7
     #>    Theme    Topic                 Views Replies Author   Posted     Link        
     #>    <chr>    <chr>                 <int>   <int> <chr>    <date>     <chr>       
-    #>  1 Coverag… Resources for covera…  9273      11 Tamsin … 2011-12-06 https://www…
-    #>  2 Coverag… Use of single covera…  2096       7 Hugh Lo… 2019-11-10 https://www…
-    #>  3 Coverag… Real and theoretical…  1860       3 Abdul    2019-10-10 https://www…
-    #>  4 Coverag… Single Coverage for …  1689       4 Ben All… 2019-07-05 https://www…
-    #>  5 Coverag… Cox's Bazar Refugee …  1933       4 Hugh Lo… 2019-03-28 https://www…
-    #>  6 Coverag… Wide Area Survey (St…  1612       2 Anonymo… 2019-03-09 https://www…
-    #>  7 Coverag… Disconnection betwee…  1603       2 Tammam … 2019-03-03 https://www…
-    #>  8 Coverag… Can we classify the …  1779       2 Anonymo… 2018-11-18 https://www…
-    #>  9 Coverag… Routine monitoring d…  1684       0 Anonymo… 2018-11-14 https://www…
-    #> 10 Coverag… SQUEAC/coverage surv…  2064       1 Anonymo… 2018-10-05 https://www…
+    #>  1 Coverag… Resources for covera…  9360      11 Tamsin … 2011-12-06 https://www…
+    #>  2 Coverag… Use of single covera…  2142       7 Hugh Lo… 2019-11-10 https://www…
+    #>  3 Coverag… Real and theoretical…  1908       3 Abdul    2019-10-10 https://www…
+    #>  4 Coverag… Single Coverage for …  1716       4 Ben All… 2019-07-05 https://www…
+    #>  5 Coverag… Cox's Bazar Refugee …  1958       4 Hugh Lo… 2019-03-28 https://www…
+    #>  6 Coverag… Wide Area Survey (St…  1636       2 Anonymo… 2019-03-09 https://www…
+    #>  7 Coverag… Disconnection betwee…  1626       2 Tammam … 2019-03-03 https://www…
+    #>  8 Coverag… Can we classify the …  1805       2 Anonymo… 2018-11-18 https://www…
+    #>  9 Coverag… Routine monitoring d…  1710       0 Anonymo… 2018-11-14 https://www…
+    #> 10 Coverag… SQUEAC/coverage surv…  2090       1 Anonymo… 2018-10-05 https://www…
     #> # … with 114 more rows
 
 The resulting table contains information on all the **topics** within
@@ -488,6 +488,235 @@ By default, the output of `count_authors` arranges the results by
 descending frequency of counts of each topic raised by an author by the
 grouping variable. This default behaviour can be changed by setting the
 `.sorted` argument to `FALSE`.
+
+#### Arranging topics by number of views
+
+Summarising the number of topics or questions raised within the
+[**en-net** online forum](https://www.en-net.org) by arranging them
+based on number of views can proxy level of interest to a specific topic
+by those participating in the forum. This is facilitated using the
+`arrange_views` function. Ranking of topics by number of views is done
+per thematic area and by a specific time period. Ranking of topics by
+number of views by thematic area and by month and year is performed by
+default:
+
+``` r
+get_themes() %>%
+  get_themes_topics() %>%
+  arrange_views()
+```
+
+which results in:
+
+    #> # A tibble: 2,980 x 9
+    #>    Theme   Topic          Views Author  Posted     Link      Replies Month  Year
+    #>    <chr>   <chr>          <int> <chr>   <date>     <chr>       <int> <fct> <dbl>
+    #>  1 Adoles… Age group of …   525 Anonym… 2020-02-15 https://…       1 Feb    2020
+    #>  2 Adoles… Launch of res…  1894 Jo Lof… 2018-05-23 https://…       0 May    2018
+    #>  3 Adoles… Reaching out …  2063 Emily … 2018-06-18 https://…       3 Jun    2018
+    #>  4 Adoles… adolescent ma…  2049 Anonym… 2018-06-21 https://…       1 Jun    2018
+    #>  5 Adoles… adolescent ma…  1859 Anonym… 2018-06-21 https://…       1 Jun    2018
+    #>  6 Adoles… anthropometry…  1814 Emily … 2018-06-29 https://…       2 Jun    2018
+    #>  7 Adoles… Teen/adolesce…  1751 Anne H… 2018-06-19 https://…       1 Jun    2018
+    #>  8 Adoles… health educat…  1532 Anonym… 2018-06-19 https://…       1 Jun    2018
+    #>  9 Adoles… Is there any …   820 Aisha … 2020-06-12 https://…       1 Jun    2020
+    #> 10 Adoles… Assessing nut…  1848 Ursula… 2018-07-25 https://…       3 Jul    2018
+    #> # … with 2,970 more rows
+
+Arranging topics by number of views by thematic area and by year is
+performed as follows:
+
+``` r
+get_themes() %>%
+  get_themes_topics() %>%
+  arrange_views(by_date = "year")
+```
+
+which results in:
+
+    #> # A tibble: 2,980 x 9
+    #>    Theme    Topic        Views Author  Posted     Link       Replies Month  Year
+    #>    <chr>    <chr>        <int> <chr>   <date>     <chr>        <int> <fct> <dbl>
+    #>  1 Adolesc… Reaching ou…  2063 Emily … 2018-06-18 https://w…       3 Jun    2018
+    #>  2 Adolesc… adolescent …  2049 Anonym… 2018-06-21 https://w…       1 Jun    2018
+    #>  3 Adolesc… Launch of r…  1894 Jo Lof… 2018-05-23 https://w…       0 May    2018
+    #>  4 Adolesc… adolescent …  1859 Anonym… 2018-06-21 https://w…       1 Jun    2018
+    #>  5 Adolesc… Assessing n…  1848 Ursula… 2018-07-25 https://w…       3 Jul    2018
+    #>  6 Adolesc… anthropomet…  1814 Emily … 2018-06-29 https://w…       2 Jun    2018
+    #>  7 Adolesc… Teen/adoles…  1751 Anne H… 2018-06-19 https://w…       1 Jun    2018
+    #>  8 Adolesc… Adolescent …  1728 Tamsin… 2018-08-01 https://w…       3 Aug    2018
+    #>  9 Adolesc… adolescent …  1682 Anonym… 2018-07-04 https://w…       1 Jul    2018
+    #> 10 Adolesc… MUAC tape f…  1593 Anonym… 2018-09-27 https://w…       1 Sep    2018
+    #> # … with 2,970 more rows
+
+Arranging topics by number of views by thematic area overall across the
+years is performed as follows:
+
+``` r
+get_themes() %>%
+  get_themes_topics() %>%
+  arrange_views(by_date = "all")
+```
+
+which results in:
+
+    #> # A tibble: 2,980 x 9
+    #>    Theme    Topic        Views Author  Posted     Link       Replies Month  Year
+    #>    <chr>    <chr>        <int> <chr>   <date>     <chr>        <int> <fct> <dbl>
+    #>  1 Adolesc… Reaching ou…  2063 Emily … 2018-06-18 https://w…       3 Jun    2018
+    #>  2 Adolesc… adolescent …  2049 Anonym… 2018-06-21 https://w…       1 Jun    2018
+    #>  3 Adolesc… Launch of r…  1894 Jo Lof… 2018-05-23 https://w…       0 May    2018
+    #>  4 Adolesc… adolescent …  1859 Anonym… 2018-06-21 https://w…       1 Jun    2018
+    #>  5 Adolesc… Assessing n…  1848 Ursula… 2018-07-25 https://w…       3 Jul    2018
+    #>  6 Adolesc… anthropomet…  1814 Emily … 2018-06-29 https://w…       2 Jun    2018
+    #>  7 Adolesc… Teen/adoles…  1751 Anne H… 2018-06-19 https://w…       1 Jun    2018
+    #>  8 Adolesc… Adolescent …  1728 Tamsin… 2018-08-01 https://w…       3 Aug    2018
+    #>  9 Adolesc… adolescent …  1682 Anonym… 2018-07-04 https://w…       1 Jul    2018
+    #> 10 Adolesc… MUAC tape f…  1593 Anonym… 2018-09-27 https://w…       1 Sep    2018
+    #> # … with 2,970 more rows
+
+By default, the output of `arrange_views` is grouped by thematic area.
+This default behaviour can be changed by setting the `by_theme` argument
+to `FALSE`. For example, to arrange the topics by number of views by
+month and year across all themes:
+
+``` r
+get_themes() %>%
+  get_themes_topics() %>%
+  arrange_views(by_theme = FALSE)
+```
+
+which results in:
+
+    #> # A tibble: 2,980 x 9
+    #>    Theme      Topic         Views Author Posted     Link     Replies Month  Year
+    #>    <chr>      <chr>         <int> <chr>  <date>     <chr>      <int> <fct> <dbl>
+    #>  1 Infant an… Breastfeedin…  9082 Anony… 2010-01-07 https:/…       3 Jan    2010
+    #>  2 Announcem… Nutrition in…  8291 Marie… 2010-01-05 https:/…      NA Jan    2010
+    #>  3 Assessmen… How to Maint…  5484 Anony… 2010-01-15 https:/…       2 Jan    2010
+    #>  4 Assessmen… Interpretati…  8361 Tamsi… 2011-01-05 https:/…      10 Jan    2011
+    #>  5 Assessmen… Calculating …  7377 Ali M… 2011-01-19 https:/…       3 Jan    2011
+    #>  6 Assessmen… Prospective …  5825 Jeff … 2011-01-27 https:/…       7 Jan    2011
+    #>  7 Announcem… IYCF Consult…  5274 Aliso… 2011-01-04 https:/…      NA Jan    2011
+    #>  8 Announcem… Technical Su…  5220 Tamsi… 2011-01-18 https:/…      NA Jan    2011
+    #>  9 Cross-cut… Transitionin…  5096 Anony… 2011-01-25 https:/…       1 Jan    2011
+    #> 10 Assessmen… Result with …  5011 Anony… 2011-01-25 https:/…       2 Jan    2011
+    #> # … with 2,970 more rows
+
+#### Arranging topics by number of replies
+
+Summarising the number of topics or questions raised within the
+[**en-net** online forum](https://www.en-net.org) by arranging them
+based on number of replies can proxy level of interest to a specific
+topic by those participating in the forum specifically those who provide
+responses and feedback to responses within the discussion. This is
+facilitated using the `arrange_replies` function. Ranking of topics by
+number of replies is done per thematic area and by a specific time
+period. Ranking of topics by number of replies by thematic area and by
+month and year is performed by default:
+
+``` r
+get_themes() %>%
+  get_themes_topics() %>%
+  arrange_replies()
+```
+
+which results in:
+
+    #> # A tibble: 1,758 x 9
+    #>    Theme   Topic          Views Author  Posted     Link      Replies Month  Year
+    #>    <chr>   <chr>          <int> <chr>   <date>     <chr>       <int> <fct> <dbl>
+    #>  1 Adoles… Age group of …   525 Anonym… 2020-02-15 https://…       1 Feb    2020
+    #>  2 Adoles… Launch of res…  1894 Jo Lof… 2018-05-23 https://…       0 May    2018
+    #>  3 Adoles… Reaching out …  2063 Emily … 2018-06-18 https://…       3 Jun    2018
+    #>  4 Adoles… anthropometry…  1814 Emily … 2018-06-29 https://…       2 Jun    2018
+    #>  5 Adoles… adolescent ma…  2049 Anonym… 2018-06-21 https://…       1 Jun    2018
+    #>  6 Adoles… adolescent ma…  1859 Anonym… 2018-06-21 https://…       1 Jun    2018
+    #>  7 Adoles… Teen/adolesce…  1751 Anne H… 2018-06-19 https://…       1 Jun    2018
+    #>  8 Adoles… health educat…  1532 Anonym… 2018-06-19 https://…       1 Jun    2018
+    #>  9 Adoles… Is there any …   820 Aisha … 2020-06-12 https://…       1 Jun    2020
+    #> 10 Adoles… Assessing nut…  1848 Ursula… 2018-07-25 https://…       3 Jul    2018
+    #> # … with 1,748 more rows
+
+Arranging topics by number of replies by thematic area and by year is
+performed as follows:
+
+``` r
+get_themes() %>%
+  get_themes_topics() %>%
+  arrange_replies(by_date = "year")
+```
+
+which results in:
+
+    #> # A tibble: 1,758 x 9
+    #>    Theme    Topic        Views Author  Posted     Link       Replies Month  Year
+    #>    <chr>    <chr>        <int> <chr>   <date>     <chr>        <int> <fct> <dbl>
+    #>  1 Adolesc… Adolescent …  1728 Tamsin… 2018-08-01 https://w…       3 Aug    2018
+    #>  2 Adolesc… Assessing n…  1848 Ursula… 2018-07-25 https://w…       3 Jul    2018
+    #>  3 Adolesc… Reaching ou…  2063 Emily … 2018-06-18 https://w…       3 Jun    2018
+    #>  4 Adolesc… anthropomet…  1814 Emily … 2018-06-29 https://w…       2 Jun    2018
+    #>  5 Adolesc… MUAC tape f…  1593 Anonym… 2018-09-27 https://w…       1 Sep    2018
+    #>  6 Adolesc… adolescent …  1682 Anonym… 2018-07-04 https://w…       1 Jul    2018
+    #>  7 Adolesc… adolescent …  2049 Anonym… 2018-06-21 https://w…       1 Jun    2018
+    #>  8 Adolesc… adolescent …  1859 Anonym… 2018-06-21 https://w…       1 Jun    2018
+    #>  9 Adolesc… Teen/adoles…  1751 Anne H… 2018-06-19 https://w…       1 Jun    2018
+    #> 10 Adolesc… health educ…  1532 Anonym… 2018-06-19 https://w…       1 Jun    2018
+    #> # … with 1,748 more rows
+
+Arranging topics by number of replies by thematic area overall across
+the years is performed as follows:
+
+``` r
+get_themes() %>%
+  get_themes_topics() %>%
+  arrange_replies(by_date = "all")
+```
+
+which results in:
+
+    #> # A tibble: 1,758 x 9
+    #>    Theme   Topic          Views Author  Posted     Link      Replies Month  Year
+    #>    <chr>   <chr>          <int> <chr>   <date>     <chr>       <int> <fct> <dbl>
+    #>  1 Adoles… Adolescent sc…  1728 Tamsin… 2018-08-01 https://…       3 Aug    2018
+    #>  2 Adoles… Assessing nut…  1848 Ursula… 2018-07-25 https://…       3 Jul    2018
+    #>  3 Adoles… Reaching out …  2063 Emily … 2018-06-18 https://…       3 Jun    2018
+    #>  4 Adoles… anthropometry…  1814 Emily … 2018-06-29 https://…       2 Jun    2018
+    #>  5 Adoles… Is there any …   820 Aisha … 2020-06-12 https://…       1 Jun    2020
+    #>  6 Adoles… Age group of …   525 Anonym… 2020-02-15 https://…       1 Feb    2020
+    #>  7 Adoles… MUAC tape for…  1593 Anonym… 2018-09-27 https://…       1 Sep    2018
+    #>  8 Adoles… adolescent sc…  1682 Anonym… 2018-07-04 https://…       1 Jul    2018
+    #>  9 Adoles… adolescent ma…  2049 Anonym… 2018-06-21 https://…       1 Jun    2018
+    #> 10 Adoles… adolescent ma…  1859 Anonym… 2018-06-21 https://…       1 Jun    2018
+    #> # … with 1,748 more rows
+
+By default, the output of `arrange_replies` is grouped by thematic area.
+This default behaviour can be changed by setting the `by_theme` argument
+to `FALSE`. For example, to arrange the topics by number of replies by
+month and year across all themes:
+
+``` r
+get_themes() %>%
+  get_themes_topics() %>%
+  arrange_replies(by_theme = FALSE)
+```
+
+which results in:
+
+    #> # A tibble: 1,758 x 9
+    #>    Theme     Topic         Views Author  Posted     Link     Replies Month  Year
+    #>    <chr>     <chr>         <int> <chr>   <date>     <chr>      <int> <fct> <dbl>
+    #>  1 Infant a… Breastfeedin…  9082 Anonym… 2010-01-07 https:/…       3 Jan    2010
+    #>  2 Assessme… How to Maint…  5484 Anonym… 2010-01-15 https:/…       2 Jan    2010
+    #>  3 Assessme… Interpretati…  8361 Tamsin… 2011-01-05 https:/…      10 Jan    2011
+    #>  4 Assessme… Prospective …  5825 Jeff M… 2011-01-27 https:/…       7 Jan    2011
+    #>  5 Assessme… Calculating …  7377 Ali Ma… 2011-01-19 https:/…       3 Jan    2011
+    #>  6 Assessme… Result with …  5011 Anonym… 2011-01-25 https:/…       2 Jan    2011
+    #>  7 Cross-cu… Transitionin…  5096 Anonym… 2011-01-25 https:/…       1 Jan    2011
+    #>  8 Assessme… Nutritional …  7431 Mary M… 2012-01-01 https:/…      10 Jan    2012
+    #>  9 Upcoming… Regional SMA…  5613 Yara S… 2012-01-10 https:/…       8 Jan    2012
+    #> 10 Micronut… multi-micron…  5942 REBECC… 2012-01-18 https:/…       6 Jan    2012
+    #> # … with 1,748 more rows
 
 ### Utilities and datasets
 
