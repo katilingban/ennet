@@ -26,7 +26,15 @@ knitr::opts_chunk$set(
 [![CodeFactor](https://www.codefactor.io/repository/github/katilingban/ennet/badge)](https://www.codefactor.io/repository/github/katilingban/ennet)
 <!-- badges: end -->
 
-[en-net](https://www.en-net.org) is the go to online forum for field practitioners requiring prompt technical advice for operational challenges for which answers are not readily accessible in current guidelines. The questions and the corresponding answers raised within en-net can provide insight into what the key topics of discussion are within the nutrition sector. This package provides utility functions for the extraction, processing and analysis of text data from the online forum.
+[**en-net**](https://www.en-net.org) is the go to online forum for field practitioners requiring prompt technical advice for operational challenges for which answers are not readily accessible in current guidelines. The questions and the corresponding answers raised within [**en-net** online forum](https://www.en-net.org) can provide insight into what the key topics of discussion are within the nutrition sector. This package provides utility functions for the extraction, processing and analysis of text data from the online forum.
+
+## What does `ennet` do?
+
+The `ennet` package has two key sets of functions:
+
+1. The first set of functions facilitates the extraction of text data from the [**en-net** online forum](https://www.en-net.org). 
+
+2. The second set of functions supports the analysis of the extracted datasets to produce summary measures and statistics of the [**en-net** online forum](https://www.en-net.org).
 
 ## Installation
 
@@ -49,9 +57,7 @@ remotes::install_github("katilingban/ennet")
 
 ## Usage
 
-The `ennet` package has two key sets of functions. The first set of functions facilitates the extraction of text data from the [**en-net** online forum](https://www.en-net.org). The second set of functions supports the analysis of the extracted datasets to produce summary measures and statistics of the [**en-net** online forum](https://www.en-net.org).
-
-### Extract functions
+### The `ennet` data extraction workflow
 
 `ennet` package provides a set of functions that extracts information from the [**en-net** online forum](https://www.en-net.org). This set of functions was built on top of the [`rvest`](https://rvest.tidyverse.org) package which provides robust and performant web scraping functions and the [`dplyr`](https://dplyr.tidyverse.org) package which provides a full suite of data manipulation functions. The `ennet` package was designed to be able to interact with how the [**en-net** online forum](https://www.en-net.org) has been structured.
 
@@ -69,7 +75,7 @@ knitr::include_graphics("man/figures/ennet_structure.png")
 
 <br/>
 
-Based on this structure, the following functions are available with `ennet` package for extracting text data:
+Based on this structure, the following functions are available from the `ennet` package for extracting text data:
 
 * `get_themes` - function to get a list of thematic areas in the forum;
 
@@ -77,130 +83,34 @@ Based on this structure, the following functions are available with `ennet` pack
 
 * `get_topic_discussions` and `get_topics_discussions` - functions to get list of discussions for a specific topic or topics,
 
-#### Getting list of thematic areas
+The general data extraction workflow codified by the `ennet` package is as follows:
 
-To get a list of **thematic areas** along with the link to the webpage of each **thematic area**, we use the `get_themes()` function as follows:
+```{r extract1, echo = TRUE, eval = FALSE}
+## Step 1: Get the en-net forum themes
+themes <- get_themes()
 
-```{r usage1, echo = TRUE, eval = FALSE}
-## Load ennet package
-library(ennet)
+## Step 2: Get the en-net topics from each theme
+topics <- get_themes_topics(themes)
 
-## Get all thematic areas from en-net
-get_themes()
+## Step 3: Get the en-net discussions per topic per theme
+discussions <- get_topics_discussions(topics)
+
+## Show discussions data
+discussions
 ```
 
-which results in
+The `ennet` package functions have been designed to allow for pipe operations to be performed. The data extraction workflow can be implemented using piped operations as follows:
 
-```{r usage1a, echo = FALSE, eval = TRUE}
-library(ennet)
-get_themes()
+```{r extract2, echo = TRUE, eval = FALSE}
+get_themes() %>%            ## Step 1: Get en-net forum themes
+  get_themes_topics() %>%   ## Step 2: Get en-net topics from each theme
+  get_topics_discussions()  ## Step 3: Get en-net discussions per topic 
+                            ##         per theme
 ```
 
-The resulting table has two columns - the first is named `themes` which contains the various **thematic areas** on the [**en-net** online forum](https://www.en-net.org/), and the second is named `links` which contains the corresponding URL for the webpages for each of the **thematic areas**.
+For a more detailed discussion of the data extraction workflow via the `ennet` package, read [Utilities to Extract Text Data from en-net](https://katilingban.io/ennet/articles/extract.html).
 
-This will be useful when choosing which themes to focus on when extracting information. This function outputs an object of the appropriate class and structure as the required input for the `get_themes_topics()` function which would lend to piped operations between the two functions (see below).
-
-#### Getting list of topics from thematic area/s
-
-To get a list of **topics** for a particular theme, we use the `get_theme_topics()` function as follows:
-
-```{r usage2, echo = TRUE, eval = FALSE}
-## Load dplyr to facilitate data manipulation
-library(dplyr)
-
-## Extract data from "Coverage assessment" theme
-get_themes() %>%
-  filter(themes == "Coverage assessment") %>%
-  select(links) %>%
-  as.character() %>%
-  get_theme_topics()
-```
-
-which results in
-
-```{r usage2a, echo = FALSE, eval = TRUE}
-## Load dplyr to facilitate data manipulation
-library(dplyr)
-
-## Extract data from "Coverage assessment" theme
-get_themes() %>%
-  filter(themes == "Coverage assessment") %>%
-  select(links) %>%
-  as.character() %>%
-  get_theme_topics()
-```
-
-The resulting table contains information on all the **topics** within the *Coverage assessment* **thematic area** including URL links to the corresponding webpages for each **topic**
-
-To get a list of **topics** for multiple themes, we use the `get_themes_topics()` function as follows:
-
-```{r usage3, echo = TRUE, eval = FALSE}
-## Extract data from "Coverage assessment" theme and "Food assistance" theme
-get_themes() %>%
-  filter(themes %in% c("Coverage assessment", "Food assistance")) %>%
-  get_themes_topics()
-```
-
-which results in
-
-```{r usage3a, echo = FALSE, eval = TRUE}
-## Extract data from "Coverage assessment" theme and "Food assistance" theme
-get_themes() %>%
-  filter(themes %in% c("Coverage assessment", "Food assistance")) %>%
-  get_themes_topics()
-```
-
-The resulting table contains information on all the **topics** within the *Coverage assessment* and *Food assistance* **thematic area** including URL links to the corresponding webpages for each **topic**.
-
-#### Getting discussions from topic/s
-
-To get a list of **discussions** for a particular **topic**, we use the `get_topic_discussions()` function as follows:
-
-```{r usage4, echo = TRUE, eval = FALSE}
-get_themes() %>%
-  filter(themes == "Coverage assessment") %>%
-  get_themes_topics() %>%
-  filter(Topic == "Resources for coverage assessment") %>%
-  select(Link) %>%
-  as.character() %>%
-  get_topic_discussions()
-```
-
-which results in
-
-```{r usage4a, echo = FALSE, eval = TRUE}
-get_themes() %>%
-  filter(themes == "Coverage assessment") %>%
-  get_themes_topics() %>%
-  filter(Topic == "Resources for coverage assessment") %>%
-  select(Link) %>%
-  as.character() %>%
-  get_topic_discussions()
-```
-
-The resulting table contains information on all the **discussions** within the **topic** on *Resources for coverage assessment* within the **thematic area** of *Coverage assessment* including the text data on the question and the ensuing reply/replies to the question.
-
-To get a list of **discussions** for a set of **topics**, we use the `get_topics_discussions()` function as follows:
-
-```{r usage5, echo = TRUE, eval = FALSE}
-get_themes() %>%
-  filter(themes %in% c("Coverage assessment", "Food assistance")) %>%
-  get_themes_topics() %>%
-  get_topics_discussions()
-```
-
-which results in
-
-```{r usage5a, echo = FALSE, eval = TRUE}
-get_themes() %>%
-  filter(themes %in% c("Coverage assessment", "Food assistance")) %>%
-  get_themes_topics() %>%
-  get_topics_discussions()
-```
-
-The resulting table contains information on all the **discussions** within all the **topics** within the **thematic areas** of *Coverage assessment* and *Food assistance* including the text data on the question and the ensuing reply/replies to the question.
-
-### Analytics functions
+### The `ennet` analytics functions
 
 The `ennet` package also includes analytic functions that summarises the text data available from the [**en-net** online forum](https://www.en-net.org). Currently, there are four analytic functions available from `ennet`:
 
@@ -212,227 +122,7 @@ The `ennet` package also includes analytic functions that summarises the text da
 
 * `arrange_replies` - function to arrange topics by number of replies.
 
-#### Counting number of topics/questions
-
-Summarising the number of topics or questions raised within the [**en-net** online forum](https://www.en-net.org) is basic and useful analytics that can proxy relative importance of a thematic area within the forum. This is facilitated using the `count_topics` function. Counting of topics is done per thematic area and by a specific time period. Counting of topics by month and year is performed by default:
-
-```{r usage6, echo = TRUE, eval = FALSE}
-get_themes() %>%
-  get_themes_topics() %>%
-  count_topics()
-```
-
-which results in:
-
-```{r usage6a, echo = FALSE, eval = TRUE}
-ennet_topics %>%
-  count_topics()
-```
-
-Counting of topics by year is specified as follows:
-
-```{r usage7, echo = TRUE, eval = FALSE}
-get_themes() %>%
-  get_themes_topics() %>%
-  count_topics(by_date = "year")
-```
-
-which results in:
-
-```{r usage7a, echo = FALSE, eval = TRUE}
-ennet_topics %>%
-  count_topics(by_date = "year")
-```
-
-Counting of topics overall across the years is specified as follows:
-
-```{r usage8, echo = TRUE, eval = FALSE}
-get_themes() %>%
-  get_themes_topics() %>%
-  count_topics(by_date = "all")
-```
-
-which results in:
-
-```{r usage8a, echo = FALSE, eval = TRUE}
-ennet_topics %>%
-  count_topics(by_date = "all")
-```
-
-By default, the output of `count_topics` arranges the results by descending frequency of counts of each topic by the grouping variable. This default behaviour can be changed by setting the `.sorted` argument to `FALSE`.
-
-#### Counting number of topics/questions raised by an author
-
-Summarising the number of topics or questions raised within the [**en-net** online forum](https://www.en-net.org) for each author is another basic and useful analytics that can proxy level of engagement by those participating in the forum. This is facilitated using the `count_authors` function. Counting of topics for each author is done per thematic area and by a specific time period. Counting of topics for each author by month and year is performed by default:
-
-```{r usage9, echo = TRUE, eval = FALSE}
-get_themes() %>%
-  get_themes_topics() %>%
-  count_authors()
-```
-
-which results in:
-
-```{r usage9a, echo = FALSE, eval = TRUE}
-ennet_topics %>%
-  count_authors()
-```
-
-Counting of topics by year is specified as follows:
-
-```{r usage10, echo = TRUE, eval = FALSE}
-get_themes() %>%
-  get_themes_topics() %>%
-  count_authors(by_date = "year")
-```
-
-which results in:
-
-```{r usage10a, echo = FALSE, eval = TRUE}
-ennet_topics %>%
-  count_authors(by_date = "year")
-```
-
-Counting of topics overall across the years is specified as follows:
-
-```{r usage11, echo = TRUE, eval = FALSE}
-get_themes() %>%
-  get_themes_topics() %>%
-  count_authors(by_date = "all")
-```
-
-which results in:
-
-```{r usage11a, echo = FALSE, eval = TRUE}
-ennet_topics %>%
-  count_authors(by_date = "all")
-```
-
-By default, the output of `count_authors` arranges the results by descending frequency of counts of each topic raised by an author by the grouping variable. This default behaviour can be changed by setting the `.sorted` argument to `FALSE`.
-
-#### Arranging topics by number of views
-
-Summarising the number of topics or questions raised within the [**en-net** online forum](https://www.en-net.org) by arranging them based on number of views can proxy level of interest to a specific topic by those participating in the forum. This is facilitated using the `arrange_views` function. Ranking of topics by number of views is done per thematic area and by a specific time period. Ranking of topics by number of views by thematic area and by month and year is performed by default:
-
-```{r usage12, echo = TRUE, eval = FALSE}
-get_themes() %>%
-  get_themes_topics() %>%
-  arrange_views()
-```
-
-which results in:
-
-```{r usage12a, echo = FALSE, eval = TRUE}
-ennet_topics %>%
-  arrange_views()
-```
-
-Arranging topics by number of views by thematic area and by year is performed as follows:
-
-```{r usage13, echo = TRUE, eval = FALSE}
-get_themes() %>%
-  get_themes_topics() %>%
-  arrange_views(by_date = "year")
-```
-
-which results in:
-
-```{r usage13a, echo = FALSE, eval = TRUE}
-ennet_topics %>%
-  arrange_views(by_date = "year")
-```
-
-Arranging topics by number of views by thematic area overall across the years is performed as follows:
-
-```{r usage14, echo = TRUE, eval = FALSE}
-get_themes() %>%
-  get_themes_topics() %>%
-  arrange_views(by_date = "all")
-```
-
-which results in:
-
-```{r usage14a, echo = FALSE, eval = TRUE}
-ennet_topics %>%
-  arrange_views(by_date = "all")
-```
-
-By default, the output of `arrange_views` is grouped by thematic area. This default behaviour can be changed by setting the `by_theme` argument to `FALSE`. For example, to arrange the topics by number of views by month and year across all themes:
-
-```{r usage15, echo = TRUE, eval = FALSE}
-get_themes() %>%
-  get_themes_topics() %>%
-  arrange_views(by_theme = FALSE)
-```
-
-which results in:
-
-```{r usage15a, echo = FALSE, eval = TRUE}
-ennet_topics %>%
-  arrange_views(by_theme = FALSE)
-```
-
-#### Arranging topics by number of replies
-
-Summarising the number of topics or questions raised within the [**en-net** online forum](https://www.en-net.org) by arranging them based on number of replies can proxy level of interest to a specific topic by those participating in the forum specifically those who provide responses and feedback to responses within the discussion. This is facilitated using the `arrange_replies` function. Ranking of topics by number of replies is done per thematic area and by a specific time period. Ranking of topics by number of replies by thematic area and by month and year is performed by default:
-
-```{r usage16, echo = TRUE, eval = FALSE}
-get_themes() %>%
-  get_themes_topics() %>%
-  arrange_replies()
-```
-
-which results in:
-
-```{r usage17a, echo = FALSE, eval = TRUE}
-ennet_topics %>%
-  arrange_replies()
-```
-
-Arranging topics by number of replies by thematic area and by year is performed as follows:
-
-```{r usage18, echo = TRUE, eval = FALSE}
-get_themes() %>%
-  get_themes_topics() %>%
-  arrange_replies(by_date = "year")
-```
-
-which results in:
-
-```{r usage18a, echo = FALSE, eval = TRUE}
-ennet_topics %>%
-  arrange_replies(by_date = "year")
-```
-
-Arranging topics by number of replies by thematic area overall across the years is performed as follows:
-
-```{r usage19, echo = TRUE, eval = FALSE}
-get_themes() %>%
-  get_themes_topics() %>%
-  arrange_replies(by_date = "all")
-```
-
-which results in:
-
-```{r usage19a, echo = FALSE, eval = TRUE}
-ennet_topics %>%
-  arrange_replies(by_date = "all")
-```
-
-By default, the output of `arrange_replies` is grouped by thematic area. This default behaviour can be changed by setting the `by_theme` argument to `FALSE`. For example, to arrange the topics by number of replies by month and year across all themes:
-
-```{r usage20, echo = TRUE, eval = FALSE}
-get_themes() %>%
-  get_themes_topics() %>%
-  arrange_replies(by_theme = FALSE)
-```
-
-which results in:
-
-```{r usage20a, echo = FALSE, eval = TRUE}
-ennet_topics %>%
-  arrange_replies(by_theme = FALSE)
-```
+For a more detailed discussion of the analytics functions available from the `ennet` package, read [Summarising en-net online forum statistics](https://katilingban.io/ennet/articles/analytics.html).
 
 ### Utilities and datasets
 
@@ -454,5 +144,14 @@ The data from the [**en-net** online forum](https://www.en-net.org) can be used 
 
 Given the nature of the [**en-net** online forum](https://www.en-net.org) as a quick point of recourse for field practitioners to seek answers to practical questions and challenges faced, it can be expected that the data from the forum contains information on what these topics are. These information can then be used to identify most common or most important information, knowledge and skills that have been asked about. By identifying these gaps in information, knowledge and/or skills and by understanding the evolution of these needs over time, we can potentially predict training needs in the near term and over time. This application is a more **formative approach** in that we let the data tell us what information it holds.
 
+## Disclaimer
 
+The `ennet` package is an independent development and is separate from and not recognised and approved by the *[Emergency Nutrition Network (ENN)](https://www.ennonline.net)*, the organisation that runs and moderates the [**en-net** online forum](https://www.en-net.org). The author and maintainer of this package is not affiliated with *[ENN](https://www.ennonline.net)* but is committed to ensuring that the `ennet` package is compliant with [**en-net** online forum](https://www.en-net.org)'s terms of use.
 
+Any mistakes, problems and issues with the functionality and outputs of the `ennet` package are that of the author and maintainer of the package and not of *[Emergency Nutrition Network (ENN)](https://www.ennonline.net)*. Hence any problems and issues to the usage, functionality and outputs of the `ennet` package should be addressed directly to the author and maintainer [here](https://github.com/katilingban/ennet/issues).
+
+## Community guidelines
+
+Feedback, bug reports and feature requests are welcome; file issues or seek support [here](https://github.com/katilingban/ennet/issues). If you would like to contribute to the package, please see our [contributing guidelines](https://katilingban.io/ennet/CONTRIBUTING.html).
+
+Please note that the `ennet` project is released with a [Contributor Code of Conduct](https://katilingban.io/ennet/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
