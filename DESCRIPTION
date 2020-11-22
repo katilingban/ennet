@@ -1,6 +1,6 @@
 Package: ennet
 Type: Package
-Title: Utilities to Extract and Analyse Text Data From the Emergency Nutrition 
+Title: Utilities to Extract and Analyse Text Data from the Emergency Nutrition 
     Network Forum
 Version: 0.1.0
 Authors@R: person(given = "Ernest", family = "Guevarra", 
