@@ -121,17 +121,12 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p><code>ennet</code> is in active development and is not yet available from <a href="https://CRAN.R-project.org">CRAN</a>.</p>
-<!---
-You can install the released version of rennet from [CRAN](https://CRAN.R-project.org) with:
-
-```r
-install.packages("rennet")
-```
---->
+<p>You can install the released version of rennet from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ennet"</span><span class="op">)</span></code></pre></div>
 <p>You can install the development version from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(remotes) <span class="kw">install.packages</span>(<span class="st">"remotes"</span>))</span>
-<span id="cb1-2"><a href="#cb1-2"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"katilingban/ennet"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(remotes) <span class="kw">install.packages</span>(<span class="st">"remotes"</span>))</span>
+<span id="cb2-2"><a href="#cb2-2"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"katilingban/ennet"</span>)</span></code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
@@ -157,7 +152,7 @@ install.packages("rennet")
 <li><p><code>get_topic_discussions</code> and <code>get_topics_discussions</code> - functions to get list of discussions for a specific topic or topics,</p></li>
 </ul>
 <p>The general data extraction workflow codified by the <code>ennet</code> package is as follows:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Step 1: Get the en-net forum themes</span>
 <span class="va">themes</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span>
 
@@ -170,7 +165,7 @@ install.packages("rennet")
 <span class="co">## Show discussions data</span>
 <span class="va">discussions</span></code></pre></div>
 <p>The <code>ennet</code> package functions have been designed to allow for pipe operations to be performed. The data extraction workflow can be implemented using piped operations as follows:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>            <span class="co">## Step 1: Get en-net forum themes</span>
   <span class="fu"><a href="reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>   <span class="co">## Step 2: Get en-net topics from each theme</span>
   <span class="fu"><a href="reference/get_topics_discussions.html">get_topics_discussions</a></span><span class="op">(</span><span class="op">)</span>  <span class="co">## Step 3: Get en-net discussions per topic </span>

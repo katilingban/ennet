@@ -38,15 +38,11 @@ The `ennet` package has two key sets of functions:
 
 ## Installation
 
-`ennet` is in active development and is not yet available from [CRAN](https://CRAN.R-project.org).
-
-<!---
 You can install the released version of rennet from [CRAN](https://CRAN.R-project.org) with:
 
-```r
-install.packages("rennet")
+```{r install, echo = TRUE, eval = FALSE}
+install.packages("ennet")
 ```
---->
 
 You can install the development version from [GitHub](https://github.com/) with:
 
