@@ -3,9 +3,10 @@
 #'
 #' Get list of thematic areas from en-net.org
 #'
-#' @param base Base URL of the en-net site. Set to \url{https://www.en-net.org/}
+#' @param base Base URL of the en-net site. Set to
+#'   [https://www.en-net.org/](https://www.en-net.org/)
 #'
-#' @return A tibble containing the thematic areas from en-net.org and the
+#' @return A tibble containing the thematic areas from **en-net forum** and the
 #'   corresponding URLs for each thematic area
 #'
 #' @examples

@@ -3,22 +3,22 @@
 #'
 #' Count the number of topics by theme and by date
 #'
-#' @param topics A tibble of topics by theme from en-net forum produced through
-#'   a call to `get_themes_topics`.
+#' @param topics A tibble of topics by theme from **en-net forum** produced
+#'   through a call to [get_themes_topics()].
 #' @param by_date Should topics be grouped by month of the year or just by
 #'   year or overall? Default is to group by month of the year.
 #' @param .sort Logical. Should output be sorted by count frequencies? Default
-#'   is TRUE.
+#'   is *TRUE*.
 #'
 #' @return A tibble of topic counts by theme and by specified date format
 #'
+#' @author Ernest Guevarra
+#'
 #' @examples
 #' library(magrittr)
-#' x <- ennet_topics
-#' x %>% count_topics(by_date = "month_year")
+#' ennet_topics %>% count_topics(by_date = "month_year")
 #'
 #' @export
-#'
 #'
 #
 ################################################################################
@@ -87,19 +87,21 @@ count_topics <- function(topics,
 #'
 #' Arrange topics based on number of views
 #'
-#' @param topics A tibble of topics by theme from en-net forum produced through
-#'   a call to `get_themes_topics`.
-#' @param by_theme Logical. Should topics be grouped by theme? Default is TRUE.
+#' @param topics A tibble of topics by theme from **en-net forum** produced
+#'   through a call to [get_themes_topics()].
+#' @param by_theme Logical. Should topics be grouped by theme?
+#'   Default is *TRUE*.
 #' @param by_date Should topics be grouped by month of the year or just by
 #'   year or overall? Default is to group by month of the year.
 #'
 #' @return A tibble of topic views by theme and by specified date format
 #'   arranged in descending order
 #'
+#' @author Ernest Guevarra
+#'
 #' @examples
 #' library(magrittr)
-#' x <- ennet_topics
-#' x %>% arrange_views()
+#' ennet_topics %>% arrange_views()
 #'
 #' @export
 #'
@@ -164,19 +166,21 @@ arrange_views <- function(topics,
 #'
 #' Arrange topics based on number of replies
 #'
-#' @param topics A tibble of topics by theme from en-net forum produced through
-#'   a call to `get_themes_topics`.
-#' @param by_theme Logical. Should topics be grouped by theme? Default is TRUE.
+#' @param topics A tibble of topics by theme from **en-net forum** produced
+#'   through a call to [get_themes_topics()].
+#' @param by_theme Logical. Should topics be grouped by theme?
+#'   Default is *TRUE*.
 #' @param by_date Should topics be grouped by month of the year or just by
 #'   year? Default is to group by month of the year.
 #'
 #' @return A tibble of topic views by theme and by specified date format
 #'   arranged in descending order
 #'
+#' @author Ernest Guevarra
+#'
 #' @examples
 #' library(magrittr)
-#' x <- ennet_topics
-#' x %>% arrange_replies()
+#' ennet_topics %>% arrange_replies()
 #'
 #' @export
 #'
@@ -242,24 +246,24 @@ arrange_replies <- function(topics,
 #'
 #' Count the number of topics by author, by theme and by date
 #'
-#' @param topics A tibble of topics by theme from en-net forum produced through
-#'   a call to `get_themes_topics`.
-#' @param by_theme Logical. If TRUE (default), count by theme.
+#' @param topics A tibble of topics by theme from **en-net** forum produced
+#'   through a call to [get_themes_topics()].
+#' @param by_theme Logical. If *TRUE (default)*, count by theme.
 #' @param by_date Should topics be counted by month of the year or just by
 #'   year or total? Default is to count by month of the year.
 #' @param .sort Logical. Should output be sorted by count frequencies? Default
-#'   is TRUE.
+#'   is *TRUE*.
 #'
 #' @return A tibble of topic counts by author, by theme and by specified date
 #'   format
 #'
+#' @author Ernest Guevarra
+#'
 #' @examples
 #' library(magrittr)
-#' x <- ennet_topics
-#' x %>% count_authors()
+#' ennet_topics %>% count_authors()
 #'
 #' @export
-#'
 #'
 #
 ################################################################################
@@ -347,9 +351,6 @@ count_authors <- function(topics,
       }
     }
   }
-
-  ## ungroup
-  #x <- x %>% dplyr::ungroup()
 
   ## Return
   return(x)

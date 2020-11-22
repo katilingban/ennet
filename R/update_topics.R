@@ -8,7 +8,7 @@
 #'   (no repeats)
 #'
 #' @return A tibble containing the topics across all thematic areas in
-#'   en-net forum
+#'   **en-net forum**
 #'
 #' @examples
 #' if(interactive()) update_topics()
