@@ -8,6 +8,13 @@
 
 <title>Get the discussion and details of discussion for a set of topics — get_topics_discussions • ennet</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -41,6 +48,7 @@
 
 <meta property="og:title" content="Get the discussion and details of discussion for a set of topics — get_topics_discussions" />
 <meta property="og:description" content="Get the discussion and details of discussion for a set of topics" />
+<meta property="og:image" content="https://katilingban.io/ennet/logo.png" />
 
 
 
@@ -135,7 +143,7 @@
     <p>Get the discussion and details of discussion for a set of topics</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_topics_discussions</span>(<span class='kw'>links</span>)</pre>
+    <pre class="usage"><span class='fu'>get_topics_discussions</span><span class='op'>(</span><span class='va'>links</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,8 +161,8 @@ is provided using a call to <code>get_theme_topics</code> or
     <p>A tibble containing the topic discussions for selected topic/s</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>links</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_theme_topics.html'>get_theme_topics</a></span>(link = (<span class='kw'>ennet_themes</span><span class='op'>$</span><span class='kw'>links</span>)[<span class='fl'>4</span>])
-<span class='fu'>get_topics_discussions</span>(link = <span class='kw'>links</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, ])
+    <pre class="examples"><div class='input'><span class='va'>links</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_theme_topics.html'>get_theme_topics</a></span><span class='op'>(</span>link <span class='op'>=</span> <span class='op'>(</span><span class='va'>ennet_themes</span><span class='op'>$</span><span class='va'>links</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>4</span><span class='op'>]</span><span class='op'>)</span>
+<span class='fu'>get_topics_discussions</span><span class='op'>(</span>link <span class='op'>=</span> <span class='va'>links</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='op'>]</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 24 x 10</span><span>
 #&gt;    theme  topic user  userCode job   role  date_time           type  code  post 
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>
