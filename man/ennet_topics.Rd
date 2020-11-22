@@ -5,7 +5,7 @@
 \alias{ennet_topics}
 \title{en-net topics}
 \format{
-A tibble with 2980 rows and 7 columns:\tabular{ll}{
+A tibble with 2996 rows and 7 columns:\tabular{ll}{
    \strong{Variable} \tab \strong{Description} \cr
    \code{Theme} \tab Thematic areas in the en-net forum \cr
    \code{Topic} \tab Short description of the topic/question being discussed/raised \cr
@@ -23,7 +23,7 @@ https://www.en-net.org
 ennet_topics
 }
 \description{
-Topics from en-net forum retrieved on 11 October 2020
+Topics from en-net forum retrieved on 21 November 2020
 }
 \examples{
 ennet_topics

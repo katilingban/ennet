@@ -12,16 +12,16 @@ count_authors(
 )
 }
 \arguments{
-\item{topics}{A tibble of topics by theme from en-net forum produced through
-a call to \code{get_themes_topics}.}
+\item{topics}{A tibble of topics by theme from \strong{en-net} forum produced
+through a call to \code{\link[=get_themes_topics]{get_themes_topics()}}.}
 
-\item{by_theme}{Logical. If TRUE (default), count by theme.}
+\item{by_theme}{Logical. If \emph{TRUE (default)}, count by theme.}
 
 \item{by_date}{Should topics be counted by month of the year or just by
 year or total? Default is to count by month of the year.}
 
 \item{.sort}{Logical. Should output be sorted by count frequencies? Default
-is TRUE.}
+is \emph{TRUE}.}
 }
 \value{
 A tibble of topic counts by author, by theme and by specified date
@@ -32,7 +32,9 @@ Count the number of topics by author, by theme and by date
 }
 \examples{
 library(magrittr)
-x <- ennet_topics
-x \%>\% count_authors()
+ennet_topics \%>\% count_authors()
 
+}
+\author{
+Ernest Guevarra
 }

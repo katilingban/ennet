@@ -119,8 +119,8 @@ get_topic_discussions <- function(link) {
 #' Get the discussion and details of discussion for a set of topics
 #'
 #' @param links A tibble of topics containing URL of topic discussion. This
-#'   is provided using a call to \code{get_theme_topics} or
-#'   \code{get_themes_topics}
+#'   is provided using a call to [get_theme_topics()] or
+#'   [get_themes_topics()]
 #'
 #' @return A tibble containing the topic discussions for selected topic/s
 #'

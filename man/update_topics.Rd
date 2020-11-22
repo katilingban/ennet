@@ -13,7 +13,7 @@ of updated en-net topics. Defaults to 0 for a single retrieval
 }
 \value{
 A tibble containing the topics across all thematic areas in
-en-net forum
+\strong{en-net forum}
 }
 \description{
 Update en-net topics

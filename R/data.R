@@ -3,7 +3,7 @@
 #'
 #' en-net themes
 #'
-#' Themes from en-net forum retrieved on 11 October 2020
+#' Themes from en-net forum retrieved on 21 November 2020
 #'
 #' @format A tibble with 18 rows and 2 columns:
 #'
@@ -27,9 +27,9 @@
 #'
 #' en-net topics
 #'
-#' Topics from en-net forum retrieved on 11 October 2020
+#' Topics from en-net forum retrieved on 21 November 2020
 #'
-#' @format A tibble with 2980 rows and 7 columns:
+#' @format A tibble with 2996 rows and 7 columns:
 #'
 #' | **Variable** | **Description** |
 #' | :--- | :--- |

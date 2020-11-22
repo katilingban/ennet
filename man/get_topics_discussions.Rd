@@ -8,8 +8,8 @@ get_topics_discussions(links)
 }
 \arguments{
 \item{links}{A tibble of topics containing URL of topic discussion. This
-is provided using a call to \code{get_theme_topics} or
-\code{get_themes_topics}}
+is provided using a call to \code{\link[=get_theme_topics]{get_theme_topics()}} or
+\code{\link[=get_themes_topics]{get_themes_topics()}}}
 }
 \value{
 A tibble containing the topic discussions for selected topic/s

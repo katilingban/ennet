@@ -7,14 +7,14 @@
 count_topics(topics, by_date = c("month_year", "year", "all"), .sort = TRUE)
 }
 \arguments{
-\item{topics}{A tibble of topics by theme from en-net forum produced through
-a call to \code{get_themes_topics}.}
+\item{topics}{A tibble of topics by theme from \strong{en-net forum} produced
+through a call to \code{\link[=get_themes_topics]{get_themes_topics()}}.}
 
 \item{by_date}{Should topics be grouped by month of the year or just by
 year or overall? Default is to group by month of the year.}
 
 \item{.sort}{Logical. Should output be sorted by count frequencies? Default
-is TRUE.}
+is \emph{TRUE}.}
 }
 \value{
 A tibble of topic counts by theme and by specified date format
@@ -24,7 +24,9 @@ Count the number of topics by theme and by date
 }
 \examples{
 library(magrittr)
-x <- ennet_topics
-x \%>\% count_topics(by_date = "month_year")
+ennet_topics \%>\% count_topics(by_date = "month_year")
 
+}
+\author{
+Ernest Guevarra
 }
