@@ -7,7 +7,7 @@
 \title{Utilities to Extract and Analyse Text Data From the Emergency Nutrition
 Network (en-net) Forum}
 \description{
-en-net is the go to online forum for field practitioners requiring prompt
+\strong{en-net} is the go to online forum for field practitioners requiring prompt
 technical advice for operational challenges for which answers are not readily
 accessible in current guidelines. The questions and the corresponding answers
 raised within en-net can provide insight into what the key topics of

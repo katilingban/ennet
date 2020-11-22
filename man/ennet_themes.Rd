@@ -18,7 +18,7 @@ https://www.en-net.org
 ennet_themes
 }
 \description{
-Themes from en-net forum retrieved on 11 October 2020
+Themes from en-net forum retrieved on 21 November 2020
 }
 \examples{
 ennet_themes

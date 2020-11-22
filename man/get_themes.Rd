@@ -7,10 +7,11 @@
 get_themes(base = "https://www.en-net.org")
 }
 \arguments{
-\item{base}{Base URL of the en-net site. Set to \url{https://www.en-net.org/}}
+\item{base}{Base URL of the en-net site. Set to
+\url{https://www.en-net.org/}}
 }
 \value{
-A tibble containing the thematic areas from en-net.org and the
+A tibble containing the thematic areas from \strong{en-net forum} and the
 corresponding URLs for each thematic area
 }
 \description{

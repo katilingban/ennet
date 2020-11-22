@@ -11,10 +11,11 @@ arrange_views(
 )
 }
 \arguments{
-\item{topics}{A tibble of topics by theme from en-net forum produced through
-a call to \code{get_themes_topics}.}
+\item{topics}{A tibble of topics by theme from \strong{en-net forum} produced
+through a call to \code{\link[=get_themes_topics]{get_themes_topics()}}.}
 
-\item{by_theme}{Logical. Should topics be grouped by theme? Default is TRUE.}
+\item{by_theme}{Logical. Should topics be grouped by theme?
+Default is \emph{TRUE}.}
 
 \item{by_date}{Should topics be grouped by month of the year or just by
 year or overall? Default is to group by month of the year.}
@@ -28,7 +29,9 @@ Arrange topics based on number of views
 }
 \examples{
 library(magrittr)
-x <- ennet_topics
-x \%>\% arrange_views()
+ennet_topics \%>\% arrange_views()
 
+}
+\author{
+Ernest Guevarra
 }
