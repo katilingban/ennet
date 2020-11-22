@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get theme topics — get_theme_topics • ennet</title>
+<title>Changelog • ennet</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,7 @@
 
 
 
-<meta property="og:title" content="Get theme topics — get_theme_topics" />
-<meta property="og:description" content="Get theme topics" />
+<meta property="og:title" content="Changelog" />
 <meta property="og:image" content="https://katilingban.io/ennet/logo.png" />
 
 
@@ -67,7 +66,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-topic">
+    <div class="container template-news">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -137,54 +136,28 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get theme topics</h1>
-    <small class="dont-index">Source: <a href='https://github.com/katilingban/ennet/blob/master/R/get_themes.R'><code>R/get_themes.R</code></a></small>
-    <div class="hidden name"><code>get_theme_topics.Rd</code></div>
+      <h1 data-toc-skip>Changelog <small></small></h1>
+      <small>Source: <a href='https://github.com/katilingban/ennet/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="ref-description">
-    <p>Get theme topics</p>
-    </div>
-
-    <pre class="usage"><span class='fu'>get_theme_topics</span><span class='op'>(</span><span class='va'>link</span><span class='op'>)</span></pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>link</th>
-      <td><p>URL of a specific thematic area</p></td>
-    </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A tibble of all topics for the specified thematic area.</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>themes</span> <span class='op'>&lt;-</span> <span class='va'>ennet_themes</span>
-<span class='fu'>get_theme_topics</span><span class='op'>(</span>link <span class='op'>=</span> <span class='va'>themes</span><span class='op'>$</span><span class='va'>links</span><span class='op'>[</span><span class='fl'>4</span><span class='op'>]</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 93 x 7</span><span>
-#&gt;    Theme    Topic                 Views Replies Author   Posted     Link        
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                 </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Coverag… Resources for covera…  </span><span style='text-decoration: underline;'>9</span><span>962      11 Tamsin … 2011-12-06 https://www…
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Coverag… Use of single covera…  </span><span style='text-decoration: underline;'>2</span><span>454       7 Hugh Lo… 2019-11-10 https://www…
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Coverag… Real and theoretical…  </span><span style='text-decoration: underline;'>2</span><span>222       3 Abdul    2019-10-10 https://www…
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Coverag… Single Coverage for …  </span><span style='text-decoration: underline;'>1</span><span>897       4 Ben All… 2019-07-05 https://www…
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Coverag… Cox's Bazar Refugee …  </span><span style='text-decoration: underline;'>2</span><span>144       4 Hugh Lo… 2019-03-28 https://www…
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Coverag… Wide Area Survey (St…  </span><span style='text-decoration: underline;'>1</span><span>817       2 Anonymo… 2019-03-09 https://www…
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Coverag… Disconnection betwee…  </span><span style='text-decoration: underline;'>1</span><span>798       2 Tammam … 2019-03-03 https://www…
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Coverag… Can we classify the …  </span><span style='text-decoration: underline;'>1</span><span>976       2 Anonymo… 2018-11-18 https://www…
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Coverag… Routine monitoring d…  </span><span style='text-decoration: underline;'>1</span><span>879       0 Anonymo… 2018-11-14 https://www…
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Coverag… SQUEAC/coverage surv…  </span><span style='text-decoration: underline;'>2</span><span>270       1 Anonymo… 2018-10-05 https://www…
-#&gt; </span><span style='color: #949494;'># … with 83 more rows</span><span></div><div class='input'>
-</div></span></pre>
+    <div id="ennet-010" class="section level1">
+<h1 class="page-header" data-toc-text="0.1.0">
+<a href="#ennet-010" class="anchor"></a>ennet 0.1.0</h1>
+<p>First release of <code>ennet</code> package.</p>
+<p>The <code>ennet</code> package has two key sets of functions:</p>
+<ol>
+<li><p>The first set of functions facilitates the extraction of text data from the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a>.</p></li>
+<li><p>The second set of functions supports the analysis of the extracted datasets to produce summary measures and statistics of the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a>.</p></li>
+</ol>
+</div>
   </div>
+
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
+
 </div>
 
 
