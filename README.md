@@ -181,7 +181,7 @@ it. And given how an online forum is designed, that resource can be
 tapped relatively easily given that the documentation of the interaction
 and discussion between its users happens in real-time. The `ennet`
 package facilitates the access to that information through the
-statistical analysis tool [R](https://www.r-rpoject.org) with which
+statistical analysis tool [R](https://cran.r-project.org) with which
 further levels of analysis can be applied to generate meaningful and
 valuable understanding of this specific community and to some extent the
 greater nutrition sector at large.
