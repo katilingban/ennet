@@ -2,7 +2,7 @@ Package: ennet
 Type: Package
 Title: Utilities to Extract and Analyse Text Data from the Emergency Nutrition 
     Network Forum
-Version: 0.1.0
+Version: 0.1.0.9000
 Authors@R: person(given = "Ernest", family = "Guevarra", 
                   email = "ernest@guevarra.io", role = c("aut", "cre"),
                   comment = c(ORCID = "0000-0002-4887-4415"))

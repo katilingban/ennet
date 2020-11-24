@@ -7,6 +7,13 @@
 
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/ennet)](https://CRAN.R-project.org/package=ennet)
+[![cran
+checks](https://cranchecks.info/badges/summary/ennet)](https://cran.r-project.org/web/checks/check_results_ennet.html)
+[![CRAN](https://img.shields.io/cran/l/ennet.svg)](https://CRAN.R-project.org/package=ennet)
+[![CRAN](http://cranlogs.r-pkg.org/badges/ennet)](https://CRAN.R-project.org/package=ennet)
+[![CRAN](http://cranlogs.r-pkg.org/badges/grand-total/ennet)](https://CRAN.R-project.org/package=ennet)
 [![R build
 status](https://github.com/katilingban/ennet/workflows/R-CMD-check/badge.svg)](https://github.com/katilingban/ennet/actions)
 [![R build
