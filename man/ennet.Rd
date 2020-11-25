@@ -18,6 +18,7 @@ online forum.
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://katilingban.io/ennet/}
   \item \url{https://github.com/katilingban/ennet}
   \item Report bugs at \url{https://github.com/katilingban/ennet/issues}
 }
