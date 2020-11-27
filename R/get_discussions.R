@@ -48,9 +48,10 @@ get_topic_discussions <- function(link) {
     rvest::html_text()
 
   if(length(details) %% 3 == 1) {
-    #details <- details[details != "This post has been automatically translated."] %>%
     details <- details %>%
-      filter(details != "This post has been automatically translated.") %>%
+      dplyr::filter(
+        details != "This post has been automatically translated."
+      ) %>%
       matrix(ncol = 3, byrow = TRUE) %>%
       data.frame()
   } else {
