@@ -13,7 +13,7 @@ A tibble with 2996 rows and 7 columns:\tabular{ll}{
    \code{Author} \tab Name of person who raised the topic/question \cr
    \code{Posted} \tab Date topic/question was posted on en-net forum \cr
    \code{Link} \tab URL of the topic/question being discussed/raised \cr
-   \code{Replies} \tab Number of replies to the topic/question being discussed/raised \cr
+   \code{Replies} \tab Number of replies to topic/question being discussed/raised \cr
 }
 }
 \source{
@@ -31,8 +31,8 @@ primarily as a guide for the user and as testing data for the code. Users
 are advised not to use this dataset for actual analysis or reporting and
 instead make a call to \code{\link[=get_theme_topics]{get_theme_topics()}} or to \code{\link[=get_themes_topics]{get_themes_topics()}}.
 This is because some topics and some author names have been converted to NA
-as they contain non-ASCII characters which are not allowed as a text encoding
-format for packaged data.
+as they contain non-ASCII characters which are not allowed as a text
+encoding format for packaged data.
 }
 \examples{
 ennet_topics

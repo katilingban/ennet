@@ -21,7 +21,8 @@ test_that("output is a tibble", {
 })
 
 test_that("output has correct names", {
-  expect_true(all(names(x) %in% c("Theme", "Topic", "Views", "Author", "Posted", "Link")))
+  expect_true(all(names(x) %in% c("Theme", "Topic", "Views",
+                                  "Author", "Posted", "Link")))
 })
 
 themes <- ennet_themes
@@ -32,6 +33,7 @@ test_that("output is a tibble", {
 })
 
 test_that("output has correct names", {
-  expect_true(all(names(x) %in% c("Theme", "Topic", "Views", "Author", "Posted", "Link", "Replies")))
+  expect_true(all(names(x) %in% c("Theme", "Topic", "Views",
+                                  "Author", "Posted", "Link", "Replies")))
 })
 

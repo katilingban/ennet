@@ -43,7 +43,9 @@ test_that("output has correct names", {
 })
 
 test_that("output is in correct order", {
-  expect_true(all(diff(y[y$Theme == "Announcements & Nutritionists needed", ]$n) <= 0))
+  expect_true(
+    all(diff(y[y$Theme == "Announcements & Nutritionists needed", ]$n) <= 0)
+  )
 })
 
 y <- x %>%
@@ -70,7 +72,9 @@ test_that("output has correct names", {
 })
 
 test_that("output is in correct order", {
-  expect_true(all(diff(y[y$Theme == "Announcements & Nutritionists needed", ]$n) <= 0))
+  expect_true(
+    all(diff(y[y$Theme == "Announcements & Nutritionists needed", ]$n) <= 0)
+  )
 })
 
 y <- x %>%
@@ -97,7 +101,10 @@ test_that("output has correct names", {
                                   "Link", "Replies", "Month", "Year")))
 })
 
-z <- y %>% filter(Theme == "Adolescent nutrition", Month == "Jun", Year == "2018")
+z <- y %>%
+  filter(Theme == "Adolescent nutrition",
+         Month == "Jun",
+         Year == "2018")
 
 test_that("output is in correct order", {
   expect_true(all(diff(z$Views) <= 0))
