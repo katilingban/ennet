@@ -30,7 +30,27 @@
 "_PACKAGE"
 
 ## quiets concerns of R CMD check on global variables
-if(getRversion() >= "2.15.1")  utils::globalVariables(c("Posted", "Month",
-                                                        "Theme", "Views",
-                                                        "Replies", "Author",
-                                                        "Year", "n"))
+if(getRversion() >= "2.15.1") {
+  utils::globalVariables(c("Posted", "Month", "Theme", "Views", "Replies",
+                           "Author", "Year", "n", "month_name", "week",
+                           "week_name", "year_name"))
+}
+
+
+################################################################################
+#
+#' Deprecated functions in ennet
+#'
+#' These functions still work but will be removed (defunct) in the next version
+#' of `ennet`.
+#'
+#' | **Function** | **Notes** |
+#' | :--- | :--- |
+#' | [count_topics()] | Please use [count_topics_theme()] instead |
+#' | [count_authors()] | Please use [count_topics_author()] instead |
+#'
+#' @name ennet-deprecated
+#'
+#
+################################################################################
+NULL

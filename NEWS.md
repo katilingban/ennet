@@ -1,8 +1,8 @@
-# ennet 0.1.1
+# ennet 0.2.0
 
 Second release of `ennet` package.
 
-Bug fixes:
+## Bug fixes
 
 * Addressed CRAN checks NOTE indicating that there are 192 marked UTF-8 strings
 in the packaged datasets. These marked strings have now been converted to ASCII
@@ -13,6 +13,11 @@ respective vignette that creates the ennet workflow. The workflow diagram is
 now done using an external drawing tool (OmniGraffle) instead of within R using
 `DiagrammeR`
 
+## Enhancements
+
+* re-factored analytics functions specifically the `count_` functions. Previous
+functions now in deprecation and new `count_` functions created that are more
+clean, robust and performant.
 
 # ennet 0.1.0
 
