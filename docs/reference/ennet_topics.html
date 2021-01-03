@@ -47,7 +47,7 @@
 
 
 <meta property="og:title" content="en-net topics — ennet_topics" />
-<meta property="og:description" content="Topics from en-net forum retrieved on 21 November 2020" />
+<meta property="og:description" content="Topics from en-net forum retrieved on 25 November 2020" />
 <meta property="og:image" content="https://katilingban.io/ennet/logo.png" />
 
 
@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ennet</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
       </span>
     </div>
 
@@ -143,7 +143,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Topics from en-net forum retrieved on 21 November 2020</p>
+    <p>Topics from en-net forum retrieved on 25 November 2020</p>
     </div>
 
     <pre class="usage"><span class='va'>ennet_topics</span></pre>
@@ -159,29 +159,38 @@
 <tr><td><code>Author</code></td><td>Name of person who raised the topic/question</td></tr>
 <tr><td><code>Posted</code></td><td>Date topic/question was posted on en-net forum</td></tr>
 <tr><td><code>Link</code></td><td>URL of the topic/question being discussed/raised</td></tr>
-<tr><td><code>Replies</code></td><td>Number of replies to the topic/question being discussed/raised</td></tr>
+<tr><td><code>Replies</code></td><td>Number of replies to topic/question being discussed/raised</td></tr>
 </table>
 
 
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
     <p>https://www.en-net.org</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Please note that this dataset is made available in the package
+primarily as a guide for the user and as testing data for the code. Users
+are advised not to use this dataset for actual analysis or reporting and
+instead make a call to <code><a href='get_theme_topics.html'>get_theme_topics()</a></code> or to <code><a href='get_themes_topics.html'>get_themes_topics()</a></code>.
+This is because some topics and some author names have been converted to NA
+as they contain non-ASCII characters which are not allowed as a text
+encoding format for packaged data.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>ennet_topics</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3,006 x 7</span><span>
 #&gt;    Theme       Topic              Views Author    Posted     Link        Replies
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>              </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Announceme… Link NCA Newslett…    88 Lenka Bl… 2020-11-16 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Announceme… Contact of expert…   562 Marlene … 2020-11-12 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Announceme… Somalia Maternal …   192 Ciara     2020-11-01 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Announceme… Recruiting Consul…   241 Marlene   2020-10-26 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Announceme… Global Nutrition …   269 Global N… 2020-10-22 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Announceme… ENN is recruiting…   273 Office E… 2020-10-22 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Announceme… The Technical Rap…   383 Office E… 2020-10-19 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Announceme… Technical series …   234 Anne Rad… 2020-10-14 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Announceme… CONCERN WORLDWIDE…   487 Concern … 2020-10-08 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Announceme… Sr. Technical Adv…   352 Anonymou… 2020-10-05 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Announceme… Link NCA Newslett…   210 Lenka Bl… 2020-11-16 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Announceme… Contact of expert…   614 Marlene … 2020-11-12 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Announceme… Somalia Maternal …   205 Ciara     2020-11-01 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Announceme… Recruiting Consul…   251 Marlene   2020-10-26 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Announceme… Global Nutrition …   279 Global N… 2020-10-22 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Announceme… ENN is recruiting…   282 Office E… 2020-10-22 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Announceme… </span><span style='color: #BB0000;'>NA</span><span>                   387 Office E… 2020-10-19 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Announceme… </span><span style='color: #BB0000;'>NA</span><span>                   238 Anne Rad… 2020-10-14 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Announceme… CONCERN WORLDWIDE…   497 Concern … 2020-10-08 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Announceme… Sr. Technical Adv…   361 Anonymou… 2020-10-05 https://ww…      </span><span style='color: #BB0000;'>NA</span><span>
 #&gt; </span><span style='color: #949494;'># … with 2,996 more rows</span><span></div><div class='input'>
 </div></span></pre>
   </div>

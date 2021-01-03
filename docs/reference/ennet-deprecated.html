@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get list of thematic areas from en-net.org — get_themes • ennet</title>
+<title>Deprecated functions in ennet — ennet-deprecated • ennet</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,9 @@
 
 
 
-<meta property="og:title" content="Get list of thematic areas from en-net.org — get_themes" />
-<meta property="og:description" content="Get list of thematic areas from en-net.org" />
+<meta property="og:title" content="Deprecated functions in ennet — ennet-deprecated" />
+<meta property="og:description" content="These functions still work but will be removed (defunct) in the next version
+of ennet." />
 <meta property="og:image" content="https://katilingban.io/ennet/logo.png" />
 
 
@@ -137,56 +138,29 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get list of thematic areas from en-net.org</h1>
-    <small class="dont-index">Source: <a href='https://github.com/katilingban/ennet/blob/master/R/get_themes.R'><code>R/get_themes.R</code></a></small>
-    <div class="hidden name"><code>get_themes.Rd</code></div>
+    <h1>Deprecated functions in ennet</h1>
+    <small class="dont-index">Source: <a href='https://github.com/katilingban/ennet/blob/master/R/ennet.R'><code>R/ennet.R</code></a></small>
+    <div class="hidden name"><code>ennet-deprecated.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get list of thematic areas from en-net.org</p>
+    <p>These functions still work but will be removed (defunct) in the next version
+of <code>ennet</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_themes</span><span class='op'>(</span>base <span class='op'>=</span> <span class='st'>"https://www.en-net.org"</span><span class='op'>)</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>base</th>
-      <td><p>Base URL of the en-net site. Set to
-<a href='https://www.en-net.org/'>https://www.en-net.org/</a></p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>A tibble containing the thematic areas from <strong>en-net forum</strong> and the
-corresponding URLs for each thematic area</p>
+    
+<table class='table'>
+<tr><td><strong>Function</strong></td><td><strong>Notes</strong></td></tr>
+<tr><td><code><a href='count_topics.html'>count_topics()</a></code></td><td>Please use <code><a href='count_topics_theme.html'>count_topics_theme()</a></code> instead</td></tr>
+<tr><td><code><a href='count_authors.html'>count_authors()</a></code></td><td>Please use <code><a href='count_topics_author.html'>count_topics_author()</a></code> instead</td></tr>
+</table>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>get_themes</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 18 x 2</span><span>
-#&gt;    themes                                           links                       
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                            </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                       
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Announcements &amp; Nutritionists needed             https://www.en-net.org/foru…
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Assessment and Surveillance                      https://www.en-net.org/foru…
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> COVID-19 and nutrition programming               https://www.en-net.org/foru…
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Coverage assessment                              https://www.en-net.org/foru…
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Cross-cutting issues                             https://www.en-net.org/foru…
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Food assistance                                  https://www.en-net.org/foru…
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Infant and young child feeding interventions     https://www.en-net.org/foru…
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Management of At Risk Mothers and Infants        https://www.en-net.org/foru…
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Micronutrients                                   https://www.en-net.org/foru…
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Partnerships for research                        https://www.en-net.org/foru…
-#&gt; </span><span style='color: #BCBCBC;'>11</span><span> Management of wasting/acute malnutrition         https://www.en-net.org/foru…
-#&gt; </span><span style='color: #BCBCBC;'>12</span><span> Prevention and management of stunting            https://www.en-net.org/foru…
-#&gt; </span><span style='color: #BCBCBC;'>13</span><span> Scaling Up Nutrition (SUN)                       https://www.en-net.org/foru…
-#&gt; </span><span style='color: #BCBCBC;'>14</span><span> Upcoming trainings                               https://www.en-net.org/foru…
-#&gt; </span><span style='color: #BCBCBC;'>15</span><span> Other thematic area                              https://www.en-net.org/foru…
-#&gt; </span><span style='color: #BCBCBC;'>16</span><span> Multi-sector nutrition programming               https://www.en-net.org/foru…
-#&gt; </span><span style='color: #BCBCBC;'>17</span><span> Adolescent nutrition                             https://www.en-net.org/foru…
-#&gt; </span><span style='color: #BCBCBC;'>18</span><span> Simplified Approaches for the Management of Acu… https://www.en-net.org/foru…</div><div class='input'>
-</div></span></pre>
+
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
