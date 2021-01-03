@@ -50,12 +50,19 @@ reference:
     contents:
     - count_topics
     - count_authors
+    - count_topics_day
+    - count_topics_theme
+    - count_topics_author
     - arrange_views
     - arrange_replies
 
   - title: Updates
     contents:
     - update_topics
+
+  - title: Deprecated functions
+    contents:
+    - ennet-deprecated
 
   - title: Datasets
     contents:

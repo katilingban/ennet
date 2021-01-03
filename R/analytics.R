@@ -397,7 +397,7 @@ count_authors <- function(topics,
 #' ## Get counts of topics by day
 #' count_topics_day(topics = ennet_topics)
 #'
-#' @rdname count_topics_time
+#' @rdname count_topics_day
 #' @export
 #'
 #
@@ -422,7 +422,7 @@ count_topics_day <- function(topics = get_themes_topics(),
 #' ## Get counts of topics by week
 #' count_topics_week(topics = ennet_topics)
 #'
-#' @rdname count_topics_time
+#' @rdname count_topics_day
 #' @export
 #'
 #
@@ -453,7 +453,7 @@ count_topics_week <- function(topics = get_themes_topics(),
 #' ## Get counts of topics by month
 #' count_topics_month(topics = ennet_topics)
 #'
-#' @rdname count_topics_time
+#' @rdname count_topics_day
 #' @export
 #'
 #
@@ -483,7 +483,7 @@ count_topics_month <- function(topics = get_themes_topics(),
 #' ## Get counts of topics by year
 #' count_topics_year(topics = ennet_topics)
 #'
-#' @rdname count_topics_time
+#' @rdname count_topics_day
 #' @export
 #'
 #
@@ -575,7 +575,8 @@ count_topics_theme_time <- function(topics = get_themes_topics(),
   ## Sort
   if (.sort) {
     x <- x %>%
-      dplyr::arrange(dplyr::desc(n))
+      dplyr::arrange(dplyr::desc(n)) %>%
+      dplyr::ungroup()
   }
 
   ## Return result
@@ -653,7 +654,8 @@ count_topics_author_time <- function(topics = get_themes_topics(),
   ## Sort
   if (.sort) {
     x <- x %>%
-      dplyr::arrange(dplyr::desc(n))
+      dplyr::arrange(dplyr::desc(n)) %>%
+      dplyr::ungroup()
   }
 
   ## Return result
