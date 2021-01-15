@@ -121,8 +121,8 @@ count_topics <- function(topics,
 ################################################################################
 
 arrange_views <- function(topics,
-                           by_theme = TRUE,
-                           by_date = c("month_year", "year", "all")) {
+                          by_theme = TRUE,
+                          by_date = c("month_year", "year", "all")) {
   by_date <- match.arg(by_date)
   x <- topics %>%
     dplyr::mutate(Month = factor(x = month.abb[lubridate::month(Posted)],
