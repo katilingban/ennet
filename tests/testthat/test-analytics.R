@@ -29,6 +29,9 @@ test_that("output has correct names", {
   expect_true(all(names(y) %in% c("Theme", "Month", "Year", "n")))
 })
 
+test_that("count_topics deprecation", {
+  expect_warning(count_topics(x), NULL)
+})
 
 ##
 y <- x %>%
@@ -88,6 +91,85 @@ test_that("output has correct names", {
   expect_true(all(names(y) %in% c("Theme", "Year", "n")))
 })
 
+## count_topics_day
+
+y <- x %>% count_topics_day()
+
+test_that("output is tibble", {
+  expect_is(y, "tbl")
+})
+
+y <- x %>% count_topics_day(.sort = TRUE)
+
+test_that("output is tibble", {
+  expect_is(y, "tbl")
+})
+
+test_that("output is in correct order", {
+  expect_true(
+    all(diff(y$n) <= 0)
+  )
+})
+
+## count_topics_week
+
+y <- x %>% count_topics_week()
+
+test_that("output is tibble", {
+  expect_is(y, "tbl")
+})
+
+y <- x %>% count_topics_week(.sort = TRUE)
+
+test_that("output is tibble", {
+  expect_is(y, "tbl")
+})
+
+test_that("output is in correct order", {
+  expect_true(
+    all(diff(y$n) <= 0)
+  )
+})
+
+## count_topics_month
+
+y <- x %>% count_topics_month()
+
+test_that("output is tibble", {
+  expect_is(y, "tbl")
+})
+
+y <- x %>% count_topics_month(.sort = TRUE)
+
+test_that("output is tibble", {
+  expect_is(y, "tbl")
+})
+
+test_that("output is in correct order", {
+  expect_true(
+    all(diff(y$n) <= 0)
+  )
+})
+
+## count_topics_year
+
+y <- x %>% count_topics_year()
+
+test_that("output is tibble", {
+  expect_is(y, "tbl")
+})
+
+y <- x %>% count_topics_year(.sort = TRUE)
+
+test_that("output is tibble", {
+  expect_is(y, "tbl")
+})
+
+test_that("output is in correct order", {
+  expect_true(
+    all(diff(y$n) <= 0)
+  )
+})
 
 ##
 y <- x %>% arrange_views()
