@@ -23,7 +23,8 @@ Imports:
     tibble,
     dplyr,
     stringr,
-    lubridate
+    lubridate,
+    utils
 Suggests: 
     knitr,
     rmarkdown,
