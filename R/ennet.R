@@ -23,7 +23,8 @@
 #'   desc filter
 #' @importFrom stringr str_replace str_detect str_extract_all str_to_lower
 #'   str_replace_na str_remove_all
-#' @importFrom lubridate dmy_hm month year
+#' @importFrom lubridate dmy_hm month year ymd
+#' @importFrom utils read.csv
 #'
 #
 ################################################################################
