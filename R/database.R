@@ -133,6 +133,10 @@ create_db_topics_daily <- function(gh = "katilingban/ennet_db",
                           by = c("Theme", "Topic", "Author", "Posted", "Link"))
   }
 
+  ## Rename fields
+  names(x) <- names(x) %>%
+    stringr::str_replace_all(pattern = "\\-|\\:", replacement = "")
+
   ## Convert to tibble
   x <- tibble::tibble(x)
 
