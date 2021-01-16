@@ -16,8 +16,16 @@ test_that("x is a tibble", {
   expect_is(x, "tbl")
 })
 
+test_that("error message show", {
+  expect_error(create_db_topics_daily(.date = NA))
+})
+
 x <- create_db_topics_monthly(.date = Sys.Date())
 
 test_that("x is a tibble", {
   expect_is(x, "tbl")
+})
+
+test_that("error message show", {
+  expect_error(create_db_topics_monthly(.date = NA))
 })
