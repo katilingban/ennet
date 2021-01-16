@@ -2,6 +2,7 @@
 % Please edit documentation in R/database.R
 \name{create_db_topics_daily}
 \alias{create_db_topics_daily}
+\alias{create_db_topics_monthly}
 \title{Create a daily topics dataset for the ennet_db}
 \usage{
 create_db_topics_daily(
@@ -9,6 +10,8 @@ create_db_topics_daily(
   .date = Sys.Date() - 1,
   fn = NULL
 )
+
+create_db_topics_monthly(gh = "katilingban/ennet_db", .date = Sys.Date() - 1)
 }
 \arguments{
 \item{gh}{A character value of the GitHub user and repository name
@@ -16,7 +19,7 @@ combination identifying the GitHub location for ennet_db. Default is
 \code{katilingban/ennet_db}.}
 
 \item{.date}{A character value or vector of date/dates for which to create
-a daily topics dataset for the ennet_db}
+a topics dataset for the ennet_db}
 
 \item{fn}{A character value or vector of filenames for hourly topics dataset
 found in ennet_db}
