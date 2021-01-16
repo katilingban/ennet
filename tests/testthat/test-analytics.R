@@ -171,6 +171,107 @@ test_that("output is in correct order", {
   )
 })
 
+## count_topics_theme
+
+y <- x %>% count_topics_theme()
+
+test_that("output is tibble", {
+  expect_is(y, "tbl")
+})
+
+y <- x %>% count_topics_theme(.sort = TRUE)
+
+test_that("output is tibble", {
+  expect_is(y, "tbl")
+})
+
+test_that("output is in correct order", {
+  expect_true(
+    all(diff(y$n) <= 0)
+  )
+})
+
+## count_topics_theme_time - by day
+
+y <- x %>% count_topics_theme_time(by_time = "day")
+
+test_that("output is tibble", {
+  expect_is(y, "tbl")
+})
+
+test_that("output names are correct", {
+  expect_true(all(names(y) %in% c("Theme", "day", "n")))
+})
+
+## count_topics_theme_time - by week
+
+y <- x %>% count_topics_theme_time(by_time = "week")
+
+test_that("output is tibble", {
+  expect_is(y, "tbl")
+})
+
+test_that("output names are correct", {
+  expect_true(all(names(y) %in% c("Theme", "week", "week_name", "n")))
+})
+
+## count_topics_theme_time - by month
+
+y <- x %>% count_topics_theme_time(by_time = "month")
+
+test_that("output is tibble", {
+  expect_is(y, "tbl")
+})
+
+test_that("output names are correct", {
+  expect_true(all(names(y) %in% c("Theme", "month", "month_name", "n")))
+})
+
+
+## count_topics_theme_time - by year
+
+y <- x %>% count_topics_theme_time(by_time = "year")
+
+test_that("output is tibble", {
+  expect_is(y, "tbl")
+})
+
+test_that("output names are correct", {
+  expect_true(all(names(y) %in% c("Theme", "year", "year_name", "n")))
+})
+
+## count_topics_author
+
+y <- x %>% count_topics_author()
+
+test_that("output is tibble", {
+  expect_is(y, "tbl")
+})
+
+y <- x %>% count_topics_author(.sort = TRUE)
+
+test_that("output is tibble", {
+  expect_is(y, "tbl")
+})
+
+test_that("output is in correct order", {
+  expect_true(
+    all(diff(y$n) <= 0)
+  )
+})
+
+## count_topics_author_time
+
+y <- x %>% count_topics_author_time(by_time = "day")
+
+test_that("output is tibble", {
+  expect_is(y, "tbl")
+})
+
+test_that("output names are correct", {
+  expect_true(all(names(y) %in% c("Author", "day", "n")))
+})
+
 ##
 y <- x %>% arrange_views()
 
