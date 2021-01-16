@@ -51,7 +51,7 @@ get_db_discussions <- function(gh = "katilingban/ennet_db") {
 #'   combination identifying the GitHub location for ennet_db. Default is
 #'   `katilingban/ennet_db`.
 #' @param .date A character value or vector of date/dates for which to create
-#'   a daily topics dataset for the ennet_db
+#'   a topics dataset for the ennet_db
 #' @param fn A character value or vector of filenames for hourly topics dataset
 #'   found in ennet_db
 #'
@@ -137,5 +137,78 @@ create_db_topics_daily <- function(gh = "katilingban/ennet_db",
   x <- tibble::tibble(x)
 
   ## Return x
+  return(x)
+}
+
+
+#
+#'
+#' @export
+#' @rdname create_db
+#'
+#
+create_db_topics_monthly <- function(gh = "katilingban/ennet_db",
+                                     .date = Sys.Date() - 1) {
+  ## Check .date
+  if (is.na(lubridate::ymd(.date))) {
+    stop(
+      paste(
+        strwrap(x = ".date values are not in the expected YYYY-MM-DD format.
+                     Please check and try again.",
+                width = 80),
+        collapse = "\n"
+      )
+    )
+  }
+
+  ## Convert .date
+  .date <- as.Date(.date, format = "%Y-%m-%d")
+
+  data_dates <- paste(year(.date),
+                      stringr::str_pad(month(.date),
+                                       width = 2,
+                                       side = "left",
+                                       pad = "0"),
+                      stringr::str_pad(seq(from = 1,
+                                           to = lubridate::days_in_month(.date),
+                                           by = 1),
+                                       width = 2,
+                                       side = "left",
+                                       pad = "0"),
+                      sep = "-")
+
+  ## Detect filenames of hourly datasets in ennet_db required based on .date
+  fn <- paste("https://raw.githubusercontent.com/",
+              gh, "/main/data/ennet_topics_", data_dates, ".csv", sep = "")
+
+  x <- try(read.csv(file = fn[1]), silent = TRUE)
+
+  if (class(x) == "try-error") {
+    stop(
+      paste(
+        strwrap(x = "Specified file/s cannot be found in the ennet_db.
+                     Please check and try again.",
+                width = 80
+        ),
+        collapse = "\n"
+      )
+    )
+  }
+
+  ##
+  for (i in fn[2:length(fn)]) {
+    y <- try(suppressWarnings(read.csv(file = i)), silent = TRUE)
+
+    if (class(y) != "try-error") {
+      x <- dplyr::full_join(x = x, y = y,
+                            by = c("Theme", "Topic",
+                                   "Author", "Posted", "Link"))
+    } else break
+  }
+
+  ##
+  x <- tibble::tibble(x)
+
+  ##
   return(x)
 }
