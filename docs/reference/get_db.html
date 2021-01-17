@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Count number of questions/topics posted on en-net by author — count_topics_author • ennet</title>
+<title>Retrieve data from ennet_db GitHub repository — get_db_discussions • ennet</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Count number of questions/topics posted on en-net by author — count_topics_author" />
-<meta property="og:description" content="Count number of questions/topics posted on en-net by author" />
+<meta property="og:title" content="Retrieve data from ennet_db GitHub repository — get_db_discussions" />
+<meta property="og:description" content="Retrieve data from ennet_db GitHub repository" />
 <meta property="og:image" content="https://katilingban.io/ennet/logo.png" />
 
 
@@ -137,83 +137,52 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Count number of questions/topics posted on en-net by author</h1>
-    <small class="dont-index">Source: <a href='https://github.com/katilingban/ennet/blob/master/R/analytics.R'><code>R/analytics.R</code></a></small>
-    <div class="hidden name"><code>count_topics_author.Rd</code></div>
+    <h1>Retrieve data from ennet_db GitHub repository</h1>
+    <small class="dont-index">Source: <a href='https://github.com/katilingban/ennet/blob/master/R/database.R'><code>R/database.R</code></a></small>
+    <div class="hidden name"><code>get_db.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Count number of questions/topics posted on en-net by author</p>
+    <p>Retrieve data from ennet_db GitHub repository</p>
     </div>
 
-    <pre class="usage"><span class='fu'>count_topics_author</span><span class='op'>(</span>topics <span class='op'>=</span> <span class='fu'><a href='get_themes_topics.html'>get_themes_topics</a></span><span class='op'>(</span><span class='op'>)</span>, .sort <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-
-<span class='fu'>count_topics_author_time</span><span class='op'>(</span>
-  topics <span class='op'>=</span> <span class='fu'><a href='get_themes_topics.html'>get_themes_topics</a></span><span class='op'>(</span><span class='op'>)</span>,
-  by_time <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"day"</span>, <span class='st'>"week"</span>, <span class='st'>"month"</span>, <span class='st'>"year"</span><span class='op'>)</span>,
-  .sort <span class='op'>=</span> <span class='cn'>TRUE</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_db_discussions</span><span class='op'>(</span>gh <span class='op'>=</span> <span class='st'>"katilingban/ennet_db"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>topics</th>
-      <td><p>A tibble of topics by theme, by author, and by posting date
-from <strong>en-net</strong> forum produced through a call to <code><a href='get_themes_topics.html'>get_themes_topics()</a></code></p></td>
-    </tr>
-    <tr>
-      <th>.sort</th>
-      <td><p>Logical. Should output be sorted by count frequencies? Default
-is <em>TRUE</em></p></td>
-    </tr>
-    <tr>
-      <th>by_time</th>
-      <td><p>Should topics be counted by day, by week, by month or by year?
-Default is to count by day.</p></td>
+      <th>gh</th>
+      <td><p>A character value of the GitHub user and repository name
+combination identifying the GitHub location for ennet_db. Default is
+<code>katilingban/ennet_db</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble of topic counts by specified grouping</p>
+    <p>A tibble of the specified dataset</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Ernest Guevarra</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Get counts of topics by author</span>
-<span class='fu'>count_topics_author</span><span class='op'>(</span>topics <span class='op'>=</span> <span class='va'>ennet_topics</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1,110 x 2</span><span>
-#&gt;    Author                              n
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                           </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Tamsin Walters                    163
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Marie Lecuyer                      61
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Michael ALVES                      58
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Anonymous 1494                     49
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Marie McGrath                      49
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Mark Myatt                         43
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> </span><span style='color: #BB0000;'>NA</span><span>                                 40
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Anonymous 81                       39
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Mija Ververs                       37
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Nutrition International - NTEAM    32
-#&gt; </span><span style='color: #949494;'># … with 1,100 more rows</span><span></div><div class='input'>
-<span class='co'>## Get counts of authors by author and by time</span>
-<span class='fu'>count_topics_author_time</span><span class='op'>(</span>topics <span class='op'>=</span> <span class='va'>ennet_topics</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 2,750 x 3</span><span>
-#&gt;    Author            day            n
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Anonymous 1494    2015-06-02    11
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Mark Hawkes       2019-05-13    11
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Andi Kendle       2017-09-25     6
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> GTAM Wasting TWG  2020-08-07     5
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Isabelle Modigell 2019-06-06     5
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Marie McGrath     2016-09-30     5
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Michael ALVES     2014-09-11     5
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Michael ALVES     2015-09-02     5
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Thuy Nguyen       2016-11-11     5
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Alan Mason        2016-09-15     4
-#&gt; </span><span style='color: #949494;'># … with 2,740 more rows</span><span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='co'>## Retrieve daily topics dataset for 1 January 2021</span>
+<span class='fu'>get_db_discussions</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 8,822 x 10</span><span>
+#&gt;    theme   topic     user   userCode job    role  date_time type   code post    
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Announ… </span><span style='color: #949494;'>"</span><span>Vacancy… Anony… user405… </span><span style='color: #949494;'>"</span><span>Nutr… Norm… 2021-01-… ques…  </span><span style='text-decoration: underline;'>4</span><span>181 </span><span style='color: #949494;'>"</span><span>We are…
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Announ… </span><span style='color: #949494;'>"</span><span>REACH I… Saeed… user405… </span><span style='color: #949494;'>"</span><span>Nutr… Norm… 2021-01-… ques…  </span><span style='text-decoration: underline;'>4</span><span>177 </span><span style='color: #949494;'>"</span><span>REACH …
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Announ… </span><span style='color: #949494;'>"</span><span>New Fun… Katie… user404… </span><span style='color: #949494;'>"</span><span>Tech… Norm… 2021-01-… ques…  </span><span style='text-decoration: underline;'>4</span><span>174 </span><span style='color: #949494;'>"</span><span>I am h…
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Announ… </span><span style='color: #949494;'>"</span><span>Event: … Sylvi… user404… </span><span style='color: #949494;'>"</span><span>Comm… Norm… 2021-01-… ques…  </span><span style='text-decoration: underline;'>4</span><span>172 </span><span style='color: #949494;'>"</span><span>Join t…
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Announ… </span><span style='color: #949494;'>"</span><span>TASC is… Rita … user405… </span><span style='color: #949494;'>"</span><span>Nutr… Norm… 2021-01-… ques…  </span><span style='text-decoration: underline;'>4</span><span>171 </span><span style='color: #949494;'>"</span><span>Progre…
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Announ… </span><span style='color: #949494;'>"</span><span>ENN is … Offic… user3673 </span><span style='color: #949494;'>"</span><span>Admi… Norm… 2020-12-… ques…  </span><span style='text-decoration: underline;'>4</span><span>167 </span><span style='color: #949494;'>"</span><span>We are…
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Announ… </span><span style='color: #949494;'>"</span><span>Call fo… Tamsi… user24   </span><span style='color: #949494;'>"</span><span>en-n… Foru… 2020-12-… ques…  </span><span style='text-decoration: underline;'>4</span><span>164 </span><span style='color: #949494;'>"</span><span>The fo…
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Announ… </span><span style='color: #949494;'>"</span><span>ENN is … Offic… user3673 </span><span style='color: #949494;'>"</span><span>Admi… Norm… 2020-12-… ques…  </span><span style='text-decoration: underline;'>4</span><span>163 </span><span style='color: #949494;'>"</span><span>ENN is…
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Announ… </span><span style='color: #949494;'>"</span><span>Vacancy… Valen… user404… </span><span style='color: #949494;'>"</span><span>Glob… Norm… 2020-12-… ques…  </span><span style='text-decoration: underline;'>4</span><span>156 </span><span style='color: #949494;'>"</span><span>Nutrit…
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Announ… </span><span style='color: #949494;'>"</span><span>Ag-nutr… Sylvi… user404… </span><span style='color: #949494;'>"</span><span>Comm… Norm… 2020-12-… ques…  </span><span style='text-decoration: underline;'>4</span><span>155 </span><span style='color: #949494;'>"</span><span>The In…
+#&gt; </span><span style='color: #949494;'># … with 8,812 more rows</span><span></div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

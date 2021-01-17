@@ -54,7 +54,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -86,7 +86,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/katilingban/ennet/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -112,10 +112,11 @@
 <div id="what-does-ennet-do" class="section level2">
 <h2 class="hasAnchor">
 <a href="#what-does-ennet-do" class="anchor"></a>What does <code>ennet</code> do?</h2>
-<p>The <code>ennet</code> package has two key sets of functions:</p>
+<p>The <code>ennet</code> package has three key sets of functions:</p>
 <ol>
 <li><p>The first set of functions facilitates the extraction of text data from the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a>.</p></li>
 <li><p>The second set of functions supports the analysis of the extracted datasets to produce summary measures and statistics of the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a>.</p></li>
+<li><p>The third set of functions consists of data handling and processing tools for use in the <a href="https://github.com/katilingban/ennet_db">en-net database</a> called <code>ennet_db</code>.</p></li>
 </ol>
 </div>
 <div id="installation" class="section level2">
@@ -176,14 +177,19 @@
 <div id="the-ennet-analytics-functions" class="section level3">
 <h3 class="hasAnchor">
 <a href="#the-ennet-analytics-functions" class="anchor"></a>The <code>ennet</code> analytics functions</h3>
-<p>The <code>ennet</code> package also includes analytic functions that summarises the text data available from the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a>. Currently, there are four analytic functions available from <code>ennet</code>:</p>
+<p>The <code>ennet</code> package also includes analytic functions that summarises the text data available from the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a>. Currently, there are four sets of analytic functions available from <code>ennet</code>:</p>
 <ul>
-<li><p><code>count_topics</code> - function to count the number of topics or questions by theme and date;</p></li>
-<li><p><code>count_authors</code> - function to count the number of topics attributed to a specific author;</p></li>
-<li><p><code>arrange_views</code> - function to arrange topics by number of views; and,</p></li>
-<li><p><code>arrange_replies</code> - function to arrange topics by number of replies.</p></li>
+<li><p><code>count_topics_time</code> functions - set of functions to count the number of topics or questions by day, wee, month or year;</p></li>
+<li><p><code>count_topics_theme</code> functions - set of functions to count the number of topics or questions by theme;</p></li>
+<li><p><code>count_topics_author</code> functions - set of functions to count the number of topics or questions by author; and,</p></li>
+<li><p><code>arrange</code> functions - set of functions to arrange topics by number of views or by number of replies.</p></li>
 </ul>
 <p>For a more detailed discussion of the analytics functions available from the <code>ennet</code> package, read <a href="https://katilingban.io/ennet/articles/analytics.html">Summarising en-net online forum statistics</a>.</p>
+</div>
+<div id="the-ennet-database-functions" class="section level3">
+<h3 class="hasAnchor">
+<a href="#the-ennet-database-functions" class="anchor"></a>The <code>ennet</code> database functions</h3>
+<p>The <code>ennet</code> package includes database functions designed for use with the <a href="https://github.com/katilingban/ennet_db">en-net database</a> called <code>ennet_db</code>. These database functions support the retrieval, handling and processing of datasets from the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> archived in the <code>ennet_db</code>.</p>
 </div>
 <div id="utilities-and-datasets" class="section level3">
 <h3 class="hasAnchor">

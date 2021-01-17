@@ -25,6 +25,9 @@
     <loc>https://katilingban.io/ennet/reference/count_topics_theme.html</loc>
   </url>
   <url>
+    <loc>https://katilingban.io/ennet/reference/create_db.html</loc>
+  </url>
+  <url>
     <loc>https://katilingban.io/ennet/reference/ennet-deprecated.html</loc>
   </url>
   <url>
@@ -35,6 +38,9 @@
   </url>
   <url>
     <loc>https://katilingban.io/ennet/reference/ennet_topics.html</loc>
+  </url>
+  <url>
+    <loc>https://katilingban.io/ennet/reference/get_db.html</loc>
   </url>
   <url>
     <loc>https://katilingban.io/ennet/reference/get_theme_topics.html</loc>
