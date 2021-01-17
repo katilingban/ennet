@@ -11,7 +11,7 @@ create_db_topics_daily(
   fn = NULL
 )
 
-create_db_topics_monthly(gh = "katilingban/ennet_db", .date = Sys.Date() - 1)
+create_db_topics_monthly(gh = "katilingban/ennet_db", .date = Sys.Date())
 }
 \arguments{
 \item{gh}{A character value of the GitHub user and repository name
@@ -34,6 +34,8 @@ fn <- c("ennet_topics_2021-01-16_00:58:05.csv",
         "ennet_topics_2021-01-16_03:59:22.csv")
 
 create_db_topics_daily(.date = Sys.Date(), fn = fn)
+
+create_db_topics_monthly()
 
 }
 \author{

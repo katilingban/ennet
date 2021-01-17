@@ -56,6 +56,11 @@ reference:
     - arrange_views
     - arrange_replies
 
+  - title: Database
+    contents:
+    - get_db
+    - create_db
+
   - title: Updates
     contents:
     - update_topics

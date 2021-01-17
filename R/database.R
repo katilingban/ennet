@@ -147,6 +147,9 @@ create_db_topics_daily <- function(gh = "katilingban/ennet_db",
 
 #
 #'
+#' @examples
+#' create_db_topics_monthly()
+#'
 #' @export
 #' @rdname create_db
 #'
