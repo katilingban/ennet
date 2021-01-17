@@ -11,7 +11,7 @@ create_db_topics_daily(
   fn = NULL
 )
 
-create_db_topics_monthly(gh = "katilingban/ennet_db", .date = Sys.Date())
+create_db_topics_monthly(gh = "katilingban/ennet_db", .date = Sys.Date() - 1)
 }
 \arguments{
 \item{gh}{A character value of the GitHub user and repository name
@@ -29,9 +29,9 @@ Create a daily topics dataset for the ennet_db
 }
 \examples{
 ##
-fn <- c("ennet_topics_2021-01-16_00:58:05.csv",
-        "ennet_topics_2021-01-16_02:47:04.csv",
-        "ennet_topics_2021-01-16_03:59:22.csv")
+fn <- c("ennet_topics_2021-01-17_00:54:48.csv",
+        "ennet_topics_2021-01-17_02:48:38.csv",
+        "ennet_topics_2021-01-17_03:57:46.csv")
 
 create_db_topics_daily(.date = Sys.Date(), fn = fn)
 

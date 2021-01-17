@@ -59,7 +59,7 @@ count_topics_day(.sort = TRUE)
 
 which gives the following output:
 
-```{r count_day2, echo = FALSE, eval = TRUE}
+```{r count_day2a, echo = FALSE, eval = TRUE}
 ennet_topics %>%
   count_topics_day(.sort = TRUE)
 ```
@@ -77,7 +77,7 @@ count_topics_month()
 count_topics_year()
 ```
 
-### Counting topics/questions by theme
+### Counting number of topics/questions by theme
 
 The `count_topics_theme` set of functions consists of two functions that count topics/questions *by theme*, and count topics/questions *by theme and by time*.
 
@@ -106,73 +106,100 @@ which results in:
 count_topics_theme(.sort = TRUE)
 ```
 
+Counting of topics/questions by theme can also be done by time using the `count_topics_theme_time`. For example, counting topics/questions by theme by day is done as follows:
 
+```{r count_theme_day1, echo = TRUE, eval = FALSE}
+count_topics_theme_time(by_time = "day")
+```
 
-Counting of topics overall across the years is specified as follows:
+which gives the following output:
 
-```{r usage8, echo = TRUE, eval = FALSE}
-get_themes() %>%
-  get_themes_topics() %>%
-  count_topics(by_date = "all")
+```{r count_theme_day1a, echo = FALSE, eval = TRUE}
+ennet_topics %>%
+  count_topics_theme_time(by_time = "day")
+```
+
+Unlike the previous count functions, the output of `count_topics_theme_time` is already sorted by default.
+
+To count topics/questions by theme by week, month, or year just requires changing the `by_time` argument to the desired time interval as shown below:
+
+```{r count_theme_day2, echo = TRUE, eval = FALSE}
+## Count topics/questions by theme by week
+count_topics_theme_time(by_time = "week")
+
+## Count topics/questions by theme by month
+count_topics_theme_time(by_time = "month")
+
+## Count topics/questions by theme by year
+count_topics_theme_time(by_time = "year")
+```
+
+### Counting number of topics/questions by author
+
+The `count_topics_author` set of functions consists of two functions that count topics/questions *by author*, and count topics/questions *by author and by time*.
+
+Counting of topics by author is specified as follows:
+
+```{r count_author1, echo = TRUE, eval = FALSE}
+count_topics_author()
 ```
 
 which results in:
 
-```{r usage8a, echo = FALSE, eval = TRUE}
+```{r count_author1a, echo = FALSE, eval = TRUE}
 ennet_topics %>%
-  count_topics(by_date = "all")
+  count_topics_author()
 ```
 
-By default, the output of `count_topics` arranges the results by descending frequency of counts of each topic by the grouping variable. This default behaviour can be changed by setting the `.sorted` argument to `FALSE`.
+Results provided by `count_topics_author` is not sorted by number of topics/questions. To sort, specify `.sort` as `TRUE`:
 
-## Counting number of topics/questions raised by an author
-
-Summarising the number of topics or questions raised within the [**en-net** online forum](https://www.en-net.org) for each author is another basic and useful analytics that can proxy level of engagement by those participating in the forum. This is facilitated using the `count_authors` function. Counting of topics for each author is done per thematic area and by a specific time period. Counting of topics for each author by month and year is performed by default:
-
-```{r usage9, echo = TRUE, eval = FALSE}
-get_themes() %>%
-  get_themes_topics() %>%
-  count_authors()
+```{r count_author2, echo = TRUE, eval = FALSE}
+count_topics_author(.sort = TRUE)
 ```
 
 which results in:
 
-```{r usage9a, echo = FALSE, eval = TRUE}
+```{r count_author2a, echo = FALSE, eval = TRUE}
+ennet_topics %>% count_topics_author(.sort = TRUE)
+```
+
+Counting of topics/questions by author can also be done by time using the `count_topics_author_time`. For example, counting topics/questions by author by day is done as follows:
+
+```{r count_author_day1, echo = TRUE, eval = FALSE}
+count_topics_author_time(by_time = "day")
+```
+
+which gives the following output:
+
+```{r count_author_day1a, echo = FALSE, eval = TRUE}
 ennet_topics %>%
-  count_authors()
+  count_topics_author_time(by_time = "day")
 ```
 
-Counting of topics by year is specified as follows:
+Unlike the previous count functions, the output of `count_topics_author_time` is already sorted by default.
 
-```{r usage10, echo = TRUE, eval = FALSE}
-get_themes() %>%
-  get_themes_topics() %>%
-  count_authors(by_date = "year")
+To count topics/questions by author by week, month, or year just requires changing the `by_time` argument to the desired time interval as shown below:
+
+```{r count_author_day2, echo = TRUE, eval = FALSE}
+## Count topics/questions by author by week
+count_topics_author_time(by_time = "week")
+
+## Count topics/questions by author by month
+count_topics_author_time(by_time = "month")
+
+## Count topics/questions by author by year
+count_topics_author_time(by_time = "year")
 ```
 
-which results in:
+### Deprecated `count` functions
 
-```{r usage10a, echo = FALSE, eval = TRUE}
-ennet_topics %>%
-  count_authors(by_date = "year")
-```
+In the current release of the `ennet` package, the following functions have now undergone deprecation:
 
-Counting of topics overall across the years is specified as follows:
+* `count_topics`
 
-```{r usage11, echo = TRUE, eval = FALSE}
-get_themes() %>%
-  get_themes_topics() %>%
-  count_authors(by_date = "all")
-```
+* `count_authors`
 
-which results in:
-
-```{r usage11a, echo = FALSE, eval = TRUE}
-ennet_topics %>%
-  count_authors(by_date = "all")
-```
-
-By default, the output of `count_authors` arranges the results by descending frequency of counts of each topic raised by an author by the grouping variable. This default behaviour can be changed by setting the `.sorted` argument to `FALSE`.
+These functions have now been superseded by the more performant `count_topics` functions above. We recommend that if you have been using these deprecated functions previously to update your work to use the new functions described above. These deprecated function will be made defunct on the next release of `ennet` package.
 
 ## Arranging topics by number of views
 
