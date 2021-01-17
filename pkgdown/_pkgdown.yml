@@ -58,8 +58,9 @@ reference:
 
   - title: Database
     contents:
-    - get_db
-    - create_db
+    - get_db_discussions
+    - create_db_topics_daily
+    - create_db_topics_monthly
 
   - title: Updates
     contents:
