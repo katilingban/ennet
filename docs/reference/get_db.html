@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ennet</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -146,16 +146,41 @@
     <p>Retrieve data from ennet_db GitHub repository</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_db_discussions</span><span class='op'>(</span>gh <span class='op'>=</span> <span class='st'>"katilingban/ennet_db"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_db_discussions</span><span class='op'>(</span>repo <span class='op'>=</span> <span class='st'>"katilingban/ennet_db"</span>, branch <span class='op'>=</span> <span class='st'>"main"</span><span class='op'>)</span>
+
+<span class='fu'>get_db_topics_daily_interactions</span><span class='op'>(</span>
+  repo <span class='op'>=</span> <span class='st'>"katilingban/ennet_db"</span>,
+  branch <span class='op'>=</span> <span class='st'>"main"</span>
+<span class='op'>)</span>
+
+<span class='fu'>get_db_topics_weekly_interactions</span><span class='op'>(</span>
+  repo <span class='op'>=</span> <span class='st'>"katilingban/ennet_db"</span>,
+  branch <span class='op'>=</span> <span class='st'>"main"</span>
+<span class='op'>)</span>
+
+<span class='fu'>get_db_topics_monthly_interactions</span><span class='op'>(</span>
+  repo <span class='op'>=</span> <span class='st'>"katilingban/ennet_db"</span>,
+  branch <span class='op'>=</span> <span class='st'>"main"</span>
+<span class='op'>)</span>
+
+<span class='fu'>get_db_topics_yearly_interactions</span><span class='op'>(</span>
+  repo <span class='op'>=</span> <span class='st'>"katilingban/ennet_db"</span>,
+  branch <span class='op'>=</span> <span class='st'>"main"</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>gh</th>
-      <td><p>A character value of the GitHub user and repository name
+      <th>repo</th>
+      <td><p>A character value for the GitHub user and repository name
 combination identifying the GitHub location for ennet_db. Default is
 <code>katilingban/ennet_db</code>.</p></td>
+    </tr>
+    <tr>
+      <th>branch</th>
+      <td><p>A character value for the branch name from which to retrieve
+data. Default is <code>main</code>.</p></td>
     </tr>
     </table>
 
@@ -167,9 +192,9 @@ combination identifying the GitHub location for ennet_db. Default is
     <p>Ernest Guevarra</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Retrieve daily topics dataset for 1 January 2021</span>
+    <pre class="examples"><div class='input'><span class='co'>## Retrieve discussions dataset</span>
 <span class='fu'>get_db_discussions</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 8,822 x 10</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 8,823 x 10</span><span>
 #&gt;    theme   topic     user   userCode job    role  date_time type   code post    
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Announ… </span><span style='color: #949494;'>"</span><span>Vacancy… Anony… user405… </span><span style='color: #949494;'>"</span><span>Nutr… Norm… 2021-01-… ques…  </span><span style='text-decoration: underline;'>4</span><span>181 </span><span style='color: #949494;'>"</span><span>We are…
@@ -182,7 +207,71 @@ combination identifying the GitHub location for ennet_db. Default is
 #&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Announ… </span><span style='color: #949494;'>"</span><span>ENN is … Offic… user3673 </span><span style='color: #949494;'>"</span><span>Admi… Norm… 2020-12-… ques…  </span><span style='text-decoration: underline;'>4</span><span>163 </span><span style='color: #949494;'>"</span><span>ENN is…
 #&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Announ… </span><span style='color: #949494;'>"</span><span>Vacancy… Valen… user404… </span><span style='color: #949494;'>"</span><span>Glob… Norm… 2020-12-… ques…  </span><span style='text-decoration: underline;'>4</span><span>156 </span><span style='color: #949494;'>"</span><span>Nutrit…
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span> Announ… </span><span style='color: #949494;'>"</span><span>Ag-nutr… Sylvi… user404… </span><span style='color: #949494;'>"</span><span>Comm… Norm… 2020-12-… ques…  </span><span style='text-decoration: underline;'>4</span><span>155 </span><span style='color: #949494;'>"</span><span>The In…
-#&gt; </span><span style='color: #949494;'># … with 8,812 more rows</span><span></div><div class='input'>
+#&gt; </span><span style='color: #949494;'># … with 8,813 more rows</span><span></div><div class='input'>
+<span class='co'>## Retrieve en-net topics daily interactions dataset</span>
+<span class='fu'>get_db_topics_daily_interactions</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 378 x 7</span><span>
+#&gt;    Theme         `Extraction Dat… Replies Views `New Replies` `New Views` nPosts
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Adolescent n… 2020-12-27            19 </span><span style='text-decoration: underline;'>23</span><span>059             0           0     13
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Adolescent n… 2020-12-28            19 </span><span style='text-decoration: underline;'>23</span><span>084             0          25     13
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Adolescent n… 2020-12-29            19 </span><span style='text-decoration: underline;'>23</span><span>125             0          41     13
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Adolescent n… 2020-12-30            19 </span><span style='text-decoration: underline;'>23</span><span>177             0          52     13
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Adolescent n… 2020-12-31            19 </span><span style='text-decoration: underline;'>23</span><span>249             0          72     13
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Adolescent n… 2021-01-01            19 </span><span style='text-decoration: underline;'>23</span><span>275             0          26     13
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Adolescent n… 2021-01-02            19 </span><span style='text-decoration: underline;'>23</span><span>301             0          26     13
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Adolescent n… 2021-01-03            19 </span><span style='text-decoration: underline;'>23</span><span>325             0          24     13
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Adolescent n… 2021-01-04            19 </span><span style='text-decoration: underline;'>23</span><span>348             0          23     13
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Adolescent n… 2021-01-05            19 </span><span style='text-decoration: underline;'>23</span><span>385             0          37     13
+#&gt; </span><span style='color: #949494;'># … with 368 more rows</span><span></div><div class='input'>
+<span class='co'>## Retrieve en-net topics weekly interactions dataset</span>
+<span class='fu'>get_db_topics_weekly_interactions</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 54 x 7</span><span>
+#&gt;    Theme        `Extraction Wee… Replies  Views `New Replies` `New Views` nPosts
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Adolescent … 2020-12-27            19 2.33</span><span style='color: #949494;'>e</span><span>4             0           0     91
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Adolescent … 2021-01-03            19 2.36</span><span style='color: #949494;'>e</span><span>4             0         286     91
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Adolescent … 2021-01-10            19 2.39</span><span style='color: #949494;'>e</span><span>4             0         322     91
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Announcemen… 2020-12-27             0 4.73</span><span style='color: #949494;'>e</span><span>6             0           0   </span><span style='text-decoration: underline;'>8</span><span>701
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Announcemen… 2021-01-03             0 4.76</span><span style='color: #949494;'>e</span><span>6             0       </span><span style='text-decoration: underline;'>30</span><span>426   </span><span style='text-decoration: underline;'>8</span><span>736
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Announcemen… 2021-01-10             0 4.79</span><span style='color: #949494;'>e</span><span>6             0       </span><span style='text-decoration: underline;'>27</span><span>515   </span><span style='text-decoration: underline;'>8</span><span>736
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Assessment … 2020-12-27          </span><span style='text-decoration: underline;'>2</span><span>098 2.40</span><span style='color: #949494;'>e</span><span>6             0           0   </span><span style='text-decoration: underline;'>3</span><span>202
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Assessment … 2021-01-03          </span><span style='text-decoration: underline;'>2</span><span>098 2.41</span><span style='color: #949494;'>e</span><span>6             0       </span><span style='text-decoration: underline;'>12</span><span>668   </span><span style='text-decoration: underline;'>3</span><span>227
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Assessment … 2021-01-10          </span><span style='text-decoration: underline;'>2</span><span>106 2.42</span><span style='color: #949494;'>e</span><span>6             8       </span><span style='text-decoration: underline;'>12</span><span>799   </span><span style='text-decoration: underline;'>3</span><span>227
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Coverage as… 2020-12-27           328 5.29</span><span style='color: #949494;'>e</span><span>5             0           0    655
+#&gt; </span><span style='color: #949494;'># … with 44 more rows</span><span></div><div class='input'>
+<span class='co'>## Retrieve en-net topics monthly interactions dataset</span>
+<span class='fu'>get_db_topics_monthly_interactions</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 36 x 7</span><span>
+#&gt;    Theme        `Extraction Mon… Replies  Views `New Replies` `New Views` nPosts
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Adolescent … 2020-12-01            19 2.32</span><span style='color: #949494;'>e</span><span>4             0           0     65
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Adolescent … 2021-01-01            19 2.39</span><span style='color: #949494;'>e</span><span>4             0         660    208
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Announcemen… 2020-12-01             0 4.72</span><span style='color: #949494;'>e</span><span>6             0           0   </span><span style='text-decoration: underline;'>6</span><span>205
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Announcemen… 2021-01-01             0 4.79</span><span style='color: #949494;'>e</span><span>6             0       </span><span style='text-decoration: underline;'>62</span><span>892  </span><span style='text-decoration: underline;'>19</span><span>968
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Assessment … 2020-12-01          </span><span style='text-decoration: underline;'>2</span><span>097 2.40</span><span style='color: #949494;'>e</span><span>6             0           0   </span><span style='text-decoration: underline;'>2</span><span>280
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Assessment … 2021-01-01          </span><span style='text-decoration: underline;'>2</span><span>106 2.42</span><span style='color: #949494;'>e</span><span>6             9       </span><span style='text-decoration: underline;'>27</span><span>554   </span><span style='text-decoration: underline;'>7</span><span>376
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Coverage as… 2020-12-01           328 5.28</span><span style='color: #949494;'>e</span><span>5             0           0    465
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Coverage as… 2021-01-01           330 5.57</span><span style='color: #949494;'>e</span><span>5             2       </span><span style='text-decoration: underline;'>29</span><span>694   </span><span style='text-decoration: underline;'>1</span><span>520
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> COVID-19 an… 2020-12-01           131 6.71</span><span style='color: #949494;'>e</span><span>4             0           0    420
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> COVID-19 an… 2021-01-01           131 7.20</span><span style='color: #949494;'>e</span><span>4             0        </span><span style='text-decoration: underline;'>4</span><span>820   </span><span style='text-decoration: underline;'>1</span><span>344
+#&gt; </span><span style='color: #949494;'># … with 26 more rows</span><span></div><div class='input'>
+<span class='co'>## Retrieve en-net topics yearly interactions dataset</span>
+<span class='fu'>get_db_topics_yearly_interactions</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 36 x 7</span><span>
+#&gt;    Theme        `Extraction Yea… Replies  Views `New Replies` `New Views` nPosts
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Adolescent … 2020-01-01            19 2.32</span><span style='color: #949494;'>e</span><span>4             0           0     13
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Adolescent … 2021-01-01            19 2.39</span><span style='color: #949494;'>e</span><span>4             0         660     13
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Announcemen… 2020-01-01             0 4.72</span><span style='color: #949494;'>e</span><span>6             0           0   </span><span style='text-decoration: underline;'>1</span><span>241
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Announcemen… 2021-01-01             0 4.79</span><span style='color: #949494;'>e</span><span>6             0       </span><span style='text-decoration: underline;'>62</span><span>892   </span><span style='text-decoration: underline;'>1</span><span>248
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Assessment … 2020-01-01          </span><span style='text-decoration: underline;'>2</span><span>097 2.40</span><span style='color: #949494;'>e</span><span>6             0           0    456
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Assessment … 2021-01-01          </span><span style='text-decoration: underline;'>2</span><span>106 2.42</span><span style='color: #949494;'>e</span><span>6             9       </span><span style='text-decoration: underline;'>27</span><span>554    461
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Coverage as… 2020-01-01           328 5.28</span><span style='color: #949494;'>e</span><span>5             0           0     93
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Coverage as… 2021-01-01           330 5.57</span><span style='color: #949494;'>e</span><span>5             2       </span><span style='text-decoration: underline;'>29</span><span>694     95
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> COVID-19 an… 2020-01-01           131 6.71</span><span style='color: #949494;'>e</span><span>4             0           0     84
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> COVID-19 an… 2021-01-01           131 7.20</span><span style='color: #949494;'>e</span><span>4             0        </span><span style='text-decoration: underline;'>4</span><span>820     84
+#&gt; </span><span style='color: #949494;'># … with 26 more rows</span><span></div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -1,8 +1,49 @@
+library(ennet)
 
 x <- get_db_discussions()
 
 test_that("x is a tibble", {
   expect_is(x, "tbl")
+})
+
+x <- get_db_topics_daily_interactions()
+
+test_that("x is a tibble", {
+  expect_is(x, "tbl")
+})
+
+test_that("error message", {
+  expect_error(get_db_topics_daily_interactive(branch = "master"))
+})
+
+x <- get_db_topics_weekly_interactions()
+
+test_that("x is a tibble", {
+  expect_is(x, "tbl")
+})
+
+test_that("error message", {
+  expect_error(get_db_topics_weekly_interactive(branch = "master"))
+})
+
+x <- get_db_topics_monthly_interactions()
+
+test_that("x is a tibble", {
+  expect_is(x, "tbl")
+})
+
+test_that("error message", {
+  expect_error(get_db_topics_monthly_interactive(branch = "master"))
+})
+
+x <- get_db_topics_yearly_interactions()
+
+test_that("x is a tibble", {
+  expect_is(x, "tbl")
+})
+
+test_that("error message", {
+  expect_error(get_db_topics_yearly_interactive(branch = "master"))
 })
 
 fn <- c("ennet_topics_2021-01-17_00:54:48.csv",
@@ -19,6 +60,10 @@ test_that("error message show", {
   expect_error(create_db_topics_daily(.date = NA))
 })
 
+test_that("error message show", {
+  expect_error(create_db_topics_daily(.date = "2021-01-17"))
+})
+
 x <- create_db_topics_monthly(.date = Sys.Date())
 
 test_that("x is a tibble", {
@@ -29,7 +74,17 @@ test_that("error message show", {
   expect_error(create_db_topics_monthly(.date = NA))
 })
 
+test_that("date beyond curren", {
+  expect_error(create_db_topics_monthly(.date = "2021-02-01"))
+})
+
 x <- create_db_topics_hourlies(.date = "2020-12-31")
+
+test_that("x is a tibble", {
+  expect_is(x, "tbl")
+})
+
+x <- create_db_topics_hourlies(.date = Sys.Date())
 
 test_that("x is a tibble", {
   expect_is(x, "tbl")

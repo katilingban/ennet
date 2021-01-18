@@ -59,6 +59,10 @@ reference:
   - title: Database
     contents:
     - get_db_discussions
+    - get_db_topics_daily_interactions
+    - get_db_topics_weekly_interactions
+    - get_db_topics_monthly_interactions
+    - get_db_topics_yearly_interactions
     - create_db_topics_daily
     - create_db_topics_monthly
     - create_db_topics_dailies
@@ -79,3 +83,5 @@ reference:
     contents:
     - ennet_themes
     - ennet_topics
+    - ennet_hourlies
+    - ennet_dailies

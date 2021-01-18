@@ -3,16 +3,18 @@
 #'
 #' Retrieve data from ennet_db GitHub repository
 #'
-#' @param gh A character value of the GitHub user and repository name
+#' @param repo A character value for the GitHub user and repository name
 #'   combination identifying the GitHub location for ennet_db. Default is
 #'   `katilingban/ennet_db`.
+#' @param branch A character value for the branch name from which to retrieve
+#'   data. Default is `main`.
 #'
 #' @return A tibble of the specified dataset
 #'
 #' @author Ernest Guevarra
 #'
 #' @examples
-#' ## Retrieve daily topics dataset for 1 January 2021
+#' ## Retrieve discussions dataset
 #' get_db_discussions()
 #'
 #' @export
@@ -21,18 +23,26 @@
 #
 ################################################################################
 
-get_db_discussions <- function(gh = "katilingban/ennet_db") {
+get_db_discussions <- function(repo = "katilingban/ennet_db",
+                               branch = "main") {
   ## Retrieve discussions from main
   x <- try(
     read.csv(paste("https://raw.githubusercontent.com/",
-                   gh, "/main/data/ennet_discussions.csv",  sep = "")),
+                   repo, "/", branch,
+                   "/data/ennet_discussions.csv",  sep = "")),
     silent = TRUE
   )
 
-  ## Retrieve discussions from master if error from main
+  ## Return message if try-error
   if (class(x) == "try-error") {
-    x <- read.csv(paste("https://raw.githubusercontent.com/",
-                        gh, "/master/data/ennet_discussions.csv",  sep = ""))
+    stop(
+      paste(
+        strwrap(x = "Repository and/or branch cannot be found. Please check your
+                     specifications and try again.",
+                width = 80),
+        collapse = "\n"
+      )
+    )
   }
 
   ## Convert to tibble
@@ -41,6 +51,207 @@ get_db_discussions <- function(gh = "katilingban/ennet_db") {
   ## Return discussions
   return(x)
 }
+
+
+################################################################################
+#
+#'
+#' @examples
+#' ## Retrieve en-net topics daily interactions dataset
+#' get_db_topics_daily_interactions()
+#'
+#' @export
+#' @rdname get_db
+#'
+#
+################################################################################
+
+get_db_topics_daily_interactions <- function(repo = "katilingban/ennet_db",
+                                             branch = "main") {
+  ## Retrieve discussions from main
+  x <- try(
+    read.csv(paste("https://raw.githubusercontent.com/",
+                   repo, "/", branch,
+                   "/data/ennet_topics_daily_interactions.csv",  sep = "")),
+    silent = TRUE
+  )
+
+  ## Return message if try-error
+  if (class(x) == "try-error") {
+    stop(
+      paste(
+        strwrap(x = "Repository and/or branch cannot be found. Please check your
+                     specifications and try again.",
+                width = 80),
+        collapse = "\n"
+      )
+    )
+  }
+
+  ## If x is data.frame
+  if (class(x) == "data.frame") {
+    daily_interactions <- x %>%
+      tibble::tibble() %>%
+      dplyr::mutate(Extraction.Date = as.Date(Extraction.Date)) %>%
+      dplyr::rename(`Extraction Date` = Extraction.Date,
+                    `New Replies` = New.Replies,
+                    `New Views` = New.Views)
+  }
+
+  ## Return daily_interactions
+  return(daily_interactions)
+}
+
+
+################################################################################
+#
+#'
+#' @examples
+#' ## Retrieve en-net topics weekly interactions dataset
+#' get_db_topics_weekly_interactions()
+#'
+#' @export
+#' @rdname get_db
+#'
+#
+################################################################################
+
+get_db_topics_weekly_interactions <- function(repo = "katilingban/ennet_db",
+                                              branch = "main") {
+  ## Retrieve discussions from main
+  x <- try(
+    read.csv(paste("https://raw.githubusercontent.com/",
+                   repo, "/", branch,
+                   "/data/ennet_topics_weekly_interactions.csv",  sep = "")),
+    silent = TRUE
+  )
+
+  ## Return message if try-error
+  if (class(x) == "try-error") {
+    stop(
+      paste(
+        strwrap(x = "Repository and/or branch cannot be found. Please check your
+                     specifications and try again.",
+                width = 80),
+        collapse = "\n"
+      )
+    )
+  }
+
+  ## If x is data.frame
+  if (class(x) == "data.frame") {
+    weekly_interactions <- x %>%
+      tibble::tibble() %>%
+      dplyr::mutate(Extraction.Week = as.Date(Extraction.Week)) %>%
+      dplyr::rename(`Extraction Week` = Extraction.Week,
+                    `New Replies` = New.Replies,
+                    `New Views` = New.Views)
+  }
+
+  ## Return weekly_interactions
+  return(weekly_interactions)
+}
+
+
+################################################################################
+#
+#'
+#' @examples
+#' ## Retrieve en-net topics monthly interactions dataset
+#' get_db_topics_monthly_interactions()
+#'
+#' @export
+#' @rdname get_db
+#'
+#
+################################################################################
+
+get_db_topics_monthly_interactions <- function(repo = "katilingban/ennet_db",
+                                               branch = "main") {
+  ## Retrieve discussions from main
+  x <- try(
+    read.csv(paste("https://raw.githubusercontent.com/",
+                   repo, "/", branch,
+                   "/data/ennet_topics_monthly_interactions.csv",  sep = "")),
+    silent = TRUE
+  )
+
+  ## Return message if try-error
+  if (class(x) == "try-error") {
+    stop(
+      paste(
+        strwrap(x = "Repository and/or branch cannot be found. Please check your
+                     specifications and try again.",
+                width = 80),
+        collapse = "\n"
+      )
+    )
+  }
+
+  ## If x is data.frame
+  if (class(x) == "data.frame") {
+    monthly_interactions <- x %>%
+      tibble::tibble() %>%
+      dplyr::mutate(Extraction.Month = as.Date(Extraction.Month)) %>%
+      dplyr::rename(`Extraction Month` = Extraction.Month,
+                    `New Replies` = New.Replies,
+                    `New Views` = New.Views)
+  }
+
+  ## Return monthly_interactions
+  return(monthly_interactions)
+}
+
+
+################################################################################
+#
+#'
+#' @examples
+#' ## Retrieve en-net topics yearly interactions dataset
+#' get_db_topics_yearly_interactions()
+#'
+#' @export
+#' @rdname get_db
+#'
+#
+################################################################################
+
+get_db_topics_yearly_interactions <- function(repo = "katilingban/ennet_db",
+                                              branch = "main") {
+  ## Retrieve discussions from main
+  x <- try(
+    read.csv(paste("https://raw.githubusercontent.com/",
+                   repo, "/", branch,
+                   "/data/ennet_topics_yearly_interactions.csv",  sep = "")),
+    silent = TRUE
+  )
+
+  ## Return message if try-error
+  if (class(x) == "try-error") {
+    stop(
+      paste(
+        strwrap(x = "Repository and/or branch cannot be found. Please check your
+                     specifications and try again.",
+                width = 80),
+        collapse = "\n"
+      )
+    )
+  }
+
+  ## If x is data.frame
+  if (class(x) == "data.frame") {
+    yearly_interactions <- x %>%
+      tibble::tibble() %>%
+      dplyr::mutate(Extraction.Year = as.Date(Extraction.Year)) %>%
+      dplyr::rename(`Extraction Year` = Extraction.Year,
+                    `New Replies` = New.Replies,
+                    `New Views` = New.Views)
+  }
+
+  ## Return yearly_interactions
+  return(yearly_interactions)
+}
+
 
 ################################################################################
 #

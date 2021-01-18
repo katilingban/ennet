@@ -1,0 +1,255 @@
+---
+title: "Summarising en-net online forum statistics"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Summarising en-net online forum statistics}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  error = FALSE,
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, echo = FALSE}
+library(ennet)
+library(dplyr)
+```
+
+The `ennet` package also includes analytic functions that summarises the text data available from the [**en-net** online forum](https://www.en-net.org). Currently, there are four analytic functions available from `ennet`:
+
+* `count_topics` - function to count the number of topics or questions by theme and date;
+
+* `count_authors` - function to count the number of topics attributed to a specific author;
+
+* `arrange_views` - function to arrange topics by number of views; and,
+
+* `arrange_replies` - function to arrange topics by number of replies.
+
+## Counting number of topics/questions
+
+Summarising the number of topics or questions raised within the [**en-net** online forum](https://www.en-net.org) is basic and useful analytics that can proxy relative importance of a thematic area within the forum. This is facilitated using the `count_topics` function. Counting of topics is done per thematic area and by a specific time period. Counting of topics by month and year is performed by default:
+
+```{r usage6, echo = TRUE, eval = FALSE}
+get_themes() %>%
+  get_themes_topics() %>%
+  count_topics()
+```
+
+which results in:
+
+```{r usage6a, echo = FALSE, eval = TRUE}
+ennet_topics %>%
+  count_topics()
+```
+
+Counting of topics by year is specified as follows:
+
+```{r usage7, echo = TRUE, eval = FALSE}
+get_themes() %>%
+  get_themes_topics() %>%
+  count_topics(by_date = "year")
+```
+
+which results in:
+
+```{r usage7a, echo = FALSE, eval = TRUE}
+ennet_topics %>%
+  count_topics(by_date = "year")
+```
+
+Counting of topics overall across the years is specified as follows:
+
+```{r usage8, echo = TRUE, eval = FALSE}
+get_themes() %>%
+  get_themes_topics() %>%
+  count_topics(by_date = "all")
+```
+
+which results in:
+
+```{r usage8a, echo = FALSE, eval = TRUE}
+ennet_topics %>%
+  count_topics(by_date = "all")
+```
+
+By default, the output of `count_topics` arranges the results by descending frequency of counts of each topic by the grouping variable. This default behaviour can be changed by setting the `.sorted` argument to `FALSE`.
+
+## Counting number of topics/questions raised by an author
+
+Summarising the number of topics or questions raised within the [**en-net** online forum](https://www.en-net.org) for each author is another basic and useful analytics that can proxy level of engagement by those participating in the forum. This is facilitated using the `count_authors` function. Counting of topics for each author is done per thematic area and by a specific time period. Counting of topics for each author by month and year is performed by default:
+
+```{r usage9, echo = TRUE, eval = FALSE}
+get_themes() %>%
+  get_themes_topics() %>%
+  count_authors()
+```
+
+which results in:
+
+```{r usage9a, echo = FALSE, eval = TRUE}
+ennet_topics %>%
+  count_authors()
+```
+
+Counting of topics by year is specified as follows:
+
+```{r usage10, echo = TRUE, eval = FALSE}
+get_themes() %>%
+  get_themes_topics() %>%
+  count_authors(by_date = "year")
+```
+
+which results in:
+
+```{r usage10a, echo = FALSE, eval = TRUE}
+ennet_topics %>%
+  count_authors(by_date = "year")
+```
+
+Counting of topics overall across the years is specified as follows:
+
+```{r usage11, echo = TRUE, eval = FALSE}
+get_themes() %>%
+  get_themes_topics() %>%
+  count_authors(by_date = "all")
+```
+
+which results in:
+
+```{r usage11a, echo = FALSE, eval = TRUE}
+ennet_topics %>%
+  count_authors(by_date = "all")
+```
+
+By default, the output of `count_authors` arranges the results by descending frequency of counts of each topic raised by an author by the grouping variable. This default behaviour can be changed by setting the `.sorted` argument to `FALSE`.
+
+## Arranging topics by number of views
+
+Summarising the number of topics or questions raised within the [**en-net** online forum](https://www.en-net.org) by arranging them based on number of views can proxy level of interest to a specific topic by those participating in the forum. This is facilitated using the `arrange_views` function. Ranking of topics by number of views is done per thematic area and by a specific time period. Ranking of topics by number of views by thematic area and by month and year is performed by default:
+
+```{r usage12, echo = TRUE, eval = FALSE}
+get_themes() %>%
+  get_themes_topics() %>%
+  arrange_views()
+```
+
+which results in:
+
+```{r usage12a, echo = FALSE, eval = TRUE}
+ennet_topics %>%
+  arrange_views()
+```
+
+Arranging topics by number of views by thematic area and by year is performed as follows:
+
+```{r usage13, echo = TRUE, eval = FALSE}
+get_themes() %>%
+  get_themes_topics() %>%
+  arrange_views(by_date = "year")
+```
+
+which results in:
+
+```{r usage13a, echo = FALSE, eval = TRUE}
+ennet_topics %>%
+  arrange_views(by_date = "year")
+```
+
+Arranging topics by number of views by thematic area overall across the years is performed as follows:
+
+```{r usage14, echo = TRUE, eval = FALSE}
+get_themes() %>%
+  get_themes_topics() %>%
+  arrange_views(by_date = "all")
+```
+
+which results in:
+
+```{r usage14a, echo = FALSE, eval = TRUE}
+ennet_topics %>%
+  arrange_views(by_date = "all")
+```
+
+By default, the output of `arrange_views` is grouped by thematic area. This default behaviour can be changed by setting the `by_theme` argument to `FALSE`. For example, to arrange the topics by number of views by month and year across all themes:
+
+```{r usage15, echo = TRUE, eval = FALSE}
+get_themes() %>%
+  get_themes_topics() %>%
+  arrange_views(by_theme = FALSE)
+```
+
+which results in:
+
+```{r usage15a, echo = FALSE, eval = TRUE}
+ennet_topics %>%
+  arrange_views(by_theme = FALSE)
+```
+
+## Arranging topics by number of replies
+
+Summarising the number of topics or questions raised within the [**en-net** online forum](https://www.en-net.org) by arranging them based on number of replies can proxy level of interest to a specific topic by those participating in the forum specifically those who provide responses and feedback to responses within the discussion. This is facilitated using the `arrange_replies` function. Ranking of topics by number of replies is done per thematic area and by a specific time period. Ranking of topics by number of replies by thematic area and by month and year is performed by default:
+
+```{r usage16, echo = TRUE, eval = FALSE}
+get_themes() %>%
+  get_themes_topics() %>%
+  arrange_replies()
+```
+
+which results in:
+
+```{r usage17a, echo = FALSE, eval = TRUE}
+ennet_topics %>%
+  arrange_replies()
+```
+
+Arranging topics by number of replies by thematic area and by year is performed as follows:
+
+```{r usage18, echo = TRUE, eval = FALSE}
+get_themes() %>%
+  get_themes_topics() %>%
+  arrange_replies(by_date = "year")
+```
+
+which results in:
+
+```{r usage18a, echo = FALSE, eval = TRUE}
+ennet_topics %>%
+  arrange_replies(by_date = "year")
+```
+
+Arranging topics by number of replies by thematic area overall across the years is performed as follows:
+
+```{r usage19, echo = TRUE, eval = FALSE}
+get_themes() %>%
+  get_themes_topics() %>%
+  arrange_replies(by_date = "all")
+```
+
+which results in:
+
+```{r usage19a, echo = FALSE, eval = TRUE}
+ennet_topics %>%
+  arrange_replies(by_date = "all")
+```
+
+By default, the output of `arrange_replies` is grouped by thematic area. This default behaviour can be changed by setting the `by_theme` argument to `FALSE`. For example, to arrange the topics by number of replies by month and year across all themes:
+
+```{r usage20, echo = TRUE, eval = FALSE}
+get_themes() %>%
+  get_themes_topics() %>%
+  arrange_replies(by_theme = FALSE)
+```
+
+which results in:
+
+```{r usage20a, echo = FALSE, eval = TRUE}
+ennet_topics %>%
+  arrange_replies(by_theme = FALSE)
+```

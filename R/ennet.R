@@ -39,7 +39,9 @@ if(getRversion() >= "2.15.1") {
                            "Extraction Date", "Interaction", "Link", "Topic",
                            "nInteractions", "nPosts", "dailies", "weeklies",
                            "monthlies", "Extraction Week", "Extraction Month",
-                           "Extraction Year"))
+                           "Extraction Year", "Extraction.Date",
+                           "Extraction.Week", "Extraction.Month",
+                           "Extraction.Year", "New.Views", "New.Replies"))
 }
 
 

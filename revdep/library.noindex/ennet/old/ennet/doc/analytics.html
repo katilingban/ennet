@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Summarising en-net online forum statistics</title>
+
+<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
+// v0.0.1
+// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
+
+document.addEventListener('DOMContentLoaded', function() {
+  const codeList = document.getElementsByClassName("sourceCode");
+  for (var i = 0; i < codeList.length; i++) {
+    var linkList = codeList[i].getElementsByTagName('a');
+    for (var j = 0; j < linkList.length; j++) {
+      if (linkList[j].innerHTML === "") {
+        linkList[j].setAttribute('aria-hidden', 'true');
+      }
+    }
+  }
+});
+</script>
+<style type="text/css">
+a.anchor-section {margin-left: 10px; visibility: hidden; color: inherit;}
+a.anchor-section::before {content: '#';}
+.hasAnchor:hover a.anchor-section {visibility: visible;}
+</style>
+<script>// Anchor sections v1.0 written by Atsushi Yasumoto on Oct 3rd, 2020.
+document.addEventListener('DOMContentLoaded', function() {
+  // Do nothing if AnchorJS is used
+  if (typeof window.anchors === 'object' && anchors.hasOwnProperty('hasAnchorJSLink')) {
+    return;
+  }
+
+  const h = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+  // Do nothing if sections are already anchored
+  if (Array.from(h).some(x => x.classList.contains('hasAnchor'))) {
+    return null;
+  }
+
+  // Use section id when pandoc runs with --section-divs
+  const section_id = function(x) {
+    return ((x.classList.contains('section') || (x.tagName === 'SECTION'))
+            ? x.id : '');
+  };
+
+  // Add anchors
+  h.forEach(function(x) {
+    const id = x.id || section_id(x.parentElement);
+    if (id === '') {
+      return null;
+    }
+    let anchor = document.createElement('a');
+    anchor.href = '#' + id;
+    anchor.classList = ['anchor-section'];
+    x.classList.add('hasAnchor');
+    x.appendChild(anchor);
+  });
+});
+</script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Summarising en-net online forum statistics</h1>
+
+
+
+<p>The <code>ennet</code> package also includes analytic functions that summarises the text data available from the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a>. Currently, there are four analytic functions available from <code>ennet</code>:</p>
+<ul>
+<li><p><code>count_topics</code> - function to count the number of topics or questions by theme and date;</p></li>
+<li><p><code>count_authors</code> - function to count the number of topics attributed to a specific author;</p></li>
+<li><p><code>arrange_views</code> - function to arrange topics by number of views; and,</p></li>
+<li><p><code>arrange_replies</code> - function to arrange topics by number of replies.</p></li>
+</ul>
+<div id="counting-number-of-topicsquestions" class="section level2">
+<h2>Counting number of topics/questions</h2>
+<p>Summarising the number of topics or questions raised within the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> is basic and useful analytics that can proxy relative importance of a thematic area within the forum. This is facilitated using the <code>count_topics</code> function. Counting of topics is done per thematic area and by a specific time period. Counting of topics by month and year is performed by default:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">get_themes</span>() <span class="op">%&gt;%</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="st">  </span><span class="kw">get_themes_topics</span>() <span class="op">%&gt;%</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="st">  </span><span class="kw">count_topics</span>()</span></code></pre></div>
+<p>which results in:</p>
+<pre><code>#&gt; # A tibble: 851 x 4
+#&gt;    Theme                                Month  Year     n
+#&gt;    &lt;chr&gt;                                &lt;fct&gt; &lt;dbl&gt; &lt;int&gt;
+#&gt;  1 Adolescent nutrition                 Jun    2018     6
+#&gt;  2 Adolescent nutrition                 Jul    2018     2
+#&gt;  3 Adolescent nutrition                 Feb    2020     1
+#&gt;  4 Adolescent nutrition                 May    2018     1
+#&gt;  5 Adolescent nutrition                 Jun    2020     1
+#&gt;  6 Adolescent nutrition                 Aug    2018     1
+#&gt;  7 Adolescent nutrition                 Sep    2018     1
+#&gt;  8 Announcements &amp; Nutritionists needed Aug    2015    33
+#&gt;  9 Announcements &amp; Nutritionists needed May    2019    26
+#&gt; 10 Announcements &amp; Nutritionists needed Jun    2015    26
+#&gt; # … with 841 more rows</code></pre>
+<p>Counting of topics by year is specified as follows:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">get_themes</span>() <span class="op">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="st">  </span><span class="kw">get_themes_topics</span>() <span class="op">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="st">  </span><span class="kw">count_topics</span>(<span class="dt">by_date =</span> <span class="st">&quot;year&quot;</span>)</span></code></pre></div>
+<p>which results in:</p>
+<pre><code>#&gt; # A tibble: 142 x 3
+#&gt;    Theme                                 Year     n
+#&gt;    &lt;chr&gt;                                &lt;dbl&gt; &lt;int&gt;
+#&gt;  1 Adolescent nutrition                  2018    11
+#&gt;  2 Adolescent nutrition                  2020     2
+#&gt;  3 Announcements &amp; Nutritionists needed  2015   196
+#&gt;  4 Announcements &amp; Nutritionists needed  2014   165
+#&gt;  5 Announcements &amp; Nutritionists needed  2019   134
+#&gt;  6 Announcements &amp; Nutritionists needed  2016   130
+#&gt;  7 Announcements &amp; Nutritionists needed  2017   129
+#&gt;  8 Announcements &amp; Nutritionists needed  2018   126
+#&gt;  9 Announcements &amp; Nutritionists needed  2013   101
+#&gt; 10 Announcements &amp; Nutritionists needed  2012    82
+#&gt; # … with 132 more rows</code></pre>
+<p>Counting of topics overall across the years is specified as follows:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">get_themes</span>() <span class="op">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="st">  </span><span class="kw">get_themes_topics</span>() <span class="op">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="st">  </span><span class="kw">count_topics</span>(<span class="dt">by_date =</span> <span class="st">&quot;all&quot;</span>)</span></code></pre></div>
+<p>which results in:</p>
+<pre><code>#&gt; # A tibble: 18 x 2
+#&gt;    Theme                                                              n
+#&gt;    &lt;chr&gt;                                                          &lt;int&gt;
+#&gt;  1 Announcements &amp; Nutritionists needed                            1229
+#&gt;  2 Management of wasting/acute malnutrition                         533
+#&gt;  3 Assessment and Surveillance                                      454
+#&gt;  4 Infant and young child feeding interventions                     196
+#&gt;  5 Coverage assessment                                               93
+#&gt;  6 Upcoming trainings                                                92
+#&gt;  7 COVID-19 and nutrition programming                                83
+#&gt;  8 Micronutrients                                                    54
+#&gt;  9 Other thematic area                                               51
+#&gt; 10 Scaling Up Nutrition (SUN)                                        51
+#&gt; 11 Cross-cutting issues                                              47
+#&gt; 12 Food assistance                                                   31
+#&gt; 13 Management of At Risk Mothers and Infants                         27
+#&gt; 14 Prevention and management of stunting                             21
+#&gt; 15 Partnerships for research                                         18
+#&gt; 16 Adolescent nutrition                                              13
+#&gt; 17 Simplified Approaches for the Management of Acute Malnutrition    10
+#&gt; 18 Multi-sector nutrition programming                                 3</code></pre>
+<p>By default, the output of <code>count_topics</code> arranges the results by descending frequency of counts of each topic by the grouping variable. This default behaviour can be changed by setting the <code>.sorted</code> argument to <code>FALSE</code>.</p>
+</div>
+<div id="counting-number-of-topicsquestions-raised-by-an-author" class="section level2">
+<h2>Counting number of topics/questions raised by an author</h2>
+<p>Summarising the number of topics or questions raised within the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> for each author is another basic and useful analytics that can proxy level of engagement by those participating in the forum. This is facilitated using the <code>count_authors</code> function. Counting of topics for each author is done per thematic area and by a specific time period. Counting of topics for each author by month and year is performed by default:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">get_themes</span>() <span class="op">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="st">  </span><span class="kw">get_themes_topics</span>() <span class="op">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="st">  </span><span class="kw">count_authors</span>()</span></code></pre></div>
+<p>which results in:</p>
+<pre><code>#&gt; # A tibble: 2,513 x 5
+#&gt;    Theme                                Author           Month  Year     n
+#&gt;    &lt;chr&gt;                                &lt;chr&gt;            &lt;fct&gt; &lt;dbl&gt; &lt;int&gt;
+#&gt;  1 Announcements &amp; Nutritionists needed Anonymous 1494   Jun    2015    13
+#&gt;  2 Announcements &amp; Nutritionists needed Mark Hawkes      May    2019    13
+#&gt;  3 Announcements &amp; Nutritionists needed Marie Lecuyer    May    2014    11
+#&gt;  4 Announcements &amp; Nutritionists needed Anonymous 1271   May    2012     9
+#&gt;  5 Announcements &amp; Nutritionists needed Anonymous 1494   Aug    2015     9
+#&gt;  6 COVID-19 and nutrition programming   GTAM Wasting TWG Jun    2020     9
+#&gt;  7 Announcements &amp; Nutritionists needed Marie Lecuyer    Mar    2014     8
+#&gt;  8 Announcements &amp; Nutritionists needed Marie Lecuyer    Jul    2014     8
+#&gt;  9 Announcements &amp; Nutritionists needed Michael ALVES    Sep    2015     7
+#&gt; 10 Announcements &amp; Nutritionists needed Ciara Passmore   Aug    2015     6
+#&gt; # … with 2,503 more rows</code></pre>
+<p>Counting of topics by year is specified as follows:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">get_themes</span>() <span class="op">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="st">  </span><span class="kw">get_themes_topics</span>() <span class="op">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="st">  </span><span class="kw">count_authors</span>(<span class="dt">by_date =</span> <span class="st">&quot;year&quot;</span>)</span></code></pre></div>
+<p>which results in:</p>
+<pre><code>#&gt; # A tibble: 1,997 x 4
+#&gt;    Theme                                  Author                      Year     n
+#&gt;    &lt;chr&gt;                                  &lt;chr&gt;                      &lt;dbl&gt; &lt;int&gt;
+#&gt;  1 Announcements &amp; Nutritionists needed   Marie Lecuyer               2014    47
+#&gt;  2 Announcements &amp; Nutritionists needed   Anonymous 1494              2015    28
+#&gt;  3 Announcements &amp; Nutritionists needed   Tamsin Walters              2015    26
+#&gt;  4 COVID-19 and nutrition programming     GTAM Wasting TWG            2020    22
+#&gt;  5 Announcements &amp; Nutritionists needed   Michael ALVES               2015    18
+#&gt;  6 Announcements &amp; Nutritionists needed   Nutrition International -…  2018    18
+#&gt;  7 Announcements &amp; Nutritionists needed   Tamsin Walters              2018    17
+#&gt;  8 Announcements &amp; Nutritionists needed   Mark Hawkes                 2019    16
+#&gt;  9 Announcements &amp; Nutritionists needed   Anonymous 1271              2012    15
+#&gt; 10 Infant and young child feeding interv… Alessandro Iellamo          2020    15
+#&gt; # … with 1,987 more rows</code></pre>
+<p>Counting of topics overall across the years is specified as follows:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">get_themes</span>() <span class="op">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="st">  </span><span class="kw">get_themes_topics</span>() <span class="op">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="st">  </span><span class="kw">count_authors</span>(<span class="dt">by_date =</span> <span class="st">&quot;all&quot;</span>)</span></code></pre></div>
+<p>which results in:</p>
+<pre><code>#&gt; # A tibble: 1,548 x 3
+#&gt;    Theme                                Author                              n
+#&gt;    &lt;chr&gt;                                &lt;chr&gt;                           &lt;int&gt;
+#&gt;  1 Announcements &amp; Nutritionists needed Tamsin Walters                    103
+#&gt;  2 Announcements &amp; Nutritionists needed Marie Lecuyer                      61
+#&gt;  3 Announcements &amp; Nutritionists needed Michael ALVES                      58
+#&gt;  4 Announcements &amp; Nutritionists needed Anonymous 1494                     49
+#&gt;  5 Announcements &amp; Nutritionists needed Nutrition International - NTEAM    32
+#&gt;  6 Announcements &amp; Nutritionists needed Alan Mason                         29
+#&gt;  7 Announcements &amp; Nutritionists needed Regine Kopplow                     26
+#&gt;  8 Announcements &amp; Nutritionists needed Mark Hawkes                        23
+#&gt;  9 COVID-19 and nutrition programming   GTAM Wasting TWG                   22
+#&gt; 10 Assessment and Surveillance          Anonymous 81                       21
+#&gt; # … with 1,538 more rows</code></pre>
+<p>By default, the output of <code>count_authors</code> arranges the results by descending frequency of counts of each topic raised by an author by the grouping variable. This default behaviour can be changed by setting the <code>.sorted</code> argument to <code>FALSE</code>.</p>
+</div>
+<div id="arranging-topics-by-number-of-views" class="section level2">
+<h2>Arranging topics by number of views</h2>
+<p>Summarising the number of topics or questions raised within the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> by arranging them based on number of views can proxy level of interest to a specific topic by those participating in the forum. This is facilitated using the <code>arrange_views</code> function. Ranking of topics by number of views is done per thematic area and by a specific time period. Ranking of topics by number of views by thematic area and by month and year is performed by default:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">get_themes</span>() <span class="op">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="st">  </span><span class="kw">get_themes_topics</span>() <span class="op">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="st">  </span><span class="kw">arrange_views</span>()</span></code></pre></div>
+<p>which results in:</p>
+<pre><code>#&gt; # A tibble: 3,006 x 9
+#&gt;    Theme   Topic          Views Author  Posted     Link      Replies Month  Year
+#&gt;    &lt;chr&gt;   &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;   &lt;date&gt;     &lt;chr&gt;       &lt;int&gt; &lt;fct&gt; &lt;dbl&gt;
+#&gt;  1 Adoles… Age group of …   599 Anonym… 2020-02-15 https://…       1 Feb    2020
+#&gt;  2 Adoles… Launch of res…  1959 Jo Lof… 2018-05-23 https://…       0 May    2018
+#&gt;  3 Adoles… Reaching out …  2155 Emily … 2018-06-18 https://…       3 Jun    2018
+#&gt;  4 Adoles… adolescent ma…  2120 Anonym… 2018-06-21 https://…       1 Jun    2018
+#&gt;  5 Adoles… adolescent ma…  1933 Anonym… 2018-06-21 https://…       1 Jun    2018
+#&gt;  6 Adoles… anthropometry…  1890 Emily … 2018-06-29 https://…       2 Jun    2018
+#&gt;  7 Adoles… Teen/adolesce…  1827 Anne H… 2018-06-19 https://…       1 Jun    2018
+#&gt;  8 Adoles… health educat…  1609 Anonym… 2018-06-19 https://…       1 Jun    2018
+#&gt;  9 Adoles… Is there any …   899 Aisha … 2020-06-12 https://…       1 Jun    2020
+#&gt; 10 Adoles… Assessing nut…  1912 Ursula… 2018-07-25 https://…       3 Jul    2018
+#&gt; # … with 2,996 more rows</code></pre>
+<p>Arranging topics by number of views by thematic area and by year is performed as follows:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw">get_themes</span>() <span class="op">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="st">  </span><span class="kw">get_themes_topics</span>() <span class="op">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="st">  </span><span class="kw">arrange_views</span>(<span class="dt">by_date =</span> <span class="st">&quot;year&quot;</span>)</span></code></pre></div>
+<p>which results in:</p>
+<pre><code>#&gt; # A tibble: 3,006 x 9
+#&gt;    Theme    Topic        Views Author  Posted     Link       Replies Month  Year
+#&gt;    &lt;chr&gt;    &lt;chr&gt;        &lt;int&gt; &lt;chr&gt;   &lt;date&gt;     &lt;chr&gt;        &lt;int&gt; &lt;fct&gt; &lt;dbl&gt;
+#&gt;  1 Adolesc… Reaching ou…  2155 Emily … 2018-06-18 https://w…       3 Jun    2018
+#&gt;  2 Adolesc… adolescent …  2120 Anonym… 2018-06-21 https://w…       1 Jun    2018
+#&gt;  3 Adolesc… Launch of r…  1959 Jo Lof… 2018-05-23 https://w…       0 May    2018
+#&gt;  4 Adolesc… adolescent …  1933 Anonym… 2018-06-21 https://w…       1 Jun    2018
+#&gt;  5 Adolesc… Assessing n…  1912 Ursula… 2018-07-25 https://w…       3 Jul    2018
+#&gt;  6 Adolesc… anthropomet…  1890 Emily … 2018-06-29 https://w…       2 Jun    2018
+#&gt;  7 Adolesc… Teen/adoles…  1827 Anne H… 2018-06-19 https://w…       1 Jun    2018
+#&gt;  8 Adolesc… Adolescent …  1793 Tamsin… 2018-08-01 https://w…       3 Aug    2018
+#&gt;  9 Adolesc… adolescent …  1749 Anonym… 2018-07-04 https://w…       1 Jul    2018
+#&gt; 10 Adolesc… MUAC tape f…  1693 Anonym… 2018-09-27 https://w…       1 Sep    2018
+#&gt; # … with 2,996 more rows</code></pre>
+<p>Arranging topics by number of views by thematic area overall across the years is performed as follows:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw">get_themes</span>() <span class="op">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="st">  </span><span class="kw">get_themes_topics</span>() <span class="op">%&gt;%</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="st">  </span><span class="kw">arrange_views</span>(<span class="dt">by_date =</span> <span class="st">&quot;all&quot;</span>)</span></code></pre></div>
+<p>which results in:</p>
+<pre><code>#&gt; # A tibble: 3,006 x 9
+#&gt;    Theme    Topic        Views Author  Posted     Link       Replies Month  Year
+#&gt;    &lt;chr&gt;    &lt;chr&gt;        &lt;int&gt; &lt;chr&gt;   &lt;date&gt;     &lt;chr&gt;        &lt;int&gt; &lt;fct&gt; &lt;dbl&gt;
+#&gt;  1 Adolesc… Reaching ou…  2155 Emily … 2018-06-18 https://w…       3 Jun    2018
+#&gt;  2 Adolesc… adolescent …  2120 Anonym… 2018-06-21 https://w…       1 Jun    2018
+#&gt;  3 Adolesc… Launch of r…  1959 Jo Lof… 2018-05-23 https://w…       0 May    2018
+#&gt;  4 Adolesc… adolescent …  1933 Anonym… 2018-06-21 https://w…       1 Jun    2018
+#&gt;  5 Adolesc… Assessing n…  1912 Ursula… 2018-07-25 https://w…       3 Jul    2018
+#&gt;  6 Adolesc… anthropomet…  1890 Emily … 2018-06-29 https://w…       2 Jun    2018
+#&gt;  7 Adolesc… Teen/adoles…  1827 Anne H… 2018-06-19 https://w…       1 Jun    2018
+#&gt;  8 Adolesc… Adolescent …  1793 Tamsin… 2018-08-01 https://w…       3 Aug    2018
+#&gt;  9 Adolesc… adolescent …  1749 Anonym… 2018-07-04 https://w…       1 Jul    2018
+#&gt; 10 Adolesc… MUAC tape f…  1693 Anonym… 2018-09-27 https://w…       1 Sep    2018
+#&gt; # … with 2,996 more rows</code></pre>
+<p>By default, the output of <code>arrange_views</code> is grouped by thematic area. This default behaviour can be changed by setting the <code>by_theme</code> argument to <code>FALSE</code>. For example, to arrange the topics by number of views by month and year across all themes:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="kw">get_themes</span>() <span class="op">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="st">  </span><span class="kw">get_themes_topics</span>() <span class="op">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="st">  </span><span class="kw">arrange_views</span>(<span class="dt">by_theme =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<p>which results in:</p>
+<pre><code>#&gt; # A tibble: 3,006 x 9
+#&gt;    Theme      Topic         Views Author Posted     Link     Replies Month  Year
+#&gt;    &lt;chr&gt;      &lt;chr&gt;         &lt;int&gt; &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt;      &lt;int&gt; &lt;fct&gt; &lt;dbl&gt;
+#&gt;  1 Infant an… Breastfeedin…  9174 Anony… 2010-01-07 https:/…       3 Jan    2010
+#&gt;  2 Announcem… Nutrition in…  8380 Marie… 2010-01-05 https:/…      NA Jan    2010
+#&gt;  3 Assessmen… How to Maint…  5560 Anony… 2010-01-15 https:/…       2 Jan    2010
+#&gt;  4 Assessmen… Interpretati…  8497 Tamsi… 2011-01-05 https:/…      10 Jan    2011
+#&gt;  5 Assessmen… Calculating …  7503 Ali M… 2011-01-19 https:/…       3 Jan    2011
+#&gt;  6 Assessmen… Prospective …  5922 Jeff … 2011-01-27 https:/…       7 Jan    2011
+#&gt;  7 Announcem… IYCF Consult…  5350 Aliso… 2011-01-04 https:/…      NA Jan    2011
+#&gt;  8 Announcem… Technical Su…  5313 Tamsi… 2011-01-18 https:/…      NA Jan    2011
+#&gt;  9 Cross-cut… Transitionin…  5169 Anony… 2011-01-25 https:/…       1 Jan    2011
+#&gt; 10 Assessmen… Result with …  5087 Anony… 2011-01-25 https:/…       2 Jan    2011
+#&gt; # … with 2,996 more rows</code></pre>
+</div>
+<div id="arranging-topics-by-number-of-replies" class="section level2">
+<h2>Arranging topics by number of replies</h2>
+<p>Summarising the number of topics or questions raised within the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> by arranging them based on number of replies can proxy level of interest to a specific topic by those participating in the forum specifically those who provide responses and feedback to responses within the discussion. This is facilitated using the <code>arrange_replies</code> function. Ranking of topics by number of replies is done per thematic area and by a specific time period. Ranking of topics by number of replies by thematic area and by month and year is performed by default:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">get_themes</span>() <span class="op">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="st">  </span><span class="kw">get_themes_topics</span>() <span class="op">%&gt;%</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="st">  </span><span class="kw">arrange_replies</span>()</span></code></pre></div>
+<p>which results in:</p>
+<pre><code>#&gt; # A tibble: 1,777 x 9
+#&gt;    Theme   Topic          Views Author  Posted     Link      Replies Month  Year
+#&gt;    &lt;chr&gt;   &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;   &lt;date&gt;     &lt;chr&gt;       &lt;int&gt; &lt;fct&gt; &lt;dbl&gt;
+#&gt;  1 Adoles… Age group of …   599 Anonym… 2020-02-15 https://…       1 Feb    2020
+#&gt;  2 Adoles… Launch of res…  1959 Jo Lof… 2018-05-23 https://…       0 May    2018
+#&gt;  3 Adoles… Reaching out …  2155 Emily … 2018-06-18 https://…       3 Jun    2018
+#&gt;  4 Adoles… anthropometry…  1890 Emily … 2018-06-29 https://…       2 Jun    2018
+#&gt;  5 Adoles… adolescent ma…  2120 Anonym… 2018-06-21 https://…       1 Jun    2018
+#&gt;  6 Adoles… adolescent ma…  1933 Anonym… 2018-06-21 https://…       1 Jun    2018
+#&gt;  7 Adoles… Teen/adolesce…  1827 Anne H… 2018-06-19 https://…       1 Jun    2018
+#&gt;  8 Adoles… health educat…  1609 Anonym… 2018-06-19 https://…       1 Jun    2018
+#&gt;  9 Adoles… Is there any …   899 Aisha … 2020-06-12 https://…       1 Jun    2020
+#&gt; 10 Adoles… Assessing nut…  1912 Ursula… 2018-07-25 https://…       3 Jul    2018
+#&gt; # … with 1,767 more rows</code></pre>
+<p>Arranging topics by number of replies by thematic area and by year is performed as follows:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">get_themes</span>() <span class="op">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="st">  </span><span class="kw">get_themes_topics</span>() <span class="op">%&gt;%</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="st">  </span><span class="kw">arrange_replies</span>(<span class="dt">by_date =</span> <span class="st">&quot;year&quot;</span>)</span></code></pre></div>
+<p>which results in:</p>
+<pre><code>#&gt; # A tibble: 1,777 x 9
+#&gt;    Theme    Topic        Views Author  Posted     Link       Replies Month  Year
+#&gt;    &lt;chr&gt;    &lt;chr&gt;        &lt;int&gt; &lt;chr&gt;   &lt;date&gt;     &lt;chr&gt;        &lt;int&gt; &lt;fct&gt; &lt;dbl&gt;
+#&gt;  1 Adolesc… Adolescent …  1793 Tamsin… 2018-08-01 https://w…       3 Aug    2018
+#&gt;  2 Adolesc… Assessing n…  1912 Ursula… 2018-07-25 https://w…       3 Jul    2018
+#&gt;  3 Adolesc… Reaching ou…  2155 Emily … 2018-06-18 https://w…       3 Jun    2018
+#&gt;  4 Adolesc… anthropomet…  1890 Emily … 2018-06-29 https://w…       2 Jun    2018
+#&gt;  5 Adolesc… MUAC tape f…  1693 Anonym… 2018-09-27 https://w…       1 Sep    2018
+#&gt;  6 Adolesc… adolescent …  1749 Anonym… 2018-07-04 https://w…       1 Jul    2018
+#&gt;  7 Adolesc… adolescent …  2120 Anonym… 2018-06-21 https://w…       1 Jun    2018
+#&gt;  8 Adolesc… adolescent …  1933 Anonym… 2018-06-21 https://w…       1 Jun    2018
+#&gt;  9 Adolesc… Teen/adoles…  1827 Anne H… 2018-06-19 https://w…       1 Jun    2018
+#&gt; 10 Adolesc… health educ…  1609 Anonym… 2018-06-19 https://w…       1 Jun    2018
+#&gt; # … with 1,767 more rows</code></pre>
+<p>Arranging topics by number of replies by thematic area overall across the years is performed as follows:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">get_themes</span>() <span class="op">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="st">  </span><span class="kw">get_themes_topics</span>() <span class="op">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="st">  </span><span class="kw">arrange_replies</span>(<span class="dt">by_date =</span> <span class="st">&quot;all&quot;</span>)</span></code></pre></div>
+<p>which results in:</p>
+<pre><code>#&gt; # A tibble: 1,777 x 9
+#&gt;    Theme   Topic          Views Author  Posted     Link      Replies Month  Year
+#&gt;    &lt;chr&gt;   &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;   &lt;date&gt;     &lt;chr&gt;       &lt;int&gt; &lt;fct&gt; &lt;dbl&gt;
+#&gt;  1 Adoles… Adolescent sc…  1793 Tamsin… 2018-08-01 https://…       3 Aug    2018
+#&gt;  2 Adoles… Assessing nut…  1912 Ursula… 2018-07-25 https://…       3 Jul    2018
+#&gt;  3 Adoles… Reaching out …  2155 Emily … 2018-06-18 https://…       3 Jun    2018
+#&gt;  4 Adoles… anthropometry…  1890 Emily … 2018-06-29 https://…       2 Jun    2018
+#&gt;  5 Adoles… Is there any …   899 Aisha … 2020-06-12 https://…       1 Jun    2020
+#&gt;  6 Adoles… Age group of …   599 Anonym… 2020-02-15 https://…       1 Feb    2020
+#&gt;  7 Adoles… MUAC tape for…  1693 Anonym… 2018-09-27 https://…       1 Sep    2018
+#&gt;  8 Adoles… adolescent sc…  1749 Anonym… 2018-07-04 https://…       1 Jul    2018
+#&gt;  9 Adoles… adolescent ma…  2120 Anonym… 2018-06-21 https://…       1 Jun    2018
+#&gt; 10 Adoles… adolescent ma…  1933 Anonym… 2018-06-21 https://…       1 Jun    2018
+#&gt; # … with 1,767 more rows</code></pre>
+<p>By default, the output of <code>arrange_replies</code> is grouped by thematic area. This default behaviour can be changed by setting the <code>by_theme</code> argument to <code>FALSE</code>. For example, to arrange the topics by number of replies by month and year across all themes:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="kw">get_themes</span>() <span class="op">%&gt;%</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="st">  </span><span class="kw">get_themes_topics</span>() <span class="op">%&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="st">  </span><span class="kw">arrange_replies</span>(<span class="dt">by_theme =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<p>which results in:</p>
+<pre><code>#&gt; # A tibble: 1,777 x 9
+#&gt;    Theme     Topic         Views Author  Posted     Link     Replies Month  Year
+#&gt;    &lt;chr&gt;     &lt;chr&gt;         &lt;int&gt; &lt;chr&gt;   &lt;date&gt;     &lt;chr&gt;      &lt;int&gt; &lt;fct&gt; &lt;dbl&gt;
+#&gt;  1 Infant a… Breastfeedin…  9174 Anonym… 2010-01-07 https:/…       3 Jan    2010
+#&gt;  2 Assessme… How to Maint…  5560 Anonym… 2010-01-15 https:/…       2 Jan    2010
+#&gt;  3 Assessme… Interpretati…  8497 Tamsin… 2011-01-05 https:/…      10 Jan    2011
+#&gt;  4 Assessme… Prospective …  5922 Jeff M… 2011-01-27 https:/…       7 Jan    2011
+#&gt;  5 Assessme… Calculating …  7503 Ali Ma… 2011-01-19 https:/…       3 Jan    2011
+#&gt;  6 Assessme… Result with …  5087 Anonym… 2011-01-25 https:/…       2 Jan    2011
+#&gt;  7 Cross-cu… Transitionin…  5169 Anonym… 2011-01-25 https:/…       1 Jan    2011
+#&gt;  8 Assessme… Nutritional …  7560 Mary M… 2012-01-01 https:/…      10 Jan    2012
+#&gt;  9 Upcoming… Regional SMA…  5703 Yara S… 2012-01-10 https:/…       8 Jan    2012
+#&gt; 10 Micronut… multi-micron…  6032 REBECC… 2012-01-18 https:/…       6 Jan    2012
+#&gt; # … with 1,767 more rows</code></pre>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
