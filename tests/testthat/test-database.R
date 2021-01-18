@@ -28,3 +28,39 @@ test_that("x is a tibble", {
 test_that("error message show", {
   expect_error(create_db_topics_monthly(.date = NA))
 })
+
+
+x <- create_db_topics_dailies(hourlies = ennet_hourlies)
+
+test_that("x is a tibble", {
+  expect_is(x, "tbl")
+})
+
+x <- create_db_topics_daily_interactions(dailies = ennet_dailies)
+
+test_that("x is a tibble", {
+  expect_is(x, "tbl")
+})
+
+
+x <- create_db_topics_weekly_interactions(dailies = ennet_dailies)
+
+test_that("x is a tibble", {
+  expect_is(x, "tbl")
+})
+
+
+x <- create_db_topics_monthly_interactions(dailies = ennet_dailies)
+
+test_that("x is a tibble", {
+  expect_is(x, "tbl")
+})
+
+
+x <- create_db_topics_yearly_interactions(dailies = ennet_dailies)
+
+test_that("x is a tibble", {
+  expect_is(x, "tbl")
+})
+
+
