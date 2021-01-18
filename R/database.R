@@ -45,7 +45,7 @@ get_db_discussions <- function(gh = "katilingban/ennet_db") {
 ################################################################################
 #
 #'
-#' Create a daily topics dataset for the ennet_db
+#' Create various topics dataset for the ennet_db
 #'
 #' @param gh A character value of the GitHub user and repository name
 #'   combination identifying the GitHub location for ennet_db. Default is
@@ -54,6 +54,13 @@ get_db_discussions <- function(gh = "katilingban/ennet_db") {
 #'   a topics dataset for the ennet_db
 #' @param fn A character value or vector of filenames for hourly topics dataset
 #'   found in ennet_db
+#' @param hourlies A tibble of topics data usually produced by using the
+#'   [create_db_topics_hourlies()] function
+#' @param dailies A tibble of topics data usually produced by using the
+#'   [create_db_topics_dailies()] function
+#'
+#' @return A tibble of specified topics dataset created from data in the
+#'   ennet_db
 #'
 #' @author Ernest Guevarra
 #'
@@ -63,7 +70,7 @@ get_db_discussions <- function(gh = "katilingban/ennet_db") {
 #'         "ennet_topics_2021-01-17_02:48:38.csv",
 #'         "ennet_topics_2021-01-17_03:57:46.csv")
 #'
-#' create_db_topics_daily(.date = Sys.Date(), fn = fn)
+#' create_db_topics_daily(.date = "2021-01-17", fn = fn)
 #'
 #' @export
 #' @rdname create_db
@@ -145,6 +152,7 @@ create_db_topics_daily <- function(gh = "katilingban/ennet_db",
 }
 
 
+################################################################################
 #
 #'
 #' @examples
@@ -154,6 +162,8 @@ create_db_topics_daily <- function(gh = "katilingban/ennet_db",
 #' @rdname create_db
 #'
 #
+################################################################################
+
 create_db_topics_monthly <- function(gh = "katilingban/ennet_db",
                                      .date = Sys.Date() - 1) {
   ## Check .date
@@ -218,4 +228,318 @@ create_db_topics_monthly <- function(gh = "katilingban/ennet_db",
 
   ##
   return(x)
+}
+
+
+################################################################################
+#
+#'
+#' @examples
+#' create_db_topics_hourlies(.date = "2020-12-31")
+#'
+#' @export
+#' @rdname create_db
+#'
+#
+################################################################################
+
+create_db_topics_hourlies <- function(gh = "katilingban/ennet_db",
+                                      .date = Sys.Date()) {
+  ## Check .date
+  if (is.na(lubridate::ymd(.date))) {
+    stop(
+      paste(
+        strwrap(x = ".date values are not in the expected YYYY-MM-DD format.
+                     Please check and try again.",
+                width = 80),
+        collapse = "\n"
+      )
+    )
+  }
+
+  ## Check .date is not earlier than December 2020
+  if (lubridate::month(.date) != 12 & lubridate::year(.date) <= 2020) {
+    stop(
+      paste(
+        strwrap(x = "Earliest dataset available from ennet_db is for December
+                     2020. Please provide .date value for December 2020 or
+                     later.",
+                width = 80),
+        collapse = "\n"
+      )
+    )
+  }
+
+  ## Get current month and year
+  current_year <- .date %>% lubridate::year()
+  current_month <- .date %>% lubridate::month()
+
+  if (current_month == 12 & current_year == 2020) {
+    all_months_years <- "December_2020"
+  } else {
+    ##
+    all_months_years <- c("December_2020",
+                          paste(month.name[1:current_month],
+                                current_year, sep = "_"))
+  }
+
+  ##
+  fn <- paste("ennet_topics_", all_months_years, ".csv", sep = "")
+
+  ## Concatenating data.frame
+  hourlies <- data.frame()
+
+  ##
+  for (i in fn) {
+    x <- try(
+      read.csv(
+        paste("https://raw.githubusercontent.com/",
+              gh, "/main/data/", i, sep = "")
+      ),
+      silent = TRUE
+    )
+
+    if (class(x) == "data.frame") {
+      ## Check if try is not an error
+      names(x) <- names(x) %>%
+        stringr::str_replace(pattern = "_", replacement = " ")
+
+      ## Tidy the dataset and conver to long format
+      x <- x %>%
+        tidyr::pivot_longer(cols = dplyr::starts_with(match = c("Views",
+                                                                "Replies")),
+                            names_to = c("Interaction", "Extraction"),
+                            names_sep = " ",
+                            values_to = "n") %>%
+        dplyr::mutate(Extraction = lubridate::ymd_hms(Extraction))
+
+      ## Concatenate
+      hourlies <- rbind(hourlies, x)
+    } else break
+  }
+
+  ## Convert to tibble
+  hourlies <- hourlies %>%
+    dplyr::mutate(n = ifelse(is.na(n), 0, n))
+
+  ## Return hourlies
+  return(hourlies)
+}
+
+
+################################################################################
+#
+#'
+#' @examples
+#' create_db_topics_dailies(hourlies = ennet_hourlies)
+#'
+#' @export
+#' @rdname create_db
+#'
+#
+################################################################################
+
+create_db_topics_dailies <- function(hourlies) {
+  ## Process dailies topics data
+  dailies <- hourlies %>%
+    dplyr::group_by(Theme, Topic, Author, Posted, Link, Interaction,
+                    `Extraction Date` = as.Date(Extraction)) %>%
+    dplyr::filter(Extraction == max(Extraction, na.rm = TRUE)) %>%
+    dplyr::ungroup()
+
+  ## return dailies
+  return(dailies)
+}
+
+################################################################################
+#
+#'
+#' @examples
+#' create_db_topics_daily_interactions(dailies = ennet_dailies)
+#'
+#' @export
+#' @rdname create_db
+#'
+#
+################################################################################
+
+create_db_topics_daily_interactions <- function(dailies) {
+  ## Tally daily views
+  x <- dailies %>%
+    dplyr::group_by(Theme, Interaction, `Extraction Date`) %>%
+    dplyr::count(Posted, name = "nPosts") %>%
+    dplyr::summarise(nPosts = sum(nPosts), .groups = "drop") %>%
+    tidyr::pivot_wider(names_from = Interaction, values_from = nPosts) %>%
+    dplyr::select(Theme:Replies) %>%
+    dplyr::rename(nPosts = Replies)
+
+  ## Tally daily interactions
+  daily_interactions <- dailies %>%
+    dplyr::group_by(Theme, Interaction, `Extraction Date`, .add = TRUE) %>%
+    dplyr::summarise(nInteractions = sum(n), .groups = "drop") %>%
+    tidyr::pivot_wider(names_from = Interaction,
+                       values_from = nInteractions) %>%
+    dplyr::group_by(Theme) %>%
+    dplyr::mutate(`New Replies` = c(0, diff(Replies, 1)),
+                  `New Views` = c(0, diff(Views, 1))) %>%
+  ## Merge views with daily interactions
+    dplyr::full_join(x) %>%
+    dplyr::ungroup()
+
+  ## Return daily interactions
+  return(daily_interactions)
+}
+
+
+################################################################################
+#
+#'
+#' @examples
+#' create_db_topics_weekly_interactions(dailies = ennet_dailies)
+#'
+#' @export
+#' @rdname create_db
+#'
+#
+################################################################################
+
+create_db_topics_weekly_interactions <- function(dailies) {
+  ## Process weeklies topics data
+  weeklies <- dailies %>%
+    dplyr::group_by(Theme, Topic, Author, Posted, Link, Interaction,
+                    `Extraction Week` = cut(`Extraction Date`,
+                                            breaks = "1 week",
+                                            start.on.monday = FALSE) %>%
+                      as.Date()) %>%
+    dplyr::filter(Extraction == max(Extraction, na.rm = TRUE)) %>%
+    dplyr::ungroup()
+
+  ## Tally weekly views
+  x <- dailies %>%
+    dplyr::group_by(Theme, Interaction,
+                    `Extraction Week` = cut(`Extraction Date`,
+                                            breaks = "1 week",
+                                            start.on.monday = FALSE) %>%
+                      as.Date()) %>%
+    dplyr::count(Posted, name = "nPosts") %>%
+    dplyr::summarise(nPosts = sum(nPosts), .groups = "drop") %>%
+    tidyr::pivot_wider(names_from = Interaction, values_from = nPosts) %>%
+    dplyr::select(Theme:Replies) %>%
+    dplyr::rename(nPosts = Replies)
+
+  ## Tally weekly interactions
+  weekly_interactions <- weeklies %>%
+    dplyr::group_by(Theme, Interaction, `Extraction Week`, .add = TRUE) %>%
+    dplyr::summarise(nInteractions = sum(n), .groups = "drop") %>%
+    tidyr::pivot_wider(names_from = Interaction,
+                       values_from = nInteractions) %>%
+    dplyr::group_by(Theme) %>%
+    dplyr::mutate(`New Replies` = c(0, diff(Replies, 1)),
+                  `New Views` = c(0, diff(Views, 1))) %>%
+    dplyr::full_join(x) %>%
+    dplyr::ungroup()
+
+  ## Return weekly_interactions
+  return(weekly_interactions)
+}
+
+
+################################################################################
+#
+#'
+#' @examples
+#' create_db_topics_monthly_interactions(dailies = ennet_dailies)
+#'
+#' @export
+#' @rdname create_db
+#'
+#
+################################################################################
+
+create_db_topics_monthly_interactions <- function(dailies) {
+  ## Process monthlies topics data
+  monthlies <- dailies %>%
+    dplyr::group_by(Theme, Topic, Author, Posted, Link, Interaction,
+                    `Extraction Month` = cut(`Extraction Date`,
+                                             breaks = "1 month") %>%
+                      as.Date()) %>%
+    dplyr::filter(Extraction == max(Extraction, na.rm = TRUE)) %>%
+    dplyr::ungroup()
+
+  ## Tally monthly views
+  x <- dailies %>%
+    dplyr::group_by(Theme, Interaction,
+                    `Extraction Month` = cut(`Extraction Date`,
+                                             breaks = "1 month") %>%
+                      as.Date()) %>%
+    dplyr::count(Posted, name = "nPosts") %>%
+    dplyr::summarise(nPosts = sum(nPosts), .groups = "drop") %>%
+    tidyr::pivot_wider(names_from = Interaction, values_from = nPosts) %>%
+    dplyr::select(Theme:Replies) %>%
+    dplyr::rename(nPosts = Replies)
+
+  ## Tally monthly interactions
+  monthly_interactions <- monthlies %>%
+    dplyr::group_by(Theme, Interaction, `Extraction Month`, .add = TRUE) %>%
+    dplyr::summarise(nInteractions = sum(n), .groups = "drop") %>%
+    tidyr::pivot_wider(names_from = Interaction, values_from = nInteractions) %>%
+    dplyr::group_by(Theme) %>%
+    dplyr::mutate(`New Replies` = c(0, diff(Replies, 1)),
+                  `New Views` = c(0, diff(Views, 1))) %>%
+    dplyr::full_join(x) %>%
+    dplyr::ungroup()
+
+  ## Return monthly_interactions
+  return(monthly_interactions)
+}
+
+
+################################################################################
+#
+#'
+#' @examples
+#' create_db_topics_yearly_interactions(dailies = ennet_dailies)
+#'
+#' @export
+#' @rdname create_db
+#'
+#
+################################################################################
+
+create_db_topics_yearly_interactions <- function(dailies) {
+  ## Process yearlies topics data
+  yearlies <- dailies %>%
+    dplyr::group_by(Theme, Topic, Author, Posted, Link, Interaction,
+                    `Extraction Year` = cut(`Extraction Date`,
+                                            breaks = "1 year") %>%
+                      as.Date()) %>%
+    dplyr::filter(Extraction == max(Extraction, na.rm = TRUE)) %>%
+    dplyr::ungroup()
+
+  ## Tally yearly views
+  x <- yearlies %>%
+    dplyr::group_by(Theme, Interaction,
+                    `Extraction Year` = cut(`Extraction Date`,
+                                            breaks = "1 year") %>%
+                      as.Date()) %>%
+    dplyr::count(Posted, name = "nPosts") %>%
+    dplyr::summarise(nPosts = sum(nPosts), .groups = "drop") %>%
+    tidyr::pivot_wider(names_from = Interaction, values_from = nPosts) %>%
+    dplyr::select(Theme:Replies) %>%
+    dplyr::rename(nPosts = Replies)
+
+  ## Tally yearly interactions
+  yearly_interactions <- yearlies %>%
+    dplyr::group_by(Theme, Interaction, `Extraction Year`, .add = TRUE) %>%
+    dplyr::summarise(nInteractions = sum(n), .groups = "drop") %>%
+    tidyr::pivot_wider(names_from = Interaction,
+                       values_from = nInteractions) %>%
+    dplyr::group_by(Theme) %>%
+    dplyr::mutate(`New Replies` = c(0, diff(Replies, 1)),
+                  `New Views` = c(0, diff(Views, 1))) %>%
+    dplyr::full_join(x) %>%
+    dplyr::ungroup()
+
+  ## Return yearly_interactions
+  return(yearly_interactions)
 }
