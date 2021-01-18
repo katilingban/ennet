@@ -152,7 +152,7 @@ forum](https://www.en-net.org). Currently, there are four sets of
 analytic functions available from `ennet`:
 
   - `count_topics_time` functions - set of functions to count the number
-    of topics or questions by day, wee, month or year;
+    of topics or questions by day, week, month or year;
 
   - `count_topics_theme` functions - set of functions to count the
     number of topics or questions by theme;
