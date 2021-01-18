@@ -1,0 +1,139 @@
+---
+title: "ennet Package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{ennet Package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  error = FALSE,
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, echo = FALSE}
+library(ennet)
+library(DiagrammeR)
+```
+
+`ennet` package provides a set of functions that extracts information from the [**en-net** online forum](https://www.en-net.org). This set of functions was built on top of the [`rvest`](https://rvest.tidyverse.org) package which provides robust and performant web scraping functions and the [`dplyr`](https://dplyr.tidyverse.org) package which provides a full suite of data manipulation functions. The `ennet` package was designed to be able to interact with how the **en-net** online forum has been structured.
+
+### en-net website structure
+
+The **en-net** online forum website has a very clear and clean structure. The opening page is a list of **thematic areas** which are linked to each of their respective webpages. In each of these **thematic area** webpages is another list, this time a list of **topics** raised within the **thematic area**. These **topics** are the text that an online user provides as the title for the question she/he is going to ask. Each of the **topics** are then again linked to their respective webpages that show the actual full question raised and the ensuing responses and **discussion** stemming from that question.
+
+The **en-net** online forum structure can be summarised graphically as follows:
+
+```{r ennet-structure, echo = FALSE, eval = FALSE, out.width = "100%"}
+DiagrammeR::grViz("
+  digraph ennet {
+
+    graph [layout = dot, fontname = Helvetica]
+
+    node [shape = ellipse, style = filled, color = grey, 
+          fontcolor = white, fontsize = 20]
+
+      node [fillcolor = royalblue]
+        a [label = '@@1']
+
+      node [fillcolor = darkgreen]
+        b [label = '@@2-1'] 
+        c [label = '@@2-2']
+        d [label = '@@2-3']
+
+      node [fillcolor = purple]
+        e [label = '@@3-1']
+        f [label = '@@3-2']
+        g [label = '@@3-3']
+        h [label = '@@3-4']
+        i [label = '@@3-5']
+        j [label = '@@3-6']
+        
+        
+      node [fillcolor = orange]
+        k [label = '@@4-7']
+        l [label = '@@4-8']
+        m [label = '@@4-9']
+        n [label = '@@4-10']
+        o [label = '@@4-11']
+        p [label = '@@4-12']
+        q [label = '@@4-13']
+        r [label = '@@4-14']
+        s [label = '@@4-15']
+        t [label = '@@4-16']
+        u [label = '@@4-17']
+        v [label = '@@4-18']
+
+    edge [color = grey]
+      a -> {b c d}
+      b -> {e f}
+      c -> {g h}
+      d -> {i j}
+      e -> {k l}
+      f -> {m n}
+      g -> {o p}
+      h -> {q r}
+      i -> {s t}
+      j -> {u v}
+  }
+  
+  [1]: 'en-net'  
+  [2]: 'Thematic area'
+  [3]: 'Topic'
+  [4]: 'Discussion'
+")
+```
+
+<br/>
+
+```{r ennet-structure-1, echo = FALSE, eval = TRUE, out.width = "90%", fig.align = "center"}
+knitr::include_graphics("../man/figures/ennet_structure.png")
+```
+<br/>
+
+Based on this structure, the following functions are available with `ennet` package for extracting text data:
+
+* `get_themes` - function to get a list of thematic areas in the forum;
+
+* `get_theme_topics` and `get_themes_topics` - functions to get list of topics for a specific thematic area or thematic areas; and,
+
+* `get_topic_discussions` and `get_topics_discussions` - functions to get list of discussions for a specific topic or topics,
+
+### Analytics functions
+
+The `ennet` package also includes analytic functions that summarises the text data available from the [**en-net** online forum](https://www.en-net.org). Currently, there are four analytic functions available from `ennet`:
+
+* `count_topics` - function to count the number of topics or questions by theme and date;
+
+* `count_authors` - function to count the number of topics attributed to a specific author;
+
+* `arrange_views` - function to arrange topics by number of views; and,
+
+* `arrange_replies` - function to arrange topics by number of replies.
+
+### Utilities and datasets
+
+In addition to these two sets of key functions, `en-net` package also includes a function - `update_topics` - that extracts the [**en-net** online forum](https://www.en-net.org) dataset and updates it at a given time interval. This is a convenience wrapper function to `get_themes_topics` that is potentially useful for those who wants to build dashboards or applications that uses data from the [**en-net** online forum](https://www.en-net.org).
+
+Two datasets are also included in the `en-net` package. The first dataset is a data.frame of [**en-net** online forum](https://www.en-net.org) themes and the second dataset is a data.frame of [**en-net** online forum](https://www.en-net.org) topics.
+
+## Practical applications
+
+The [**en-net**](https://www.en-net.org/) online forum is a rich resource for understanding the community of users that participate in it. And given how an online forum is designed, that resource can be tapped relatively easily given that the documentation of the interaction and discussion between its users happens in real-time. The `ennet` package facilitates the access to that information through the statistical analysis tool [R](https://cran.r-project.org) with which further levels of analysis can be applied to generate meaningful and valuable understanding of this specific community and to some extent the greater nutrition sector at large.
+
+Following are a few practical and meaningful applications of the information generated by the [**en-net** online forum](https://www.en-net.org).
+
+### Assess effectiveness of the en-net online forum 
+
+The data from the [**en-net** online forum](https://www.en-net.org) can be used to assess effectiveness of the forum. Effectiveness can be defined as whether the forum has been able to achieve its stated aims/objectives when it was started. Effectiveness can also be expressed in terms of indicators or metrics that reflect overarching principles, ideals or values that those who started the forum adhere to or that the community of users and the wider sector or society believe in. These may include values of inclusion, participation, scientific rigour among others. Given that the forum has been in existence for many years now, information is available over the same period allowing for assessing temporal variation in effectiveness (as defined). This application is a more **normative approach** and will involve creating or developing metrics or taking relevant metrics from other sectors and applying those to this case. 
+
+### Identify gaps in information, knowledge and/or skills
+
+Given the nature of the [**en-net** online forum](https://www.en-net.org) as a quick point of recourse for field practitioners to seek answers to practical questions and challenges faced, it can be expected that the data from the forum contains information on what these topics are. These information can then be used to identify most common or most important information, knowledge and skills that have been asked about. By identifying these gaps in information, knowledge and/or skills and by understanding the evolution of these needs over time, we can potentially predict training needs in the near term and over time. This application is a more **formative approach** in that we let the data tell us what information it holds.
+
