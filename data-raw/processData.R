@@ -37,3 +37,18 @@ x <- x %>%
 ennet_topics <- x
 
 usethis::use_data(ennet_topics, overwrite = TRUE, compress = "xz")
+
+
+## Create hourlies sample data for December 2020
+ennet_hourlies <- create_db_topics_hourlies(.date = "2020-12-31")
+
+ennet_hourlies <- ennet_hourlies %>%
+  mutate(Topic = iconv(x$Topic, from = "UTF-8", to = "ASCII"),
+         Author = iconv(x$Author, from = "UTF-8", to = "ASCII"))
+
+usethis::use_data(ennet_hourlies, overwrite = TRUE, compress = "xz")
+
+## Create dailies sample data
+ennet_dailies <- create_db_topics_dailies(hourlies = ennet_hourlies)
+
+usethis::use_data(ennet_dailies, overwrite = TRUE, compress = "xz")
