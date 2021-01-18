@@ -12,14 +12,23 @@
 \title{Create various topics dataset for the ennet_db}
 \usage{
 create_db_topics_daily(
-  gh = "katilingban/ennet_db",
+  repo = "katilingban/ennet_db",
+  branch = "main",
   .date = Sys.Date() - 1,
   fn = NULL
 )
 
-create_db_topics_monthly(gh = "katilingban/ennet_db", .date = Sys.Date() - 1)
+create_db_topics_monthly(
+  repo = "katilingban/ennet_db",
+  branch = "main",
+  .date = Sys.Date() - 1
+)
 
-create_db_topics_hourlies(gh = "katilingban/ennet_db", .date = Sys.Date())
+create_db_topics_hourlies(
+  repo = "katilingban/ennet_db",
+  branch = "main",
+  .date = Sys.Date()
+)
 
 create_db_topics_dailies(hourlies)
 
@@ -32,9 +41,12 @@ create_db_topics_monthly_interactions(dailies)
 create_db_topics_yearly_interactions(dailies)
 }
 \arguments{
-\item{gh}{A character value of the GitHub user and repository name
+\item{repo}{A character value of the GitHub user and repository name
 combination identifying the GitHub location for ennet_db. Default is
 \code{katilingban/ennet_db}.}
+
+\item{branch}{A character value for the branch name from which to retrieve
+data. Default is \code{main}.}
 
 \item{.date}{A character value or vector of date/dates for which to create
 a topics dataset for the ennet_db}
