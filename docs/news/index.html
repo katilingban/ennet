@@ -144,20 +144,23 @@
 <h1 class="page-header" data-toc-text="0.2.0">
 <a href="#ennet-020" class="anchor"></a>ennet 0.2.0<small> Unreleased </small>
 </h1>
-<p>Second release of <code>ennet</code> package.</p>
-<div id="bug-fixes" class="section level2">
-<h2 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<p>Second <a href="https://cran.r-project.org">CRAN</a> release of <code>ennet</code> package.</p>
+<div id="bug-fixes" class="section level3">
+<h3 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>Bug fixes</h3>
 <ul>
-<li><p>Addressed CRAN checks NOTE indicating that there are 192 marked UTF-8 strings in the packaged datasets. These marked strings have now been converted to ASCII or to NA</p></li>
-<li><p>Removed <code>DiagrammeR</code> as a dependency package and removed the code chunk in respective vignette that creates the ennet workflow. The workflow diagram is now done using an external drawing tool (OmniGraffle) instead of within R using <code>DiagrammeR</code></p></li>
+<li><p>Fixed NOTE on CRAN checks for non-ASCII characters (192 marked UTF-8 strings)</p></li>
+<li><p>Removed <code>DiagrammeR</code> as a dependency package and removed the code chunk in respective vignette that creates the ennet workflow. The workflow diagram is now done using an external drawing tool (OmniGraffle) instead of within R using <code>DiagrammeR</code>. This prevents issues on CRAN when vignettes are produced.</p></li>
 </ul>
 </div>
-<div id="enhancements" class="section level2">
-<h2 class="hasAnchor">
-<a href="#enhancements" class="anchor"></a>Enhancements</h2>
+<div id="enhancementsimprovements" class="section level3">
+<h3 class="hasAnchor">
+<a href="#enhancementsimprovements" class="anchor"></a>Enhancements/Improvements</h3>
 <ul>
-<li>re-factored analytics functions specifically the <code>count_</code> functions. Previous functions now in deprecation and new <code>count_</code> functions created that are more clean, robust and performant.</li>
+<li><p>refactored the <code>count_topics</code> and <code>count_authors</code> functions into new more coherent functions for counting topics and other related metrics (previous functions have now been deprecated);</p></li>
+<li><p>added new functions to retrieve data from the <a href="https://github.com/katilingban/ennet_db">en-net database</a>;</p></li>
+<li><p>added new functions to process and handle data from the <a href="https://github.com/katilingban/ennet_db">en-net database</a>; and,</p></li>
+<li><p>updated documentation to reflect the enhancments/improvements implemented.</p></li>
 </ul>
 </div>
 </div>
