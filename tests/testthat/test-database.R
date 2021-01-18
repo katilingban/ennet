@@ -29,6 +29,11 @@ test_that("error message show", {
   expect_error(create_db_topics_monthly(.date = NA))
 })
 
+x <- create_db_topics_hourlies(.date = "2020-12-31")
+
+test_that("x is a tibble", {
+  expect_is(x, "tbl")
+})
 
 x <- create_db_topics_dailies(hourlies = ennet_hourlies)
 
