@@ -61,6 +61,11 @@ reference:
     - get_db_discussions
     - create_db_topics_daily
     - create_db_topics_monthly
+    - create_db_topics_dailies
+    - create_db_topics_daily_interactions
+    - create_db_topics_weekly_interactions
+    - create_db_topics_monthly_interactions
+    - create_db_topics_yearly_interactions
 
   - title: Updates
     contents:

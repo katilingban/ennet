@@ -3,7 +3,7 @@
 \docType{data}
 \name{ennet_topics}
 \alias{ennet_topics}
-\title{en-net topics}
+\title{Topics from en-net forum retrieved on 17 January 2021}
 \format{
 A tibble with 3045 rows and 7 columns:\tabular{ll}{
    \strong{Variable} \tab \strong{Description} \cr

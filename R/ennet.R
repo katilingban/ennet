@@ -20,11 +20,12 @@
 #' @importFrom xml2 read_html url_absolute
 #' @importFrom tibble tibble
 #' @importFrom dplyr bind_rows mutate first group_by count ungroup arrange
-#'   desc filter
+#'   desc filter starts_with summarise
 #' @importFrom stringr str_replace str_detect str_extract_all str_to_lower
 #'   str_replace_na str_remove_all
 #' @importFrom lubridate dmy_hm month year ymd
 #' @importFrom utils read.csv
+#' @importFrom tidyr pivot_longer pivot_wider
 #'
 #
 ################################################################################
@@ -34,7 +35,11 @@
 if(getRversion() >= "2.15.1") {
   utils::globalVariables(c("Posted", "Month", "Theme", "Views", "Replies",
                            "Author", "Year", "n", "month_name", "week",
-                           "week_name", "year_name"))
+                           "week_name", "year_name", "Extraction",
+                           "Extraction Date", "Interaction", "Link", "Topic",
+                           "nInteractions", "nPosts", "dailies", "weeklies",
+                           "monthlies", "Extraction Week", "Extraction Month",
+                           "Extraction Year"))
 }
 
 

@@ -3,7 +3,13 @@
 \name{create_db_topics_daily}
 \alias{create_db_topics_daily}
 \alias{create_db_topics_monthly}
-\title{Create a daily topics dataset for the ennet_db}
+\alias{create_db_topics_hourlies}
+\alias{create_db_topics_dailies}
+\alias{create_db_topics_daily_interactions}
+\alias{create_db_topics_weekly_interactions}
+\alias{create_db_topics_monthly_interactions}
+\alias{create_db_topics_yearly_interactions}
+\title{Create various topics dataset for the ennet_db}
 \usage{
 create_db_topics_daily(
   gh = "katilingban/ennet_db",
@@ -12,6 +18,18 @@ create_db_topics_daily(
 )
 
 create_db_topics_monthly(gh = "katilingban/ennet_db", .date = Sys.Date() - 1)
+
+create_db_topics_hourlies(gh = "katilingban/ennet_db", .date = Sys.Date())
+
+create_db_topics_dailies(hourlies)
+
+create_db_topics_daily_interactions(dailies)
+
+create_db_topics_weekly_interactions(dailies)
+
+create_db_topics_monthly_interactions(dailies)
+
+create_db_topics_yearly_interactions(dailies)
 }
 \arguments{
 \item{gh}{A character value of the GitHub user and repository name
@@ -23,9 +41,19 @@ a topics dataset for the ennet_db}
 
 \item{fn}{A character value or vector of filenames for hourly topics dataset
 found in ennet_db}
+
+\item{hourlies}{A tibble of topics data usually produced by using the
+\code{\link[=create_db_topics_hourlies]{create_db_topics_hourlies()}} function}
+
+\item{dailies}{A tibble of topics data usually produced by using the
+\code{\link[=create_db_topics_dailies]{create_db_topics_dailies()}} function}
+}
+\value{
+A tibble of specified topics dataset created from data in the
+ennet_db
 }
 \description{
-Create a daily topics dataset for the ennet_db
+Create various topics dataset for the ennet_db
 }
 \examples{
 ##
@@ -33,9 +61,21 @@ fn <- c("ennet_topics_2021-01-17_00:54:48.csv",
         "ennet_topics_2021-01-17_02:48:38.csv",
         "ennet_topics_2021-01-17_03:57:46.csv")
 
-create_db_topics_daily(.date = Sys.Date(), fn = fn)
+create_db_topics_daily(.date = "2021-01-17", fn = fn)
 
 create_db_topics_monthly()
+
+create_db_topics_hourlies(.date = "2020-12-31")
+
+create_db_topics_dailies(hourlies = ennet_hourlies)
+
+create_db_topics_daily_interactions(dailies = ennet_dailies)
+
+create_db_topics_weekly_interactions(dailies = ennet_dailies)
+
+create_db_topics_monthly_interactions(dailies = ennet_dailies)
+
+create_db_topics_yearly_interactions(dailies = ennet_dailies)
 
 }
 \author{
