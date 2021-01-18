@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Articles • ennet</title>
+<title>Hourly extracts of topics dataset from en-net online forum — ennet_hourlies • ennet</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,8 @@
 
 
 
-<meta property="og:title" content="Articles" />
+<meta property="og:title" content="Hourly extracts of topics dataset from en-net online forum — ennet_hourlies" />
+<meta property="og:description" content="Hourly extracts of topics dataset from en-net online forum" />
 <meta property="og:image" content="https://katilingban.io/ennet/logo.png" />
 
 
@@ -66,7 +67,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-article-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -136,22 +137,59 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Articles</h1>
+    <h1>Hourly extracts of topics dataset from en-net online forum</h1>
+    <small class="dont-index">Source: <a href='https://github.com/katilingban/ennet/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <div class="hidden name"><code>ennet_hourlies.Rd</code></div>
     </div>
 
-    <div class="section ">
-      <h3>All vignettes</h3>
-      <p class="section-desc"></p>
-
-      <dl>
-        <dt><a href="analytics.html">Summarising en-net online forum statistics</a></dt>
-        <dd></dt>
-        <dt><a href="ennet.html">ennet Package</a></dt>
-        <dd></dt>
-        <dt><a href="extract.html">Utilities to Extract Text Data from en-net</a></dt>
-        <dd></dt>
-      </dl>
+    <div class="ref-description">
+    <p>Hourly extracts of topics dataset from en-net online forum</p>
     </div>
+
+    <pre class="usage"><span class='va'>ennet_hourlies</span></pre>
+
+
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>A tibble with 643844 rows and 8 columns:</p><table class='table'>
+<tr><td><strong>Variable</strong></td><td><strong>Description</strong></td></tr>
+<tr><td><code>Theme</code></td><td>Thematic areas in the en-net forum</td></tr>
+<tr><td><code>Topic</code></td><td>Short description of the topic/question being discussed/raised</td></tr>
+<tr><td><code>Author</code></td><td>Name of person who raised the topic/question</td></tr>
+<tr><td><code>Posted</code></td><td>Date topic/question was posted on en-net forum</td></tr>
+<tr><td><code>Link</code></td><td>URL of the topic/question being discussed/raised</td></tr>
+<tr><td><code>Interaction</code></td><td>Type of interaction. Either <em>Views</em> or <em>Replies</em></td></tr>
+<tr><td><code>Extraction</code></td><td>Date and time when data was extracted</td></tr>
+<tr><td><code>n</code></td><td>Number or count</td></tr>
+</table>
+
+
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p>https://www.en-net.org</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='va'>ennet_hourlies</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 643,844 x 8</span><span>
+#&gt;    Theme    Topic    Author Posted Link    Interaction Extraction              n
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dttm&gt;</span><span>              </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Announc… ENN is … Offic… 2020-… https:… Views       2020-12-27 </span><span style='color: #949494;'>10:19:49</span><span>    73
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Announc… ENN is … Offic… 2020-… https:… Views       2020-12-27 </span><span style='color: #949494;'>11:16:42</span><span>    73
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Announc… ENN is … Offic… 2020-… https:… Views       2020-12-27 </span><span style='color: #949494;'>12:17:51</span><span>    74
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Announc… ENN is … Offic… 2020-… https:… Views       2020-12-27 </span><span style='color: #949494;'>13:25:50</span><span>    75
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Announc… ENN is … Offic… 2020-… https:… Views       2020-12-27 </span><span style='color: #949494;'>14:14:43</span><span>    75
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Announc… ENN is … Offic… 2020-… https:… Views       2020-12-27 </span><span style='color: #949494;'>15:13:40</span><span>    75
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Announc… ENN is … Offic… 2020-… https:… Views       2020-12-27 </span><span style='color: #949494;'>17:44:50</span><span>    76
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Announc… ENN is … Offic… 2020-… https:… Views       2020-12-27 </span><span style='color: #949494;'>18:28:35</span><span>    76
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Announc… ENN is … Offic… 2020-… https:… Views       2020-12-27 </span><span style='color: #949494;'>19:25:09</span><span>    77
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Announc… ENN is … Offic… 2020-… https:… Views       2020-12-27 </span><span style='color: #949494;'>20:14:17</span><span>    77
+#&gt; </span><span style='color: #949494;'># … with 643,834 more rows</span><span></div><div class='input'>
+</div></span></pre>
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
