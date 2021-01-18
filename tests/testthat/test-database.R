@@ -36,7 +36,7 @@ test_that("x is a tibble", {
 })
 
 test_that("expect error", {
-  expect_error(create_db_topics_hourlies(.date = "12-31-2021"))
+  expect_message(create_db_topics_hourlies(.date = NA))
 })
 
 test_that("expect error", {

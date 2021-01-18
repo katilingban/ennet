@@ -258,7 +258,7 @@ create_db_topics_hourlies <- function(gh = "katilingban/ennet_db",
   }
 
   ## Check .date is not earlier than December 2020
-  if (lubridate::month(.date) != 12 & lubridate::year(.date) <= 2020) {
+  if (lubridate::ymd(.date) < as.Date("2020-12-26")) {
     stop(
       paste(
         strwrap(x = "Earliest dataset available from ennet_db is for December
