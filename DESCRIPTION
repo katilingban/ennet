@@ -24,7 +24,8 @@ Imports:
     dplyr,
     stringr,
     lubridate,
-    utils
+    utils,
+    tidyr
 Suggests: 
     knitr,
     rmarkdown,
