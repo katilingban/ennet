@@ -35,6 +35,14 @@ test_that("x is a tibble", {
   expect_is(x, "tbl")
 })
 
+test_that("expect error", {
+  expect_error(create_db_topics_hourlies(.date = "12-31-2021"))
+})
+
+test_that("expect error", {
+  expect_error(create_db_topics_hourlies(.date = "2019-12-31"))
+})
+
 x <- create_db_topics_dailies(hourlies = ennet_hourlies)
 
 test_that("x is a tibble", {
