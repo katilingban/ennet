@@ -21,7 +21,7 @@ functions have now been deprecated);
 
 * added new functions to process and handle data from the [en-net database](https://github.com/katilingban/ennet_db); and,
 
-* updated documentation to reflect the enhancments/improvements implemented.
+* updated documentation to reflect the enhancements/improvements implemented.
 
 # ennet 0.1.0
 
