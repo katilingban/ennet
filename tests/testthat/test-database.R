@@ -74,31 +74,13 @@ test_that("x is a tibble", {
   expect_is(x, "tbl")
 })
 
-x <- create_db_topics_daily_interactions(dailies = ennet_dailies)
-
 test_that("x is a tibble", {
-  expect_is(x, "tbl")
+  expect_is(create_db_topics_interactions(dailies = ennet_dailies,
+                                          id = "daily"), "tbl")
+  expect_is(create_db_topics_interactions(dailies = ennet_dailies,
+                                          id = "weekly"), "tbl")
+  expect_is(create_db_topics_interactions(dailies = ennet_dailies,
+                                          id = "monthly"), "tbl")
+  expect_is(create_db_topics_interactions(dailies = ennet_dailies,
+                                          id = "yearly"), "tbl")
 })
-
-
-x <- create_db_topics_weekly_interactions(dailies = ennet_dailies)
-
-test_that("x is a tibble", {
-  expect_is(x, "tbl")
-})
-
-
-x <- create_db_topics_monthly_interactions(dailies = ennet_dailies)
-
-test_that("x is a tibble", {
-  expect_is(x, "tbl")
-})
-
-
-x <- create_db_topics_yearly_interactions(dailies = ennet_dailies)
-
-test_that("x is a tibble", {
-  expect_is(x, "tbl")
-})
-
-
