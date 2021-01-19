@@ -43,8 +43,8 @@ usethis::use_data(ennet_topics, overwrite = TRUE, compress = "xz")
 ennet_hourlies <- create_db_topics_hourlies(.date = "2020-12-31")
 
 ennet_hourlies <- ennet_hourlies %>%
-  mutate(Topic = iconv(x$Topic, from = "UTF-8", to = "ASCII"),
-         Author = iconv(x$Author, from = "UTF-8", to = "ASCII"))
+  mutate(Topic = iconv(Topic, from = "UTF-8", to = "ASCII"),
+         Author = iconv(Author, from = "UTF-8", to = "ASCII"))
 
 usethis::use_data(ennet_hourlies, overwrite = TRUE, compress = "xz")
 
