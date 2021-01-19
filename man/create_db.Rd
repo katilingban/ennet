@@ -5,10 +5,7 @@
 \alias{create_db_topics_monthly}
 \alias{create_db_topics_hourlies}
 \alias{create_db_topics_dailies}
-\alias{create_db_topics_daily_interactions}
-\alias{create_db_topics_weekly_interactions}
-\alias{create_db_topics_monthly_interactions}
-\alias{create_db_topics_yearly_interactions}
+\alias{create_db_topics_interactions}
 \title{Create various topics dataset for the ennet_db}
 \usage{
 create_db_topics_daily(
@@ -32,13 +29,10 @@ create_db_topics_hourlies(
 
 create_db_topics_dailies(hourlies)
 
-create_db_topics_daily_interactions(dailies)
-
-create_db_topics_weekly_interactions(dailies)
-
-create_db_topics_monthly_interactions(dailies)
-
-create_db_topics_yearly_interactions(dailies)
+create_db_topics_interactions(
+  dailies,
+  id = c("daily", "weekly", "monthly", "yearly")
+)
 }
 \arguments{
 \item{repo}{A character value of the GitHub user and repository name
@@ -59,6 +53,9 @@ found in ennet_db}
 
 \item{dailies}{A tibble of topics data usually produced by using the
 \code{\link[=create_db_topics_dailies]{create_db_topics_dailies()}} function}
+
+\item{id}{A character value for data identifier. Possible choices are
+\emph{daily}, \emph{weekly}, \emph{monthly}, or \emph{yearly}.}
 }
 \value{
 A tibble of specified topics dataset created from data in the
@@ -81,13 +78,7 @@ create_db_topics_hourlies(.date = "2020-12-31")
 
 create_db_topics_dailies(hourlies = ennet_hourlies)
 
-create_db_topics_daily_interactions(dailies = ennet_dailies)
-
-create_db_topics_weekly_interactions(dailies = ennet_dailies)
-
-create_db_topics_monthly_interactions(dailies = ennet_dailies)
-
-create_db_topics_yearly_interactions(dailies = ennet_dailies)
+create_db_topics_interactions(dailies = ennet_dailies, id = "daily")
 
 }
 \author{
