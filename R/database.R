@@ -8,6 +8,8 @@
 #'   `katilingban/ennet_db`.
 #' @param branch A character value for the branch name from which to retrieve
 #'   data. Default is `main`.
+#' @param id A character value for data identifier. Possible choices are
+#'   *daily*, *weekly*, *monthly*, or *yearly*.
 #'
 #' @return A tibble of the specified dataset
 #'
@@ -58,7 +60,7 @@ get_db_discussions <- function(repo = "katilingban/ennet_db",
 #'
 #' @examples
 #' ## Retrieve en-net topics daily interactions dataset
-#' get_db_topics_daily_interactions()
+#' get_db_topics(id = "daily")
 #'
 #' @export
 #' @rdname get_db
@@ -66,13 +68,19 @@ get_db_discussions <- function(repo = "katilingban/ennet_db",
 #
 ################################################################################
 
-get_db_topics_daily_interactions <- function(repo = "katilingban/ennet_db",
-                                             branch = "main") {
-  ## Retrieve discussions from main
+get_db_topics <- function(repo = "katilingban/ennet_db",
+                          branch = "main",
+                          id = c("daily", "weekly", "monthly", "yearly")) {
+  ## Get id
+  id <- match.arg(id)
+
+  ## Retrieve specified topics dataset
   x <- try(
-    read.csv(paste("https://raw.githubusercontent.com/",
-                   repo, "/", branch,
-                   "/data/ennet_topics_daily_interactions.csv",  sep = "")),
+    suppressWarnings(
+      read.csv(paste("https://raw.githubusercontent.com/",
+                     repo, "/", branch,
+                     "/data/ennet_topics_", id,
+                     "_interactions.csv",  sep = ""))),
     silent = TRUE
   )
 
@@ -90,166 +98,20 @@ get_db_topics_daily_interactions <- function(repo = "katilingban/ennet_db",
 
   ## If x is data.frame
   if (class(x) == "data.frame") {
-    daily_interactions <- x %>%
-      tibble::tibble() %>%
-      dplyr::mutate(Extraction.Date = as.Date(Extraction.Date)) %>%
-      dplyr::rename(`Extraction Date` = Extraction.Date,
-                    `New Replies` = New.Replies,
-                    `New Views` = New.Views)
+    ## Conver to tibble
+    x <- x %>% tibble::tibble()
+
+    ## Edit names
+    names(x) <- names(x) %>%
+      stringr::str_replace_all(pattern = "\\.", replacement = " ")
+
+    ## Convert dates in character to dates as.Date()
+    y <- names(x)[stringr::str_detect(string = names(x), pattern = "Extract")]
+    x[y] <- as.Date(x[[y]])
   }
 
-  ## Return daily_interactions
-  return(daily_interactions)
-}
-
-
-################################################################################
-#
-#'
-#' @examples
-#' ## Retrieve en-net topics weekly interactions dataset
-#' get_db_topics_weekly_interactions()
-#'
-#' @export
-#' @rdname get_db
-#'
-#
-################################################################################
-
-get_db_topics_weekly_interactions <- function(repo = "katilingban/ennet_db",
-                                              branch = "main") {
-  ## Retrieve discussions from main
-  x <- try(
-    read.csv(paste("https://raw.githubusercontent.com/",
-                   repo, "/", branch,
-                   "/data/ennet_topics_weekly_interactions.csv",  sep = "")),
-    silent = TRUE
-  )
-
-  ## Return message if try-error
-  if (class(x) == "try-error") {
-    stop(
-      paste(
-        strwrap(x = "Repository and/or branch cannot be found. Please check your
-                     specifications and try again.",
-                width = 80),
-        collapse = "\n"
-      )
-    )
-  }
-
-  ## If x is data.frame
-  if (class(x) == "data.frame") {
-    weekly_interactions <- x %>%
-      tibble::tibble() %>%
-      dplyr::mutate(Extraction.Week = as.Date(Extraction.Week)) %>%
-      dplyr::rename(`Extraction Week` = Extraction.Week,
-                    `New Replies` = New.Replies,
-                    `New Views` = New.Views)
-  }
-
-  ## Return weekly_interactions
-  return(weekly_interactions)
-}
-
-
-################################################################################
-#
-#'
-#' @examples
-#' ## Retrieve en-net topics monthly interactions dataset
-#' get_db_topics_monthly_interactions()
-#'
-#' @export
-#' @rdname get_db
-#'
-#
-################################################################################
-
-get_db_topics_monthly_interactions <- function(repo = "katilingban/ennet_db",
-                                               branch = "main") {
-  ## Retrieve discussions from main
-  x <- try(
-    read.csv(paste("https://raw.githubusercontent.com/",
-                   repo, "/", branch,
-                   "/data/ennet_topics_monthly_interactions.csv",  sep = "")),
-    silent = TRUE
-  )
-
-  ## Return message if try-error
-  if (class(x) == "try-error") {
-    stop(
-      paste(
-        strwrap(x = "Repository and/or branch cannot be found. Please check your
-                     specifications and try again.",
-                width = 80),
-        collapse = "\n"
-      )
-    )
-  }
-
-  ## If x is data.frame
-  if (class(x) == "data.frame") {
-    monthly_interactions <- x %>%
-      tibble::tibble() %>%
-      dplyr::mutate(Extraction.Month = as.Date(Extraction.Month)) %>%
-      dplyr::rename(`Extraction Month` = Extraction.Month,
-                    `New Replies` = New.Replies,
-                    `New Views` = New.Views)
-  }
-
-  ## Return monthly_interactions
-  return(monthly_interactions)
-}
-
-
-################################################################################
-#
-#'
-#' @examples
-#' ## Retrieve en-net topics yearly interactions dataset
-#' get_db_topics_yearly_interactions()
-#'
-#' @export
-#' @rdname get_db
-#'
-#
-################################################################################
-
-get_db_topics_yearly_interactions <- function(repo = "katilingban/ennet_db",
-                                              branch = "main") {
-  ## Retrieve discussions from main
-  x <- try(
-    read.csv(paste("https://raw.githubusercontent.com/",
-                   repo, "/", branch,
-                   "/data/ennet_topics_yearly_interactions.csv",  sep = "")),
-    silent = TRUE
-  )
-
-  ## Return message if try-error
-  if (class(x) == "try-error") {
-    stop(
-      paste(
-        strwrap(x = "Repository and/or branch cannot be found. Please check your
-                     specifications and try again.",
-                width = 80),
-        collapse = "\n"
-      )
-    )
-  }
-
-  ## If x is data.frame
-  if (class(x) == "data.frame") {
-    yearly_interactions <- x %>%
-      tibble::tibble() %>%
-      dplyr::mutate(Extraction.Year = as.Date(Extraction.Year)) %>%
-      dplyr::rename(`Extraction Year` = Extraction.Year,
-                    `New Replies` = New.Replies,
-                    `New Views` = New.Views)
-  }
-
-  ## Return yearly_interactions
-  return(yearly_interactions)
+  ## Return interactions
+  return(x)
 }
 
 
@@ -258,9 +120,11 @@ get_db_topics_yearly_interactions <- function(repo = "katilingban/ennet_db",
 #'
 #' Create various topics dataset for the ennet_db
 #'
-#' @param gh A character value of the GitHub user and repository name
+#' @param repo A character value of the GitHub user and repository name
 #'   combination identifying the GitHub location for ennet_db. Default is
 #'   `katilingban/ennet_db`.
+#' @param branch A character value for the branch name from which to retrieve
+#'   data. Default is `main`.
 #' @param .date A character value or vector of date/dates for which to create
 #'   a topics dataset for the ennet_db
 #' @param fn A character value or vector of filenames for hourly topics dataset
@@ -269,6 +133,8 @@ get_db_topics_yearly_interactions <- function(repo = "katilingban/ennet_db",
 #'   [create_db_topics_hourlies()] function
 #' @param dailies A tibble of topics data usually produced by using the
 #'   [create_db_topics_dailies()] function
+#' @param id A character value for data identifier. Possible choices are
+#'   *daily*, *weekly*, *monthly*, or *yearly*.
 #'
 #' @return A tibble of specified topics dataset created from data in the
 #'   ennet_db
@@ -289,7 +155,8 @@ get_db_topics_yearly_interactions <- function(repo = "katilingban/ennet_db",
 #
 ################################################################################
 
-create_db_topics_daily <- function(gh = "katilingban/ennet_db",
+create_db_topics_daily <- function(repo = "katilingban/ennet_db",
+                                   branch = "main",
                                    .date = Sys.Date() - 1,
                                    fn = NULL) {
   ## Check .date
@@ -324,7 +191,7 @@ create_db_topics_daily <- function(gh = "katilingban/ennet_db",
   ## Detect filenames of hourly datasets in ennet_db required based on .date
   fn <- fn[fn %>% stringr::str_detect(pattern = paste(.date, collapse = "|"))]
   fn <- paste("https://raw.githubusercontent.com/",
-              gh, "/main/data/", fn, sep = "")
+              repo, "/", branch, "/data/", fn, sep = "")
 
   ## Create timestamp
   ts <- fn %>%
@@ -375,7 +242,8 @@ create_db_topics_daily <- function(gh = "katilingban/ennet_db",
 #
 ################################################################################
 
-create_db_topics_monthly <- function(gh = "katilingban/ennet_db",
+create_db_topics_monthly <- function(repo = "katilingban/ennet_db",
+                                     branch = "main",
                                      .date = Sys.Date() - 1) {
   ## Check .date
   if (is.na(lubridate::ymd(.date))) {
@@ -407,7 +275,8 @@ create_db_topics_monthly <- function(gh = "katilingban/ennet_db",
 
   ## Detect filenames of hourly datasets in ennet_db required based on .date
   fn <- paste("https://raw.githubusercontent.com/",
-              gh, "/main/data/ennet_topics_", data_dates, ".csv", sep = "")
+              repo, "/", branch, "/data/ennet_topics_",
+              data_dates, ".csv", sep = "")
 
   x <- try(read.csv(file = fn[1]), silent = TRUE)
 
@@ -454,7 +323,8 @@ create_db_topics_monthly <- function(gh = "katilingban/ennet_db",
 #
 ################################################################################
 
-create_db_topics_hourlies <- function(gh = "katilingban/ennet_db",
+create_db_topics_hourlies <- function(repo = "katilingban/ennet_db",
+                                      branch = "main",
                                       .date = Sys.Date()) {
   ## Check .date
   if (is.na(lubridate::ymd(.date))) {
@@ -505,7 +375,7 @@ create_db_topics_hourlies <- function(gh = "katilingban/ennet_db",
     x <- try(
       read.csv(
         paste("https://raw.githubusercontent.com/",
-              gh, "/main/data/", i, sep = "")
+              repo, "/", branch, "/data/", i, sep = "")
       ),
       silent = TRUE
     )
@@ -566,7 +436,7 @@ create_db_topics_dailies <- function(hourlies) {
 #
 #'
 #' @examples
-#' create_db_topics_daily_interactions(dailies = ennet_dailies)
+#' create_db_topics_interactions(dailies = ennet_dailies, id = "daily")
 #'
 #' @export
 #' @rdname create_db
@@ -574,183 +444,139 @@ create_db_topics_dailies <- function(hourlies) {
 #
 ################################################################################
 
-create_db_topics_daily_interactions <- function(dailies) {
-  ## Tally daily views
-  x <- dailies %>%
-    dplyr::group_by(Theme, Interaction, `Extraction Date`) %>%
-    dplyr::count(Posted, name = "nPosts") %>%
-    dplyr::summarise(nPosts = sum(nPosts), .groups = "drop") %>%
-    tidyr::pivot_wider(names_from = Interaction, values_from = nPosts) %>%
-    dplyr::select(Theme:Replies) %>%
-    dplyr::rename(nPosts = Replies)
+create_db_topics_interactions <- function(dailies,
+                                          id = c("daily", "weekly",
+                                                 "monthly", "yearly")) {
+  if (id == "daily") {
+    ## Tally daily views
+    x <- dailies %>%
+      dplyr::group_by(Theme, Interaction, `Extraction Date`) %>%
+      dplyr::count(Posted, name = "nPosts") %>%
+      dplyr::summarise(nPosts = sum(nPosts), .groups = "drop") %>%
+      tidyr::pivot_wider(names_from = Interaction, values_from = nPosts) %>%
+      dplyr::select(Theme:Replies) %>%
+      dplyr::rename(nPosts = Replies)
 
-  ## Tally daily interactions
-  daily_interactions <- dailies %>%
-    dplyr::group_by(Theme, Interaction, `Extraction Date`, .add = TRUE) %>%
-    dplyr::summarise(nInteractions = sum(n), .groups = "drop") %>%
-    tidyr::pivot_wider(names_from = Interaction,
-                       values_from = nInteractions) %>%
-    dplyr::group_by(Theme) %>%
-    dplyr::mutate(`New Replies` = c(0, diff(Replies, 1)),
-                  `New Views` = c(0, diff(Views, 1))) %>%
-  ## Merge views with daily interactions
-    dplyr::full_join(x) %>%
-    dplyr::ungroup()
+    ## Tally daily interactions
+    y <- dailies %>%
+      dplyr::group_by(Theme, Interaction, `Extraction Date`, .add = TRUE) %>%
+      dplyr::summarise(nInteractions = sum(n), .groups = "drop") %>%
+      tidyr::pivot_wider(names_from = Interaction,
+                         values_from = nInteractions) %>%
+      dplyr::group_by(Theme) %>%
+      dplyr::mutate(`New Replies` = c(0, diff(Replies, 1)),
+                    `New Views` = c(0, diff(Views, 1))) %>%
+    ## Merge views with daily interactions
+      dplyr::full_join(x) %>%
+      dplyr::ungroup()
+  }
 
-  ## Return daily interactions
-  return(daily_interactions)
-}
+  if (id == "weekly") {
+    ## Process weeklies topics data
+    weeklies <- dailies %>%
+      dplyr::group_by(Theme, Topic, Author, Posted, Link, Interaction,
+                      `Extraction Week` = cut(`Extraction Date`,
+                                              breaks = "1 week",
+                                              start.on.monday = FALSE) %>%
+                        as.Date()) %>%
+      dplyr::filter(Extraction == max(Extraction, na.rm = TRUE)) %>%
+      dplyr::ungroup()
 
+    ## Tally weekly views
+    x <- dailies %>%
+      dplyr::group_by(Theme, Interaction,
+                      `Extraction Week` = cut(`Extraction Date`,
+                                              breaks = "1 week",
+                                              start.on.monday = FALSE) %>%
+                        as.Date()) %>%
+      dplyr::count(Posted, name = "nPosts") %>%
+      dplyr::summarise(nPosts = sum(nPosts), .groups = "drop") %>%
+      tidyr::pivot_wider(names_from = Interaction, values_from = nPosts) %>%
+      dplyr::select(Theme:Replies) %>%
+      dplyr::rename(nPosts = Replies)
 
-################################################################################
-#
-#'
-#' @examples
-#' create_db_topics_weekly_interactions(dailies = ennet_dailies)
-#'
-#' @export
-#' @rdname create_db
-#'
-#
-################################################################################
+    ## Tally weekly interactions
+    y <- weeklies %>%
+      dplyr::group_by(Theme, Interaction, `Extraction Week`, .add = TRUE) %>%
+      dplyr::summarise(nInteractions = sum(n), .groups = "drop") %>%
+      tidyr::pivot_wider(names_from = Interaction,
+                         values_from = nInteractions) %>%
+      dplyr::group_by(Theme) %>%
+      dplyr::mutate(`New Replies` = c(0, diff(Replies, 1)),
+                    `New Views` = c(0, diff(Views, 1))) %>%
+      dplyr::full_join(x) %>%
+      dplyr::ungroup()
+  }
 
-create_db_topics_weekly_interactions <- function(dailies) {
-  ## Process weeklies topics data
-  weeklies <- dailies %>%
-    dplyr::group_by(Theme, Topic, Author, Posted, Link, Interaction,
-                    `Extraction Week` = cut(`Extraction Date`,
-                                            breaks = "1 week",
-                                            start.on.monday = FALSE) %>%
-                      as.Date()) %>%
-    dplyr::filter(Extraction == max(Extraction, na.rm = TRUE)) %>%
-    dplyr::ungroup()
+  if (id == "monthly") {
+    ## Process monthlies topics data
+    monthlies <- dailies %>%
+      dplyr::group_by(Theme, Topic, Author, Posted, Link, Interaction,
+                      `Extraction Month` = cut(`Extraction Date`,
+                                               breaks = "1 month") %>%
+                        as.Date()) %>%
+      dplyr::filter(Extraction == max(Extraction, na.rm = TRUE)) %>%
+      dplyr::ungroup()
 
-  ## Tally weekly views
-  x <- dailies %>%
-    dplyr::group_by(Theme, Interaction,
-                    `Extraction Week` = cut(`Extraction Date`,
-                                            breaks = "1 week",
-                                            start.on.monday = FALSE) %>%
-                      as.Date()) %>%
-    dplyr::count(Posted, name = "nPosts") %>%
-    dplyr::summarise(nPosts = sum(nPosts), .groups = "drop") %>%
-    tidyr::pivot_wider(names_from = Interaction, values_from = nPosts) %>%
-    dplyr::select(Theme:Replies) %>%
-    dplyr::rename(nPosts = Replies)
+    ## Tally monthly views
+    x <- dailies %>%
+      dplyr::group_by(Theme, Interaction,
+                      `Extraction Month` = cut(`Extraction Date`,
+                                               breaks = "1 month") %>%
+                        as.Date()) %>%
+      dplyr::count(Posted, name = "nPosts") %>%
+      dplyr::summarise(nPosts = sum(nPosts), .groups = "drop") %>%
+      tidyr::pivot_wider(names_from = Interaction, values_from = nPosts) %>%
+      dplyr::select(Theme:Replies) %>%
+      dplyr::rename(nPosts = Replies)
 
-  ## Tally weekly interactions
-  weekly_interactions <- weeklies %>%
-    dplyr::group_by(Theme, Interaction, `Extraction Week`, .add = TRUE) %>%
-    dplyr::summarise(nInteractions = sum(n), .groups = "drop") %>%
-    tidyr::pivot_wider(names_from = Interaction,
-                       values_from = nInteractions) %>%
-    dplyr::group_by(Theme) %>%
-    dplyr::mutate(`New Replies` = c(0, diff(Replies, 1)),
-                  `New Views` = c(0, diff(Views, 1))) %>%
-    dplyr::full_join(x) %>%
-    dplyr::ungroup()
+    ## Tally monthly interactions
+    y <- monthlies %>%
+      dplyr::group_by(Theme, Interaction, `Extraction Month`, .add = TRUE) %>%
+      dplyr::summarise(nInteractions = sum(n), .groups = "drop") %>%
+      tidyr::pivot_wider(names_from = Interaction, values_from = nInteractions) %>%
+      dplyr::group_by(Theme) %>%
+      dplyr::mutate(`New Replies` = c(0, diff(Replies, 1)),
+                    `New Views` = c(0, diff(Views, 1))) %>%
+      dplyr::full_join(x) %>%
+      dplyr::ungroup()
+  }
 
-  ## Return weekly_interactions
-  return(weekly_interactions)
-}
+  if (id == "yearly") {
+    ## Process yearlies topics data
+    yearlies <- dailies %>%
+      dplyr::group_by(Theme, Topic, Author, Posted, Link, Interaction,
+                      `Extraction Year` = cut(`Extraction Date`,
+                                              breaks = "1 year") %>%
+                        as.Date()) %>%
+      dplyr::filter(Extraction == max(Extraction, na.rm = TRUE)) %>%
+      dplyr::ungroup()
 
+    ## Tally yearly views
+    x <- yearlies %>%
+      dplyr::group_by(Theme, Interaction,
+                      `Extraction Year` = cut(`Extraction Date`,
+                                              breaks = "1 year") %>%
+                        as.Date()) %>%
+      dplyr::count(Posted, name = "nPosts") %>%
+      dplyr::summarise(nPosts = sum(nPosts), .groups = "drop") %>%
+      tidyr::pivot_wider(names_from = Interaction, values_from = nPosts) %>%
+      dplyr::select(Theme:Replies) %>%
+      dplyr::rename(nPosts = Replies)
 
-################################################################################
-#
-#'
-#' @examples
-#' create_db_topics_monthly_interactions(dailies = ennet_dailies)
-#'
-#' @export
-#' @rdname create_db
-#'
-#
-################################################################################
+    ## Tally yearly interactions
+    y <- yearlies %>%
+      dplyr::group_by(Theme, Interaction, `Extraction Year`, .add = TRUE) %>%
+      dplyr::summarise(nInteractions = sum(n), .groups = "drop") %>%
+      tidyr::pivot_wider(names_from = Interaction,
+                         values_from = nInteractions) %>%
+      dplyr::group_by(Theme) %>%
+      dplyr::mutate(`New Replies` = c(0, diff(Replies, 1)),
+                    `New Views` = c(0, diff(Views, 1))) %>%
+      dplyr::full_join(x) %>%
+      dplyr::ungroup()
+  }
 
-create_db_topics_monthly_interactions <- function(dailies) {
-  ## Process monthlies topics data
-  monthlies <- dailies %>%
-    dplyr::group_by(Theme, Topic, Author, Posted, Link, Interaction,
-                    `Extraction Month` = cut(`Extraction Date`,
-                                             breaks = "1 month") %>%
-                      as.Date()) %>%
-    dplyr::filter(Extraction == max(Extraction, na.rm = TRUE)) %>%
-    dplyr::ungroup()
-
-  ## Tally monthly views
-  x <- dailies %>%
-    dplyr::group_by(Theme, Interaction,
-                    `Extraction Month` = cut(`Extraction Date`,
-                                             breaks = "1 month") %>%
-                      as.Date()) %>%
-    dplyr::count(Posted, name = "nPosts") %>%
-    dplyr::summarise(nPosts = sum(nPosts), .groups = "drop") %>%
-    tidyr::pivot_wider(names_from = Interaction, values_from = nPosts) %>%
-    dplyr::select(Theme:Replies) %>%
-    dplyr::rename(nPosts = Replies)
-
-  ## Tally monthly interactions
-  monthly_interactions <- monthlies %>%
-    dplyr::group_by(Theme, Interaction, `Extraction Month`, .add = TRUE) %>%
-    dplyr::summarise(nInteractions = sum(n), .groups = "drop") %>%
-    tidyr::pivot_wider(names_from = Interaction, values_from = nInteractions) %>%
-    dplyr::group_by(Theme) %>%
-    dplyr::mutate(`New Replies` = c(0, diff(Replies, 1)),
-                  `New Views` = c(0, diff(Views, 1))) %>%
-    dplyr::full_join(x) %>%
-    dplyr::ungroup()
-
-  ## Return monthly_interactions
-  return(monthly_interactions)
-}
-
-
-################################################################################
-#
-#'
-#' @examples
-#' create_db_topics_yearly_interactions(dailies = ennet_dailies)
-#'
-#' @export
-#' @rdname create_db
-#'
-#
-################################################################################
-
-create_db_topics_yearly_interactions <- function(dailies) {
-  ## Process yearlies topics data
-  yearlies <- dailies %>%
-    dplyr::group_by(Theme, Topic, Author, Posted, Link, Interaction,
-                    `Extraction Year` = cut(`Extraction Date`,
-                                            breaks = "1 year") %>%
-                      as.Date()) %>%
-    dplyr::filter(Extraction == max(Extraction, na.rm = TRUE)) %>%
-    dplyr::ungroup()
-
-  ## Tally yearly views
-  x <- yearlies %>%
-    dplyr::group_by(Theme, Interaction,
-                    `Extraction Year` = cut(`Extraction Date`,
-                                            breaks = "1 year") %>%
-                      as.Date()) %>%
-    dplyr::count(Posted, name = "nPosts") %>%
-    dplyr::summarise(nPosts = sum(nPosts), .groups = "drop") %>%
-    tidyr::pivot_wider(names_from = Interaction, values_from = nPosts) %>%
-    dplyr::select(Theme:Replies) %>%
-    dplyr::rename(nPosts = Replies)
-
-  ## Tally yearly interactions
-  yearly_interactions <- yearlies %>%
-    dplyr::group_by(Theme, Interaction, `Extraction Year`, .add = TRUE) %>%
-    dplyr::summarise(nInteractions = sum(n), .groups = "drop") %>%
-    tidyr::pivot_wider(names_from = Interaction,
-                       values_from = nInteractions) %>%
-    dplyr::group_by(Theme) %>%
-    dplyr::mutate(`New Replies` = c(0, diff(Replies, 1)),
-                  `New Views` = c(0, diff(Views, 1))) %>%
-    dplyr::full_join(x) %>%
-    dplyr::ungroup()
-
-  ## Return yearly_interactions
-  return(yearly_interactions)
+  ## Return y
+  return(y)
 }

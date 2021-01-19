@@ -2,32 +2,15 @@
 % Please edit documentation in R/database.R
 \name{get_db_discussions}
 \alias{get_db_discussions}
-\alias{get_db_topics_daily_interactions}
-\alias{get_db_topics_weekly_interactions}
-\alias{get_db_topics_monthly_interactions}
-\alias{get_db_topics_yearly_interactions}
+\alias{get_db_topics}
 \title{Retrieve data from ennet_db GitHub repository}
 \usage{
 get_db_discussions(repo = "katilingban/ennet_db", branch = "main")
 
-get_db_topics_daily_interactions(
+get_db_topics(
   repo = "katilingban/ennet_db",
-  branch = "main"
-)
-
-get_db_topics_weekly_interactions(
-  repo = "katilingban/ennet_db",
-  branch = "main"
-)
-
-get_db_topics_monthly_interactions(
-  repo = "katilingban/ennet_db",
-  branch = "main"
-)
-
-get_db_topics_yearly_interactions(
-  repo = "katilingban/ennet_db",
-  branch = "main"
+  branch = "main",
+  id = c("daily", "weekly", "monthly", "yearly")
 )
 }
 \arguments{
@@ -37,6 +20,9 @@ combination identifying the GitHub location for ennet_db. Default is
 
 \item{branch}{A character value for the branch name from which to retrieve
 data. Default is \code{main}.}
+
+\item{id}{A character value for data identifier. Possible choices are
+\emph{daily}, \emph{weekly}, \emph{monthly}, or \emph{yearly}.}
 }
 \value{
 A tibble of the specified dataset
@@ -49,16 +35,7 @@ Retrieve data from ennet_db GitHub repository
 get_db_discussions()
 
 ## Retrieve en-net topics daily interactions dataset
-get_db_topics_daily_interactions()
-
-## Retrieve en-net topics weekly interactions dataset
-get_db_topics_weekly_interactions()
-
-## Retrieve en-net topics monthly interactions dataset
-get_db_topics_monthly_interactions()
-
-## Retrieve en-net topics yearly interactions dataset
-get_db_topics_yearly_interactions()
+get_db_topics(id = "daily")
 
 }
 \author{

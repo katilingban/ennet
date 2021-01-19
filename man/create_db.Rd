@@ -5,36 +5,42 @@
 \alias{create_db_topics_monthly}
 \alias{create_db_topics_hourlies}
 \alias{create_db_topics_dailies}
-\alias{create_db_topics_daily_interactions}
-\alias{create_db_topics_weekly_interactions}
-\alias{create_db_topics_monthly_interactions}
-\alias{create_db_topics_yearly_interactions}
+\alias{create_db_topics_interactions}
 \title{Create various topics dataset for the ennet_db}
 \usage{
 create_db_topics_daily(
-  gh = "katilingban/ennet_db",
+  repo = "katilingban/ennet_db",
+  branch = "main",
   .date = Sys.Date() - 1,
   fn = NULL
 )
 
-create_db_topics_monthly(gh = "katilingban/ennet_db", .date = Sys.Date() - 1)
+create_db_topics_monthly(
+  repo = "katilingban/ennet_db",
+  branch = "main",
+  .date = Sys.Date() - 1
+)
 
-create_db_topics_hourlies(gh = "katilingban/ennet_db", .date = Sys.Date())
+create_db_topics_hourlies(
+  repo = "katilingban/ennet_db",
+  branch = "main",
+  .date = Sys.Date()
+)
 
 create_db_topics_dailies(hourlies)
 
-create_db_topics_daily_interactions(dailies)
-
-create_db_topics_weekly_interactions(dailies)
-
-create_db_topics_monthly_interactions(dailies)
-
-create_db_topics_yearly_interactions(dailies)
+create_db_topics_interactions(
+  dailies,
+  id = c("daily", "weekly", "monthly", "yearly")
+)
 }
 \arguments{
-\item{gh}{A character value of the GitHub user and repository name
+\item{repo}{A character value of the GitHub user and repository name
 combination identifying the GitHub location for ennet_db. Default is
 \code{katilingban/ennet_db}.}
+
+\item{branch}{A character value for the branch name from which to retrieve
+data. Default is \code{main}.}
 
 \item{.date}{A character value or vector of date/dates for which to create
 a topics dataset for the ennet_db}
@@ -47,6 +53,9 @@ found in ennet_db}
 
 \item{dailies}{A tibble of topics data usually produced by using the
 \code{\link[=create_db_topics_dailies]{create_db_topics_dailies()}} function}
+
+\item{id}{A character value for data identifier. Possible choices are
+\emph{daily}, \emph{weekly}, \emph{monthly}, or \emph{yearly}.}
 }
 \value{
 A tibble of specified topics dataset created from data in the
@@ -69,13 +78,7 @@ create_db_topics_hourlies(.date = "2020-12-31")
 
 create_db_topics_dailies(hourlies = ennet_hourlies)
 
-create_db_topics_daily_interactions(dailies = ennet_dailies)
-
-create_db_topics_weekly_interactions(dailies = ennet_dailies)
-
-create_db_topics_monthly_interactions(dailies = ennet_dailies)
-
-create_db_topics_yearly_interactions(dailies = ennet_dailies)
+create_db_topics_interactions(dailies = ennet_dailies, id = "daily")
 
 }
 \author{
