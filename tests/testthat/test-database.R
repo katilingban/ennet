@@ -34,7 +34,7 @@ test_that("error message show", {
   expect_error(create_db_topics_daily(.date = "2021-01-17"))
 })
 
-x <- create_db_topics_monthly(.date = Sys.Date())
+x <- create_db_topics_monthly(.date = Sys.Date() - 1)
 
 test_that("x is a tibble", {
   expect_is(x, "tbl")

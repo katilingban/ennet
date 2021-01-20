@@ -193,30 +193,26 @@ create_db_topics_daily <- function(repo = "katilingban/ennet_db",
   fn <- paste("https://raw.githubusercontent.com/",
               repo, "/", branch, "/data/", fn, sep = "")
 
-  ## Create timestamp
-  ts <- fn %>%
-    stringr::str_remove_all(pattern = "ennet_topics_|.csv") %>%
-    lubridate::as_datetime() %>%
-    stringr::str_replace_all(pattern = " ", replacement = "_")
+  x <- lapply(X = fn,
+              FUN = function(fn) {
+                ## Create timestamp
+                ts <- fn %>%
+                  stringr::str_remove_all(pattern = "ennet_topics_|.csv") %>%
+                  lubridate::as_datetime() %>%
+                  stringr::str_replace_all(pattern = " ", replacement = "_")
 
-  ## Read first file in list
-  x <- read.csv(file = fn[1])
+                ## Read first file in list
+                x <- read.csv(file = fn)
 
-  ## re-order columns and rename
-  x <- x[c(1, 2, 4, 5, 6, 3, 7)]
-  names(x)[6:7] <- paste(names(x)[6:7], ts[1], sep = "_")
+                ## re-order columns and rename
+                x <- x[c(1, 2, 4, 5, 6, 3, 7)]
+                names(x)[6:7] <- paste(names(x)[6:7], ts, sep = "_")
 
-  ## Read the rest of the files
-  for (i in fn[2:length(fn)]) {
-    y <- read.csv(file = i)
+                return(x)
+              }
+       )
 
-    ## Read next file
-    y <- y[c(1, 2, 4, 5, 6, 3, 7)]
-    names(y)[6:7] <- paste(names(y)[6:7], ts[fn == i], sep = "_")
-
-    x <- dplyr::full_join(x = x, y = y,
-                          by = c("Theme", "Topic", "Author", "Posted", "Link"))
-  }
+  x <- Reduce(f = merge, x = x)
 
   ## Rename fields
   names(x) <- names(x) %>%
@@ -266,7 +262,7 @@ create_db_topics_monthly <- function(repo = "katilingban/ennet_db",
                                        side = "left",
                                        pad = "0"),
                       stringr::str_pad(seq(from = 1,
-                                           to = lubridate::days_in_month(.date),
+                                           to = lubridate::mday(.date),
                                            by = 1),
                                        width = 2,
                                        side = "left",
@@ -278,35 +274,16 @@ create_db_topics_monthly <- function(repo = "katilingban/ennet_db",
               repo, "/", branch, "/data/ennet_topics_",
               data_dates, ".csv", sep = "")
 
-  x <- try(read.csv(file = fn[1]), silent = TRUE)
+  ## Read each dataset
+  x <- lapply(X = fn, FUN = read.csv)
 
-  if (class(x) == "try-error") {
-    stop(
-      paste(
-        strwrap(x = "Specified file/s cannot be found in the ennet_db.
-                     Please check and try again.",
-                width = 80
-        ),
-        collapse = "\n"
-      )
-    )
-  }
+  ## Merge items on the list
+  x <- Reduce(f = merge, x = x)
 
-  ##
-  for (i in fn[2:length(fn)]) {
-    y <- try(suppressWarnings(read.csv(file = i)), silent = TRUE)
-
-    if (class(y) != "try-error") {
-      x <- dplyr::full_join(x = x, y = y,
-                            by = c("Theme", "Topic",
-                                   "Author", "Posted", "Link"))
-    } else break
-  }
-
-  ##
+  ## Convert to tibble
   x <- tibble::tibble(x)
 
-  ##
+  ## Return x
   return(x)
 }
 
@@ -365,42 +342,30 @@ create_db_topics_hourlies <- function(repo = "katilingban/ennet_db",
   }
 
   ##
-  fn <- paste("ennet_topics_", all_months_years, ".csv", sep = "")
+  fn <- paste("https://raw.githubusercontent.com/", repo, "/", branch,
+              "/data/ennet_topics_", all_months_years, ".csv", sep = "")
 
-  ## Concatenating data.frame
-  hourlies <- data.frame()
+  x <- lapply(X = fn,
+              FUN = function(x) {
+                y <- read.csv(x)
 
-  ##
-  for (i in fn) {
-    x <- try(
-      read.csv(
-        paste("https://raw.githubusercontent.com/",
-              repo, "/", branch, "/data/", i, sep = "")
-      ),
-      silent = TRUE
-    )
+                names(y) <- names(y) %>%
+                  stringr::str_replace(pattern = "_", replacement = " ")
 
-    if (class(x) == "data.frame") {
-      ## Check if try is not an error
-      names(x) <- names(x) %>%
-        stringr::str_replace(pattern = "_", replacement = " ")
-
-      ## Tidy the dataset and conver to long format
-      x <- x %>%
-        tidyr::pivot_longer(cols = dplyr::starts_with(match = c("Views",
-                                                                "Replies")),
-                            names_to = c("Interaction", "Extraction"),
-                            names_sep = " ",
-                            values_to = "n") %>%
-        dplyr::mutate(Extraction = lubridate::ymd_hms(Extraction))
-
-      ## Concatenate
-      hourlies <- rbind(hourlies, x)
-    } else break
-  }
+                ## Tidy the dataset and conver to long format
+                y <- y %>%
+                  tidyr::pivot_longer(
+                    cols = dplyr::starts_with(match = c("Views", "Replies")),
+                    names_to = c("Interaction", "Extraction"),
+                    names_sep = " ",
+                    values_to = "n") %>%
+                  dplyr::mutate(Extraction = lubridate::ymd_hms(Extraction))
+              }
+       )
 
   ## Convert to tibble
-  hourlies <- hourlies %>%
+  hourlies <- x %>%
+    dplyr::bind_rows() %>%
     dplyr::mutate(n = ifelse(is.na(n), 0, n))
 
   ## Return hourlies
