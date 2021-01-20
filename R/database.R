@@ -59,8 +59,8 @@ get_db_discussions <- function(repo = "katilingban/ennet_db",
 #
 #'
 #' @examples
-#' ## Retrieve en-net topics daily interactions dataset
-#' get_db_topics(id = "daily")
+#' ## Retrieve en-net topics yearly interactions dataset
+#' get_db_topics(id = "yearly")
 #'
 #' @export
 #' @rdname get_db
@@ -118,7 +118,7 @@ get_db_topics <- function(repo = "katilingban/ennet_db",
 ################################################################################
 #
 #'
-#' Create various topics dataset for the ennet_db
+#' Create daily topics dataset for the ennet_db
 #'
 #' @param repo A character value of the GitHub user and repository name
 #'   combination identifying the GitHub location for ennet_db. Default is
@@ -129,28 +129,19 @@ get_db_topics <- function(repo = "katilingban/ennet_db",
 #'   a topics dataset for the ennet_db
 #' @param fn A character value or vector of filenames for hourly topics dataset
 #'   found in ennet_db
-#' @param hourlies A tibble of topics data usually produced by using the
-#'   [create_db_topics_hourlies()] function
-#' @param dailies A tibble of topics data usually produced by using the
-#'   [create_db_topics_dailies()] function
-#' @param id A character value for data identifier. Possible choices are
-#'   *daily*, *weekly*, *monthly*, or *yearly*.
 #'
-#' @return A tibble of specified topics dataset created from data in the
+#' @return A tibble of daily topics dataset created from data in the
 #'   ennet_db
 #'
 #' @author Ernest Guevarra
 #'
 #' @examples
 #' ##
-#' fn <- c("ennet_topics_2021-01-17_00:54:48.csv",
-#'         "ennet_topics_2021-01-17_02:48:38.csv",
-#'         "ennet_topics_2021-01-17_03:57:46.csv")
+#' fn <- c("ennet_topics_2021-01-17_00:54:48.csv")
 #'
 #' create_db_topics_daily(.date = "2021-01-17", fn = fn)
 #'
 #' @export
-#' @rdname create_db
 #'
 #
 ################################################################################
@@ -229,11 +220,25 @@ create_db_topics_daily <- function(repo = "katilingban/ennet_db",
 ################################################################################
 #
 #'
+#' Create monthly topics dataset for the ennet_db
+#'
+#' @param repo A character value of the GitHub user and repository name
+#'   combination identifying the GitHub location for ennet_db. Default is
+#'   `katilingban/ennet_db`.
+#' @param branch A character value for the branch name from which to retrieve
+#'   data. Default is `main`.
+#' @param .date A character value or vector of date/dates for which to create
+#'   a topics dataset for the ennet_db
+#'
+#' @return A tibble of monthly topics dataset created from data in the
+#'   ennet_db
+#'
+#' @author Ernest Guevarra
+#'
 #' @examples
 #' create_db_topics_monthly()
 #'
 #' @export
-#' @rdname create_db
 #'
 #
 ################################################################################
@@ -291,11 +296,25 @@ create_db_topics_monthly <- function(repo = "katilingban/ennet_db",
 ################################################################################
 #
 #'
+#' Create hourly topics datasets for the ennet_db
+#'
+#' @param repo A character value of the GitHub user and repository name
+#'   combination identifying the GitHub location for ennet_db. Default is
+#'   `katilingban/ennet_db`.
+#' @param branch A character value for the branch name from which to retrieve
+#'   data. Default is `main`.
+#' @param .date A character value or vector of date/dates for which to create
+#'   a topics dataset for the ennet_db
+#'
+#' @return A tibble of specified topics dataset created from data in the
+#'   ennet_db
+#'
+#' @author Ernest Guevarra
+#'
 #' @examples
 #' create_db_topics_hourlies(.date = "2020-12-31")
 #'
 #' @export
-#' @rdname create_db
 #'
 #
 ################################################################################
@@ -376,11 +395,22 @@ create_db_topics_hourlies <- function(repo = "katilingban/ennet_db",
 ################################################################################
 #
 #'
+#' Create daily topics datasets for the ennet_db
+#'
+#' @param hourlies A tibble of topics data usually produced by using the
+#'   [create_db_topics_hourlies()] function
+#'
+#' @return A tibble of specified topics dataset created from data in the
+#'   ennet_db
+#'
+#' @author Ernest Guevarra
+#'
 #' @examples
-#' create_db_topics_dailies(hourlies = ennet_hourlies)
+#' themes <- ennet_themes$themes
+#' x <- ennet_hourlies[ennet_hourlies$Theme == themes[3], ]
+#' create_db_topics_dailies(hourlies = x)
 #'
 #' @export
-#' @rdname create_db
 #'
 #
 ################################################################################
@@ -400,11 +430,24 @@ create_db_topics_dailies <- function(hourlies) {
 ################################################################################
 #
 #'
+#' Create various topics interactions datasets for the ennet_db
+#'
+#' @param dailies A tibble of topics data usually produced by using the
+#'   [create_db_topics_dailies()] function
+#' @param id A character value for data identifier. Possible choices are
+#'   *daily*, *weekly*, *monthly*, or *yearly*.
+#'
+#' @return A tibble of specified topics dataset created from data in the
+#'   ennet_db
+#'
+#' @author Ernest Guevarra
+#'
 #' @examples
-#' create_db_topics_interactions(dailies = ennet_dailies, id = "daily")
+#' themes <- ennet_themes$themes
+#' x <- ennet_dailies[ennet_dailies$Theme == themes[3], ]
+#' create_db_topics_interactions(dailies = x, id = "yearly")
 #'
 #' @export
-#' @rdname create_db
 #'
 #
 ################################################################################
