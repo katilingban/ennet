@@ -25,7 +25,19 @@
     <loc>https://katilingban.io/ennet/reference/count_topics_theme.html</loc>
   </url>
   <url>
-    <loc>https://katilingban.io/ennet/reference/create_db.html</loc>
+    <loc>https://katilingban.io/ennet/reference/create_db_topics_dailies.html</loc>
+  </url>
+  <url>
+    <loc>https://katilingban.io/ennet/reference/create_db_topics_daily.html</loc>
+  </url>
+  <url>
+    <loc>https://katilingban.io/ennet/reference/create_db_topics_hourlies.html</loc>
+  </url>
+  <url>
+    <loc>https://katilingban.io/ennet/reference/create_db_topics_interactions.html</loc>
+  </url>
+  <url>
+    <loc>https://katilingban.io/ennet/reference/create_db_topics_monthly.html</loc>
   </url>
   <url>
     <loc>https://katilingban.io/ennet/reference/ennet-deprecated.html</loc>

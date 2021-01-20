@@ -28,7 +28,9 @@ functions have now been deprecated);
 
 ## R CMD check results
 
-0 errors | 0 warnings | 0 notes
+0 errors | 0 warnings | 1 note
+
+* Examples with CPU (user + system) or elapsed time > 10s
 
 ## Reverse dependencies
 `ennet` doesn't have any downstream / reverse dependencies (see https://github.com/katilingban/ennet/tree/master/revdep)

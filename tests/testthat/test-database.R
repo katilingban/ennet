@@ -32,7 +32,7 @@ test_that("error message show", {
   expect_error(create_db_topics_daily(.date = "2021-01-17"))
 })
 
-x <- create_db_topics_monthly(.date = Sys.Date() - 1)
+x <- create_db_topics_monthly(.date = "2021-01-03")
 
 test_that("x is a tibble", {
   expect_is(x, "tbl")
@@ -42,7 +42,7 @@ test_that("error message show", {
   expect_error(create_db_topics_monthly(.date = NA))
 })
 
-test_that("date beyond curren", {
+test_that("date beyond current", {
   expect_error(create_db_topics_monthly(.date = "2021-02-01"))
 })
 

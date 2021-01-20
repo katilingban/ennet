@@ -236,7 +236,7 @@ create_db_topics_daily <- function(repo = "katilingban/ennet_db",
 #' @author Ernest Guevarra
 #'
 #' @examples
-#' create_db_topics_monthly()
+#' create_db_topics_monthly(.date = "2021-01-03")
 #'
 #' @export
 #'
@@ -252,6 +252,19 @@ create_db_topics_monthly <- function(repo = "katilingban/ennet_db",
       paste(
         strwrap(x = ".date values are not in the expected YYYY-MM-DD format.
                      Please check and try again.",
+                width = 80),
+        collapse = "\n"
+      )
+    )
+  }
+
+  ## Check .date is not earlier than 27 December 2020
+  if (lubridate::ymd(.date) < as.Date("2020-12-27")) {
+    stop(
+      paste(
+        strwrap(x = "Earliest dataset available from ennet_db is for December
+                     2020. Please provide .date value for December 2020 or
+                     later.",
                 width = 80),
         collapse = "\n"
       )
@@ -334,8 +347,8 @@ create_db_topics_hourlies <- function(repo = "katilingban/ennet_db",
     )
   }
 
-  ## Check .date is not earlier than December 2020
-  if (lubridate::ymd(.date) < as.Date("2020-12-26")) {
+  ## Check .date is not earlier than 27 December 2020
+  if (lubridate::ymd(.date) < as.Date("2020-12-27")) {
     stop(
       paste(
         strwrap(x = "Earliest dataset available from ennet_db is for December
