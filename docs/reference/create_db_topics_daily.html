@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get topics from multiple themes — get_themes_topics • ennet</title>
+<title>Create daily topics dataset for the ennet_db — create_db_topics_daily • ennet</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Get topics from multiple themes — get_themes_topics" />
-<meta property="og:description" content="Get topics from multiple themes" />
+<meta property="og:title" content="Create daily topics dataset for the ennet_db — create_db_topics_daily" />
+<meta property="og:description" content="Create daily topics dataset for the ennet_db" />
 <meta property="og:image" content="https://katilingban.io/ennet/logo.png" />
 
 
@@ -137,49 +137,75 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get topics from multiple themes</h1>
-    <small class="dont-index">Source: <a href='https://github.com/katilingban/ennet/blob/master/R/get_themes.R'><code>R/get_themes.R</code></a></small>
-    <div class="hidden name"><code>get_themes_topics.Rd</code></div>
+    <h1>Create daily topics dataset for the ennet_db</h1>
+    <small class="dont-index">Source: <a href='https://github.com/katilingban/ennet/blob/master/R/database.R'><code>R/database.R</code></a></small>
+    <div class="hidden name"><code>create_db_topics_daily.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get topics from multiple themes</p>
+    <p>Create daily topics dataset for the ennet_db</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_themes_topics</span><span class='op'>(</span>themes <span class='op'>=</span> <span class='fu'><a href='get_themes.html'>get_themes</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>create_db_topics_daily</span><span class='op'>(</span>
+  repo <span class='op'>=</span> <span class='st'>"katilingban/ennet_db"</span>,
+  branch <span class='op'>=</span> <span class='st'>"main"</span>,
+  .date <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>-</span> <span class='fl'>1</span>,
+  fn <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>themes</th>
-      <td><p>A tibble containing thematic areas and URLs for thematic area
-pages</p></td>
+      <th>repo</th>
+      <td><p>A character value of the GitHub user and repository name
+combination identifying the GitHub location for ennet_db. Default is
+<code>katilingban/ennet_db</code>.</p></td>
+    </tr>
+    <tr>
+      <th>branch</th>
+      <td><p>A character value for the branch name from which to retrieve
+data. Default is <code>main</code>.</p></td>
+    </tr>
+    <tr>
+      <th>.date</th>
+      <td><p>A character value or vector of date/dates for which to create
+a topics dataset for the ennet_db</p></td>
+    </tr>
+    <tr>
+      <th>fn</th>
+      <td><p>A character value or vector of filenames for hourly topics dataset
+found in ennet_db</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble of all topics across all thematic areas with their
-respective URLs</p>
+    <p>A tibble of daily topics dataset created from data in the
+ennet_db</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Ernest Guevarra</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>themes</span> <span class='op'>&lt;-</span> <span class='va'>ennet_themes</span>
-<span class='fu'>get_themes_topics</span><span class='op'>(</span>themes <span class='op'>=</span> <span class='va'>themes</span><span class='op'>[</span><span class='fl'>4</span>, <span class='op'>]</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 94 x 7</span><span>
-#&gt;    Theme    Topic                 Views Replies Author   Posted     Link        
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                 </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Coverag… Resources for covera… </span><span style='text-decoration: underline;'>14</span><span>781      11 Tamsin … 2011-12-06 https://www…
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Coverag… SLEAC                  </span><span style='text-decoration: underline;'>1</span><span>101       2 Anonymo… 2021-01-12 https://www…
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Coverag… Use of single covera…  </span><span style='text-decoration: underline;'>4</span><span>869       7 Hugh Lo… 2019-11-10 https://www…
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Coverag… Real and theoretical…  </span><span style='text-decoration: underline;'>4</span><span>149       3 Abdul    2019-10-10 https://www…
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Coverag… Single Coverage for …  </span><span style='text-decoration: underline;'>2</span><span>974       4 Ben All… 2019-07-05 https://www…
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Coverag… Cox's Bazar Refugee …  </span><span style='text-decoration: underline;'>3</span><span>215       4 Hugh Lo… 2019-03-28 https://www…
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Coverag… Wide Area Survey (St…  </span><span style='text-decoration: underline;'>2</span><span>875       2 Anonymo… 2019-03-09 https://www…
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Coverag… Disconnection betwee…  </span><span style='text-decoration: underline;'>2</span><span>852       2 Tammam … 2019-03-03 https://www…
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Coverag… Can we classify the …  </span><span style='text-decoration: underline;'>3</span><span>029       2 Anonymo… 2018-11-18 https://www…
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Coverag… Routine monitoring d…  </span><span style='text-decoration: underline;'>2</span><span>917       0 Anonymo… 2018-11-14 https://www…
-#&gt; </span><span style='color: #949494;'># … with 84 more rows</span><span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='co'>##</span>
+<span class='va'>fn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"ennet_topics_2021-01-17_00:54:48.csv"</span><span class='op'>)</span>
+
+<span class='fu'>create_db_topics_daily</span><span class='op'>(</span>.date <span class='op'>=</span> <span class='st'>"2021-01-17"</span>, fn <span class='op'>=</span> <span class='va'>fn</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3,045 x 7</span><span>
+#&gt;    Theme    Topic       Author  Posted Link    Views_20210117_… Replies_2021011…
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>              </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>            </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Announc… </span><span style='color: #949494;'>"</span><span>Vacancy -… Anonym… 2021-… https:…              250               </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Announc… </span><span style='color: #949494;'>"</span><span>REACH Ini… Saeed … 2021-… https:…              139               </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Announc… </span><span style='color: #949494;'>"</span><span>New Fundi… Katie … 2021-… https:…              129               </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Announc… </span><span style='color: #949494;'>"</span><span>Event: Ho… Sylvia… 2021-… https:…              168               </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Announc… </span><span style='color: #949494;'>"</span><span>TASC is l… Rita A… 2021-… https:…              142               </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Announc… </span><span style='color: #949494;'>"</span><span>ENN is re… Office… 2020-… https:…              168               </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Announc… </span><span style='color: #949494;'>"</span><span>Call for … Tamsin… 2020-… https:…              219               </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Announc… </span><span style='color: #949494;'>"</span><span>ENN is se… Office… 2020-… https:…              209               </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Announc… </span><span style='color: #949494;'>"</span><span>Vacancy -… Valent… 2020-… https:…              355               </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Announc… </span><span style='color: #949494;'>"</span><span>Ag-nutrit… Sylvia… 2020-… https:…              225               </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #949494;'># … with 3,035 more rows</span><span></div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
