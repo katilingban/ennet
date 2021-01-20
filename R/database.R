@@ -59,8 +59,8 @@ get_db_discussions <- function(repo = "katilingban/ennet_db",
 #
 #'
 #' @examples
-#' ## Retrieve en-net topics daily interactions dataset
-#' get_db_topics(id = "daily")
+#' ## Retrieve en-net topics yearly interactions dataset
+#' get_db_topics(id = "yearly")
 #'
 #' @export
 #' @rdname get_db
@@ -118,7 +118,7 @@ get_db_topics <- function(repo = "katilingban/ennet_db",
 ################################################################################
 #
 #'
-#' Create various topics dataset for the ennet_db
+#' Create daily topics dataset for the ennet_db
 #'
 #' @param repo A character value of the GitHub user and repository name
 #'   combination identifying the GitHub location for ennet_db. Default is
@@ -129,28 +129,19 @@ get_db_topics <- function(repo = "katilingban/ennet_db",
 #'   a topics dataset for the ennet_db
 #' @param fn A character value or vector of filenames for hourly topics dataset
 #'   found in ennet_db
-#' @param hourlies A tibble of topics data usually produced by using the
-#'   [create_db_topics_hourlies()] function
-#' @param dailies A tibble of topics data usually produced by using the
-#'   [create_db_topics_dailies()] function
-#' @param id A character value for data identifier. Possible choices are
-#'   *daily*, *weekly*, *monthly*, or *yearly*.
 #'
-#' @return A tibble of specified topics dataset created from data in the
+#' @return A tibble of daily topics dataset created from data in the
 #'   ennet_db
 #'
 #' @author Ernest Guevarra
 #'
 #' @examples
 #' ##
-#' fn <- c("ennet_topics_2021-01-17_00:54:48.csv",
-#'         "ennet_topics_2021-01-17_02:48:38.csv",
-#'         "ennet_topics_2021-01-17_03:57:46.csv")
+#' fn <- c("ennet_topics_2021-01-17_00:54:48.csv")
 #'
 #' create_db_topics_daily(.date = "2021-01-17", fn = fn)
 #'
 #' @export
-#' @rdname create_db
 #'
 #
 ################################################################################
@@ -193,30 +184,26 @@ create_db_topics_daily <- function(repo = "katilingban/ennet_db",
   fn <- paste("https://raw.githubusercontent.com/",
               repo, "/", branch, "/data/", fn, sep = "")
 
-  ## Create timestamp
-  ts <- fn %>%
-    stringr::str_remove_all(pattern = "ennet_topics_|.csv") %>%
-    lubridate::as_datetime() %>%
-    stringr::str_replace_all(pattern = " ", replacement = "_")
+  x <- lapply(X = fn,
+              FUN = function(fn) {
+                ## Create timestamp
+                ts <- fn %>%
+                  stringr::str_remove_all(pattern = "ennet_topics_|.csv") %>%
+                  lubridate::as_datetime() %>%
+                  stringr::str_replace_all(pattern = " ", replacement = "_")
 
-  ## Read first file in list
-  x <- read.csv(file = fn[1])
+                ## Read first file in list
+                x <- read.csv(file = fn)
 
-  ## re-order columns and rename
-  x <- x[c(1, 2, 4, 5, 6, 3, 7)]
-  names(x)[6:7] <- paste(names(x)[6:7], ts[1], sep = "_")
+                ## re-order columns and rename
+                x <- x[c(1, 2, 4, 5, 6, 3, 7)]
+                names(x)[6:7] <- paste(names(x)[6:7], ts, sep = "_")
 
-  ## Read the rest of the files
-  for (i in fn[2:length(fn)]) {
-    y <- read.csv(file = i)
+                return(x)
+              }
+       )
 
-    ## Read next file
-    y <- y[c(1, 2, 4, 5, 6, 3, 7)]
-    names(y)[6:7] <- paste(names(y)[6:7], ts[fn == i], sep = "_")
-
-    x <- dplyr::full_join(x = x, y = y,
-                          by = c("Theme", "Topic", "Author", "Posted", "Link"))
-  }
+  x <- Reduce(f = merge, x = x)
 
   ## Rename fields
   names(x) <- names(x) %>%
@@ -233,11 +220,25 @@ create_db_topics_daily <- function(repo = "katilingban/ennet_db",
 ################################################################################
 #
 #'
+#' Create monthly topics dataset for the ennet_db
+#'
+#' @param repo A character value of the GitHub user and repository name
+#'   combination identifying the GitHub location for ennet_db. Default is
+#'   `katilingban/ennet_db`.
+#' @param branch A character value for the branch name from which to retrieve
+#'   data. Default is `main`.
+#' @param .date A character value or vector of date/dates for which to create
+#'   a topics dataset for the ennet_db
+#'
+#' @return A tibble of monthly topics dataset created from data in the
+#'   ennet_db
+#'
+#' @author Ernest Guevarra
+#'
 #' @examples
 #' create_db_topics_monthly()
 #'
 #' @export
-#' @rdname create_db
 #'
 #
 ################################################################################
@@ -266,7 +267,7 @@ create_db_topics_monthly <- function(repo = "katilingban/ennet_db",
                                        side = "left",
                                        pad = "0"),
                       stringr::str_pad(seq(from = 1,
-                                           to = lubridate::days_in_month(.date),
+                                           to = lubridate::mday(.date),
                                            by = 1),
                                        width = 2,
                                        side = "left",
@@ -278,35 +279,16 @@ create_db_topics_monthly <- function(repo = "katilingban/ennet_db",
               repo, "/", branch, "/data/ennet_topics_",
               data_dates, ".csv", sep = "")
 
-  x <- try(read.csv(file = fn[1]), silent = TRUE)
+  ## Read each dataset
+  x <- lapply(X = fn, FUN = read.csv)
 
-  if (class(x) == "try-error") {
-    stop(
-      paste(
-        strwrap(x = "Specified file/s cannot be found in the ennet_db.
-                     Please check and try again.",
-                width = 80
-        ),
-        collapse = "\n"
-      )
-    )
-  }
+  ## Merge items on the list
+  x <- Reduce(f = merge, x = x)
 
-  ##
-  for (i in fn[2:length(fn)]) {
-    y <- try(suppressWarnings(read.csv(file = i)), silent = TRUE)
-
-    if (class(y) != "try-error") {
-      x <- dplyr::full_join(x = x, y = y,
-                            by = c("Theme", "Topic",
-                                   "Author", "Posted", "Link"))
-    } else break
-  }
-
-  ##
+  ## Convert to tibble
   x <- tibble::tibble(x)
 
-  ##
+  ## Return x
   return(x)
 }
 
@@ -314,11 +296,25 @@ create_db_topics_monthly <- function(repo = "katilingban/ennet_db",
 ################################################################################
 #
 #'
+#' Create hourly topics datasets for the ennet_db
+#'
+#' @param repo A character value of the GitHub user and repository name
+#'   combination identifying the GitHub location for ennet_db. Default is
+#'   `katilingban/ennet_db`.
+#' @param branch A character value for the branch name from which to retrieve
+#'   data. Default is `main`.
+#' @param .date A character value or vector of date/dates for which to create
+#'   a topics dataset for the ennet_db
+#'
+#' @return A tibble of specified topics dataset created from data in the
+#'   ennet_db
+#'
+#' @author Ernest Guevarra
+#'
 #' @examples
 #' create_db_topics_hourlies(.date = "2020-12-31")
 #'
 #' @export
-#' @rdname create_db
 #'
 #
 ################################################################################
@@ -365,42 +361,30 @@ create_db_topics_hourlies <- function(repo = "katilingban/ennet_db",
   }
 
   ##
-  fn <- paste("ennet_topics_", all_months_years, ".csv", sep = "")
+  fn <- paste("https://raw.githubusercontent.com/", repo, "/", branch,
+              "/data/ennet_topics_", all_months_years, ".csv", sep = "")
 
-  ## Concatenating data.frame
-  hourlies <- data.frame()
+  x <- lapply(X = fn,
+              FUN = function(x) {
+                y <- read.csv(x)
 
-  ##
-  for (i in fn) {
-    x <- try(
-      read.csv(
-        paste("https://raw.githubusercontent.com/",
-              repo, "/", branch, "/data/", i, sep = "")
-      ),
-      silent = TRUE
-    )
+                names(y) <- names(y) %>%
+                  stringr::str_replace(pattern = "_", replacement = " ")
 
-    if (class(x) == "data.frame") {
-      ## Check if try is not an error
-      names(x) <- names(x) %>%
-        stringr::str_replace(pattern = "_", replacement = " ")
-
-      ## Tidy the dataset and conver to long format
-      x <- x %>%
-        tidyr::pivot_longer(cols = dplyr::starts_with(match = c("Views",
-                                                                "Replies")),
-                            names_to = c("Interaction", "Extraction"),
-                            names_sep = " ",
-                            values_to = "n") %>%
-        dplyr::mutate(Extraction = lubridate::ymd_hms(Extraction))
-
-      ## Concatenate
-      hourlies <- rbind(hourlies, x)
-    } else break
-  }
+                ## Tidy the dataset and conver to long format
+                y <- y %>%
+                  tidyr::pivot_longer(
+                    cols = dplyr::starts_with(match = c("Views", "Replies")),
+                    names_to = c("Interaction", "Extraction"),
+                    names_sep = " ",
+                    values_to = "n") %>%
+                  dplyr::mutate(Extraction = lubridate::ymd_hms(Extraction))
+              }
+       )
 
   ## Convert to tibble
-  hourlies <- hourlies %>%
+  hourlies <- x %>%
+    dplyr::bind_rows() %>%
     dplyr::mutate(n = ifelse(is.na(n), 0, n))
 
   ## Return hourlies
@@ -411,11 +395,22 @@ create_db_topics_hourlies <- function(repo = "katilingban/ennet_db",
 ################################################################################
 #
 #'
+#' Create daily topics datasets for the ennet_db
+#'
+#' @param hourlies A tibble of topics data usually produced by using the
+#'   [create_db_topics_hourlies()] function
+#'
+#' @return A tibble of specified topics dataset created from data in the
+#'   ennet_db
+#'
+#' @author Ernest Guevarra
+#'
 #' @examples
-#' create_db_topics_dailies(hourlies = ennet_hourlies)
+#' themes <- ennet_themes$themes
+#' x <- ennet_hourlies[ennet_hourlies$Theme == themes[3], ]
+#' create_db_topics_dailies(hourlies = x)
 #'
 #' @export
-#' @rdname create_db
 #'
 #
 ################################################################################
@@ -435,11 +430,24 @@ create_db_topics_dailies <- function(hourlies) {
 ################################################################################
 #
 #'
+#' Create various topics interactions datasets for the ennet_db
+#'
+#' @param dailies A tibble of topics data usually produced by using the
+#'   [create_db_topics_dailies()] function
+#' @param id A character value for data identifier. Possible choices are
+#'   *daily*, *weekly*, *monthly*, or *yearly*.
+#'
+#' @return A tibble of specified topics dataset created from data in the
+#'   ennet_db
+#'
+#' @author Ernest Guevarra
+#'
 #' @examples
-#' create_db_topics_interactions(dailies = ennet_dailies, id = "daily")
+#' themes <- ennet_themes$themes
+#' x <- ennet_dailies[ennet_dailies$Theme == themes[3], ]
+#' create_db_topics_interactions(dailies = x, id = "yearly")
 #'
 #' @export
-#' @rdname create_db
 #'
 #
 ################################################################################

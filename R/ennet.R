@@ -23,7 +23,7 @@
 #'   desc filter starts_with summarise
 #' @importFrom stringr str_replace str_detect str_extract_all str_to_lower
 #'   str_replace_na str_remove_all
-#' @importFrom lubridate dmy_hm month year ymd
+#' @importFrom lubridate dmy_hm month year ymd mday
 #' @importFrom utils read.csv
 #' @importFrom tidyr pivot_longer pivot_wider
 #'

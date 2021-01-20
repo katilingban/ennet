@@ -62,6 +62,7 @@ reference:
     - get_db_topics
     - create_db_topics_daily
     - create_db_topics_monthly
+    - create_db_topics_hourlies
     - create_db_topics_dailies
     - create_db_topics_interactions
 

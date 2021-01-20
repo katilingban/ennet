@@ -34,8 +34,8 @@ Retrieve data from ennet_db GitHub repository
 ## Retrieve discussions dataset
 get_db_discussions()
 
-## Retrieve en-net topics daily interactions dataset
-get_db_topics(id = "daily")
+## Retrieve en-net topics yearly interactions dataset
+get_db_topics(id = "yearly")
 
 }
 \author{
