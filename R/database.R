@@ -16,8 +16,10 @@
 #' @author Ernest Guevarra
 #'
 #' @examples
-#' ## Retrieve discussions dataset
-#' get_db_discussions()
+#' \donttest{
+#'   ## Retrieve discussions dataset
+#'   get_db_discussions()
+#' }
 #'
 #' @export
 #' @rdname get_db
