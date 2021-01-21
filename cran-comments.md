@@ -1,3 +1,21 @@
+## Resubmission
+This is a resubmission. In this version I have addressed the issue of examples
+with CPU (user + system) or elapsed time > 10s by putting the example for the
+function `get_db_discussions` within `\donttest` brackets.
+
+## Test environments
+* macOS, local R installation, R 4.0.3
+* ubuntu 20.04, local R installation, R 4.0.3
+* ubuntu 20.04 (on github actions), R 4.0.3
+* windows latest (on github actions), R 4.0.3
+* macOS latest (on github actions), R 4.0.3
+* win-builder (devel, oldrelease, release)
+* rhub windows ubuntu, fedora (devel, release)
+
+## R CMD check results
+
+0 errors | 0 warnings | 0 notes
+
 ## Release summary
 This is the second CRAN release of `ennet`.
 

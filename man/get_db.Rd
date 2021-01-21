@@ -31,8 +31,10 @@ A tibble of the specified dataset
 Retrieve data from ennet_db GitHub repository
 }
 \examples{
-## Retrieve discussions dataset
-get_db_discussions()
+\donttest{
+  ## Retrieve discussions dataset
+  get_db_discussions()
+}
 
 ## Retrieve en-net topics yearly interactions dataset
 get_db_topics(id = "yearly")
