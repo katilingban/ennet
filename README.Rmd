@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 # ennet: Utilities to Extract and Analyse Text Data From the Emergency Nutrition Network (en-net) Forum <img src="man/figures/logo.png" width="200px" align="right" />
 
 <!-- badges: start -->
-[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![CRAN status](https://www.r-pkg.org/badges/version/ennet)](https://CRAN.R-project.org/package=ennet)
 [![cran checks](https://cranchecks.info/badges/summary/ennet)](https://cran.r-project.org/web/checks/check_results_ennet.html)
 [![CRAN](https://img.shields.io/cran/l/ennet.svg)](https://CRAN.R-project.org/package=ennet)

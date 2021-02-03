@@ -1,3 +1,16 @@
+# ennet 0.2.1
+
+This is the third CRAN release of `ennet`. This is a patch release to fix a
+test that uses an input that used to throw an error but now does not. This
+test has now beeen fixed.
+
+### Bug fixes
+
+* Fixed test for `create_db_topics_monthly` that used an input for a date of
+2021-02-01 which earlier would provide an error but now that it is already
+February, this input doesn't throw an error anymore. This was changed to
+2020-01-01 instead.
+
 # ennet 0.2.0
 
 Second [CRAN](https://cran.r-project.org) release of `ennet` package.

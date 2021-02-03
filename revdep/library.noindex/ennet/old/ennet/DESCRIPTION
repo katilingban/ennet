@@ -2,7 +2,7 @@ Package: ennet
 Type: Package
 Title: Utilities to Extract and Analyse Text Data from the Emergency
         Nutrition Network Forum
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: person(given = "Ernest", family = "Guevarra", 
                   email = "ernest@guevarra.io", role = c("aut", "cre"),
                   comment = c(ORCID = "0000-0002-4887-4415"))
@@ -15,19 +15,21 @@ Description: The Emergency Nutrition Network or en-net forum is the go to online
     extraction, processing and analysis of text data from the online forum.
 License: GPL-3
 Depends: R (>= 2.10)
-Imports: magrittr, rvest, xml2, tibble, dplyr, stringr, lubridate
-Suggests: knitr, rmarkdown, DiagrammeR, testthat, spelling
+Imports: magrittr, rvest, xml2, tibble, dplyr, stringr, lubridate,
+        utils, tidyr
+Suggests: knitr, rmarkdown, testthat, spelling
 Encoding: UTF-8
 Language: en-GB
 LazyData: true
 RoxygenNote: 7.1.1
-URL: https://github.com/katilingban/ennet
+URL: https://katilingban.io/ennet/,
+        https://github.com/katilingban/ennet
 BugReports: https://github.com/katilingban/ennet/issues
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2020-11-22 18:25:45 UTC; ernest
+Packaged: 2021-01-21 00:30:31 UTC; ernest
 Author: Ernest Guevarra [aut, cre] (<https://orcid.org/0000-0002-4887-4415>)
 Maintainer: Ernest Guevarra <ernest@guevarra.io>
 Repository: CRAN
-Date/Publication: 2020-11-24 12:20:05 UTC
-Built: R 4.0.2; ; 2020-11-25 12:01:56 UTC; unix
+Date/Publication: 2021-01-21 05:30:07 UTC
+Built: R 4.0.2; ; 2021-01-21 12:16:58 UTC; unix

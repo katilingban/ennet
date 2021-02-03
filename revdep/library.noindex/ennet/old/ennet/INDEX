@@ -3,8 +3,33 @@ arrange_views           Arrange topics based on number of views
 count_authors           Count the number of topics by author, by theme
                         and by date
 count_topics            Count the number of topics by theme and by date
-ennet_themes            en-net themes
-ennet_topics            en-net topics
+count_topics_author     Count number of questions/topics posted on
+                        en-net by author
+count_topics_day        Count number of questions/topics posted on
+                        en-net by time
+count_topics_theme      Count number of questions/topics posted on
+                        en-net
+create_db_topics_dailies
+                        Create daily topics datasets for the ennet_db
+create_db_topics_daily
+                        Create daily topics dataset for the ennet_db
+create_db_topics_hourlies
+                        Create hourly topics datasets for the ennet_db
+create_db_topics_interactions
+                        Create various topics interactions datasets for
+                        the ennet_db
+create_db_topics_monthly
+                        Create monthly topics dataset for the ennet_db
+ennet-deprecated        Deprecated functions in ennet
+ennet_dailies           Daily extracts of topics dataset from en-net
+                        online forum
+ennet_hourlies          Hourly extracts of topics dataset from en-net
+                        online forum
+ennet_themes            Themes from en-net forum retrieved on 17
+                        January 2021
+ennet_topics            Topics from en-net forum retrieved on 17
+                        January 2021
+get_db_discussions      Retrieve data from ennet_db GitHub repository
 get_theme_topics        Get theme topics
 get_themes              Get list of thematic areas from en-net.org
 get_themes_topics       Get topics from multiple themes
