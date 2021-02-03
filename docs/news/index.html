@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ennet</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -140,14 +140,27 @@
       <small>Source: <a href='https://github.com/katilingban/ennet/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="ennet-020" class="section level1">
-<h1 class="page-header" data-toc-text="0.2.0">
-<a href="#ennet-020" class="anchor"></a>ennet 0.2.0<small> Unreleased </small>
+    <div id="ennet-021" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.1">
+<a href="#ennet-021" class="anchor"></a>ennet 0.2.1<small> Unreleased </small>
 </h1>
-<p>Second <a href="https://cran.r-project.org">CRAN</a> release of <code>ennet</code> package.</p>
+<p>This is the third CRAN release of <code>ennet</code>. This is a patch release to fix a test that uses an input that used to throw an error but now does not. This test has now beeen fixed.</p>
 <div id="bug-fixes" class="section level3">
 <h3 class="hasAnchor">
 <a href="#bug-fixes" class="anchor"></a>Bug fixes</h3>
+<ul>
+<li>Fixed test for <code>create_db_topics_monthly</code> that used an input for a date of 2021-02-01 which earlier would provide an error but now that it is already February, this input doesn’t throw an error anymore. This was changed to 2020-01-01 instead.</li>
+</ul>
+</div>
+</div>
+    <div id="ennet-020" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.0">
+<a href="#ennet-020" class="anchor"></a>ennet 0.2.0<small> 2021-01-21 </small>
+</h1>
+<p>Second <a href="https://cran.r-project.org">CRAN</a> release of <code>ennet</code> package.</p>
+<div id="bug-fixes-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h3>
 <ul>
 <li><p>Fixed NOTE on CRAN checks for non-ASCII characters (192 marked UTF-8 strings)</p></li>
 <li><p>Removed <code>DiagrammeR</code> as a dependency package and removed the code chunk in respective vignette that creates the ennet workflow. The workflow diagram is now done using an external drawing tool (OmniGraffle) instead of within R using <code>DiagrammeR</code>. This prevents issues on CRAN when vignettes are produced.</p></li>

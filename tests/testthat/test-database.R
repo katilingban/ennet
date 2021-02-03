@@ -43,7 +43,7 @@ test_that("error message show", {
 })
 
 test_that("date beyond current", {
-  expect_error(create_db_topics_monthly(.date = "2021-02-01"))
+  expect_error(create_db_topics_monthly(.date = "2020-01-01"))
 })
 
 x <- create_db_topics_hourlies(.date = "2020-12-31")
