@@ -9,8 +9,17 @@ count_topics_day        Count number of questions/topics posted on
                         en-net by time
 count_topics_theme      Count number of questions/topics posted on
                         en-net
+create_db_topics_dailies
+                        Create daily topics datasets for the ennet_db
 create_db_topics_daily
-                        Create various topics dataset for the ennet_db
+                        Create daily topics dataset for the ennet_db
+create_db_topics_hourlies
+                        Create hourly topics datasets for the ennet_db
+create_db_topics_interactions
+                        Create various topics interactions datasets for
+                        the ennet_db
+create_db_topics_monthly
+                        Create monthly topics dataset for the ennet_db
 ennet-deprecated        Deprecated functions in ennet
 ennet_dailies           Daily extracts of topics dataset from en-net
                         online forum

@@ -2,7 +2,7 @@ Package: ennet
 Type: Package
 Title: Utilities to Extract and Analyse Text Data from the Emergency
         Nutrition Network Forum
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: person(given = "Ernest", family = "Guevarra", 
                   email = "ernest@guevarra.io", role = c("aut", "cre"),
                   comment = c(ORCID = "0000-0002-4887-4415"))
@@ -30,7 +30,7 @@ VignetteBuilder: knitr
 RemoteType: local
 RemoteUrl: /Users/ernest/GitHub/ennet
 NeedsCompilation: no
-Packaged: 2021-01-18 21:02:52 UTC; ernest
+Packaged: 2021-02-03 15:33:00 UTC; ernest
 Author: Ernest Guevarra [aut, cre] (<https://orcid.org/0000-0002-4887-4415>)
 Maintainer: Ernest Guevarra <ernest@guevarra.io>
-Built: R 4.0.3; ; 2021-01-18 21:02:53 UTC; unix
+Built: R 4.0.3; ; 2021-02-03 15:33:01 UTC; unix

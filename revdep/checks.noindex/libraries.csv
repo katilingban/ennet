@@ -1,2 +1,7 @@
 package,old,new,delta
-ennet,0.1.0,0.2.0,*
+ennet,0.2.0,0.2.1,*
+cli,NA,2.3.0,*
+cpp11,NA,0.2.6,*
+crayon,NA,1.4.0.9000,*
+dplyr,NA,1.0.4,*
+tibble,NA,3.0.6,*

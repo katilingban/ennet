@@ -1,23 +1,40 @@
+# ennet 0.2.1
+
+This is the third CRAN release of `ennet`. This is a patch release to fix a
+test that uses an input that used to throw an error but now does not. This
+test has now beeen fixed.
+
+### Bug fixes
+
+* Fixed test for `create_db_topics_monthly` that used an input for a date of
+2021-02-01 which earlier would provide an error but now that it is already
+February, this input doesn't throw an error anymore. This was changed to
+2020-01-01 instead.
+
 # ennet 0.2.0
 
-Second release of `ennet` package.
+Second [CRAN](https://cran.r-project.org) release of `ennet` package.
 
-## Bug fixes
+### Bug fixes
 
-* Addressed CRAN checks NOTE indicating that there are 192 marked UTF-8 strings
-in the packaged datasets. These marked strings have now been converted to ASCII
-or to NA
+* Fixed NOTE on CRAN checks for non-ASCII characters (192 marked UTF-8 strings)
 
 * Removed `DiagrammeR` as a dependency package and removed the code chunk in 
 respective vignette that creates the ennet workflow. The workflow diagram is
 now done using an external drawing tool (OmniGraffle) instead of within R using
-`DiagrammeR`
+`DiagrammeR`. This prevents issues on CRAN when vignettes are produced.
 
-## Enhancements
+### Enhancements/Improvements
 
-* re-factored analytics functions specifically the `count_` functions. Previous
-functions now in deprecation and new `count_` functions created that are more
-clean, robust and performant.
+* refactored the `count_topics` and `count_authors` functions into new more
+coherent functions for counting topics and other related metrics (previous
+functions have now been deprecated);
+
+* added new functions to retrieve data from the [en-net database](https://github.com/katilingban/ennet_db);
+
+* added new functions to process and handle data from the [en-net database](https://github.com/katilingban/ennet_db); and,
+
+* updated documentation to reflect the enhancements/improvements implemented.
 
 # ennet 0.1.0
 

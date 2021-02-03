@@ -11,59 +11,89 @@ knitr::opts_chunk$set(
 library(ennet)
 library(dplyr)
 
-## ----usage6, echo = TRUE, eval = FALSE----------------------------------------
-#  get_themes() %>%
-#    get_themes_topics() %>%
-#    count_topics()
+## ----count_day1, echo = TRUE, eval = FALSE------------------------------------
+#  count_topics_day()
 
-## ----usage6a, echo = FALSE, eval = TRUE---------------------------------------
+## ----count_day1a, echo = FALSE, eval = TRUE-----------------------------------
 ennet_topics %>%
-  count_topics()
+  count_topics_day()
 
-## ----usage7, echo = TRUE, eval = FALSE----------------------------------------
-#  get_themes() %>%
-#    get_themes_topics() %>%
-#    count_topics(by_date = "year")
+## ----count_day2, echo = TRUE, eval = FALSE------------------------------------
+#  count_topics_day(.sort = TRUE)
 
-## ----usage7a, echo = FALSE, eval = TRUE---------------------------------------
+## ----count_day2a, echo = FALSE, eval = TRUE-----------------------------------
 ennet_topics %>%
-  count_topics(by_date = "year")
+  count_topics_day(.sort = TRUE)
 
-## ----usage8, echo = TRUE, eval = FALSE----------------------------------------
-#  get_themes() %>%
-#    get_themes_topics() %>%
-#    count_topics(by_date = "all")
+## ----count_time, echo = TRUE, eval = FALSE------------------------------------
+#  ## Count topics/questions by week
+#  count_topics_week()
+#  
+#  ## Count topics/questions by month
+#  count_topics_month()
+#  
+#  ## Count topics/questions by year
+#  count_topics_year()
 
-## ----usage8a, echo = FALSE, eval = TRUE---------------------------------------
+## ----count_theme1, echo = TRUE, eval = FALSE----------------------------------
+#  count_topics_theme()
+
+## ----count_theme1a, echo = FALSE, eval = TRUE---------------------------------
 ennet_topics %>%
-  count_topics(by_date = "all")
+  count_topics_theme()
 
-## ----usage9, echo = TRUE, eval = FALSE----------------------------------------
-#  get_themes() %>%
-#    get_themes_topics() %>%
-#    count_authors()
+## ----count_theme2, echo = TRUE, eval = FALSE----------------------------------
+#  count_topics_theme(.sort = TRUE)
 
-## ----usage9a, echo = FALSE, eval = TRUE---------------------------------------
+## ----count_theme2a, echo = FALSE, eval = TRUE---------------------------------
+count_topics_theme(.sort = TRUE)
+
+## ----count_theme_day1, echo = TRUE, eval = FALSE------------------------------
+#  count_topics_theme_time(by_time = "day")
+
+## ----count_theme_day1a, echo = FALSE, eval = TRUE-----------------------------
 ennet_topics %>%
-  count_authors()
+  count_topics_theme_time(by_time = "day")
 
-## ----usage10, echo = TRUE, eval = FALSE---------------------------------------
-#  get_themes() %>%
-#    get_themes_topics() %>%
-#    count_authors(by_date = "year")
+## ----count_theme_day2, echo = TRUE, eval = FALSE------------------------------
+#  ## Count topics/questions by theme by week
+#  count_topics_theme_time(by_time = "week")
+#  
+#  ## Count topics/questions by theme by month
+#  count_topics_theme_time(by_time = "month")
+#  
+#  ## Count topics/questions by theme by year
+#  count_topics_theme_time(by_time = "year")
 
-## ----usage10a, echo = FALSE, eval = TRUE--------------------------------------
+## ----count_author1, echo = TRUE, eval = FALSE---------------------------------
+#  count_topics_author()
+
+## ----count_author1a, echo = FALSE, eval = TRUE--------------------------------
 ennet_topics %>%
-  count_authors(by_date = "year")
+  count_topics_author()
 
-## ----usage11, echo = TRUE, eval = FALSE---------------------------------------
-#  get_themes() %>%
-#    get_themes_topics() %>%
-#    count_authors(by_date = "all")
+## ----count_author2, echo = TRUE, eval = FALSE---------------------------------
+#  count_topics_author(.sort = TRUE)
 
-## ----usage11a, echo = FALSE, eval = TRUE--------------------------------------
+## ----count_author2a, echo = FALSE, eval = TRUE--------------------------------
+ennet_topics %>% count_topics_author(.sort = TRUE)
+
+## ----count_author_day1, echo = TRUE, eval = FALSE-----------------------------
+#  count_topics_author_time(by_time = "day")
+
+## ----count_author_day1a, echo = FALSE, eval = TRUE----------------------------
 ennet_topics %>%
-  count_authors(by_date = "all")
+  count_topics_author_time(by_time = "day")
+
+## ----count_author_day2, echo = TRUE, eval = FALSE-----------------------------
+#  ## Count topics/questions by author by week
+#  count_topics_author_time(by_time = "week")
+#  
+#  ## Count topics/questions by author by month
+#  count_topics_author_time(by_time = "month")
+#  
+#  ## Count topics/questions by author by year
+#  count_topics_author_time(by_time = "year")
 
 ## ----usage12, echo = TRUE, eval = FALSE---------------------------------------
 #  get_themes() %>%

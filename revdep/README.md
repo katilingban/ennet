@@ -10,13 +10,18 @@
 |collate  |en_GB.UTF-8                  |
 |ctype    |en_GB.UTF-8                  |
 |tz       |Europe/London                |
-|date     |2021-01-18                   |
+|date     |2021-02-03                   |
 
 # Dependencies
 
-|package |old   |new   |Δ  |
-|:-------|:-----|:-----|:--|
-|ennet   |0.1.0 |0.2.0 |*  |
+|package |old   |new        |Δ  |
+|:-------|:-----|:----------|:--|
+|ennet   |0.2.0 |0.2.1      |*  |
+|cli     |NA    |2.3.0      |*  |
+|cpp11   |NA    |0.2.6      |*  |
+|crayon  |NA    |1.4.0.9000 |*  |
+|dplyr   |NA    |1.0.4      |*  |
+|tibble  |NA    |3.0.6      |*  |
 
 # Revdeps
 
