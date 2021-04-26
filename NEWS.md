@@ -1,7 +1,3 @@
-# ennet 0.3.1
-
-# ennet 0.3.0
-
 # ennet 0.2.1
 
 This is the third CRAN release of `ennet`. This is a patch release to fix a
