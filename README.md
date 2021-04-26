@@ -21,6 +21,7 @@ status](https://github.com/katilingban/ennet/workflows/test-coverage/badge.svg)]
 [![Codecov test
 coverage](https://codecov.io/gh/katilingban/ennet/branch/master/graph/badge.svg)](https://codecov.io/gh/katilingban/ennet?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/katilingban/ennet/badge)](https://www.codefactor.io/repository/github/katilingban/ennet)
+[![DOI](https://zenodo.org/badge/278736971.svg)](https://zenodo.org/badge/latestdoi/278736971)
 <!-- badges: end -->
 
 [**en-net**](https://www.en-net.org) is the go to online forum for field
@@ -61,7 +62,7 @@ You can install the development version from
 [GitHub](https://github.com/) with:
 
 ``` r
-if(!require(remotes) install.packages("remotes"))
+if(!require(remotes)) install.packages("remotes")
 remotes::install_github("katilingban/ennet")
 ```
 
