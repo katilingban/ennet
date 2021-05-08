@@ -268,7 +268,7 @@ create_db_topics_daily <- function(repo = "katilingban/ennet_db",
 #' @author Ernest Guevarra
 #'
 #' @examples
-#' create_db_topics_monthly(.date = "2021-01-03")
+#' create_db_topics_monthly(.date = "2021-01-01")
 #'
 #' @export
 #'
