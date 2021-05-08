@@ -12,8 +12,8 @@ test_that("x is a tibble", {
   expect_is(x, "tbl")
 })
 
-test_that("error message", {
-  expect_error(get_db_topics(branch = "Master"))
+test_that("message", {
+  expect_message(get_db_topics(branch = "Master"))
 })
 
 fn <- c("ennet_topics_2021-01-17_00:54:48.csv")
