@@ -1,5 +1,11 @@
 # ennet 0.2.2
 
+This is the fourth CRAN release of `ennet`. This is a patch release to fix a
+CRAN check issue where internet resources sometimes become unavailable and
+therefore causes errors. CRAN policy specifies that such scenarios should
+"exti gracefully" notifying user that resource is unavailable rather than
+throw a check warning or error. This has been implemented in this patch version.
+
 # ennet 0.2.1
 
 This is the third CRAN release of `ennet`. This is a patch release to fix a
