@@ -29,9 +29,7 @@ ennet_db
 Create hourly topics datasets for the ennet_db
 }
 \examples{
-\dontrun{
-  create_db_topics_hourlies(.date = "2020-12-31")
-}
+create_db_topics_hourlies(.date = "2020-12-31")
 
 }
 \author{

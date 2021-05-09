@@ -52,11 +52,11 @@ test_that("x is a tibble", {
   expect_is(x, "tbl")
 })
 
-x <- create_db_topics_hourlies(.date = Sys.Date())
+#x <- create_db_topics_hourlies(.date = Sys.Date())
 
-test_that("x is a tibble", {
-  expect_is(x, "tbl")
-})
+#test_that("x is a tibble", {
+#  expect_is(x, "tbl")
+#})
 
 test_that("expect error", {
   expect_error(create_db_topics_hourlies(.date = NA))
