@@ -11,12 +11,14 @@ than 100 seconds on `winbuilder`
 
 * address CRAN status checks erros
 
-Fix CRAN check issue where internet resources sometimes become unavailable and
+Fixed CRAN check issue where internet resources sometimes become unavailable and
 therefore causes errors. CRAN policy specifies that such scenarios should
 "exit gracefully" notifying user that resource is unavailable rather than
 throw a check warning or error. This has been implemented in this patch version
 by using the `try()` function whenever an internet resource is required and then
 return a message that resource is unavailable instead of a warning or an error.
+I have implemented these in the earlier submission but may have not been noted
+by automated CRAN checks.
 
 ## Test environments
 * macOS, local R installation, R 4.0.5
@@ -29,7 +31,23 @@ return a message that resource is unavailable instead of a warning or an error.
 
 ## R CMD check results
 
-0 errors | 0 warnings | 0 note
+0 errors | 0 warnings | 1 note
+
+The NOTE says:
+
+* checking CRAN incoming feasibility ... NOTE
+Maintainer: ‘Ernest Guevarra <ernest@guevarra.io>’
+
+CRAN repository db overrides:
+  X-CRAN-Comment: Archived on 2021-05-09 for policy violation.
+
+  On Internet access
+
+This is related to the issue discussed above. Given that the time provided by
+CRAN to revise package to address policy violation has elapsed today and my 
+attempt to correct this yesterday was not adequate and needed further revision,
+This note is triggered. I am re-submitting to hopefully rectify these issues
+and be back on track with CRAN policies.
 
 ## Reverse dependencies
 `ennet` doesn't have any downstream / reverse dependencies 
