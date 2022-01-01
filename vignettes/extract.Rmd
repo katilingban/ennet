@@ -67,9 +67,9 @@ To get a list of **topics** for a particular theme, we use the `get_theme_topics
 ## Load dplyr to facilitate data manipulation
 library(dplyr)
 
-## Extract data from "Coverage assessment" theme
+## Extract data from "Assessment and Surveillance" theme
 get_themes() %>%
-  filter(themes == "Coverage assessment") %>%
+  filter(themes == "Assessment and Surveillance") %>%
   select(links) %>%
   as.character() %>%
   get_theme_topics()
@@ -81,35 +81,35 @@ which results in
 ## Load dplyr to facilitate data manipulation
 library(dplyr)
 
-## Extract data from "Coverage assessment" theme
+## Extract data from "Assessment and Surveillance" theme
 get_themes() %>%
-  filter(themes == "Coverage assessment") %>%
+  filter(themes == "Assessment and Surveillance") %>%
   select(links) %>%
   as.character() %>%
   get_theme_topics()
 ```
 
-The resulting table contains information on all the **topics** within the *Coverage assessment* **thematic area** including URL links to the corresponding webpages for each **topic**
+The resulting table contains information on all the **topics** within the *Assessment and Surveillance* **thematic area** including URL links to the corresponding webpages for each **topic**
 
 To get a list of **topics** for multiple themes, we use the `get_themes_topics()` function as follows:
 
 ```{r usage3, echo = TRUE, eval = FALSE}
-## Extract data from "Coverage assessment" theme and "Food assistance" theme
+## Extract data from "Assessment and Surveillance" theme and "Food assistance" theme
 get_themes() %>%
-  filter(themes %in% c("Coverage assessment", "Food assistance")) %>%
+  filter(themes %in% c("Assessment and Surveillance, "Food assistance")) %>%
   get_themes_topics()
 ```
 
 which results in
 
 ```{r usage3a, echo = FALSE, eval = TRUE}
-## Extract data from "Coverage assessment" theme and "Food assistance" theme
+## Extract data from "Assessment and Surveillance" theme and "Food assistance" theme
 get_themes() %>%
-  filter(themes %in% c("Coverage assessment", "Food assistance")) %>%
+  filter(themes %in% c("Assessment and Surveillance", "Food assistance")) %>%
   get_themes_topics()
 ```
 
-The resulting table contains information on all the **topics** within the *Coverage assessment* and *Food assistance* **thematic area** including URL links to the corresponding webpages for each **topic**.
+The resulting table contains information on all the **topics** within the *Assessment and Surveillance* and *Food assistance* **thematic area** including URL links to the corresponding webpages for each **topic**.
 
 ### Getting discussions from topic/s
 
@@ -117,7 +117,7 @@ To get a list of **discussions** for a particular **topic**, we use the `get_top
 
 ```{r usage4, echo = TRUE, eval = FALSE}
 get_themes() %>%
-  filter(themes == "Coverage assessment") %>%
+  filter(themes == "Assessment and Surveillance") %>%
   get_themes_topics() %>%
   filter(Topic == "Resources for coverage assessment") %>%
   select(Link) %>%
@@ -129,7 +129,7 @@ which results in
 
 ```{r usage4a, echo = FALSE, eval = TRUE}
 get_themes() %>%
-  filter(themes == "Coverage assessment") %>%
+  filter(themes == "Assessment and Surveillance") %>%
   get_themes_topics() %>%
   filter(Topic == "Resources for coverage assessment") %>%
   select(Link) %>%
@@ -137,13 +137,13 @@ get_themes() %>%
   get_topic_discussions()
 ```
 
-The resulting table contains information on all the **discussions** within the **topic** on *Resources for coverage assessment* within the **thematic area** of *Coverage assessment* including the text data on the question and the ensuing reply/replies to the question.
+The resulting table contains information on all the **discussions** within the **topic** on *Resources for coverage assessment* within the **thematic area** of *Assessment and Surveillance* including the text data on the question and the ensuing reply/replies to the question.
 
 To get a list of **discussions** for a set of **topics**, we use the `get_topics_discussions()` function as follows:
 
 ```{r usage5, echo = TRUE, eval = FALSE}
 get_themes() %>%
-  filter(themes %in% c("Coverage assessment", "Food assistance")) %>%
+  filter(themes %in% c("Assessment and Surveillance", "Food assistance")) %>%
   get_themes_topics() %>%
   get_topics_discussions()
 ```
@@ -152,10 +152,10 @@ which results in
 
 ```{r usage5a, echo = FALSE, eval = TRUE}
 get_themes() %>%
-  filter(themes %in% c("Coverage assessment", "Food assistance")) %>%
+  filter(themes %in% c("Assessment and Surveillance", "Food assistance")) %>%
   get_themes_topics() %>%
   get_topics_discussions()
 ```
 
-The resulting table contains information on all the **discussions** within all the **topics** within the **thematic areas** of *Coverage assessment* and *Food assistance* including the text data on the question and the ensuing reply/replies to the question.
+The resulting table contains information on all the **discussions** within all the **topics** within the **thematic areas** of *Assessment and Surveillance* and *Food assistance* including the text data on the question and the ensuing reply/replies to the question.
 
