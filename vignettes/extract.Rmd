@@ -96,7 +96,7 @@ To get a list of **topics** for multiple themes, we use the `get_themes_topics()
 ```{r usage3, echo = TRUE, eval = FALSE}
 ## Extract data from "Assessment and Surveillance" theme and "Food assistance" theme
 get_themes() %>%
-  filter(themes %in% c("Assessment and Surveillance, "Food assistance")) %>%
+  filter(themes %in% c("Assessment and Surveillance", "Food assistance")) %>%
   get_themes_topics()
 ```
 
