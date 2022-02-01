@@ -414,23 +414,29 @@ create_db_topics_hourlies <- function(repo = "katilingban/ennet_db",
   fn <- paste("https://raw.githubusercontent.com/", repo, "/", branch,
               "/data/ennet_topics_", all_months_years, ".csv", sep = "")
 
-  x <- lapply(X = fn,
-              FUN = function(x) {
-                y <- read.csv(x)
+  x <- lapply(
+    X = fn,
+    FUN = function(x) {
+      y <- try(expr = read.csv(x), silent = TRUE)
 
-                names(y) <- names(y) %>%
-                  stringr::str_replace(pattern = "_", replacement = " ")
+      if (class(y) != "try-error") {
+        names(y) <- names(y) %>%
+          stringr::str_replace(pattern = "_", replacement = " ")
 
-                ## Tidy the dataset and conver to long format
-                y <- y %>%
-                  tidyr::pivot_longer(
-                    cols = dplyr::starts_with(match = c("Views", "Replies")),
-                    names_to = c("Interaction", "Extraction"),
-                    names_sep = " ",
-                    values_to = "n") %>%
-                  dplyr::mutate(Extraction = lubridate::ymd_hms(Extraction))
-              }
-       )
+
+        ## Tidy the dataset and conver to long format
+        y <- y %>%
+          tidyr::pivot_longer(
+            cols = dplyr::starts_with(match = c("Views", "Replies")),
+            names_to = c("Interaction", "Extraction"),
+            names_sep = " ",
+            values_to = "n") %>%
+            dplyr::mutate(Extraction = lubridate::ymd_hms(Extraction))
+      } else {
+        y <- NULL
+      }
+    }
+  )
 
   ## Convert to tibble
   hourlies <- x %>%
