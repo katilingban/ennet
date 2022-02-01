@@ -397,18 +397,19 @@ create_db_topics_hourlies <- function(repo = "katilingban/ennet_db",
     )
   }
 
-  ## Get current month and year
-  current_year <- .date %>% lubridate::year()
-  current_month <- .date %>% lubridate::month()
+  all_months <- seq(
+    from = as.Date("2020-12-01"), to = as.Date(.date), by = "months"
+  ) %>%
+    lubridate::month()
 
-  if (current_month == 12 & current_year == 2020) {
-    all_months_years <- "December_2020"
-  } else {
-    ##
-    all_months_years <- c("December_2020",
-                          paste(month.name[1:current_month],
-                                current_year, sep = "_"))
-  }
+  all_months <- month.name[all_months]
+
+  all_years <- seq(
+    from = as.Date("2020-12-01"), to = as.Date(.date), by = "months"
+  ) %>%
+    lubridate::year()
+
+  all_months_years <- paste(all_months, all_years, sep = "_")
 
   ##
   fn <- paste("https://raw.githubusercontent.com/", repo, "/", branch,
@@ -423,15 +424,17 @@ create_db_topics_hourlies <- function(repo = "katilingban/ennet_db",
         names(y) <- names(y) %>%
           stringr::str_replace(pattern = "_", replacement = " ")
 
-
-        ## Tidy the dataset and conver to long format
+        ## Tidy the dataset and convert to long format
         y <- y %>%
           tidyr::pivot_longer(
             cols = dplyr::starts_with(match = c("Views", "Replies")),
             names_to = c("Interaction", "Extraction"),
             names_sep = " ",
             values_to = "n") %>%
-            dplyr::mutate(Extraction = lubridate::ymd_hms(Extraction))
+            dplyr::mutate(
+              Extraction = lubridate::ymd_hms(Extraction),
+              n = ifelse(is.na(n), 0, n)
+            )
       } else {
         y <- NULL
       }
@@ -440,8 +443,7 @@ create_db_topics_hourlies <- function(repo = "katilingban/ennet_db",
 
   ## Convert to tibble
   hourlies <- x %>%
-    dplyr::bind_rows() %>%
-    dplyr::mutate(n = ifelse(is.na(n), 0, n))
+    dplyr::bind_rows()
 
   ## Return hourlies
   return(hourlies)
