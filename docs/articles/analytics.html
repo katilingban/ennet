@@ -26,6 +26,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -38,18 +40,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ennet</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/ennet.html">Get started</a>
 </li>
@@ -57,7 +53,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -77,7 +73,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/katilingban/ennet/">
+  <a href="https://github.com/katilingban/ennet/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -92,70 +88,94 @@
 
       
 
-      </header><script src="analytics_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Summarising en-net online forum statistics</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/katilingban/ennet/blob/master/vignettes/analytics.Rmd"><code>vignettes/analytics.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/katilingban/ennet/blob/HEAD/vignettes/analytics.Rmd" class="external-link"><code>vignettes/analytics.Rmd</code></a></small>
       <div class="hidden name"><code>analytics.Rmd</code></div>
 
     </div>
 
     
     
-<p>The <code>ennet</code> package also includes analytic functions that summarises the text data available from the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a>. Currently, there are four sets of analytic functions available from <code>ennet</code>:</p>
+<p>The <code>ennet</code> package also includes analytic functions that
+summarises the text data available from the <a href="https://www.en-net.org" class="external-link"><strong>en-net</strong> online forum</a>.
+Currently, there are four sets of analytic functions available from
+<code>ennet</code>:</p>
 <ul>
-<li><p><code>count_topics_time</code> functions - set of functions to count the number of topics or questions by day, wee, month or year;</p></li>
-<li><p><code>count_topics_theme</code> functions - set of functions to count the number of topics or questions by theme;</p></li>
-<li><p><code>count_topics_author</code> functions - set of functions to count the number of topics or questions by author; and,</p></li>
-<li><p><code>arrange</code> functions - set of functions to arrange topics by number of views or by number of replies.</p></li>
+<li><p><code>count_topics_time</code> functions - set of functions to
+count the number of topics or questions by day, wee, month or
+year;</p></li>
+<li><p><code>count_topics_theme</code> functions - set of functions to
+count the number of topics or questions by theme;</p></li>
+<li><p><code>count_topics_author</code> functions - set of functions to
+count the number of topics or questions by author; and,</p></li>
+<li><p><code>arrange</code> functions - set of functions to arrange
+topics by number of views or by number of replies.</p></li>
 </ul>
-<div id="counting-number-of-topicsquestions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#counting-number-of-topicsquestions" class="anchor"></a>Counting number of topics/questions</h2>
-<p>Summarising the number of topics or questions raised within the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> is basic and useful analytics that can proxy relative importance of a thematic area within the forum. This is facilitated by three sets of functions - 1) <code>count_topics_time</code>; 2) <code>count_topics_theme</code>; and, 3) <code>count_topics_author</code>.</p>
-<div id="counting-number-of-topicsquestions-by-time" class="section level3">
-<h3 class="hasAnchor">
-<a href="#counting-number-of-topicsquestions-by-time" class="anchor"></a>Counting number of topics/questions by time</h3>
-<p>The <code>count_topics_time</code> set of functions consist of four functions that count topics by <em>day</em>, by <em>week</em>, by <em>month</em>, or by <em>year</em>. To count the number of topics/questions per day, the <code>count_topics_day</code> function is used as follows:</p>
+<div class="section level2">
+<h2 id="counting-number-of-topicsquestions">Counting number of topics/questions<a class="anchor" aria-label="anchor" href="#counting-number-of-topicsquestions"></a>
+</h2>
+<p>Summarising the number of topics or questions raised within the <a href="https://www.en-net.org" class="external-link"><strong>en-net</strong> online forum</a>
+is basic and useful analytics that can proxy relative importance of a
+thematic area within the forum. This is facilitated by three sets of
+functions - 1) <code>count_topics_time</code>; 2)
+<code>count_topics_theme</code>; and, 3)
+<code>count_topics_author</code>.</p>
+<div class="section level3">
+<h3 id="counting-number-of-topicsquestions-by-time">Counting number of topics/questions by time<a class="anchor" aria-label="anchor" href="#counting-number-of-topicsquestions-by-time"></a>
+</h3>
+<p>The <code>count_topics_time</code> set of functions consist of four
+functions that count topics by <em>day</em>, by <em>week</em>, by
+<em>month</em>, or by <em>year</em>. To count the number of
+topics/questions per day, the <code>count_topics_day</code> function is
+used as follows:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/count_topics_day.html">count_topics_day</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>which results in:</p>
-<pre><code>#&gt; # A tibble: 1,806 x 2
-#&gt;    day            n
-#&gt;    &lt;date&gt;     &lt;int&gt;
-#&gt;  1 2009-02-14     1
-#&gt;  2 2009-02-18     1
-#&gt;  3 2009-02-19     2
-#&gt;  4 2009-02-20     1
-#&gt;  5 2009-02-23     1
-#&gt;  6 2009-02-24     2
-#&gt;  7 2009-02-25     3
-#&gt;  8 2009-03-02     1
-#&gt;  9 2009-03-03     1
-#&gt; 10 2009-03-07     1
-#&gt; # … with 1,796 more rows</code></pre>
-<p>By default, the <code>count_topics_day</code> function will provide an output that is not sorted by number of topics/questions per day. To sort by number of topics/questions per day, specify <code>.sort</code> as <code>TRUE</code>:</p>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,954 × 2</span></span>
+<span class="co">#&gt;    day            n</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2009-02-14     1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 2009-02-18     1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 2009-02-19     2</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 2009-02-20     1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2009-02-23     1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2009-02-24     2</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2009-02-25     3</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2009-03-02     1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2009-03-03     1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2009-03-07     1</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 1,944 more rows</span></span></code></pre>
+<p>By default, the <code>count_topics_day</code> function will provide
+an output that is not sorted by number of topics/questions per day. To
+sort by number of topics/questions per day, specify <code>.sort</code>
+as <code>TRUE</code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/count_topics_day.html">count_topics_day</a></span><span class="op">(</span>.sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>which gives the following output:</p>
-<pre><code>#&gt; # A tibble: 1,806 x 2
-#&gt;    day            n
-#&gt;    &lt;date&gt;     &lt;int&gt;
-#&gt;  1 2015-06-02    12
-#&gt;  2 2019-05-13    11
-#&gt;  3 2015-08-13     8
-#&gt;  4 2016-09-30     8
-#&gt;  5 2014-08-19     7
-#&gt;  6 2018-04-09     7
-#&gt;  7 2020-04-02     7
-#&gt;  8 2012-05-16     6
-#&gt;  9 2015-05-07     6
-#&gt; 10 2016-11-11     6
-#&gt; # … with 1,796 more rows</code></pre>
-<p>Counting topics/questions by week, month, or year require just using the function named after the time required. For weekly counts, use <code>count_topics_week</code>, for monthly use <code>count_topics_month</code>, and for yearly use <code>count_topics_year</code>.</p>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,954 × 2</span></span>
+<span class="co">#&gt;    day            n</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 2015-06-02    12</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 2019-05-13    11</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 2015-08-13     8</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 2016-09-30     8</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 2014-08-19     7</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 2018-04-09     7</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 2020-04-02     7</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 2012-05-16     6</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 2015-05-07     6</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 2016-11-11     6</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 1,944 more rows</span></span></code></pre>
+<p>Counting topics/questions by week, month, or year require just using
+the function named after the time required. For weekly counts, use
+<code>count_topics_week</code>, for monthly use
+<code>count_topics_month</code>, and for yearly use
+<code>count_topics_year</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Count topics/questions by week</span>
 <span class="fu"><a href="../reference/count_topics_day.html">count_topics_week</a></span><span class="op">(</span><span class="op">)</span>
@@ -166,80 +186,85 @@
 <span class="co">## Count topics/questions by year</span>
 <span class="fu"><a href="../reference/count_topics_day.html">count_topics_year</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="counting-number-of-topicsquestions-by-theme" class="section level3">
-<h3 class="hasAnchor">
-<a href="#counting-number-of-topicsquestions-by-theme" class="anchor"></a>Counting number of topics/questions by theme</h3>
-<p>The <code>count_topics_theme</code> set of functions consists of two functions that count topics/questions <em>by theme</em>, and count topics/questions <em>by theme and by time</em>.</p>
+<div class="section level3">
+<h3 id="counting-number-of-topicsquestions-by-theme">Counting number of topics/questions by theme<a class="anchor" aria-label="anchor" href="#counting-number-of-topicsquestions-by-theme"></a>
+</h3>
+<p>The <code>count_topics_theme</code> set of functions consists of two
+functions that count topics/questions <em>by theme</em>, and count
+topics/questions <em>by theme and by time</em>.</p>
 <p>Counting of topics by theme is specified as follows:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/count_topics_theme.html">count_topics_theme</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>which results in:</p>
-<pre><code>#&gt; # A tibble: 18 x 2
-#&gt;    Theme                                                              n
-#&gt;    &lt;chr&gt;                                                          &lt;int&gt;
-#&gt;  1 Announcements &amp; Nutritionists needed                            1245
-#&gt;  2 Management of wasting/acute malnutrition                         538
-#&gt;  3 Assessment and Surveillance                                      458
-#&gt;  4 Infant and young child feeding interventions                     203
-#&gt;  5 Coverage assessment                                               94
-#&gt;  6 Upcoming trainings                                                93
-#&gt;  7 COVID-19 and nutrition programming                                84
-#&gt;  8 Micronutrients                                                    55
-#&gt;  9 Other thematic area                                               52
-#&gt; 10 Scaling Up Nutrition (SUN)                                        51
-#&gt; 11 Cross-cutting issues                                              47
-#&gt; 12 Food assistance                                                   32
-#&gt; 13 Management of At Risk Mothers and Infants                         27
-#&gt; 14 Prevention and management of stunting                             21
-#&gt; 15 Partnerships for research                                         18
-#&gt; 16 Adolescent nutrition                                              13
-#&gt; 17 Simplified Approaches for the Management of Acute Malnutrition    11
-#&gt; 18 Multi-sector nutrition programming                                 3</code></pre>
-<p>Results provided by <code>count_topics_theme</code> is not sorted by number of topics/questions. To sort, specify <code>.sort</code> as <code>TRUE</code>:</p>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 16 × 2</span></span>
+<span class="co">#&gt;    Theme                                                                       n</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                                   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Announcements &amp; Nutritionists needed                                     <span style="text-decoration: underline;">1</span>342</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Assessment and Surveillance                                               570</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Management of wasting/acute malnutrition                                  566</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Infant and young child feeding interventions                              238</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Upcoming trainings                                                        103</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> COVID-19 and nutrition programming                                         88</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Other thematic area                                                        57</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Micronutrients                                                             56</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Scaling Up Nutrition (SUN)                                                 56</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Cross-cutting issues                                                       48</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">11</span> Management of small and nutritionally at risk infants under six months…    43</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">12</span> Food assistance                                                            33</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">13</span> Adolescent nutrition                                                       30</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">14</span> Prevention and management of stunting                                      21</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">15</span> Partnerships for research                                                  19</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">16</span> Simplified Approaches for the Management of Acute Malnutrition             18</span></code></pre>
+<p>Results provided by <code>count_topics_theme</code> is not sorted by
+number of topics/questions. To sort, specify <code>.sort</code> as
+<code>TRUE</code>:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/count_topics_theme.html">count_topics_theme</a></span><span class="op">(</span>.sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>which results in:</p>
-<pre><code>#&gt; # A tibble: 18 x 2
-#&gt;    Theme                                                              n
-#&gt;    &lt;chr&gt;                                                          &lt;int&gt;
-#&gt;  1 Announcements &amp; Nutritionists needed                            1279
-#&gt;  2 Management of wasting/acute malnutrition                         548
-#&gt;  3 Assessment and Surveillance                                      461
-#&gt;  4 Infant and young child feeding interventions                     215
-#&gt;  5 Upcoming trainings                                                97
-#&gt;  6 Coverage assessment                                               95
-#&gt;  7 COVID-19 and nutrition programming                                87
-#&gt;  8 Micronutrients                                                    56
-#&gt;  9 Other thematic area                                               54
-#&gt; 10 Scaling Up Nutrition (SUN)                                        52
-#&gt; 11 Cross-cutting issues                                              48
-#&gt; 12 Food assistance                                                   32
-#&gt; 13 Management of At Risk Mothers and Infants                         31
-#&gt; 14 Adolescent nutrition                                              28
-#&gt; 15 Prevention and management of stunting                             21
-#&gt; 16 Partnerships for research                                         19
-#&gt; 17 Simplified Approaches for the Management of Acute Malnutrition    12
-#&gt; 18 Multi-sector nutrition programming                                 3</code></pre>
-<p>Counting of topics/questions by theme can also be done by time using the <code>count_topics_theme_time</code>. For example, counting topics/questions by theme by day is done as follows:</p>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 16 × 2</span></span>
+<span class="co">#&gt;    Theme                                                                       n</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                                   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Announcements &amp; Nutritionists needed                                     <span style="text-decoration: underline;">1</span>400</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Assessment and Surveillance                                               589</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Management of wasting/acute malnutrition                                  581</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Infant and young child feeding interventions                              255</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Upcoming trainings                                                        107</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> COVID-19 and nutrition programming                                         89</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Other thematic area                                                        61</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Scaling Up Nutrition (SUN)                                                 57</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Micronutrients                                                             56</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Management of small and nutritionally at risk infants under six months…    50</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">11</span> Cross-cutting issues                                                       48</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">12</span> Food assistance                                                            33</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">13</span> Adolescent nutrition                                                       32</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">14</span> Prevention and management of stunting                                      21</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">15</span> Partnerships for research                                                  19</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">16</span> Simplified Approaches for the Management of Acute Malnutrition             19</span></code></pre>
+<p>Counting of topics/questions by theme can also be done by time using
+the <code>count_topics_theme_time</code>. For example, counting
+topics/questions by theme by day is done as follows:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/count_topics_theme.html">count_topics_theme_time</a></span><span class="op">(</span>by_time <span class="op">=</span> <span class="st">"day"</span><span class="op">)</span></code></pre></div>
 <p>which gives the following output:</p>
-<pre><code>#&gt; # A tibble: 2,496 x 3
-#&gt;    Theme                                day            n
-#&gt;    &lt;chr&gt;                                &lt;date&gt;     &lt;int&gt;
-#&gt;  1 Announcements &amp; Nutritionists needed 2015-06-02    12
-#&gt;  2 Announcements &amp; Nutritionists needed 2019-05-13    11
-#&gt;  3 Announcements &amp; Nutritionists needed 2015-08-13     7
-#&gt;  4 Announcements &amp; Nutritionists needed 2015-05-07     6
-#&gt;  5 Scaling Up Nutrition (SUN)           2016-11-11     6
-#&gt;  6 Announcements &amp; Nutritionists needed 2013-10-21     5
-#&gt;  7 Announcements &amp; Nutritionists needed 2014-09-11     5
-#&gt;  8 Announcements &amp; Nutritionists needed 2015-08-11     5
-#&gt;  9 Announcements &amp; Nutritionists needed 2015-09-02     5
-#&gt; 10 Announcements &amp; Nutritionists needed 2016-03-11     5
-#&gt; # … with 2,486 more rows</code></pre>
-<p>Unlike the previous count functions, the output of <code>count_topics_theme_time</code> is already sorted by default.</p>
-<p>To count topics/questions by theme by week, month, or year just requires changing the <code>by_time</code> argument to the desired time interval as shown below:</p>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2,683 × 3</span></span>
+<span class="co">#&gt;    Theme                                day            n</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Announcements &amp; Nutritionists needed 2015-06-02    12</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Announcements &amp; Nutritionists needed 2019-05-13    11</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Announcements &amp; Nutritionists needed 2015-08-13     7</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Announcements &amp; Nutritionists needed 2015-05-07     6</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Scaling Up Nutrition (SUN)           2016-11-11     6</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Announcements &amp; Nutritionists needed 2013-10-21     5</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Announcements &amp; Nutritionists needed 2014-09-11     5</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Announcements &amp; Nutritionists needed 2015-08-11     5</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Announcements &amp; Nutritionists needed 2015-09-02     5</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Announcements &amp; Nutritionists needed 2016-03-11     5</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 2,673 more rows</span></span></code></pre>
+<p>Unlike the previous count functions, the output of
+<code>count_topics_theme_time</code> is already sorted by default.</p>
+<p>To count topics/questions by theme by week, month, or year just
+requires changing the <code>by_time</code> argument to the desired time
+interval as shown below:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Count topics/questions by theme by week</span>
 <span class="fu"><a href="../reference/count_topics_theme.html">count_topics_theme_time</a></span><span class="op">(</span>by_time <span class="op">=</span> <span class="st">"week"</span><span class="op">)</span>
@@ -250,66 +275,75 @@
 <span class="co">## Count topics/questions by theme by year</span>
 <span class="fu"><a href="../reference/count_topics_theme.html">count_topics_theme_time</a></span><span class="op">(</span>by_time <span class="op">=</span> <span class="st">"year"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="counting-number-of-topicsquestions-by-author" class="section level3">
-<h3 class="hasAnchor">
-<a href="#counting-number-of-topicsquestions-by-author" class="anchor"></a>Counting number of topics/questions by author</h3>
-<p>The <code>count_topics_author</code> set of functions consists of two functions that count topics/questions <em>by author</em>, and count topics/questions <em>by author and by time</em>.</p>
+<div class="section level3">
+<h3 id="counting-number-of-topicsquestions-by-author">Counting number of topics/questions by author<a class="anchor" aria-label="anchor" href="#counting-number-of-topicsquestions-by-author"></a>
+</h3>
+<p>The <code>count_topics_author</code> set of functions consists of two
+functions that count topics/questions <em>by author</em>, and count
+topics/questions <em>by author and by time</em>.</p>
 <p>Counting of topics by author is specified as follows:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/count_topics_author.html">count_topics_author</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>which results in:</p>
-<pre><code>#&gt; # A tibble: 1,110 x 2
-#&gt;    Author                              n
-#&gt;    &lt;chr&gt;                           &lt;int&gt;
-#&gt;  1 Tamsin Walters                    163
-#&gt;  2 Marie Lecuyer                      61
-#&gt;  3 Michael ALVES                      58
-#&gt;  4 Anonymous 1494                     49
-#&gt;  5 Marie McGrath                      49
-#&gt;  6 Mark Myatt                         43
-#&gt;  7 &lt;NA&gt;                               40
-#&gt;  8 Anonymous 81                       39
-#&gt;  9 Mija Ververs                       37
-#&gt; 10 Nutrition International - NTEAM    32
-#&gt; # … with 1,100 more rows</code></pre>
-<p>Results provided by <code>count_topics_author</code> is not sorted by number of topics/questions. To sort, specify <code>.sort</code> as <code>TRUE</code>:</p>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,192 × 2</span></span>
+<span class="co">#&gt;    Author             n</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Tamsin Walters   183</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Marie Lecuyer     61</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Michael ALVES     58</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Anonymous 1494    49</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Marie McGrath     49</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Mark Myatt        43</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> <span style="color: #BB0000;">NA</span>                41</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Anonymous 81      39</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Mark Hawkes       35</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Mija Ververs      33</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 1,182 more rows</span></span></code></pre>
+<p>Results provided by <code>count_topics_author</code> is not sorted by
+number of topics/questions. To sort, specify <code>.sort</code> as
+<code>TRUE</code>:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/count_topics_author.html">count_topics_author</a></span><span class="op">(</span>.sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>which results in:</p>
-<pre><code>#&gt; # A tibble: 1,110 x 2
-#&gt;    Author                              n
-#&gt;    &lt;chr&gt;                           &lt;int&gt;
-#&gt;  1 Tamsin Walters                    163
-#&gt;  2 Marie Lecuyer                      61
-#&gt;  3 Michael ALVES                      58
-#&gt;  4 Anonymous 1494                     49
-#&gt;  5 Marie McGrath                      49
-#&gt;  6 Mark Myatt                         43
-#&gt;  7 &lt;NA&gt;                               40
-#&gt;  8 Anonymous 81                       39
-#&gt;  9 Mija Ververs                       37
-#&gt; 10 Nutrition International - NTEAM    32
-#&gt; # … with 1,100 more rows</code></pre>
-<p>Counting of topics/questions by author can also be done by time using the <code>count_topics_author_time</code>. For example, counting topics/questions by author by day is done as follows:</p>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,192 × 2</span></span>
+<span class="co">#&gt;    Author             n</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Tamsin Walters   183</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Marie Lecuyer     61</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Michael ALVES     58</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Anonymous 1494    49</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Marie McGrath     49</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Mark Myatt        43</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> <span style="color: #BB0000;">NA</span>                41</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Anonymous 81      39</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Mark Hawkes       35</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Mija Ververs      33</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 1,182 more rows</span></span></code></pre>
+<p>Counting of topics/questions by author can also be done by time using
+the <code>count_topics_author_time</code>. For example, counting
+topics/questions by author by day is done as follows:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/count_topics_author.html">count_topics_author_time</a></span><span class="op">(</span>by_time <span class="op">=</span> <span class="st">"day"</span><span class="op">)</span></code></pre></div>
 <p>which gives the following output:</p>
-<pre><code>#&gt; # A tibble: 2,750 x 3
-#&gt;    Author            day            n
-#&gt;    &lt;chr&gt;             &lt;date&gt;     &lt;int&gt;
-#&gt;  1 Anonymous 1494    2015-06-02    11
-#&gt;  2 Mark Hawkes       2019-05-13    11
-#&gt;  3 Andi Kendle       2017-09-25     6
-#&gt;  4 GTAM Wasting TWG  2020-08-07     5
-#&gt;  5 Isabelle Modigell 2019-06-06     5
-#&gt;  6 Marie McGrath     2016-09-30     5
-#&gt;  7 Michael ALVES     2014-09-11     5
-#&gt;  8 Michael ALVES     2015-09-02     5
-#&gt;  9 Thuy Nguyen       2016-11-11     5
-#&gt; 10 Alan Mason        2016-09-15     4
-#&gt; # … with 2,740 more rows</code></pre>
-<p>Unlike the previous count functions, the output of <code>count_topics_author_time</code> is already sorted by default.</p>
-<p>To count topics/questions by author by week, month, or year just requires changing the <code>by_time</code> argument to the desired time interval as shown below:</p>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 2,971 × 3</span></span>
+<span class="co">#&gt;    Author            day            n</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Anonymous 1494    2015-06-02    11</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Mark Hawkes       2019-05-13    11</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Andi Kendle       2017-09-25     6</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> GTAM Wasting TWG  2020-08-07     5</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Isabelle Modigell 2019-06-06     5</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Marie McGrath     2016-09-30     5</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Michael ALVES     2014-09-11     5</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Michael ALVES     2015-09-02     5</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Thuy Nguyen       2016-11-11     5</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Alan Mason        2016-09-15     4</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 2,961 more rows</span></span></code></pre>
+<p>Unlike the previous count functions, the output of
+<code>count_topics_author_time</code> is already sorted by default.</p>
+<p>To count topics/questions by author by week, month, or year just
+requires changing the <code>by_time</code> argument to the desired time
+interval as shown below:</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Count topics/questions by author by week</span>
 <span class="fu"><a href="../reference/count_topics_author.html">count_topics_author_time</a></span><span class="op">(</span>by_time <span class="op">=</span> <span class="st">"week"</span><span class="op">)</span>
@@ -320,184 +354,215 @@
 <span class="co">## Count topics/questions by author by year</span>
 <span class="fu"><a href="../reference/count_topics_author.html">count_topics_author_time</a></span><span class="op">(</span>by_time <span class="op">=</span> <span class="st">"year"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="deprecated-count-functions" class="section level3">
-<h3 class="hasAnchor">
-<a href="#deprecated-count-functions" class="anchor"></a>Deprecated <code>count</code> functions</h3>
-<p>In the current release of the <code>ennet</code> package, the following functions have now undergone deprecation:</p>
+<div class="section level3">
+<h3 id="deprecated-count-functions">Deprecated <code>count</code> functions<a class="anchor" aria-label="anchor" href="#deprecated-count-functions"></a>
+</h3>
+<p>In the current release of the <code>ennet</code> package, the
+following functions have now undergone deprecation:</p>
 <ul>
 <li><p><code>count_topics</code></p></li>
 <li><p><code>count_authors</code></p></li>
 </ul>
-<p>These functions have now been superseded by the more performant <code>count_topics</code> functions above. We recommend that if you have been using these deprecated functions previously to update your work to use the new functions described above. These deprecated function will be made defunct on the next release of <code>ennet</code> package.</p>
+<p>These functions have now been superseded by the more performant
+<code>count_topics</code> functions above. We recommend that if you have
+been using these deprecated functions previously to update your work to
+use the new functions described above. These deprecated function will be
+made defunct on the next release of <code>ennet</code> package.</p>
 </div>
 </div>
-<div id="arranging-topics-by-number-of-views" class="section level2">
-<h2 class="hasAnchor">
-<a href="#arranging-topics-by-number-of-views" class="anchor"></a>Arranging topics by number of views</h2>
-<p>Summarising the number of topics or questions raised within the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> by arranging them based on number of views can proxy level of interest to a specific topic by those participating in the forum. This is facilitated using the <code>arrange_views</code> function. Ranking of topics by number of views is done per thematic area and by a specific time period. Ranking of topics by number of views by thematic area and by month and year is performed by default:</p>
+<div class="section level2">
+<h2 id="arranging-topics-by-number-of-views">Arranging topics by number of views<a class="anchor" aria-label="anchor" href="#arranging-topics-by-number-of-views"></a>
+</h2>
+<p>Summarising the number of topics or questions raised within the <a href="https://www.en-net.org" class="external-link"><strong>en-net</strong> online forum</a>
+by arranging them based on number of views can proxy level of interest
+to a specific topic by those participating in the forum. This is
+facilitated using the <code>arrange_views</code> function. Ranking of
+topics by number of views is done per thematic area and by a specific
+time period. Ranking of topics by number of views by thematic area and
+by month and year is performed by default:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/arrange_views.html">arrange_views</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>which results in:</p>
-<pre><code>#&gt; # A tibble: 3,045 x 9
-#&gt;    Theme   Topic          Views Author  Posted     Link      Replies Month  Year
-#&gt;    &lt;chr&gt;   &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;   &lt;date&gt;     &lt;chr&gt;       &lt;int&gt; &lt;fct&gt; &lt;dbl&gt;
-#&gt;  1 Adoles… Age group of …   738 Anonym… 2020-02-15 https://…       1 Feb    2020
-#&gt;  2 Adoles… Launch of res…  2101 Jo Lof… 2018-05-23 https://…       0 May    2018
-#&gt;  3 Adoles… Reaching out …  2319 Emily … 2018-06-18 https://…       3 Jun    2018
-#&gt;  4 Adoles… adolescent ma…  2245 Anonym… 2018-06-21 https://…       1 Jun    2018
-#&gt;  5 Adoles… adolescent ma…  2057 Anonym… 2018-06-21 https://…       1 Jun    2018
-#&gt;  6 Adoles… anthropometry…  2025 Emily … 2018-06-29 https://…       2 Jun    2018
-#&gt;  7 Adoles… Teen/adolesce…  1985 Anne H… 2018-06-19 https://…       1 Jun    2018
-#&gt;  8 Adoles… health educat…  1728 Anonym… 2018-06-19 https://…       1 Jun    2018
-#&gt;  9 Adoles… Is there any …  1038 Aisha … 2020-06-12 https://…       1 Jun    2020
-#&gt; 10 Adoles… Assessing nut…  2050 Ursula… 2018-07-25 https://…       3 Jul    2018
-#&gt; # … with 3,035 more rows</code></pre>
-<p>Arranging topics by number of views by thematic area and by year is performed as follows:</p>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3,288 × 9</span></span>
+<span class="co">#&gt;    Theme                Topic  Views Author Posted     Link  Replies Month  Year</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Adolescent nutrition Age g…  <span style="text-decoration: underline;">1</span>601 Anony… 2020-02-15 http…       1 Feb    <span style="text-decoration: underline;">2</span>020</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Adolescent nutrition The E…   850 Moham… 2021-02-01 http…       0 Feb    <span style="text-decoration: underline;">2</span>021</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Adolescent nutrition Webin…  <span style="text-decoration: underline;">1</span>923 Steph… 2021-03-11 http…       3 Mar    <span style="text-decoration: underline;">2</span>021</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Adolescent nutrition Webin…  <span style="text-decoration: underline;">1</span>434 NATAS… 2021-03-18 http…       5 Mar    <span style="text-decoration: underline;">2</span>021</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Adolescent nutrition Webin…  <span style="text-decoration: underline;">1</span>040 NATAS… 2021-03-04 http…       1 Mar    <span style="text-decoration: underline;">2</span>021</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Adolescent nutrition Webin…   925 NATAS… 2021-03-09 http…       1 Mar    <span style="text-decoration: underline;">2</span>021</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Adolescent nutrition Webin…   902 NATAS… 2021-03-02 http…       2 Mar    <span style="text-decoration: underline;">2</span>021</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Adolescent nutrition Webin…   890 Steph… 2021-03-03 http…       2 Mar    <span style="text-decoration: underline;">2</span>021</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Adolescent nutrition Webin…   850 NATAS… 2021-03-02 http…       1 Mar    <span style="text-decoration: underline;">2</span>021</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Adolescent nutrition Webin…   825 NATAS… 2021-03-04 http…       1 Mar    <span style="text-decoration: underline;">2</span>021</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 3,278 more rows</span></span></code></pre>
+<p>Arranging topics by number of views by thematic area and by year is
+performed as follows:</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/arrange_views.html">arrange_views</a></span><span class="op">(</span>by_date <span class="op">=</span> <span class="st">"year"</span><span class="op">)</span></code></pre></div>
 <p>which results in:</p>
-<pre><code>#&gt; # A tibble: 3,045 x 9
-#&gt;    Theme    Topic        Views Author  Posted     Link       Replies Month  Year
-#&gt;    &lt;chr&gt;    &lt;chr&gt;        &lt;int&gt; &lt;chr&gt;   &lt;date&gt;     &lt;chr&gt;        &lt;int&gt; &lt;fct&gt; &lt;dbl&gt;
-#&gt;  1 Adolesc… Reaching ou…  2319 Emily … 2018-06-18 https://w…       3 Jun    2018
-#&gt;  2 Adolesc… adolescent …  2245 Anonym… 2018-06-21 https://w…       1 Jun    2018
-#&gt;  3 Adolesc… Launch of r…  2101 Jo Lof… 2018-05-23 https://w…       0 May    2018
-#&gt;  4 Adolesc… adolescent …  2057 Anonym… 2018-06-21 https://w…       1 Jun    2018
-#&gt;  5 Adolesc… Assessing n…  2050 Ursula… 2018-07-25 https://w…       3 Jul    2018
-#&gt;  6 Adolesc… anthropomet…  2025 Emily … 2018-06-29 https://w…       2 Jun    2018
-#&gt;  7 Adolesc… Teen/adoles…  1985 Anne H… 2018-06-19 https://w…       1 Jun    2018
-#&gt;  8 Adolesc… Adolescent …  1928 Tamsin… 2018-08-01 https://w…       3 Aug    2018
-#&gt;  9 Adolesc… adolescent …  1872 Anonym… 2018-07-04 https://w…       1 Jul    2018
-#&gt; 10 Adolesc… MUAC tape f…  1850 Anonym… 2018-09-27 https://w…       1 Sep    2018
-#&gt; # … with 3,035 more rows</code></pre>
-<p>Arranging topics by number of views by thematic area overall across the years is performed as follows:</p>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3,288 × 9</span></span>
+<span class="co">#&gt;    Theme                Topic  Views Author Posted     Link  Replies Month  Year</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Adolescent nutrition Reach…  <span style="text-decoration: underline;">3</span>358 Emily… 2018-06-18 http…       3 Jun    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Adolescent nutrition adole…  <span style="text-decoration: underline;">3</span>157 Anony… 2018-06-21 http…       1 Jun    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Adolescent nutrition adole…  <span style="text-decoration: underline;">2</span>987 Anony… 2018-06-21 http…       1 Jun    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Adolescent nutrition Launc…  <span style="text-decoration: underline;">2</span>956 Jo Lo… 2018-05-23 http…       0 May    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Adolescent nutrition Teen/…  <span style="text-decoration: underline;">2</span>943 Anne … 2018-06-19 http…       1 Jun    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Adolescent nutrition Asses…  <span style="text-decoration: underline;">2</span>926 Ursul… 2018-07-25 http…       3 Jul    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Adolescent nutrition anthr…  <span style="text-decoration: underline;">2</span>905 Emily… 2018-06-29 http…       2 Jun    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Adolescent nutrition MUAC …  <span style="text-decoration: underline;">2</span>827 Ikech… 2018-09-27 http…       1 Sep    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Adolescent nutrition Adole…  <span style="text-decoration: underline;">2</span>757 Tamsi… 2018-08-01 http…       3 Aug    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Adolescent nutrition adole…  <span style="text-decoration: underline;">2</span>676 Anony… 2018-07-04 http…       1 Jul    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 3,278 more rows</span></span></code></pre>
+<p>Arranging topics by number of views by thematic area overall across
+the years is performed as follows:</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/arrange_views.html">arrange_views</a></span><span class="op">(</span>by_date <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span></code></pre></div>
 <p>which results in:</p>
-<pre><code>#&gt; # A tibble: 3,045 x 9
-#&gt;    Theme    Topic        Views Author  Posted     Link       Replies Month  Year
-#&gt;    &lt;chr&gt;    &lt;chr&gt;        &lt;int&gt; &lt;chr&gt;   &lt;date&gt;     &lt;chr&gt;        &lt;int&gt; &lt;fct&gt; &lt;dbl&gt;
-#&gt;  1 Adolesc… Reaching ou…  2319 Emily … 2018-06-18 https://w…       3 Jun    2018
-#&gt;  2 Adolesc… adolescent …  2245 Anonym… 2018-06-21 https://w…       1 Jun    2018
-#&gt;  3 Adolesc… Launch of r…  2101 Jo Lof… 2018-05-23 https://w…       0 May    2018
-#&gt;  4 Adolesc… adolescent …  2057 Anonym… 2018-06-21 https://w…       1 Jun    2018
-#&gt;  5 Adolesc… Assessing n…  2050 Ursula… 2018-07-25 https://w…       3 Jul    2018
-#&gt;  6 Adolesc… anthropomet…  2025 Emily … 2018-06-29 https://w…       2 Jun    2018
-#&gt;  7 Adolesc… Teen/adoles…  1985 Anne H… 2018-06-19 https://w…       1 Jun    2018
-#&gt;  8 Adolesc… Adolescent …  1928 Tamsin… 2018-08-01 https://w…       3 Aug    2018
-#&gt;  9 Adolesc… adolescent …  1872 Anonym… 2018-07-04 https://w…       1 Jul    2018
-#&gt; 10 Adolesc… MUAC tape f…  1850 Anonym… 2018-09-27 https://w…       1 Sep    2018
-#&gt; # … with 3,035 more rows</code></pre>
-<p>By default, the output of <code>arrange_views</code> is grouped by thematic area. This default behaviour can be changed by setting the <code>by_theme</code> argument to <code>FALSE</code>. For example, to arrange the topics by number of views by month and year across all themes:</p>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3,288 × 9</span></span>
+<span class="co">#&gt;    Theme                Topic  Views Author Posted     Link  Replies Month  Year</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Adolescent nutrition Reach…  <span style="text-decoration: underline;">3</span>358 Emily… 2018-06-18 http…       3 Jun    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Adolescent nutrition adole…  <span style="text-decoration: underline;">3</span>157 Anony… 2018-06-21 http…       1 Jun    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Adolescent nutrition adole…  <span style="text-decoration: underline;">2</span>987 Anony… 2018-06-21 http…       1 Jun    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Adolescent nutrition Launc…  <span style="text-decoration: underline;">2</span>956 Jo Lo… 2018-05-23 http…       0 May    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Adolescent nutrition Teen/…  <span style="text-decoration: underline;">2</span>943 Anne … 2018-06-19 http…       1 Jun    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Adolescent nutrition Asses…  <span style="text-decoration: underline;">2</span>926 Ursul… 2018-07-25 http…       3 Jul    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Adolescent nutrition anthr…  <span style="text-decoration: underline;">2</span>905 Emily… 2018-06-29 http…       2 Jun    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Adolescent nutrition MUAC …  <span style="text-decoration: underline;">2</span>827 Ikech… 2018-09-27 http…       1 Sep    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Adolescent nutrition Adole…  <span style="text-decoration: underline;">2</span>757 Tamsi… 2018-08-01 http…       3 Aug    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Adolescent nutrition adole…  <span style="text-decoration: underline;">2</span>676 Anony… 2018-07-04 http…       1 Jul    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 3,278 more rows</span></span></code></pre>
+<p>By default, the output of <code>arrange_views</code> is grouped by
+thematic area. This default behaviour can be changed by setting the
+<code>by_theme</code> argument to <code>FALSE</code>. For example, to
+arrange the topics by number of views by month and year across all
+themes:</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/arrange_views.html">arrange_views</a></span><span class="op">(</span>by_theme <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <p>which results in:</p>
-<pre><code>#&gt; # A tibble: 3,045 x 9
-#&gt;    Theme      Topic         Views Author Posted     Link     Replies Month  Year
-#&gt;    &lt;chr&gt;      &lt;chr&gt;         &lt;int&gt; &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt;      &lt;int&gt; &lt;fct&gt; &lt;dbl&gt;
-#&gt;  1 Infant an… Breastfeedin…  9338 Anony… 2010-01-07 https:/…       3 Jan    2010
-#&gt;  2 Announcem… Nutrition in…  8517 Marie… 2010-01-05 https:/…      NA Jan    2010
-#&gt;  3 Assessmen… How to Maint…  5692 Anony… 2010-01-15 https:/…       2 Jan    2010
-#&gt;  4 Assessmen… Interpretati…  8706 Tamsi… 2011-01-05 https:/…      10 Jan    2011
-#&gt;  5 Assessmen… Calculating …  7705 Ali M… 2011-01-19 https:/…       3 Jan    2011
-#&gt;  6 Assessmen… Prospective …  6075 Jeff … 2011-01-27 https:/…       7 Jan    2011
-#&gt;  7 Announcem… IYCF Consult…  5468 Aliso… 2011-01-04 https:/…      NA Jan    2011
-#&gt;  8 Announcem… Technical Su…  5450 Tamsi… 2011-01-18 https:/…      NA Jan    2011
-#&gt;  9 Cross-cut… Transitionin…  5290 Anony… 2011-01-25 https:/…       1 Jan    2011
-#&gt; 10 Assessmen… Result with …  5226 Anony… 2011-01-25 https:/…       2 Jan    2011
-#&gt; # … with 3,035 more rows</code></pre>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3,288 × 9</span></span>
+<span class="co">#&gt;    Theme                 Topic Views Author Posted     Link  Replies Month  Year</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Infant and young chi… Brea… <span style="text-decoration: underline;">10</span>372 Anony… 2010-01-07 http…       3 Jan    <span style="text-decoration: underline;">2</span>010</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Announcements &amp; Nutr… Nutr…  <span style="text-decoration: underline;">9</span>462 Marie… 2010-01-05 http…      <span style="color: #BB0000;">NA</span> Jan    <span style="text-decoration: underline;">2</span>010</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Assessment and Surve… How …  <span style="text-decoration: underline;">6</span>563 Anony… 2010-01-15 http…       2 Jan    <span style="text-decoration: underline;">2</span>010</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Assessment and Surve… Inte… <span style="text-decoration: underline;">10</span>090 Tamsi… 2011-01-05 http…      10 Jan    <span style="text-decoration: underline;">2</span>011</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Assessment and Surve… Calc…  <span style="text-decoration: underline;">8</span>788 Ali M… 2011-01-19 http…       3 Jan    <span style="text-decoration: underline;">2</span>011</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Assessment and Surve… Pros…  <span style="text-decoration: underline;">7</span>089 Jeff … 2011-01-27 http…       7 Jan    <span style="text-decoration: underline;">2</span>011</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Announcements &amp; Nutr… Tech…  <span style="text-decoration: underline;">6</span>279 Tamsi… 2011-01-18 http…      <span style="color: #BB0000;">NA</span> Jan    <span style="text-decoration: underline;">2</span>011</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Announcements &amp; Nutr… IYCF…  <span style="text-decoration: underline;">6</span>199 Aliso… 2011-01-04 http…      <span style="color: #BB0000;">NA</span> Jan    <span style="text-decoration: underline;">2</span>011</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Assessment and Surve… Resu…  <span style="text-decoration: underline;">6</span>115 Anony… 2011-01-25 http…       2 Jan    <span style="text-decoration: underline;">2</span>011</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Cross-cutting issues  Tran…  <span style="text-decoration: underline;">6</span>012 Anony… 2011-01-25 http…       1 Jan    <span style="text-decoration: underline;">2</span>011</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 3,278 more rows</span></span></code></pre>
 </div>
-<div id="arranging-topics-by-number-of-replies" class="section level2">
-<h2 class="hasAnchor">
-<a href="#arranging-topics-by-number-of-replies" class="anchor"></a>Arranging topics by number of replies</h2>
-<p>Summarising the number of topics or questions raised within the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> by arranging them based on number of replies can proxy level of interest to a specific topic by those participating in the forum specifically those who provide responses and feedback to responses within the discussion. This is facilitated using the <code>arrange_replies</code> function. Ranking of topics by number of replies is done per thematic area and by a specific time period. Ranking of topics by number of replies by thematic area and by month and year is performed by default:</p>
+<div class="section level2">
+<h2 id="arranging-topics-by-number-of-replies">Arranging topics by number of replies<a class="anchor" aria-label="anchor" href="#arranging-topics-by-number-of-replies"></a>
+</h2>
+<p>Summarising the number of topics or questions raised within the <a href="https://www.en-net.org" class="external-link"><strong>en-net</strong> online forum</a>
+by arranging them based on number of replies can proxy level of interest
+to a specific topic by those participating in the forum specifically
+those who provide responses and feedback to responses within the
+discussion. This is facilitated using the <code>arrange_replies</code>
+function. Ranking of topics by number of replies is done per thematic
+area and by a specific time period. Ranking of topics by number of
+replies by thematic area and by month and year is performed by
+default:</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/arrange_replies.html">arrange_replies</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>which results in:</p>
-<pre><code>#&gt; # A tibble: 1,800 x 9
-#&gt;    Theme   Topic          Views Author  Posted     Link      Replies Month  Year
-#&gt;    &lt;chr&gt;   &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;   &lt;date&gt;     &lt;chr&gt;       &lt;int&gt; &lt;fct&gt; &lt;dbl&gt;
-#&gt;  1 Adoles… Age group of …   738 Anonym… 2020-02-15 https://…       1 Feb    2020
-#&gt;  2 Adoles… Launch of res…  2101 Jo Lof… 2018-05-23 https://…       0 May    2018
-#&gt;  3 Adoles… Reaching out …  2319 Emily … 2018-06-18 https://…       3 Jun    2018
-#&gt;  4 Adoles… anthropometry…  2025 Emily … 2018-06-29 https://…       2 Jun    2018
-#&gt;  5 Adoles… adolescent ma…  2245 Anonym… 2018-06-21 https://…       1 Jun    2018
-#&gt;  6 Adoles… adolescent ma…  2057 Anonym… 2018-06-21 https://…       1 Jun    2018
-#&gt;  7 Adoles… Teen/adolesce…  1985 Anne H… 2018-06-19 https://…       1 Jun    2018
-#&gt;  8 Adoles… health educat…  1728 Anonym… 2018-06-19 https://…       1 Jun    2018
-#&gt;  9 Adoles… Is there any …  1038 Aisha … 2020-06-12 https://…       1 Jun    2020
-#&gt; 10 Adoles… Assessing nut…  2050 Ursula… 2018-07-25 https://…       3 Jul    2018
-#&gt; # … with 1,790 more rows</code></pre>
-<p>Arranging topics by number of replies by thematic area and by year is performed as follows:</p>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,946 × 9</span></span>
+<span class="co">#&gt;    Theme                Topic  Views Author Posted     Link  Replies Month  Year</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Adolescent nutrition Age g…  <span style="text-decoration: underline;">1</span>601 Anony… 2020-02-15 http…       1 Feb    <span style="text-decoration: underline;">2</span>020</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Adolescent nutrition The E…   850 Moham… 2021-02-01 http…       0 Feb    <span style="text-decoration: underline;">2</span>021</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Adolescent nutrition Webin…  <span style="text-decoration: underline;">1</span>434 NATAS… 2021-03-18 http…       5 Mar    <span style="text-decoration: underline;">2</span>021</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Adolescent nutrition Webin…  <span style="text-decoration: underline;">1</span>923 Steph… 2021-03-11 http…       3 Mar    <span style="text-decoration: underline;">2</span>021</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Adolescent nutrition Webin…   890 Steph… 2021-03-03 http…       2 Mar    <span style="text-decoration: underline;">2</span>021</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Adolescent nutrition Webin…   902 NATAS… 2021-03-02 http…       2 Mar    <span style="text-decoration: underline;">2</span>021</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Adolescent nutrition Webin…   774 NATAS… 2021-03-18 http…       1 Mar    <span style="text-decoration: underline;">2</span>021</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Adolescent nutrition Webin…   925 NATAS… 2021-03-09 http…       1 Mar    <span style="text-decoration: underline;">2</span>021</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Adolescent nutrition Webin…  <span style="text-decoration: underline;">1</span>040 NATAS… 2021-03-04 http…       1 Mar    <span style="text-decoration: underline;">2</span>021</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Adolescent nutrition Webin…   825 NATAS… 2021-03-04 http…       1 Mar    <span style="text-decoration: underline;">2</span>021</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 1,936 more rows</span></span></code></pre>
+<p>Arranging topics by number of replies by thematic area and by year is
+performed as follows:</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/arrange_replies.html">arrange_replies</a></span><span class="op">(</span>by_date <span class="op">=</span> <span class="st">"year"</span><span class="op">)</span></code></pre></div>
 <p>which results in:</p>
-<pre><code>#&gt; # A tibble: 1,800 x 9
-#&gt;    Theme    Topic        Views Author  Posted     Link       Replies Month  Year
-#&gt;    &lt;chr&gt;    &lt;chr&gt;        &lt;int&gt; &lt;chr&gt;   &lt;date&gt;     &lt;chr&gt;        &lt;int&gt; &lt;fct&gt; &lt;dbl&gt;
-#&gt;  1 Adolesc… Adolescent …  1928 Tamsin… 2018-08-01 https://w…       3 Aug    2018
-#&gt;  2 Adolesc… Assessing n…  2050 Ursula… 2018-07-25 https://w…       3 Jul    2018
-#&gt;  3 Adolesc… Reaching ou…  2319 Emily … 2018-06-18 https://w…       3 Jun    2018
-#&gt;  4 Adolesc… anthropomet…  2025 Emily … 2018-06-29 https://w…       2 Jun    2018
-#&gt;  5 Adolesc… MUAC tape f…  1850 Anonym… 2018-09-27 https://w…       1 Sep    2018
-#&gt;  6 Adolesc… adolescent …  1872 Anonym… 2018-07-04 https://w…       1 Jul    2018
-#&gt;  7 Adolesc… adolescent …  2245 Anonym… 2018-06-21 https://w…       1 Jun    2018
-#&gt;  8 Adolesc… adolescent …  2057 Anonym… 2018-06-21 https://w…       1 Jun    2018
-#&gt;  9 Adolesc… Teen/adoles…  1985 Anne H… 2018-06-19 https://w…       1 Jun    2018
-#&gt; 10 Adolesc… health educ…  1728 Anonym… 2018-06-19 https://w…       1 Jun    2018
-#&gt; # … with 1,790 more rows</code></pre>
-<p>Arranging topics by number of replies by thematic area overall across the years is performed as follows:</p>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,946 × 9</span></span>
+<span class="co">#&gt;    Theme                Topic  Views Author Posted     Link  Replies Month  Year</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Adolescent nutrition Adole…  <span style="text-decoration: underline;">2</span>757 Tamsi… 2018-08-01 http…       3 Aug    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Adolescent nutrition Asses…  <span style="text-decoration: underline;">2</span>926 Ursul… 2018-07-25 http…       3 Jul    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Adolescent nutrition Reach…  <span style="text-decoration: underline;">3</span>358 Emily… 2018-06-18 http…       3 Jun    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Adolescent nutrition anthr…  <span style="text-decoration: underline;">2</span>905 Emily… 2018-06-29 http…       2 Jun    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Adolescent nutrition MUAC …  <span style="text-decoration: underline;">2</span>827 Ikech… 2018-09-27 http…       1 Sep    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Adolescent nutrition adole…  <span style="text-decoration: underline;">2</span>676 Anony… 2018-07-04 http…       1 Jul    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Adolescent nutrition adole…  <span style="text-decoration: underline;">3</span>157 Anony… 2018-06-21 http…       1 Jun    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Adolescent nutrition adole…  <span style="text-decoration: underline;">2</span>987 Anony… 2018-06-21 http…       1 Jun    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Adolescent nutrition Teen/…  <span style="text-decoration: underline;">2</span>943 Anne … 2018-06-19 http…       1 Jun    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Adolescent nutrition healt…  <span style="text-decoration: underline;">2</span>561 Anony… 2018-06-19 http…       1 Jun    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 1,936 more rows</span></span></code></pre>
+<p>Arranging topics by number of replies by thematic area overall across
+the years is performed as follows:</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/arrange_replies.html">arrange_replies</a></span><span class="op">(</span>by_date <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span></code></pre></div>
 <p>which results in:</p>
-<pre><code>#&gt; # A tibble: 1,800 x 9
-#&gt;    Theme   Topic          Views Author  Posted     Link      Replies Month  Year
-#&gt;    &lt;chr&gt;   &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;   &lt;date&gt;     &lt;chr&gt;       &lt;int&gt; &lt;fct&gt; &lt;dbl&gt;
-#&gt;  1 Adoles… Adolescent sc…  1928 Tamsin… 2018-08-01 https://…       3 Aug    2018
-#&gt;  2 Adoles… Assessing nut…  2050 Ursula… 2018-07-25 https://…       3 Jul    2018
-#&gt;  3 Adoles… Reaching out …  2319 Emily … 2018-06-18 https://…       3 Jun    2018
-#&gt;  4 Adoles… anthropometry…  2025 Emily … 2018-06-29 https://…       2 Jun    2018
-#&gt;  5 Adoles… Is there any …  1038 Aisha … 2020-06-12 https://…       1 Jun    2020
-#&gt;  6 Adoles… Age group of …   738 Anonym… 2020-02-15 https://…       1 Feb    2020
-#&gt;  7 Adoles… MUAC tape for…  1850 Anonym… 2018-09-27 https://…       1 Sep    2018
-#&gt;  8 Adoles… adolescent sc…  1872 Anonym… 2018-07-04 https://…       1 Jul    2018
-#&gt;  9 Adoles… adolescent ma…  2245 Anonym… 2018-06-21 https://…       1 Jun    2018
-#&gt; 10 Adoles… adolescent ma…  2057 Anonym… 2018-06-21 https://…       1 Jun    2018
-#&gt; # … with 1,790 more rows</code></pre>
-<p>By default, the output of <code>arrange_replies</code> is grouped by thematic area. This default behaviour can be changed by setting the <code>by_theme</code> argument to <code>FALSE</code>. For example, to arrange the topics by number of replies by month and year across all themes:</p>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,946 × 9</span></span>
+<span class="co">#&gt;    Theme                Topic  Views Author Posted     Link  Replies Month  Year</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Adolescent nutrition Webin…  <span style="text-decoration: underline;">1</span>434 NATAS… 2021-03-18 http…       5 Mar    <span style="text-decoration: underline;">2</span>021</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Adolescent nutrition Webin…  <span style="text-decoration: underline;">1</span>923 Steph… 2021-03-11 http…       3 Mar    <span style="text-decoration: underline;">2</span>021</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Adolescent nutrition Adole…  <span style="text-decoration: underline;">2</span>757 Tamsi… 2018-08-01 http…       3 Aug    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Adolescent nutrition Asses…  <span style="text-decoration: underline;">2</span>926 Ursul… 2018-07-25 http…       3 Jul    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Adolescent nutrition Reach…  <span style="text-decoration: underline;">3</span>358 Emily… 2018-06-18 http…       3 Jun    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Adolescent nutrition Webin…   890 Steph… 2021-03-03 http…       2 Mar    <span style="text-decoration: underline;">2</span>021</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Adolescent nutrition Webin…   902 NATAS… 2021-03-02 http…       2 Mar    <span style="text-decoration: underline;">2</span>021</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Adolescent nutrition anthr…  <span style="text-decoration: underline;">2</span>905 Emily… 2018-06-29 http…       2 Jun    <span style="text-decoration: underline;">2</span>018</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Adolescent nutrition Cut o…   378 Anony… 2021-08-22 http…       1 Aug    <span style="text-decoration: underline;">2</span>021</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Adolescent nutrition Webin…   774 NATAS… 2021-03-18 http…       1 Mar    <span style="text-decoration: underline;">2</span>021</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 1,936 more rows</span></span></code></pre>
+<p>By default, the output of <code>arrange_replies</code> is grouped by
+thematic area. This default behaviour can be changed by setting the
+<code>by_theme</code> argument to <code>FALSE</code>. For example, to
+arrange the topics by number of replies by month and year across all
+themes:</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/arrange_replies.html">arrange_replies</a></span><span class="op">(</span>by_theme <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <p>which results in:</p>
-<pre><code>#&gt; # A tibble: 1,800 x 9
-#&gt;    Theme     Topic         Views Author  Posted     Link     Replies Month  Year
-#&gt;    &lt;chr&gt;     &lt;chr&gt;         &lt;int&gt; &lt;chr&gt;   &lt;date&gt;     &lt;chr&gt;      &lt;int&gt; &lt;fct&gt; &lt;dbl&gt;
-#&gt;  1 Infant a… Breastfeedin…  9338 Anonym… 2010-01-07 https:/…       3 Jan    2010
-#&gt;  2 Assessme… How to Maint…  5692 Anonym… 2010-01-15 https:/…       2 Jan    2010
-#&gt;  3 Assessme… Interpretati…  8706 Tamsin… 2011-01-05 https:/…      10 Jan    2011
-#&gt;  4 Assessme… Prospective …  6075 Jeff M… 2011-01-27 https:/…       7 Jan    2011
-#&gt;  5 Assessme… Calculating …  7705 Ali Ma… 2011-01-19 https:/…       3 Jan    2011
-#&gt;  6 Assessme… Result with …  5226 Anonym… 2011-01-25 https:/…       2 Jan    2011
-#&gt;  7 Cross-cu… Transitionin…  5290 Anonym… 2011-01-25 https:/…       1 Jan    2011
-#&gt;  8 Assessme… Nutritional …  7743 Mary M… 2012-01-01 https:/…      10 Jan    2012
-#&gt;  9 Upcoming… Regional SMA…  5856 Yara S… 2012-01-10 https:/…       8 Jan    2012
-#&gt; 10 Micronut… multi-micron…  6169 REBECC… 2012-01-18 https:/…       6 Jan    2012
-#&gt; # … with 1,790 more rows</code></pre>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,946 × 9</span></span>
+<span class="co">#&gt;    Theme                 Topic Views Author Posted     Link  Replies Month  Year</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Infant and young chi… Brea… <span style="text-decoration: underline;">10</span>372 Anony… 2010-01-07 http…       3 Jan    <span style="text-decoration: underline;">2</span>010</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Assessment and Surve… How …  <span style="text-decoration: underline;">6</span>563 Anony… 2010-01-15 http…       2 Jan    <span style="text-decoration: underline;">2</span>010</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Assessment and Surve… Inte… <span style="text-decoration: underline;">10</span>090 Tamsi… 2011-01-05 http…      10 Jan    <span style="text-decoration: underline;">2</span>011</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Assessment and Surve… Pros…  <span style="text-decoration: underline;">7</span>089 Jeff … 2011-01-27 http…       7 Jan    <span style="text-decoration: underline;">2</span>011</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Assessment and Surve… Calc…  <span style="text-decoration: underline;">8</span>788 Ali M… 2011-01-19 http…       3 Jan    <span style="text-decoration: underline;">2</span>011</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Assessment and Surve… Resu…  <span style="text-decoration: underline;">6</span>115 Anony… 2011-01-25 http…       2 Jan    <span style="text-decoration: underline;">2</span>011</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Cross-cutting issues  Tran…  <span style="text-decoration: underline;">6</span>012 Anony… 2011-01-25 http…       1 Jan    <span style="text-decoration: underline;">2</span>011</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Assessment and Surve… Nutr…  <span style="text-decoration: underline;">8</span>966 Mary … 2012-01-01 http…      10 Jan    <span style="text-decoration: underline;">2</span>012</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Upcoming trainings    Regi…  <span style="text-decoration: underline;">6</span>828 Yara … 2012-01-10 http…       8 Jan    <span style="text-decoration: underline;">2</span>012</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Micronutrients        mult…  <span style="text-decoration: underline;">7</span>088 REBEC… 2012-01-18 http…       6 Jan    <span style="text-decoration: underline;">2</span>012</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 1,936 more rows</span></span></code></pre>
 </div>
   </div>
 
@@ -512,11 +577,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Ernest Guevarra.</p>
+  <p></p>
+<p>Developed by Ernest Guevarra.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
@@ -524,6 +591,8 @@
 
   
 
+
+  
 
   </body>
 </html>

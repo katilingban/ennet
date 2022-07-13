@@ -64,19 +64,26 @@ get_theme_topics <- function(link) {
     rvest::html_nodes(css = "#pagebody table") %>%
     rvest::html_table()
 
-  topics <- topics[[1]] %>%
-    dplyr::rename(Theme = "") %>%
-    dplyr::mutate(Theme = page %>%
-                    rvest::html_nodes(css = "#pagebody h1") %>%
-                    rvest::html_text(),
-                  Views = stringr::str_remove_all(Views, pattern = ",") %>%
-                    as.integer(),
-                  Posted = as.Date(Posted, format = "%d %b %Y"),
-                  Link = page %>%
-                    rvest::html_nodes(css = "#pagebody table .title a") %>%
-                    rvest::html_attr(name = "href") %>%
-                    xml2::url_absolute(base = "https://www.en-net.org/")) %>%
-    tibble::tibble()
+  ##
+  if (length(topics) == 1) {
+    topics <- topics[[1]] %>%
+      dplyr::rename(Theme = "") %>%
+      dplyr::mutate(
+        Theme = page %>%
+          rvest::html_nodes(css = "#pagebody h1") %>%
+          rvest::html_text(),
+        Views = stringr::str_remove_all(Views, pattern = ",") %>%
+          as.integer(),
+        Posted = as.Date(Posted, format = "%d %b %Y"),
+        Link = page %>%
+          rvest::html_nodes(css = "#pagebody table .title a") %>%
+          rvest::html_attr(name = "href") %>%
+          xml2::url_absolute(base = "https://www.en-net.org/")
+      ) %>%
+      tibble::tibble()
+  } else {
+    topics <- NULL
+  }
 
   ##
   return(topics)

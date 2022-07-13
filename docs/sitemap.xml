@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://katilingban.io/ennet/404.html</loc>
+  </url>
+  <url>
+    <loc>https://katilingban.io/ennet/CODE_OF_CONDUCT.html</loc>
+  </url>
+  <url>
+    <loc>https://katilingban.io/ennet/CONTRIBUTING.html</loc>
+  </url>
+  <url>
+    <loc>https://katilingban.io/ennet/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://katilingban.io/ennet/articles/analytics.html</loc>
+  </url>
+  <url>
+    <loc>https://katilingban.io/ennet/articles/ennet.html</loc>
+  </url>
+  <url>
+    <loc>https://katilingban.io/ennet/articles/extract.html</loc>
+  </url>
+  <url>
+    <loc>https://katilingban.io/ennet/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://katilingban.io/ennet/authors.html</loc>
+  </url>
+  <url>
     <loc>https://katilingban.io/ennet/index.html</loc>
+  </url>
+  <url>
+    <loc>https://katilingban.io/ennet/news/index.html</loc>
   </url>
   <url>
     <loc>https://katilingban.io/ennet/reference/arrange_replies.html</loc>
@@ -23,6 +53,12 @@
   </url>
   <url>
     <loc>https://katilingban.io/ennet/reference/count_topics_theme.html</loc>
+  </url>
+  <url>
+    <loc>https://katilingban.io/ennet/reference/count_topics_time.html</loc>
+  </url>
+  <url>
+    <loc>https://katilingban.io/ennet/reference/create_db.html</loc>
   </url>
   <url>
     <loc>https://katilingban.io/ennet/reference/create_db_topics_dailies.html</loc>
@@ -47,6 +83,9 @@
   </url>
   <url>
     <loc>https://katilingban.io/ennet/reference/ennet_dailies.html</loc>
+  </url>
+  <url>
+    <loc>https://katilingban.io/ennet/reference/ennet_dataset.html</loc>
   </url>
   <url>
     <loc>https://katilingban.io/ennet/reference/ennet_hourlies.html</loc>
@@ -76,15 +115,15 @@
     <loc>https://katilingban.io/ennet/reference/get_topics_discussions.html</loc>
   </url>
   <url>
+    <loc>https://katilingban.io/ennet/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://katilingban.io/ennet/reference/retrieve_ennet.html</loc>
+  </url>
+  <url>
+    <loc>https://katilingban.io/ennet/reference/update_ennet.html</loc>
+  </url>
+  <url>
     <loc>https://katilingban.io/ennet/reference/update_topics.html</loc>
-  </url>
-  <url>
-    <loc>https://katilingban.io/ennet/articles/analytics.html</loc>
-  </url>
-  <url>
-    <loc>https://katilingban.io/ennet/articles/ennet.html</loc>
-  </url>
-  <url>
-    <loc>https://katilingban.io/ennet/articles/extract.html</loc>
   </url>
 </urlset>
