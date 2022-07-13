@@ -14,8 +14,7 @@ checks](https://cranchecks.info/badges/summary/ennet)](https://cran.r-project.or
 [![CRAN](https://img.shields.io/cran/l/ennet.svg)](https://CRAN.R-project.org/package=ennet)
 [![CRAN](http://cranlogs.r-pkg.org/badges/ennet)](https://CRAN.R-project.org/package=ennet)
 [![CRAN](http://cranlogs.r-pkg.org/badges/grand-total/ennet)](https://CRAN.R-project.org/package=ennet)
-[![R build
-status](https://github.com/katilingban/ennet/workflows/R-CMD-check/badge.svg)](https://github.com/katilingban/ennet/actions)
+[![R-CMD-check](https://github.com/katilingban/ennet/workflows/R-CMD-check/badge.svg)](https://github.com/katilingban/ennet/actions)
 [![R build
 status](https://github.com/katilingban/ennet/workflows/test-coverage/badge.svg)](https://github.com/katilingban/ennet/actions)
 [![Codecov test
