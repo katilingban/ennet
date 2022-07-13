@@ -38,7 +38,7 @@ get_db_discussions <- function(repo = "katilingban/ennet_db",
   )
 
   ## Return message if try-error
-  if (class(x) == "try-error") {
+  if (inherits(x, "try-error")) {
     x <- NULL
     message(
       paste(
@@ -88,7 +88,7 @@ get_db_topics <- function(repo = "katilingban/ennet_db",
   )
 
   ## Return message if try-error
-  if (class(x) == "try-error") {
+  if (inherits(x, "try-error")) {
     x <- NULL
     message(
       paste(
@@ -101,7 +101,7 @@ get_db_topics <- function(repo = "katilingban/ennet_db",
   }
 
   ## If x is data.frame
-  if (class(x) == "data.frame") {
+  if (inherits(x, "data.frame")) {
     ## Conver to tibble
     x <- x %>% tibble::tibble()
 
@@ -202,7 +202,7 @@ create_db_topics_daily <- function(repo = "katilingban/ennet_db",
         ## Read first file in list
         x <- try(read.csv(file = fn), silent = TRUE)
 
-          if (class(x) == "try-error") {
+          if (inherits(x, "try-error")) {
             x <- NULL
             message(
               paste(
@@ -420,7 +420,9 @@ create_db_topics_hourlies <- function(repo = "katilingban/ennet_db",
     FUN = function(x) {
       y <- try(expr = read.csv(x), silent = TRUE)
 
-      if (class(y) != "try-error") {
+      if (inherits(y, "try-error")) {
+        y <- NULL
+      } else {
         names(y) <- names(y) %>%
           stringr::str_replace(pattern = "_", replacement = " ")
 
@@ -431,12 +433,10 @@ create_db_topics_hourlies <- function(repo = "katilingban/ennet_db",
             names_to = c("Interaction", "Extraction"),
             names_sep = " ",
             values_to = "n") %>%
-            dplyr::mutate(
-              Extraction = lubridate::ymd_hms(Extraction),
-              n = ifelse(is.na(n), 0, n)
-            )
-      } else {
-        y <- NULL
+          dplyr::mutate(
+            Extraction = lubridate::ymd_hms(Extraction),
+            n = ifelse(is.na(n), 0, n)
+          )
       }
     }
   )

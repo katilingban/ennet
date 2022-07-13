@@ -1,3 +1,9 @@
+# ennet 0.3.0
+
+This is the fifth release of `ennet`. This is a GitHub release only. This is a
+patch release to adapt functions to a new theme added to the en-net forum but
+currently doesn't have any topics and discussions yet.
+
 # ennet 0.2.2
 
 This is the fourth CRAN release of `ennet`. This is a patch release to fix a

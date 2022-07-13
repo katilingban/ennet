@@ -26,6 +26,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -38,18 +40,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ennet</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/ennet.html">Get started</a>
 </li>
@@ -57,7 +53,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -77,7 +73,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/katilingban/ennet/">
+  <a href="https://github.com/katilingban/ennet/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -92,65 +88,139 @@
 
       
 
-      </header><script src="ennet_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>ennet Package</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/katilingban/ennet/blob/master/vignettes/ennet.Rmd"><code>vignettes/ennet.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/katilingban/ennet/blob/HEAD/vignettes/ennet.Rmd" class="external-link"><code>vignettes/ennet.Rmd</code></a></small>
       <div class="hidden name"><code>ennet.Rmd</code></div>
 
     </div>
 
     
     
-<p><code>ennet</code> package provides a set of functions that extracts information from the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a>. This set of functions was built on top of the <a href="https://rvest.tidyverse.org"><code>rvest</code></a> package which provides robust and performant web scraping functions and the <a href="https://dplyr.tidyverse.org"><code>dplyr</code></a> package which provides a full suite of data manipulation functions. The <code>ennet</code> package was designed to be able to interact with how the <strong>en-net</strong> online forum has been structured.</p>
-<div id="en-net-website-structure" class="section level3">
-<h3 class="hasAnchor">
-<a href="#en-net-website-structure" class="anchor"></a>en-net website structure</h3>
-<p>The <strong>en-net</strong> online forum website has a very clear and clean structure. The opening page is a list of <strong>thematic areas</strong> which are linked to each of their respective webpages. In each of these <strong>thematic area</strong> webpages is another list, this time a list of <strong>topics</strong> raised within the <strong>thematic area</strong>. These <strong>topics</strong> are the text that an online user provides as the title for the question she/he is going to ask. Each of the <strong>topics</strong> are then again linked to their respective webpages that show the actual full question raised and the ensuing responses and <strong>discussion</strong> stemming from that question.</p>
-<p>The <strong>en-net</strong> online forum structure can be summarised graphically as follows:</p>
+<p><code>ennet</code> package provides a set of functions that extracts
+information from the <a href="https://www.en-net.org" class="external-link"><strong>en-net</strong> online forum</a>.
+This set of functions was built on top of the <a href="https://rvest.tidyverse.org" class="external-link"><code>rvest</code></a> package which
+provides robust and performant web scraping functions and the <a href="https://dplyr.tidyverse.org" class="external-link"><code>dplyr</code></a> package which
+provides a full suite of data manipulation functions. The
+<code>ennet</code> package was designed to be able to interact with how
+the <strong>en-net</strong> online forum has been structured.</p>
+<div class="section level3">
+<h3 id="en-net-website-structure">en-net website structure<a class="anchor" aria-label="anchor" href="#en-net-website-structure"></a>
+</h3>
+<p>The <strong>en-net</strong> online forum website has a very clear and
+clean structure. The opening page is a list of <strong>thematic
+areas</strong> which are linked to each of their respective webpages. In
+each of these <strong>thematic area</strong> webpages is another list,
+this time a list of <strong>topics</strong> raised within the
+<strong>thematic area</strong>. These <strong>topics</strong> are the
+text that an online user provides as the title for the question she/he
+is going to ask. Each of the <strong>topics</strong> are then again
+linked to their respective webpages that show the actual full question
+raised and the ensuing responses and <strong>discussion</strong>
+stemming from that question.</p>
+<p>The <strong>en-net</strong> online forum structure can be summarised
+graphically as follows:</p>
 <p><br></p>
-<p><img src="../man/figures/ennet_structure.png" width="90%" style="display: block; margin: auto;"><br></p>
-<p>Based on this structure, the following functions are available with <code>ennet</code> package for extracting text data:</p>
+<p><img src="../reference/figures/ennet_structure.png" width="90%" style="display: block; margin: auto;"><br></p>
+<p>Based on this structure, the following functions are available with
+<code>ennet</code> package for extracting text data:</p>
 <ul>
-<li><p><code>get_themes</code> - function to get a list of thematic areas in the forum;</p></li>
-<li><p><code>get_theme_topics</code> and <code>get_themes_topics</code> - functions to get list of topics for a specific thematic area or thematic areas; and,</p></li>
-<li><p><code>get_topic_discussions</code> and <code>get_topics_discussions</code> - functions to get list of discussions for a specific topic or topics,</p></li>
+<li><p><code>get_themes</code> - function to get a list of thematic
+areas in the forum;</p></li>
+<li><p><code>get_theme_topics</code> and <code>get_themes_topics</code>
+- functions to get list of topics for a specific thematic area or
+thematic areas; and,</p></li>
+<li><p><code>get_topic_discussions</code> and
+<code>get_topics_discussions</code> - functions to get list of
+discussions for a specific topic or topics,</p></li>
 </ul>
 </div>
-<div id="analytics-functions" class="section level3">
-<h3 class="hasAnchor">
-<a href="#analytics-functions" class="anchor"></a>Analytics functions</h3>
-<p>The <code>ennet</code> package also includes analytic functions that summarises the text data available from the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a>. Currently, there are four analytic functions available from <code>ennet</code>:</p>
+<div class="section level3">
+<h3 id="analytics-functions">Analytics functions<a class="anchor" aria-label="anchor" href="#analytics-functions"></a>
+</h3>
+<p>The <code>ennet</code> package also includes analytic functions that
+summarises the text data available from the <a href="https://www.en-net.org" class="external-link"><strong>en-net</strong> online forum</a>.
+Currently, there are four analytic functions available from
+<code>ennet</code>:</p>
 <ul>
-<li><p><code>count_topics</code> - function to count the number of topics or questions by theme and date;</p></li>
-<li><p><code>count_authors</code> - function to count the number of topics attributed to a specific author;</p></li>
-<li><p><code>arrange_views</code> - function to arrange topics by number of views; and,</p></li>
-<li><p><code>arrange_replies</code> - function to arrange topics by number of replies.</p></li>
+<li><p><code>count_topics</code> - function to count the number of
+topics or questions by theme and date;</p></li>
+<li><p><code>count_authors</code> - function to count the number of
+topics attributed to a specific author;</p></li>
+<li><p><code>arrange_views</code> - function to arrange topics by number
+of views; and,</p></li>
+<li><p><code>arrange_replies</code> - function to arrange topics by
+number of replies.</p></li>
 </ul>
 </div>
-<div id="utilities-and-datasets" class="section level3">
-<h3 class="hasAnchor">
-<a href="#utilities-and-datasets" class="anchor"></a>Utilities and datasets</h3>
-<p>In addition to these two sets of key functions, <code>en-net</code> package also includes a function - <code>update_topics</code> - that extracts the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> dataset and updates it at a given time interval. This is a convenience wrapper function to <code>get_themes_topics</code> that is potentially useful for those who wants to build dashboards or applications that uses data from the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a>.</p>
-<p>Two datasets are also included in the <code>en-net</code> package. The first dataset is a data.frame of <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> themes and the second dataset is a data.frame of <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> topics.</p>
+<div class="section level3">
+<h3 id="utilities-and-datasets">Utilities and datasets<a class="anchor" aria-label="anchor" href="#utilities-and-datasets"></a>
+</h3>
+<p>In addition to these two sets of key functions, <code>en-net</code>
+package also includes a function - <code>update_topics</code> - that
+extracts the <a href="https://www.en-net.org" class="external-link"><strong>en-net</strong>
+online forum</a> dataset and updates it at a given time interval. This
+is a convenience wrapper function to <code>get_themes_topics</code> that
+is potentially useful for those who wants to build dashboards or
+applications that uses data from the <a href="https://www.en-net.org" class="external-link"><strong>en-net</strong> online
+forum</a>.</p>
+<p>Two datasets are also included in the <code>en-net</code> package.
+The first dataset is a data.frame of <a href="https://www.en-net.org" class="external-link"><strong>en-net</strong> online forum</a>
+themes and the second dataset is a data.frame of <a href="https://www.en-net.org" class="external-link"><strong>en-net</strong> online forum</a>
+topics.</p>
 </div>
-<div id="practical-applications" class="section level2">
-<h2 class="hasAnchor">
-<a href="#practical-applications" class="anchor"></a>Practical applications</h2>
-<p>The <a href="https://www.en-net.org/"><strong>en-net</strong></a> online forum is a rich resource for understanding the community of users that participate in it. And given how an online forum is designed, that resource can be tapped relatively easily given that the documentation of the interaction and discussion between its users happens in real-time. The <code>ennet</code> package facilitates the access to that information through the statistical analysis tool <a href="https://cran.r-project.org">R</a> with which further levels of analysis can be applied to generate meaningful and valuable understanding of this specific community and to some extent the greater nutrition sector at large.</p>
-<p>Following are a few practical and meaningful applications of the information generated by the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a>.</p>
-<div id="assess-effectiveness-of-the-en-net-online-forum" class="section level3">
-<h3 class="hasAnchor">
-<a href="#assess-effectiveness-of-the-en-net-online-forum" class="anchor"></a>Assess effectiveness of the en-net online forum</h3>
-<p>The data from the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> can be used to assess effectiveness of the forum. Effectiveness can be defined as whether the forum has been able to achieve its stated aims/objectives when it was started. Effectiveness can also be expressed in terms of indicators or metrics that reflect overarching principles, ideals or values that those who started the forum adhere to or that the community of users and the wider sector or society believe in. These may include values of inclusion, participation, scientific rigour among others. Given that the forum has been in existence for many years now, information is available over the same period allowing for assessing temporal variation in effectiveness (as defined). This application is a more <strong>normative approach</strong> and will involve creating or developing metrics or taking relevant metrics from other sectors and applying those to this case.</p>
+<div class="section level2">
+<h2 id="practical-applications">Practical applications<a class="anchor" aria-label="anchor" href="#practical-applications"></a>
+</h2>
+<p>The <a href="https://www.en-net.org/" class="external-link"><strong>en-net</strong></a>
+online forum is a rich resource for understanding the community of users
+that participate in it. And given how an online forum is designed, that
+resource can be tapped relatively easily given that the documentation of
+the interaction and discussion between its users happens in real-time.
+The <code>ennet</code> package facilitates the access to that
+information through the statistical analysis tool <a href="https://cran.r-project.org" class="external-link">R</a> with which further levels of
+analysis can be applied to generate meaningful and valuable
+understanding of this specific community and to some extent the greater
+nutrition sector at large.</p>
+<p>Following are a few practical and meaningful applications of the
+information generated by the <a href="https://www.en-net.org" class="external-link"><strong>en-net</strong> online
+forum</a>.</p>
+<div class="section level3">
+<h3 id="assess-effectiveness-of-the-en-net-online-forum">Assess effectiveness of the en-net online forum<a class="anchor" aria-label="anchor" href="#assess-effectiveness-of-the-en-net-online-forum"></a>
+</h3>
+<p>The data from the <a href="https://www.en-net.org" class="external-link"><strong>en-net</strong> online forum</a>
+can be used to assess effectiveness of the forum. Effectiveness can be
+defined as whether the forum has been able to achieve its stated
+aims/objectives when it was started. Effectiveness can also be expressed
+in terms of indicators or metrics that reflect overarching principles,
+ideals or values that those who started the forum adhere to or that the
+community of users and the wider sector or society believe in. These may
+include values of inclusion, participation, scientific rigour among
+others. Given that the forum has been in existence for many years now,
+information is available over the same period allowing for assessing
+temporal variation in effectiveness (as defined). This application is a
+more <strong>normative approach</strong> and will involve creating or
+developing metrics or taking relevant metrics from other sectors and
+applying those to this case.</p>
 </div>
-<div id="identify-gaps-in-information-knowledge-andor-skills" class="section level3">
-<h3 class="hasAnchor">
-<a href="#identify-gaps-in-information-knowledge-andor-skills" class="anchor"></a>Identify gaps in information, knowledge and/or skills</h3>
-<p>Given the nature of the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a> as a quick point of recourse for field practitioners to seek answers to practical questions and challenges faced, it can be expected that the data from the forum contains information on what these topics are. These information can then be used to identify most common or most important information, knowledge and skills that have been asked about. By identifying these gaps in information, knowledge and/or skills and by understanding the evolution of these needs over time, we can potentially predict training needs in the near term and over time. This application is a more <strong>formative approach</strong> in that we let the data tell us what information it holds.</p>
+<div class="section level3">
+<h3 id="identify-gaps-in-information-knowledge-andor-skills">Identify gaps in information, knowledge and/or skills<a class="anchor" aria-label="anchor" href="#identify-gaps-in-information-knowledge-andor-skills"></a>
+</h3>
+<p>Given the nature of the <a href="https://www.en-net.org" class="external-link"><strong>en-net</strong> online forum</a>
+as a quick point of recourse for field practitioners to seek answers to
+practical questions and challenges faced, it can be expected that the
+data from the forum contains information on what these topics are. These
+information can then be used to identify most common or most important
+information, knowledge and skills that have been asked about. By
+identifying these gaps in information, knowledge and/or skills and by
+understanding the evolution of these needs over time, we can potentially
+predict training needs in the near term and over time. This application
+is a more <strong>formative approach</strong> in that we let the data
+tell us what information it holds.</p>
 </div>
 </div>
   </div>
@@ -166,11 +236,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Ernest Guevarra.</p>
+  <p></p>
+<p>Developed by Ernest Guevarra.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
@@ -178,6 +250,8 @@
 
   
 
+
+  
 
   </body>
 </html>

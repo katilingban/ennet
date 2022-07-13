@@ -26,6 +26,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -38,18 +40,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ennet</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/ennet.html">Get started</a>
 </li>
@@ -57,7 +53,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -77,7 +73,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/katilingban/ennet/">
+  <a href="https://github.com/katilingban/ennet/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -92,167 +88,215 @@
 
       
 
-      </header><script src="extract_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Utilities to Extract Text Data from en-net</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/katilingban/ennet/blob/master/vignettes/extract.Rmd"><code>vignettes/extract.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/katilingban/ennet/blob/HEAD/vignettes/extract.Rmd" class="external-link"><code>vignettes/extract.Rmd</code></a></small>
       <div class="hidden name"><code>extract.Rmd</code></div>
 
     </div>
 
     
     
-<p><code>ennet</code> package provides a set of functions that extracts information from the <a href="https://www.en-net.org"><strong>en-net</strong> online forum</a>. This set of functions was built on top of the <a href="https://rvest.tidyverse.org"><code>rvest</code></a> package which provides robust and performant web scraping functions and the <a href="https://dplyr.tidyverse.org"><code>dplyr</code></a> package which provides a full suite of data manipulation functions. The <code>ennet</code> package was designed to be able to interact with how the <strong>en-net</strong> online forum has been structured.</p>
-<div id="en-net-website-structure" class="section level3">
-<h3 class="hasAnchor">
-<a href="#en-net-website-structure" class="anchor"></a>en-net website structure</h3>
-<p>The <strong>en-net</strong> online forum website has a very clear and clean structure. The opening page is a list of <strong>thematic areas</strong> which are linked to each of their respective webpages. In each of these <strong>thematic area</strong> webpages is another list, this time a list of <strong>topics</strong> raised within the <strong>thematic area</strong>. These <strong>topics</strong> are the text that an online user provides as the title for the question she/he is going to ask. Each of the <strong>topics</strong> are then again linked to their respective webpages that show the actual full question raised and the ensuing responses and <strong>discussion</strong> stemming from that question.</p>
-<p>The <strong>en-net</strong> online forum structure can be summarised graphically as follows:</p>
+<p><code>ennet</code> package provides a set of functions that extracts
+information from the <a href="https://www.en-net.org" class="external-link"><strong>en-net</strong> online forum</a>.
+This set of functions was built on top of the <a href="https://rvest.tidyverse.org" class="external-link"><code>rvest</code></a> package which
+provides robust and performant web scraping functions and the <a href="https://dplyr.tidyverse.org" class="external-link"><code>dplyr</code></a> package which
+provides a full suite of data manipulation functions. The
+<code>ennet</code> package was designed to be able to interact with how
+the <strong>en-net</strong> online forum has been structured.</p>
+<div class="section level3">
+<h3 id="en-net-website-structure">en-net website structure<a class="anchor" aria-label="anchor" href="#en-net-website-structure"></a>
+</h3>
+<p>The <strong>en-net</strong> online forum website has a very clear and
+clean structure. The opening page is a list of <strong>thematic
+areas</strong> which are linked to each of their respective webpages. In
+each of these <strong>thematic area</strong> webpages is another list,
+this time a list of <strong>topics</strong> raised within the
+<strong>thematic area</strong>. These <strong>topics</strong> are the
+text that an online user provides as the title for the question she/he
+is going to ask. Each of the <strong>topics</strong> are then again
+linked to their respective webpages that show the actual full question
+raised and the ensuing responses and <strong>discussion</strong>
+stemming from that question.</p>
+<p>The <strong>en-net</strong> online forum structure can be summarised
+graphically as follows:</p>
 <p><br></p>
-<p><img src="../man/figures/ennet_structure.png" width="90%" style="display: block; margin: auto;"><br></p>
+<p><img src="../reference/figures/ennet_structure.png" width="90%" style="display: block; margin: auto;"><br></p>
 </div>
-<div id="getting-list-of-thematic-areas" class="section level3">
-<h3 class="hasAnchor">
-<a href="#getting-list-of-thematic-areas" class="anchor"></a>Getting list of thematic areas</h3>
-<p>To get a list of <strong>thematic areas</strong> along with the link to the webpage of each <strong>thematic area</strong>, we use the <code><a href="../reference/get_themes.html">get_themes()</a></code> function as follows:</p>
+<div class="section level3">
+<h3 id="getting-list-of-thematic-areas">Getting list of thematic areas<a class="anchor" aria-label="anchor" href="#getting-list-of-thematic-areas"></a>
+</h3>
+<p>To get a list of <strong>thematic areas</strong> along with the link
+to the webpage of each <strong>thematic area</strong>, we use the
+<code><a href="../reference/get_themes.html">get_themes()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Load ennet package</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://katilingban.io/ennet/">ennet</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://katilingban.io/ennet/">ennet</a></span><span class="op">)</span>
 
 <span class="co">## Get all thematic areas from en-net</span>
 <span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>which results in</p>
-<pre><code>#&gt; # A tibble: 18 x 2
-#&gt;    themes                                           links                       
-#&gt;    &lt;chr&gt;                                            &lt;chr&gt;                       
-#&gt;  1 Announcements &amp; Nutritionists needed             https://www.en-net.org/foru…
-#&gt;  2 Assessment and Surveillance                      https://www.en-net.org/foru…
-#&gt;  3 COVID-19 and nutrition programming               https://www.en-net.org/foru…
-#&gt;  4 Coverage assessment                              https://www.en-net.org/foru…
-#&gt;  5 Cross-cutting issues                             https://www.en-net.org/foru…
-#&gt;  6 Food assistance                                  https://www.en-net.org/foru…
-#&gt;  7 Infant and young child feeding interventions     https://www.en-net.org/foru…
-#&gt;  8 Management of At Risk Mothers and Infants        https://www.en-net.org/foru…
-#&gt;  9 Micronutrients                                   https://www.en-net.org/foru…
-#&gt; 10 Partnerships for research                        https://www.en-net.org/foru…
-#&gt; 11 Management of wasting/acute malnutrition         https://www.en-net.org/foru…
-#&gt; 12 Prevention and management of stunting            https://www.en-net.org/foru…
-#&gt; 13 Scaling Up Nutrition (SUN)                       https://www.en-net.org/foru…
-#&gt; 14 Upcoming trainings                               https://www.en-net.org/foru…
-#&gt; 15 Other thematic area                              https://www.en-net.org/foru…
-#&gt; 16 Multi-sector nutrition programming               https://www.en-net.org/foru…
-#&gt; 17 Adolescent nutrition                             https://www.en-net.org/foru…
-#&gt; 18 Simplified Approaches for the Management of Acu… https://www.en-net.org/foru…</code></pre>
-<p>The resulting table has two columns - the first is named <code>themes</code> which contains the various <strong>thematic areas</strong> on the <a href="https://www.en-net.org/"><strong>en-net</strong> online forum</a>, and the second is named <code>links</code> which contains the corresponding URL for the webpages for each of the <strong>thematic areas</strong>.</p>
-<p>This will be useful when choosing which themes to focus on when extracting information. This function outputs an object of the appropriate class and structure as the required input for the <code><a href="../reference/get_themes_topics.html">get_themes_topics()</a></code> function which would lend to piped operations between the two functions (see below).</p>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 17 × 2</span></span>
+<span class="co">#&gt;    themes                                                                  links</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Announcements &amp; Nutritionists needed                                    http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Assessment and Surveillance                                             http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> COVID-19 and nutrition programming                                      http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Cross-cutting issues                                                    http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Food assistance                                                         http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Infant and young child feeding interventions                            http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Management of small and nutritionally at risk infants under six months… http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Micronutrients                                                          http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Partnerships for research                                               http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Management of wasting/acute malnutrition                                http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">11</span> Prevention and management of stunting                                   http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">12</span> Scaling Up Nutrition (SUN)                                              http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">13</span> Upcoming trainings                                                      http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">14</span> Other thematic area                                                     http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">15</span> Adolescent nutrition                                                    http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">16</span> Simplified Approaches for the Management of Acute Malnutrition          http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">17</span> Costing and cost-effectiveness of wasting programmes                    http…</span></code></pre>
+<p>The resulting table has two columns - the first is named
+<code>themes</code> which contains the various <strong>thematic
+areas</strong> on the <a href="https://www.en-net.org/" class="external-link"><strong>en-net</strong> online forum</a>,
+and the second is named <code>links</code> which contains the
+corresponding URL for the webpages for each of the <strong>thematic
+areas</strong>.</p>
+<p>This will be useful when choosing which themes to focus on when
+extracting information. This function outputs an object of the
+appropriate class and structure as the required input for the
+<code><a href="../reference/get_themes_topics.html">get_themes_topics()</a></code> function which would lend to piped
+operations between the two functions (see below).</p>
 </div>
-<div id="getting-list-of-topics-from-thematic-areas" class="section level3">
-<h3 class="hasAnchor">
-<a href="#getting-list-of-topics-from-thematic-areas" class="anchor"></a>Getting list of topics from thematic area/s</h3>
-<p>To get a list of <strong>topics</strong> for a particular theme, we use the <code><a href="../reference/get_theme_topics.html">get_theme_topics()</a></code> function as follows:</p>
+<div class="section level3">
+<h3 id="getting-list-of-topics-from-thematic-areas">Getting list of topics from thematic area/s<a class="anchor" aria-label="anchor" href="#getting-list-of-topics-from-thematic-areas"></a>
+</h3>
+<p>To get a list of <strong>topics</strong> for a particular theme, we
+use the <code><a href="../reference/get_theme_topics.html">get_theme_topics()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Load dplyr to facilitate data manipulation</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
 
-<span class="co">## Extract data from "Coverage assessment" theme</span>
-<span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">themes</span> <span class="op">==</span> <span class="st">"Coverage assessment"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">links</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<span class="co">## Extract data from "Assessment and Surveillance" theme</span>
+<span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">themes</span> <span class="op">==</span> <span class="st">"Assessment and Surveillance"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">links</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/get_theme_topics.html">get_theme_topics</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>which results in</p>
-<pre><code>#&gt; # A tibble: 95 x 7
-#&gt;    Theme    Topic                 Views Replies Author   Posted     Link        
-#&gt;    &lt;chr&gt;    &lt;chr&gt;                 &lt;int&gt;   &lt;int&gt; &lt;chr&gt;    &lt;date&gt;     &lt;chr&gt;       
-#&gt;  1 Coverag… Resources for covera… 19894      11 Tamsin … 2011-12-06 https://www…
-#&gt;  2 Coverag… datas available on M…  1142       2 Cécile … 2021-03-08 https://www…
-#&gt;  3 Coverag… SLEAC                  3753       2 Anonymo… 2021-01-12 https://www…
-#&gt;  4 Coverag… Use of single covera…  7146       7 Hugh Lo… 2019-11-10 https://www…
-#&gt;  5 Coverag… Real and theoretical…  5256       3 Abdul    2019-10-10 https://www…
-#&gt;  6 Coverag… Single Coverage for …  4083       4 Ben All… 2019-07-05 https://www…
-#&gt;  7 Coverag… Cox's Bazar Refugee …  4332       4 Hugh Lo… 2019-03-28 https://www…
-#&gt;  8 Coverag… Wide Area Survey (St…  3928       2 Anonymo… 2019-03-09 https://www…
-#&gt;  9 Coverag… Disconnection betwee…  3946       2 Tammam … 2019-03-03 https://www…
-#&gt; 10 Coverag… Can we classify the …  4075       2 Anonymo… 2018-11-18 https://www…
-#&gt; # … with 85 more rows</code></pre>
-<p>The resulting table contains information on all the <strong>topics</strong> within the <em>Coverage assessment</em> <strong>thematic area</strong> including URL links to the corresponding webpages for each <strong>topic</strong></p>
-<p>To get a list of <strong>topics</strong> for multiple themes, we use the <code><a href="../reference/get_themes_topics.html">get_themes_topics()</a></code> function as follows:</p>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 589 × 7</span></span>
+<span class="co">#&gt;    Theme                       Topic       Views Replies Author Posted     Link </span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Assessment and Surveillance Resources … <span style="text-decoration: underline;">24</span>529      11 Anony… 2011-12-06 http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Assessment and Surveillance Health nut…   126       1 Idris… 2022-07-07 http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Assessment and Surveillance Best suite…   134       0 Sarah  2022-06-13 http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Assessment and Surveillance Which indi…   160       0 Natas… 2022-06-07 http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Assessment and Surveillance Confoundin…   348       4 Anony… 2022-05-24 http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Assessment and Surveillance Is GAM a g…   543       2 Anony… 2022-04-20 http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Assessment and Surveillance Error mess…   894       1 Edem   2022-04-04 http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Assessment and Surveillance Preference…  <span style="text-decoration: underline;">1</span>488       4 Anony… 2022-03-21 http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Assessment and Surveillance gender and…  <span style="text-decoration: underline;">1</span>285       1 ISRAE… 2022-03-18 http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Assessment and Surveillance Generating…  <span style="text-decoration: underline;">1</span>428       1 Elsie… 2022-03-11 http…</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 579 more rows</span></span></code></pre>
+<p>The resulting table contains information on all the
+<strong>topics</strong> within the <em>Assessment and Surveillance</em>
+<strong>thematic area</strong> including URL links to the corresponding
+webpages for each <strong>topic</strong></p>
+<p>To get a list of <strong>topics</strong> for multiple themes, we use
+the <code><a href="../reference/get_themes_topics.html">get_themes_topics()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">## Extract data from "Coverage assessment" theme and "Food assistance" theme</span>
-<span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">themes</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="co">## Extract data from "Assessment and Surveillance" theme and "Food assistance" theme</span>
+<span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">themes</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Assessment and Surveillance"</span>, <span class="st">"Food assistance"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>which results in</p>
-<pre><code>#&gt; # A tibble: 127 x 7
-#&gt;    Theme    Topic                 Views Replies Author   Posted     Link        
-#&gt;    &lt;chr&gt;    &lt;chr&gt;                 &lt;int&gt;   &lt;int&gt; &lt;chr&gt;    &lt;date&gt;     &lt;chr&gt;       
-#&gt;  1 Coverag… Resources for covera… 19894      11 Tamsin … 2011-12-06 https://www…
-#&gt;  2 Coverag… datas available on M…  1142       2 Cécile … 2021-03-08 https://www…
-#&gt;  3 Coverag… SLEAC                  3753       2 Anonymo… 2021-01-12 https://www…
-#&gt;  4 Coverag… Use of single covera…  7146       7 Hugh Lo… 2019-11-10 https://www…
-#&gt;  5 Coverag… Real and theoretical…  5256       3 Abdul    2019-10-10 https://www…
-#&gt;  6 Coverag… Single Coverage for …  4083       4 Ben All… 2019-07-05 https://www…
-#&gt;  7 Coverag… Cox's Bazar Refugee …  4332       4 Hugh Lo… 2019-03-28 https://www…
-#&gt;  8 Coverag… Wide Area Survey (St…  3928       2 Anonymo… 2019-03-09 https://www…
-#&gt;  9 Coverag… Disconnection betwee…  3946       2 Tammam … 2019-03-03 https://www…
-#&gt; 10 Coverag… Can we classify the …  4075       2 Anonymo… 2018-11-18 https://www…
-#&gt; # … with 117 more rows</code></pre>
-<p>The resulting table contains information on all the <strong>topics</strong> within the <em>Coverage assessment</em> and <em>Food assistance</em> <strong>thematic area</strong> including URL links to the corresponding webpages for each <strong>topic</strong>.</p>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 622 × 7</span></span>
+<span class="co">#&gt;    Theme                       Topic       Views Replies Author Posted     Link </span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Assessment and Surveillance Resources … <span style="text-decoration: underline;">24</span>529      11 Anony… 2011-12-06 http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Assessment and Surveillance Health nut…   126       1 Idris… 2022-07-07 http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Assessment and Surveillance Best suite…   134       0 Sarah  2022-06-13 http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Assessment and Surveillance Which indi…   160       0 Natas… 2022-06-07 http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Assessment and Surveillance Confoundin…   348       4 Anony… 2022-05-24 http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Assessment and Surveillance Is GAM a g…   543       2 Anony… 2022-04-20 http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Assessment and Surveillance Error mess…   894       1 Edem   2022-04-04 http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Assessment and Surveillance Preference…  <span style="text-decoration: underline;">1</span>488       4 Anony… 2022-03-21 http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Assessment and Surveillance gender and…  <span style="text-decoration: underline;">1</span>285       1 ISRAE… 2022-03-18 http…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Assessment and Surveillance Generating…  <span style="text-decoration: underline;">1</span>428       1 Elsie… 2022-03-11 http…</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 612 more rows</span></span></code></pre>
+<p>The resulting table contains information on all the
+<strong>topics</strong> within the <em>Assessment and Surveillance</em>
+and <em>Food assistance</em> <strong>thematic area</strong> including
+URL links to the corresponding webpages for each
+<strong>topic</strong>.</p>
 </div>
-<div id="getting-discussions-from-topics" class="section level3">
-<h3 class="hasAnchor">
-<a href="#getting-discussions-from-topics" class="anchor"></a>Getting discussions from topic/s</h3>
-<p>To get a list of <strong>discussions</strong> for a particular <strong>topic</strong>, we use the <code><a href="../reference/get_topic_discussions.html">get_topic_discussions()</a></code> function as follows:</p>
+<div class="section level3">
+<h3 id="getting-discussions-from-topics">Getting discussions from topic/s<a class="anchor" aria-label="anchor" href="#getting-discussions-from-topics"></a>
+</h3>
+<p>To get a list of <strong>discussions</strong> for a particular
+<strong>topic</strong>, we use the <code><a href="../reference/get_topic_discussions.html">get_topic_discussions()</a></code>
+function as follows:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">themes</span> <span class="op">==</span> <span class="st">"Coverage assessment"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Topic</span> <span class="op">==</span> <span class="st">"Resources for coverage assessment"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">Link</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">themes</span> <span class="op">==</span> <span class="st">"Assessment and Surveillance"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Topic</span> <span class="op">==</span> <span class="st">"Resources for coverage assessment"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">Link</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/get_topic_discussions.html">get_topic_discussions</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>which results in</p>
-<pre><code>#&gt; # A tibble: 12 x 10
-#&gt;    theme  topic user  userCode job   role  date_time           type  code  post 
-#&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
-#&gt;  1 Cover… Reso… Tams… user24   en-n… Foru… 2011-12-06 11:59:00 ques… 574   "Dea…
-#&gt;  2 Cover… Reso… Mark… user31   Cons… Freq… 2011-12-06 13:24:00 answ… 1536  "And…
-#&gt;  3 Cover… Reso… Erne… user999  Kati… Tech… 2011-12-22 18:02:00 answ… 1603  "Wor…
-#&gt;  4 Cover… Reso… Saul… user1000 Dire… Tech… 2012-01-11 08:59:00 answ… 1664  "And…
-#&gt;  5 Cover… Reso… Mark… user31   Cons… Freq… 2012-05-01 12:29:00 answ… 2076  "Jus…
-#&gt;  6 Cover… Reso… Erne… user999  Kati… Tech… 2012-05-26 09:48:00 answ… 2180  "We …
-#&gt;  7 Cover… Reso… Erne… user999  Kati… Tech… 2012-07-05 11:19:00 answ… 2278  "Dea…
-#&gt;  8 Cover… Reso… Mark… user31   Cons… Freq… 2012-09-17 16:40:00 answ… 2442  "Upd…
-#&gt;  9 Cover… Reso… Mark… user31   Cons… Freq… 2012-11-01 16:19:00 answ… 2615  "And…
-#&gt; 10 Cover… Reso… Mark… user31   Cons… Freq… 2013-04-30 17:19:00 answ… 3288  "The…
-#&gt; 11 Cover… Reso… Mark… user31   Cons… Freq… 2013-09-05 09:56:00 answ… 3445  "Her…
-#&gt; 12 Cover… Reso… Alex… user107… Acti… Norm… 2020-06-11 17:27:00 answ… 7723  "The…</code></pre>
-<p>The resulting table contains information on all the <strong>discussions</strong> within the <strong>topic</strong> on <em>Resources for coverage assessment</em> within the <strong>thematic area</strong> of <em>Coverage assessment</em> including the text data on the question and the ensuing reply/replies to the question.</p>
-<p>To get a list of <strong>discussions</strong> for a set of <strong>topics</strong>, we use the <code><a href="../reference/get_topics_discussions.html">get_topics_discussions()</a></code> function as follows:</p>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 12 × 10</span></span>
+<span class="co">#&gt;    theme  topic user  userCode job   role  date_time           type  code  post </span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Asses… Reso… Anon… user24   <span style="color: #949494;">""</span>    Foru… 2011-12-06 <span style="color: #949494;">11:59:00</span> ques… 574   <span style="color: #949494;">"</span>Dea…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Asses… Reso… Mark… user31   <span style="color: #949494;">""</span>    Freq… 2011-12-06 <span style="color: #949494;">13:24:00</span> answ… 1536  <span style="color: #949494;">"</span>And…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Asses… Reso… Erne… user999  <span style="color: #949494;">"</span>Kat… Freq… 2011-12-22 <span style="color: #949494;">18:02:00</span> answ… 1603  <span style="color: #949494;">"</span>Wor…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Asses… Reso… Saul… user1000 <span style="color: #949494;">"</span>Dir… Freq… 2012-01-11 <span style="color: #949494;">08:59:00</span> answ… 1664  <span style="color: #949494;">"</span>And…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Asses… Reso… Mark… user31   <span style="color: #949494;">""</span>    Freq… 2012-05-01 <span style="color: #949494;">12:29:00</span> answ… 2076  <span style="color: #949494;">"</span>Jus…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Asses… Reso… Erne… user999  <span style="color: #949494;">"</span>Kat… Freq… 2012-05-26 <span style="color: #949494;">09:48:00</span> answ… 2180  <span style="color: #949494;">"</span>We …</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Asses… Reso… Erne… user999  <span style="color: #949494;">"</span>Kat… Freq… 2012-07-05 <span style="color: #949494;">11:19:00</span> answ… 2278  <span style="color: #949494;">"</span>Dea…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Asses… Reso… Mark… user31   <span style="color: #949494;">""</span>    Freq… 2012-09-17 <span style="color: #949494;">16:40:00</span> answ… 2442  <span style="color: #949494;">"</span>Upd…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Asses… Reso… Mark… user31   <span style="color: #949494;">""</span>    Freq… 2012-11-01 <span style="color: #949494;">16:19:00</span> answ… 2615  <span style="color: #949494;">"</span>And…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Asses… Reso… Mark… user31   <span style="color: #949494;">""</span>    Freq… 2013-04-30 <span style="color: #949494;">17:19:00</span> answ… 3288  <span style="color: #949494;">"</span>The…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">11</span> Asses… Reso… Mark… user31   <span style="color: #949494;">""</span>    Freq… 2013-09-05 <span style="color: #949494;">09:56:00</span> answ… 3445  <span style="color: #949494;">"</span>Her…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">12</span> Asses… Reso… ALEX… user107… <span style="color: #949494;">"</span>Act… Norm… 2020-06-11 <span style="color: #949494;">17:27:00</span> answ… 7723  <span style="color: #949494;">"</span>The…</span></code></pre>
+<p>The resulting table contains information on all the
+<strong>discussions</strong> within the <strong>topic</strong> on
+<em>Resources for coverage assessment</em> within the <strong>thematic
+area</strong> of <em>Assessment and Surveillance</em> including the text
+data on the question and the ensuing reply/replies to the question.</p>
+<p>To get a list of <strong>discussions</strong> for a set of
+<strong>topics</strong>, we use the
+<code><a href="../reference/get_topics_discussions.html">get_topics_discussions()</a></code> function as follows:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">themes</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Coverage assessment"</span>, <span class="st">"Food assistance"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/get_themes.html">get_themes</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">themes</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Assessment and Surveillance"</span>, <span class="st">"Food assistance"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="../reference/get_themes_topics.html">get_themes_topics</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/get_topics_discussions.html">get_topics_discussions</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>which results in</p>
-<pre><code>#&gt; # A tibble: 512 x 10
-#&gt;    theme  topic user  userCode job   role  date_time           type  code  post 
-#&gt;    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; &lt;dttm&gt;              &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
-#&gt;  1 Cover… Reso… Tams… user24   en-n… Foru… 2011-12-06 11:59:00 ques… 574   "Dea…
-#&gt;  2 Cover… Reso… Mark… user31   Cons… Freq… 2011-12-06 13:24:00 answ… 1536  "And…
-#&gt;  3 Cover… Reso… Erne… user999  Kati… Tech… 2011-12-22 18:02:00 answ… 1603  "Wor…
-#&gt;  4 Cover… Reso… Saul… user1000 Dire… Tech… 2012-01-11 08:59:00 answ… 1664  "And…
-#&gt;  5 Cover… Reso… Mark… user31   Cons… Freq… 2012-05-01 12:29:00 answ… 2076  "Jus…
-#&gt;  6 Cover… Reso… Erne… user999  Kati… Tech… 2012-05-26 09:48:00 answ… 2180  "We …
-#&gt;  7 Cover… Reso… Erne… user999  Kati… Tech… 2012-07-05 11:19:00 answ… 2278  "Dea…
-#&gt;  8 Cover… Reso… Mark… user31   Cons… Freq… 2012-09-17 16:40:00 answ… 2442  "Upd…
-#&gt;  9 Cover… Reso… Mark… user31   Cons… Freq… 2012-11-01 16:19:00 answ… 2615  "And…
-#&gt; 10 Cover… Reso… Mark… user31   Cons… Freq… 2013-04-30 17:19:00 answ… 3288  "The…
-#&gt; # … with 502 more rows</code></pre>
-<p>The resulting table contains information on all the <strong>discussions</strong> within all the <strong>topics</strong> within the <strong>thematic areas</strong> of <em>Coverage assessment</em> and <em>Food assistance</em> including the text data on the question and the ensuing reply/replies to the question.</p>
+<pre><code><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3,135 × 10</span></span>
+<span class="co">#&gt;    theme  topic user  userCode job   role  date_time           type  code  post </span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Asses… Reso… Anon… user24   <span style="color: #949494;">""</span>    Foru… 2011-12-06 <span style="color: #949494;">11:59:00</span> ques… 574   <span style="color: #949494;">"</span>Dea…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Asses… Reso… Mark… user31   <span style="color: #949494;">""</span>    Freq… 2011-12-06 <span style="color: #949494;">13:24:00</span> answ… 1536  <span style="color: #949494;">"</span>And…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Asses… Reso… Erne… user999  <span style="color: #949494;">"</span>Kat… Freq… 2011-12-22 <span style="color: #949494;">18:02:00</span> answ… 1603  <span style="color: #949494;">"</span>Wor…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Asses… Reso… Saul… user1000 <span style="color: #949494;">"</span>Dir… Freq… 2012-01-11 <span style="color: #949494;">08:59:00</span> answ… 1664  <span style="color: #949494;">"</span>And…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Asses… Reso… Mark… user31   <span style="color: #949494;">""</span>    Freq… 2012-05-01 <span style="color: #949494;">12:29:00</span> answ… 2076  <span style="color: #949494;">"</span>Jus…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Asses… Reso… Erne… user999  <span style="color: #949494;">"</span>Kat… Freq… 2012-05-26 <span style="color: #949494;">09:48:00</span> answ… 2180  <span style="color: #949494;">"</span>We …</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Asses… Reso… Erne… user999  <span style="color: #949494;">"</span>Kat… Freq… 2012-07-05 <span style="color: #949494;">11:19:00</span> answ… 2278  <span style="color: #949494;">"</span>Dea…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Asses… Reso… Mark… user31   <span style="color: #949494;">""</span>    Freq… 2012-09-17 <span style="color: #949494;">16:40:00</span> answ… 2442  <span style="color: #949494;">"</span>Upd…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Asses… Reso… Mark… user31   <span style="color: #949494;">""</span>    Freq… 2012-11-01 <span style="color: #949494;">16:19:00</span> answ… 2615  <span style="color: #949494;">"</span>And…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Asses… Reso… Mark… user31   <span style="color: #949494;">""</span>    Freq… 2013-04-30 <span style="color: #949494;">17:19:00</span> answ… 3288  <span style="color: #949494;">"</span>The…</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 3,125 more rows</span></span></code></pre>
+<p>The resulting table contains information on all the
+<strong>discussions</strong> within all the <strong>topics</strong>
+within the <strong>thematic areas</strong> of <em>Assessment and
+Surveillance</em> and <em>Food assistance</em> including the text data
+on the question and the ensuing reply/replies to the question.</p>
 </div>
   </div>
 
@@ -265,11 +309,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Ernest Guevarra.</p>
+  <p></p>
+<p>Developed by Ernest Guevarra.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
@@ -277,6 +323,8 @@
 
   
 
+
+  
 
   </body>
 </html>
