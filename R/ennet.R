@@ -41,7 +41,7 @@ if(getRversion() >= "2.15.1") {
                            "monthlies", "Extraction Week", "Extraction Month",
                            "Extraction Year", "Extraction.Date",
                            "Extraction.Week", "Extraction.Month",
-                           "Extraction.Year", "New.Views", "New.Replies"))
+                           "Extraction.Year", "New.Views", "New.Replies", "."))
 }
 
 

@@ -21,6 +21,7 @@ status](https://github.com/katilingban/ennet/workflows/test-coverage/badge.svg)]
 coverage](https://codecov.io/gh/katilingban/ennet/branch/master/graph/badge.svg)](https://codecov.io/gh/katilingban/ennet?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/katilingban/ennet/badge)](https://www.codefactor.io/repository/github/katilingban/ennet)
 [![DOI](https://zenodo.org/badge/278736971.svg)](https://zenodo.org/badge/latestdoi/278736971)
+[![R-CMD-check](https://github.com/katilingban/ennet/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/katilingban/ennet/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 [**en-net**](https://www.en-net.org) is the go to online forum for field

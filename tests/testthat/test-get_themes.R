@@ -21,7 +21,7 @@ test_that("output is a tibble", {
 })
 
 test_that("output has correct names", {
-  expect_true(all(names(x) %in% c("Theme", "Topic", "Views",
+  expect_true(all(names(x) %in% c("Theme", "Topic", "Views", "Replies",
                                   "Author", "Posted", "Link")))
 })
 

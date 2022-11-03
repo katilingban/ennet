@@ -59,15 +59,32 @@ get_theme_topics <- function(link) {
   ## Get HTML page
   page <- xml2::read_html(x = link)
 
-  ##
-  topics <- page %>%
-    rvest::html_nodes(css = "#pagebody table") %>%
-    rvest::html_table()
+  if (stringr::str_detect(link, pattern = "11")) {
+    topics <- page %>%
+      rvest::html_nodes(css = "#pagebody table") %>%
+      rvest::html_table() %>%
+      do.call(rbind, .)
+
+    names(topics) <- c("Theme", "Topic", "Views", "Author", "Posted")
+
+    topics <- topics %>%
+      dplyr::mutate(
+        Replies = NA_integer_,
+        .before = Author
+      )
+  } else {
+    ##
+    topics <- page %>%
+      rvest::html_nodes(css = "#pagebody table") %>%
+      rvest::html_table() %>%
+      do.call(rbind, .)
+  }
 
   ##
-  if (length(topics) == 1) {
-    topics <- topics[[1]] %>%
-      dplyr::rename(Theme = "") %>%
+  if (!is.null(topics)) {
+    names(topics) <- c("Theme", "Topic", "Views", "Replies", "Author", "Posted")
+    topics <- topics %>%
+      #dplyr::rename(Theme = ``) %>%
       dplyr::mutate(
         Theme = page %>%
           rvest::html_nodes(css = "#pagebody h1") %>%
